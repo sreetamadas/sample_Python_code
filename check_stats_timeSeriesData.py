@@ -1,20 +1,26 @@
+######################################################################################################
 #### get stats of time series data (from sensor)
 
-## set directory
+## set directory / path
 
 ## import libraries
 import pandas
 from matplotlib import pyplot
 
 #########################################################################################################
-## FUNCTION DEFINITION
+###  FUNCTION DEFINITION  ###
+
 #### data cleaning  #####
 def dataCleaning(mc):
     "CHECK MISSING VALUES: individual cols & time stamps"
     
     ## check data types
     #mc.dtypes 
-        
+    
+    ## format time stamp, in case of non-standard format
+    # non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
+    # mc["Date"] = pandas.to_datetime(mc["Date"], format="%Y.%m.%d %H:%M:%S")  ## specify the format from input data here
+    
     ## sort timestamps
     mc = mc.sort_values(by='Date')
     
@@ -47,7 +53,6 @@ def dataCleaning(mc):
     mc = pandas.merge(mc, less, how='inner', on='Day')  # pd.merge(dfA, dfB, how='inner', on=['S', 'T'])
     # https://pandas.pydata.org/pandas-docs/stable/merging.html
     
-    
     #(the following don't work if the exact frequency is not maintained throughout dataframe)
     #mc = mc.set_index('Date')  #from datetime import datetime  #mc['Date'] = pandas.to_datetime(mc['Date'])  #mc['Date'] = pandas.to_datetime(mc.Date)   
     #mc = mc.loc[pandas.date_range(mc.index.min(), mc.index.max(), freq='6min')]  #mc.reindex(pandas.date_range(start=mc.index[0], end=mc.index[-1], freq='6min')) 
@@ -58,7 +63,37 @@ def dataCleaning(mc):
     
     return mc;
 
+                         
 
+## handle NAs & negative values in cols that should be non-negative
+def DataCleaning2(df):
+    "data cleaning for NAs & negative values"
+    
+    ## step 1: dealing with NA values
+    # A. set NA to zero for selected cols  (google: pandas fillna multiple columns)
+    df.update(df[['HeadCount','OKcount']].fillna(0))
+    
+    # B. remove rows where the important cols have 'NA' 
+    df = df[df['ID'].notnull() & df['TotalCount'].notnull() & df['regression_var'].notnull() ]
+    # https://stackoverflow.com/questions/42125131/delete-row-based-on-nulls-in-certain-columns-pandas
+    # google: how to remove rows with NA values in selected columns in python dataframe
+    #df.dropna(axis=0, how='any') # axis=0 indicates rows change, other wise rows with NA in other cols will also be removed
+    #df.dropna(axis=0, subset=[['ID', 'TotalCount', 'regression_var']], how='any')
+    #df = df[pandas.notnull(df['ID', 'TotalCount', 'regression_var'])]
+    
+    ## step 2: remove data for dates which have multiple entries (depends on the use case)
+    ## for this, combine the date, index & ID column, & either remove all duplicates/ or retain unique rows
+    #df = df.drop_duplicates(subset=['Date', 'index', 'ID'], keep=False)
+    
+    ## step 3: remove rows with negative value in OK count
+    df = df[df.OKcount >= 0]
+       
+    ## remove any unnecessary columns
+    
+    return df;
+                         
+                         
+                         
 #### aggregate data from individual time stamps to daily values  ####
 def aggregateData(mc):
     "aggregate data by day"
@@ -71,6 +106,21 @@ def aggregateData(mc):
   
     return agg_df;
         
+
+
+# sample data
+# dateTime   Index  TotalCount                         
+# 17-01-01      A      20
+# 17-01-01      B      10   
+# 17-01-02      A      17
+# 17-01-03      A      13
+# 17-01-03      B      16
+                         
+# for each index, I can count can be: 1. sum of values in the TotalCount col. (e.g. A -> 50)
+#                                     2. sum of no. of instances (e.g. A -> 3)
+                         
+#### arranging by cumulative data ##                        
+                         
                          
 ####################################################################################################
 ### read in data
