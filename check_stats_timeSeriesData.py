@@ -2,14 +2,13 @@
 
 ## set directory
 
-## read in data
+## import libraries
 import pandas
-
-filepath = raw_input("enter fullPath & filename: ")
-mc = pandas.read_excel(filepath)
+from matplotlib import pyplot
 
 #########################################################################################################
-## data cleaning
+## FUNCTION DEFINITION
+#### data cleaning  #####
 def dataCleaning(mc):
     "CHECK MISSING VALUES: individual cols & time stamps"
     
@@ -59,7 +58,30 @@ def dataCleaning(mc):
     
     return mc;
 
+
+#### aggregate data from individual time stamps to daily values  ####
+def aggregateData(mc):
+    "aggregate data by day"
+    # Step 1: format DateTime colunm to only date
+    from datetime import datetime
+    mc['Day'] = [d.date() for d in mc['Date']]  # d.date() for date & d.time for time part
+                         
+    # step 2: aggregate values by day , & return as df                         
+    agg_df = mc.groupby('Day').agg({'selected_col_value': 'sum'}).reset_index()  # df = mc.groupby('Day').agg({'selected_col_value': 'sum'})
+  
+    return agg_df;
+        
+                         
 ####################################################################################################
+### read in data
+filepath = raw_input("enter fullPath & filename: ")
+mc = pandas.read_excel(filepath)    
+                         
+### data cleaning
+mc = dataCleaning(mc)                        
+                     
+                         
+####################################################################################################                         
 ##### binning data #####
 ## step 1: express data as fraction of highest value/ or some pre-determined value
 pre_val = int(raw_input("enter pre-determined value, as a fraction of which other values sould be expressed : ")) 
@@ -67,7 +89,7 @@ pre_val = int(raw_input("enter pre-determined value, as a fraction of which othe
 # type(pre_val)  
 mc['Frac'] = mc['raw_col_data'] * 100/pre_val
 
-## step 2: factor data into bins
+## step 2: factor data into bins, & add a separate column with bin label
 mc['fac'] = pandas.cut(mc['Frac'], [-100, 0, 30, 80, 100, 500], labels=['0', 'L','M','H', 'vH']) 
 #https://chrisalbon.com/python/pandas_binning_data.html  
 #categories = pandas.cut(df['column_tobe_factored'], bins, labels=group_names) 
@@ -85,19 +107,47 @@ print "data in bin H (>80 to <=100%) ",counts.loc["H"]['fac'],"% of time"
 threshold = int(raw_input("enter threshold % value (put 2 as default): "))
 b_H = mc[(mc.fac == 'H') & (mc.selected_col_value > threshold) ]
 print "col value >",threshold,"% in bin H for ", len(b_H)*100/len(mc),"% of time "
-                           
+
+                 
+#####################################################################################################                         
+#######  PLOTS  ########                         
+## plot 1: all data vs time
+mc['Date'] = pandas.to_datetime(mc.Date)
+pyplot.figure(figsize=(14,2), dpi=100) # (width, height)
+pyplot.plot(mc['Date'], mc['selected_col_value'], linewidth=0.1, color='black')
+pyplot.axhline(y=100, linewidth=1, color='r')
+pyplot.ylabel('colname (units)')
+pyplot.show()                         
+                         
+
+## plot 2: aggregated data vs time                         
+agg_df = aggregateData(mc)
+pyplot.figure(figsize=(14,2), dpi=100) # (width, height)
+agg_df.plot(linewidth=0.5, color='black')  #pyplot.plot(mc['Date'], mc['Frac'], linewidth=0.1, color='black')
+#new_df.plot(kind='bar', color='black', alpha=0.5)  #width=0.5, align='center',
+pyplot.show()                        
+                         
+                         
+# plot 3: aggregated data vs day of week (as boxplot)
+from datetime import datetime
+agg_df['Day'] = pandas.to_datetime(agg_df['Day'])  # 'day' has the date value from dateTime
+agg_df['day_of_week'] = agg_df['Day'].dt.weekday_name
+# https://stackoverflow.com/questions/30222533/create-a-day-of-week-column-in-a-pandas-dataframe-using-python
+# https://stackoverflow.com/questions/28009370/get-weekday-day-of-week-for-datetime-column-of-dataframe
+# CODE FOR BOXPLOT
+                         
+                         
+# plot 5: plot binned data as bars
+counts = pandas.DataFrame(pandas.value_counts(mc['fac']) * 100/mc.shape[0]) 
+# mc.shape[0] counts num_rows in mc; mc.shape[1] counts num_cols in mc
+counts = counts.reindex(["0","L","M","H","vH"])
+ax = counts.plot(kind='bar', width=0.5, color='black', align='center', alpha=0.5)
+ax.set_ylabel('% of total time')
+ax.set_xlabel('bin level')
+ax.legend_.remove()
+pyplot.show()                         
+                         
+                         
+                                                    
                          
 ######################################################################################################
-##### aggregate data from individual time stamps to daily values
-# Step 1: format DateTime colunm to only date
-from datetime import datetime
-mc['Day'] = [d.date() for d in mc['Date']]  # d.date() for date & d.time for time part
-                         
-# step 2: aggregate values by day , & return as df                         
-new_df = mc.groupby('Day').agg({'selected_col_value': 'sum'}).reset_index()  # df = mc.groupby('Day').agg({'selected_col_value': 'sum'})
-  
-                         
-                         
-                         
-                         
-                         
