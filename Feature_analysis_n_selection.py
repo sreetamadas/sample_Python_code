@@ -1,5 +1,5 @@
 #################################################################################################################
-### feature selection : detect factors influencing Y ###
+### FEATURE SELECTION : detect factors influencing Y ###
 
 ## to do ##
 ## add plot of Y-vs-time to show variation in Y for similar days
