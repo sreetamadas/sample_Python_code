@@ -1,9 +1,10 @@
-# get stats on time series data (from sensor)
+#### get stats of time series data (from sensor)
 
 ## set directory
 
 ## read in data
 import pandas
+
 filepath = raw_input("enter fullPath & filename: ")
 mc = pandas.read_excel(filepath)
 
@@ -57,11 +58,46 @@ def dataCleaning(mc):
     ### check difference b/w successive time stamps to locate gaps????
     
     return mc;
+
 ####################################################################################################
-                        
 ##### binning data #####
-## express data as fraction of highest value/ or dome pre-determined value
+## step 1: express data as fraction of highest value/ or some pre-determined value
 pre_val = int(raw_input("enter pre-determined value, as a fraction of which other values sould be expressed : ")) 
 #check class of the variable 'rated' : ensure numeric input
 # type(pre_val)  
 mc['Frac'] = mc['raw_col_data'] * 100/pre_val
+
+## step 2: factor data into bins
+mc['fac'] = pandas.cut(mc['Frac'], [-100, 0, 30, 80, 100, 500], labels=['0', 'L','M','H', 'vH']) 
+#https://chrisalbon.com/python/pandas_binning_data.html  
+#categories = pandas.cut(df['column_tobe_factored'], bins, labels=group_names) 
+                         
+## step 3: count instances in each bin: this is calculated as (#occurrences in each bin/ total #data points)
+# The count is affected by missing data points.
+counts = pandas.DataFrame(pandas.value_counts(mc['fac']) * 100/mc.shape[0]) 
+# mc.shape[0] counts num_rows in mc; mc.shape[1] counts num_cols in mc
+counts = counts.reindex(["0","L","M","H","vH"])                         
+print "data in bin H (>80 to <=100%) ",counts.loc["H"]['fac'],"% of time"   
+                         
+                         
+#######################################################################################################
+##### check if data are above a threshold, subset & calculate % of such data points
+threshold = int(raw_input("enter threshold % value (put 2 as default): "))
+b_H = mc[(mc.fac == 'H') & (mc.selected_col_value > threshold) ]
+print "col value >",threshold,"% in bin H for ", len(b_H)*100/len(mc),"% of time "
+                           
+                         
+######################################################################################################
+##### aggregate data from individual time stamps to daily values
+# Step 1: format DateTime colunm to only date
+from datetime import datetime
+mc['Day'] = [d.date() for d in mc['Date']]  # d.date() for date & d.time for time part
+                         
+# step 2: aggregate values by day , & return as df                         
+new_df = mc.groupby('Day').agg({'selected_col_value': 'sum'}).reset_index()  # df = mc.groupby('Day').agg({'selected_col_value': 'sum'})
+  
+                         
+                         
+                         
+                         
+                         
