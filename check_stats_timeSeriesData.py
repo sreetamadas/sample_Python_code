@@ -63,5 +63,5 @@ def dataCleaning(mc):
 ## express data as fraction of highest value/ or dome pre-determined value
 pre_val = int(raw_input("enter pre-determined value, as a fraction of which other values sould be expressed : ")) 
 #check class of the variable 'rated' : ensure numeric input
-# type(rated)  
-mc['FracPower'] = mc['total_kW'] * 100/pre_val
+# type(pre_val)  
+mc['Frac'] = mc['raw_col_data'] * 100/pre_val
