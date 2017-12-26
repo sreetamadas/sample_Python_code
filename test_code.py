@@ -42,7 +42,16 @@ dat= pandas.read_excel(filepath)
 # alternate way of path input, hardcoded
 dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")   
 
-###########################################################################
+
+########################################################################################################
+## running checks on the input data as dataframe
+df.dtypes
+df.shape
+df.info()
+df.describe()
+df.value_counts()
+
+#######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
 # list can be updated, tuple is read-only list
 list1 = [3, 5, 7, 9]
@@ -73,7 +82,7 @@ for i in list:
 t = pandas.DataFrame(t) #, columns='a')
 len(t.index)
 
-###############################################################################
+##############################################################################################################
 ##### if loop  ####
 #if 1>0.9:  # the condition may be put inside ()
 #	print "nonsense"
