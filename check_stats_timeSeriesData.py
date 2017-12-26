@@ -89,6 +89,8 @@ def DataCleaning2(df):
     df = df[df.OKcount >= 0]
        
     ## remove any unnecessary columns
+    #https://stackoverflow.com/questions/28035839/how-to-delete-a-column-from-a-data-frame-with-pandas
+    df.drop('Col_not_required', axis=1, inplace=True)
     
     return df;
                          
@@ -115,9 +117,9 @@ def aggregateData(mc):
 # 17-01-02      A      17
 # 17-01-03      A      13
 # 17-01-03      B      16
-                         
-# for each index, I can count can be: 1. sum of values in the TotalCount col. (e.g. A -> 50)
-#                                     2. sum of no. of instances (e.g. A -> 3)
+# .....   
+# for each index, I can count by: 1. sum of values in the TotalCount col. (e.g. A -> 50)
+#                                 2. sum of no. of instances (e.g. A -> 3)
 
                          
 #### find aggregates by indices  ####
@@ -153,8 +155,22 @@ def cal_cumulative(df):
                          
     ## sort by total
     index_TotalCount = index_TotalCount.sort_values('TotalCount', ascending=False)
+                         
+    ## save indices above a threshold as list
+    threshold = int(raw_input("enter % of cumulative total to select top indices (put 50 as default): "))
+    topMost = index_TotalCount[ index_TotalCount.cum_perc <= threshold ]
+    #top_produced
+    # save the topmost indices as a list
+    top_list = topMost['Index'].tolist()
 
     return index_TotalCount;   
+                         
+                         
+
+### calculate median by group  ####
+def getMedian(df):
+    new_df = df.groupby('Index').agg({'regression_var': 'median'}).reset_index()    
+    return new_df;
                          
                          
                          
