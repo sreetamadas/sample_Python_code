@@ -46,7 +46,10 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 ########################################################################################################
 ## running checks on the input data as dataframe
 df.dtypes
+
 df.shape
+# df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
+
 df.info()
 df.describe()
 df.value_counts()
@@ -55,6 +58,7 @@ df.value_counts()
 #### rename columns
 oldname = raw_input("enter 1st columnname: ")  # AL1
 df = df.rename(columns={oldname: 'newname'})
+
 
 #######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
