@@ -132,6 +132,9 @@ def index_aggregate(df):
     ### method 2: by instances of index
     entries = pandas.DataFrame(pandas.value_counts(df['Index']) * 100/df.shape[0]).reset_index()
     entries = entries.rename(columns={'Index': 'perc_instances', 'index': 'Index'})
+    # following is an alternate way to count instances/ no. of rows of each index
+    #entries = mc.groupby('Index').agg({'Date': 'count'}).reset_index()
+    #entries = entries.rename(columns={'Date': 'instances'})
                          
     ## join both columns
     index_TotalCount = pandas.merge(index_TotalCount, entries, how='inner', on='Index')
