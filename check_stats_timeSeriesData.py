@@ -118,10 +118,47 @@ def aggregateData(mc):
                          
 # for each index, I can count can be: 1. sum of values in the TotalCount col. (e.g. A -> 50)
 #                                     2. sum of no. of instances (e.g. A -> 3)
+
                          
-#### arranging by cumulative data ##                        
+#### find aggregates by indices  ####
+def index_aggregate(df):
+    ### method 1: by column total  ###
+    index_TotalCount = df.groupby('Index').agg({'TotalCount': 'sum'}).reset_index()
+    index_TotalCount['perc_count'] = 100 * index_TotalCount['TotalCount']/index_TotalCount['TotalCount'].sum()
+    index_TotalCount = index_TotalCount.sort_values('TotalCount', ascending=False)   ## sorted by total  
+                         
+    ### method 2: by instances of index
+    entries = pandas.DataFrame(pandas.value_counts(df['Index']) * 100/df.shape[0]).reset_index()
+    entries = entries.rename(columns={'Index': 'perc_instances', 'index': 'Index'})
+                         
+    ## join both columns
+    index_TotalCount = pandas.merge(index_TotalCount, entries, how='inner', on='Index')
+                         
+    ## selecting 1st & last row of df
+    # index_TotalCount.iloc[[0, -1]]
+    
+    return index_TotalCount;
                          
                          
+
+#### calculate cumulative values & sort ####
+def cal_cumulative(df):
+    ## total for each index
+    index_TotalCount = df.groupby('Index').agg({'TotalCount': 'sum'}).reset_index()
+    #index_TotalCount = pandas.DataFrame(df.Index.unique()).reset_index()
+        
+    ## calculate cumulative of percentage volume
+    index_TotalCount['cum_sum'] = index_TotalCount['TotalCount'].cumsum()
+    index_TotalCount['cum_perc'] = 100 * index_TotalCount['cum_sum']/index_TotalCount['TotalCount'].sum()
+                         
+    ## sort by total
+    index_TotalCount = index_TotalCount.sort_values('TotalCount', ascending=False)
+
+    return index_TotalCount;   
+                         
+                         
+                         
+####################################################################################################                         
 ####################################################################################################
 ### read in data
 filepath = raw_input("enter fullPath & filename: ")
