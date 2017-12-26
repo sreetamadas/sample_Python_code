@@ -59,12 +59,20 @@ df.value_counts()
 oldname = raw_input("enter 1st columnname: ")  # AL1
 df = df.rename(columns={oldname: 'newname'})
 
+
 ### drop unnecessary cols
 # method 1
 df.drop('Col_not_required', axis=1, inplace=True)
 # method 2
 del df['col_not_reqd']
 
+
+## time & date format
+## format time stamp, in case of non-standard format; 
+## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
+df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the format from input data here
+# change format
+df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
 
 #######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
