@@ -67,6 +67,14 @@ df.drop('Col_not_required', axis=1, inplace=True)
 del df['col_not_reqd']
 
 
+####  remove all rows with duplicate values in selected cols
+df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
+
+
+####  get all rows with duplicate values in selected cols
+df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
+
+
 ## time & date format
 ## format time stamp, in case of non-standard format; 
 ## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
