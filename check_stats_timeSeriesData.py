@@ -7,7 +7,7 @@ import pandas
 filepath = raw_input("enter fullPath & filename: ")
 mc = pandas.read_excel(filepath)
 
-
+#########################################################################################################
 ## data cleaning
 def dataCleaning(mc):
     "CHECK MISSING VALUES: individual cols & time stamps"
@@ -24,7 +24,8 @@ def dataCleaning(mc):
     # step 1: missing data in some columns; drop a column if too many missing values
     mc.describe()
     # code for adding missing values (median or NA or fill using previous value (up to 3 places)?) 
-    mc = mc.fillna(method='pad', limit=3) # https://pandas.pydata.org/pandas-docs/stable/missing_data.html
+    # https://pandas.pydata.org/pandas-docs/stable/missing_data.html
+    mc = mc.fillna(method='pad', limit=3) 
     
     # step 2: check for missing time stamps : leave out dates with too many (>4%) missing values
     # check the no. of entries for each date - leave out dates with less no. of entries
@@ -36,7 +37,7 @@ def dataCleaning(mc):
     entries = mc.groupby('Day').agg({'Date': 'count'}).reset_index()
     entries = entries.rename(columns={'Date': 'instances'})
     # write as csv
-    #entries.to_csv('num_of_entries.csv') 
+    # entries.to_csv('num_of_entries.csv') 
     #  C. select threshold to remove days with too few data (higher threshold allows days with more missing timestamps)
     perc = int(raw_input("enter threshold % value for tolerating missing timestamps (put 4(?) as default): )
     #  D. print dates with less no. of entries
@@ -56,3 +57,11 @@ def dataCleaning(mc):
     ### check difference b/w successive time stamps to locate gaps????
     
     return mc;
+####################################################################################################
+                        
+##### binning data #####
+## express data as fraction of highest value/ or dome pre-determined value
+pre_val = int(raw_input("enter pre-determined value, as a fraction of which other values sould be expressed : ")) 
+#check class of the variable 'rated' : ensure numeric input
+# type(rated)  
+mc['FracPower'] = mc['total_kW'] * 100/pre_val
