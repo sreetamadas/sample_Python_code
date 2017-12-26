@@ -1,10 +1,19 @@
 #!/usr/bin/python
 " this is a test module"
-
 import warnings
 
-#print "Hello World"   # 'print' adds a default NEWLINE. place a ',' to suppress this
+# check python version
+import sys
+sys.version
 
+
+## set directory
+import os
+os.chdir('c:\Users\username\Desktop\data\code_python')
+print os.getcwd()
+
+
+print "Hello World"   # 'print' adds a default NEWLINE. place a ',' to suppress this
 #string="Hello world"  # place string inside ""
 #print string
 
@@ -12,6 +21,25 @@ import warnings
 #print "you entered ", num
 #doubled = int(num) * 2  # if int() is not mentioned, the program prints the string '7' in num twice, giving 77
 #print "double ", doubled
+
+######################################################################################
+### file opening & handling  ###
+#  this reads the entire file first, closes the file & then iterates through the lines in the file
+#  this permits file access to complete quickly, no back & forth b/w reading & printing a line
+#  this won't work for very large data files
+#filename = 'readfile'  # filename = raw_input("enter filename: ")
+#FileIN = open(filename, 'r')  # 'r' is access mode (read-only); use w for write, a for append;  'FileIN' is the filehandle
+#for Line in FileIN:
+#	print Line,
+#FileIN.close()
+
+
+## read in data
+import pandas
+filepath = raw_input("enter fullPath & filename: ")  # C:\Users\username\Desktop\data\sampleData.xls
+dat= pandas.read_excel(filepath)  
+# alternate pway of path input, hardcoded
+dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")   
 
 ###########################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
@@ -75,18 +103,6 @@ len(t.index)
 #for item in hash1:
 #  print item,
 #print
-
-
-######################################################################################
-### file opening & handling  ###
-#  this reads the entire file first, closes the file & then iterates through the lines in the file
-#  this permits file access to complete quickly, no back & forth b/w reading & printing a line
-#  this won't work for very large data files
-#filename = 'readfile'  # filename = raw_input("enter filename: ")
-#FileIN = open(filename, 'r')  # 'r' is access mode (read-only); use w for write, a for append;  'FileIN' is the filehandle
-#for Line in FileIN:
-#	print Line,
-#FileIN.close()
 
 
 ######################################################################################
