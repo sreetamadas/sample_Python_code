@@ -9,7 +9,7 @@ sys.version
 
 ## set directory
 import os
-os.chdir('c:\Users\username\Desktop\data\code_python')
+os.chdir('c:\Users\username\Desktop\data\code_python')   ### path is Windows
 print os.getcwd()
 
 
@@ -27,25 +27,26 @@ print "Hello World"   # 'print' adds a default NEWLINE. place a ',' to suppress 
 #  this reads the entire file first, closes the file & then iterates through the lines in the file
 #  this permits file access to complete quickly, no back & forth b/w reading & printing a line
 #  this won't work for very large data files
-#filename = 'readfile'  # filename = raw_input("enter filename: ")
-#FileIN = open(filename, 'r')  # 'r' is access mode (read-only); use w for write, a for append;  'FileIN' is the filehandle
-#for Line in FileIN:
-#	print Line,
-#FileIN.close()
+filename = 'fileABC'  
+# filename = raw_input("enter filename: ")
+FileIN = open(filename, 'r')  # 'r' is access mode (read-only); use w for write, a for append;  'FileIN' is the filehandle
+for Line in FileIN:
+	print Line,
+FileIN.close()
 
 
 ## read in data
 import pandas
 filepath = raw_input("enter fullPath & filename: ")  # C:\Users\username\Desktop\data\sampleData.xls
 dat= pandas.read_excel(filepath)  
-# alternate pway of path input, hardcoded
+# alternate way of path input, hardcoded
 dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")   
 
 ###########################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
 # list can be updated, tuple is read-only list
-#list1 = [3, 5, 7, 9]
-#print list1, "'print full array / list'"
+list1 = [3, 5, 7, 9]
+print list1, "'print full array / list'"
 #print list1[0], "'prints 1st element, numbering starts from 0'"
 #print list1[2:], "'print all elements, 3rd position (0,1,2) and beyond'"
 #print list1[:2], "'print all elements before second position'"
@@ -54,15 +55,15 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 ### hash in python is called dictionary or dict ###
 # keys can be numbers or strings, values can be any python object
 # for the example below, it prints the key a, then 1, then b - WHY? what is the sorting order?
-#dict1 = {}
-#dict1['a'] = 80  # this in an integer assignment
-#dict1['b'] = '80'  # this is a string asignment
-#dict1['1'] = 'four'
-#for key in dict1:
-#	print key, dict1[key]
-#	num = dict1[key] * 2
+dict1 = {}
+dict1['a'] = 80  # this in an integer assignment
+dict1['b'] = '80'  # this is a string asignment
+dict1['1'] = 'four'
+for key in dict1:
+	print key, dict1[key]
+	num = dict1[key] * 2
 	#num = int(dict1[key]) * 2 # this gives error with the asignment 'four'
-#	print "num: ", num
+	#print "num: ", num
 
 
 t = []
@@ -82,26 +83,27 @@ len(t.index)
 #	print "1 < 2"
 
 
-##### while loop  #####
+#######  while loop  #####
 #while expression:
 #	execute these commands
 
 
-##### for loop  ######
-#list1 = [3, 5, 7, 9]
-#for item in list1:  # this is equivalent to foreach in perl rather than for($i=0; $i<=$#array; $i++)
-#  print item,
+########  for loop  ######
+list1 = [3, 5, 7, 9]
+for item in list1:  # this is equivalent to foreach in perl rather than for($i=0; $i<=$#array; $i++)
+  print item,
 #print
 
 ## using range to make this behave as a conventional for loop
-#list1 = [3, 5, 7, 9]
-#for i in range(4):
-#	print list1[i],
+list1 = [3, 5, 7, 9]
+for i in range(4):
+	print list1[i],
 #print
+# 'print' adds a default NEWLINE. place a ',' to suppress this
 
-#hash1 = {'a':80, 'b':'80', '1':'four'}
-#for item in hash1:
-#  print item,
+hash1 = {'a':80, 'b':'80', '1':'four'}
+for item in hash1:
+  print item,
 #print
 
 
@@ -121,9 +123,9 @@ len(t.index)
 
 #######################################################################################
 ##### declaring functions #####
-# def function_name (comma-separated list of arguments):
-#	"optional documentation string"
-#	block of code
+ def function_name (comma-separated list of arguments):
+	"optional documentation string"
+	block of code
 
 #def addMe2Me (x):
 #	"apply + operation to argument"
