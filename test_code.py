@@ -59,6 +59,12 @@ df.value_counts()
 oldname = raw_input("enter 1st columnname: ")  # AL1
 df = df.rename(columns={oldname: 'newname'})
 
+### drop unnecessary cols
+# method 1
+df.drop('Col_not_required', axis=1, inplace=True)
+# method 2
+del df['col_not_reqd']
+
 
 #######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
