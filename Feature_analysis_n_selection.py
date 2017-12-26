@@ -71,7 +71,6 @@ def addTimeToFile2(sca):
     sca['Date'] = [d.date() for d in sca['DATETIME']]  # d.date() for date & d.time for time part
     sca['Date'] = pandas.to_datetime(sca['Date'], format="%Y-%m-%d")   # format date
     #sca['Date'] = sca['Date'].dt.strftime("%Y-%m-%d")
-
         
     # select hr from time, and add shift
     sca['hr'] = pandas.DatetimeIndex(sca['DATETIME']).hour
@@ -91,7 +90,6 @@ def addTimeToFile2(sca):
     #sca['weekday'] = sca['DT'].apply( lambda x: x.dayofweek)
     #sca['weekday'] = pandas.DatetimeIndex(sca['DT']).dayofweek
     sca['weekday'] = sca['DT'].dt.dayofweek
-
     
     # delete unnecessary cols
     del sca['Time']
@@ -102,7 +100,7 @@ def addTimeToFile2(sca):
     return sca;
 
 
-### combine 2 dfs
+### combine 2 dfs  ####
 # this step can change according to data format or type of data available
 def combineDat(sca,df):
     "combine data"
@@ -146,7 +144,6 @@ sca = addTimeToFile2(sca)
 test = combineDat(sca,df)
 # remove all cols not required for feature selection
 
-
 ##############################################################################################################
 #### STEP 1: create training and test data  ####
 # define X & Y cols
@@ -158,7 +155,6 @@ target = test['Y']
 # from sklearn.model_selection import train_test_split
 from sklearn.cross_validation import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(features, target, train_size=0.8, random_state=0)
-
 
 # apply scaling, if required (not required for RF; may be needed for other algos)
 # same scaling should be applied on training & test set
