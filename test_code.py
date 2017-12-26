@@ -51,6 +51,11 @@ df.info()
 df.describe()
 df.value_counts()
 
+
+#### rename columns
+oldname = raw_input("enter 1st columnname: ")  # AL1
+df = df.rename(columns={oldname: 'newname'})
+
 #######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
 # list can be updated, tuple is read-only list
