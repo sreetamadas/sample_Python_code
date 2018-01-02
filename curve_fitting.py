@@ -1,5 +1,11 @@
 # curve fitting
 
+import pandas #as pd
+import numpy as np
+from numpy import sqrt, exp
+from scipy.optimize import curve_fit
+
+
 # sort df by values in X-col
 temp = temp.sort_values(by = 'X', ascending = True)  
 # df.sort_values(by=['name', 'score'], ascending=[False, True])
@@ -8,7 +14,7 @@ x = np.array(pandas.to_numeric(temp.TotalProductPcs)) #temp.as_matrix(columns=te
 y = np.array(temp.kWh_per_piece)  #temp.as_matrix(columns=temp.columns['kWh_per_piece'])  #temp.iloc['kWh_per_piece'].values
 
 
-
+#######################################################################
 ### method 1: fitting with defined function  ###
 def func(x, a, b):
     return (a/x) + b;
