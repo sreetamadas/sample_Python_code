@@ -19,7 +19,7 @@ print(plt.style.available)
 plt.style.use('fivethirtyeight')
 
 # describe graph labels
-ax = df.plot(color="blue")
+ax = df.plot(color="blue", figsize=(8,3), linewidth=2, fontsize=6)
 ax.set_xlabel('Date')
 ax.set_ylabel('dependent variable Y')
 ax.set_title('Y vs time')
