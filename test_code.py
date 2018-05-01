@@ -45,11 +45,16 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 
 ########################################################################################################
 ## running checks on the input data as dataframe
-df.dtypes
 
-df.shape
+# missing data
+print(df.isnull())
+print(df.notnull())
+
 # df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
+df.shape
 
+## checking types of data in different cols 
+df.dtypes
 df.info()
 df.describe()
 df.value_counts()
