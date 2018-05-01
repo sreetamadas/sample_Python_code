@@ -20,7 +20,8 @@ print(plt.style.available)
 plt.style.use('fivethirtyeight')
 
 
-# describe graph labels for LinePlot
+### LinePlot
+# describe graph labels
 ax = df.plot(color="blue", figsize=(8,3), linewidth=2, fontsize=6)
 ax.set_xlabel('Date')
 ax.set_ylabel('dependent variable Y')
@@ -38,10 +39,18 @@ ax.axhspan(8, 6, color='green', alpha=0.3)
 plt.show()
 
 
-## boxplot
+### boxplot
 ax1 = df.boxplot()
 ax1.set_xlabel('v1')
 ax1.set_ylabel('values')
 ax1.set_title('Boxplot values of your data var. v1')
+plt.show()
+
+
+### histogram
+ax2 = df.plot(kind='hist', bins=100)
+ax2.set_xlabel('v1')
+ax2.set_ylabel('Frequency of values in your data')
+ax2.set_title('Histogram of data: 100 bins')
 plt.show()
 
