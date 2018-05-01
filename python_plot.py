@@ -20,7 +20,7 @@ print(plt.style.available)
 plt.style.use('fivethirtyeight')
 
 
-# describe graph labels
+# describe graph labels for LinePlot
 ax = df.plot(color="blue", figsize=(8,3), linewidth=2, fontsize=6)
 ax.set_xlabel('Date')
 ax.set_ylabel('dependent variable Y')
@@ -35,5 +35,13 @@ ax.axvspan('2017-12-01', '2018-01-01', color='red', alpha=0.3)
 ax.axhspan(8, 6, color='green', alpha=0.3)
 
 # show the plot
+plt.show()
+
+
+## boxplot
+ax1 = df.boxplot()
+ax1.set_xlabel('v1')
+ax1.set_ylabel('values')
+ax1.set_title('Boxplot values of your data var. v1')
 plt.show()
 
