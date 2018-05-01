@@ -23,5 +23,9 @@ ax = df.plot(color="blue", figsize=(8,3), linewidth=2, fontsize=6)
 ax.set_xlabel('Date')
 ax.set_ylabel('dependent variable Y')
 ax.set_title('Y vs time')
+# add horizontal & vertical lines
+ax.axvline(x='2017-12-25', color='red', linestyle='--')
+ax.axhline(y=100, color='green', linestyle='--')
+# show the plot
 plt.show()
 
