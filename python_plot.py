@@ -50,10 +50,15 @@ plt.show()
 ### histogram
 ax2 = df.plot(kind='hist', bins=100)
 ax2.set_xlabel('v1')
-ax2.set_ylabel('Frequency of values in your data')
+ax2.set_ylabel('Frequency of values in data')
 ax2.set_title('Histogram of data: 100 bins')
 plt.show()
 
 
 ### kernel density plots
+ax3 = df.plot(kind='density', linewidth=2)
+ax3.set_xlabel('v1')
+ax3.set_ylabel('Density values')
+ax3.set_title('Density plot')
+plt.show()
 
