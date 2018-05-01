@@ -50,6 +50,9 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 print(df.isnull())
 print(df.notnull())
 
+# count no. of rows with missing values
+print(df.isnull().sum())
+
 # code for adding missing values (median/mean or fill using previous value or next value) 
 # https://pandas.pydata.org/pandas-docs/stable/missing_data.html
 df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
