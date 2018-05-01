@@ -50,6 +50,11 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 print(df.isnull())
 print(df.notnull())
 
+# code for adding missing values (median/mean or fill using previous value or next value) 
+# https://pandas.pydata.org/pandas-docs/stable/missing_data.html
+df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
+df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
+
 # df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
 df.shape
 
