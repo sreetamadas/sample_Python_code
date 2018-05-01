@@ -64,6 +64,8 @@ df.shape
 ## checking types of data in different cols 
 df.dtypes
 df.info()
+
+## get summary statistics
 df.describe()
 df.value_counts()
 
