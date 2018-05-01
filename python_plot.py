@@ -54,3 +54,6 @@ ax2.set_ylabel('Frequency of values in your data')
 ax2.set_title('Histogram of data: 100 bins')
 plt.show()
 
+
+### kernel density plots
+
