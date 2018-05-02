@@ -19,3 +19,11 @@ kendalltau(x, y)
 ## compute correlation matrix with selected columns (x1, x2, x3) of a dataframe, & by different methods
 corr_p = df[['X1', 'x2', 'x3']].corr(method='pearson')  # pearson, spearman
 print(corr_p)
+
+
+## if computing corr coeff with all cols of df
+corr_mat = df.corr(method='pearson')
+
+
+
+
