@@ -66,12 +66,14 @@ plt.show()
 ax3 = df.plot(kind='density', linewidth=2)
 ax3.set_xlabel('v1')
 ax3.set_ylabel('Density values')
+ax.legend(fontsize=18)
 ax3.set_title('Density plot')
 plt.show()
 
 
 ### show lineplots for multiple series & their summaries
 ax = df.plot(colormap='Dark2', figsize=(14, 7))
+# https://matplotlib.org/examples/color/colormaps_reference.html
 df_summary = df.describe()
 # Specify values of cells in the table
 ax.table(cellText=df_summary.values, 
