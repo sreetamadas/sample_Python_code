@@ -19,6 +19,7 @@ Y_by_month.plot()
 plt.show()
 
 
+
 ## compute bouunds from MA 
 # MA
 ma = df.rolling(window=52).mean()
@@ -28,3 +29,11 @@ mstd = df.rolling(window=52).std()
 ma['upper'] = ma['co2'] + (2 * mstd['Y'])
 # Add the lower bound column to the ma DataFrame
 ma['lower'] = ma['co2'] - (2 * mstd['Y'])
+
+
+
+## check ACF
+import matplotlib.pyplot as plt
+from statsmodels.graphics import tsaplots
+fig = tsaplots.plot_acf(df['y'], lags=40)
+plt.show()
