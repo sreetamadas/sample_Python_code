@@ -40,6 +40,7 @@ plt.show()
 
 
 ### area chart (to plot multiple time series)
+# does area chart display cumulative values by default ?
 ax = df.plot.area(figsize=(12, 4), fontsize=14)
 plt.show()
 
