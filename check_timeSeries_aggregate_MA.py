@@ -31,9 +31,43 @@ ma['upper'] = ma['co2'] + (2 * mstd['Y'])
 ma['lower'] = ma['co2'] - (2 * mstd['Y'])
 
 
-
+########################################################################################
 ## check ACF
 import matplotlib.pyplot as plt
 from statsmodels.graphics import tsaplots
 fig = tsaplots.plot_acf(df['y'], lags=40)
 plt.show()
+
+
+## check PACF  (PACF measures correlation after removing the effect of previous time points)
+# PACF of order 3 returns the correlation between our time series (t1, t2, t3, ...) and lagged values of itself by 3 time points (t4, t5, t6, ...),
+# after removing all effects attributable to lags 1 and 2
+import matplotlib.pyplot as plt
+from statsmodels.graphics import tsaplots
+fig = tsaplots.plot_pacf(df['y'], lags=40)
+plt.show()
+
+
+## time series decomposition
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from pylab import rcParams
+rcParams['figure.figsize'] = 11, 9
+decomposition = sm.tsa.seasonal_decompose(df['y'])
+fig = decomposition.plot()
+plt.show()
+
+# picking & plotting the components separately
+#print(decomposition.seasonal)
+#print(decomposition.trend)
+#print(decomposition.resid)
+decomp_seasonal = decomposition.seasonal
+ax = decomp_seasonal.plot(figsize=(14, 2))
+ax.set_xlabel('Date')
+ax.set_ylabel('Seasonality of time series')
+ax.set_title('Seasonal values of the time series')
+plt.show()
+
+
+
+
