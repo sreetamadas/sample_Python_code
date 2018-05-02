@@ -67,6 +67,7 @@ ax3 = df.plot(kind='density', linewidth=2)
 ax3.set_xlabel('v1')
 ax3.set_ylabel('Density values')
 ax.legend(fontsize=18)
+# ax.legend(loc='upper center', bbox_to_anchor=(0.5, 0.95), ncol=3, fontsize=6)  ## specify fontsize & location of legend
 ax3.set_title('Density plot')
 plt.show()
 
