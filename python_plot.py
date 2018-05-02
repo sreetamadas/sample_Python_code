@@ -100,3 +100,12 @@ plt.show()
 
 
 
+### heatmap of correlation matric
+corr_mat = df.corr(method='pearson')
+import seaborn as sns
+sns.heatmap(corr_mat)
+# clustermap to group together similar columns (using hierarchical clustering)
+sns.clustermap(corr_mat)
+
+
+
