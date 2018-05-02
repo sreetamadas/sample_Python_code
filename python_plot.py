@@ -23,6 +23,7 @@ plt.style.use('fivethirtyeight')
 ### LinePlot
 # describe graph labels
 ax = df.plot(color="blue", figsize=(8,3), linewidth=2, fontsize=6)
+# ax = df.plot(colormap='Dark2', figsize=(14, 7))  # use the colormap option to avoid color repetition for multiple lines in the plot
 ax.set_xlabel('Date')
 ax.set_ylabel('dependent variable Y')
 ax.set_title('Y vs time')
@@ -67,4 +68,32 @@ ax3.set_xlabel('v1')
 ax3.set_ylabel('Density values')
 ax3.set_title('Density plot')
 plt.show()
+
+
+### show lineplots for multiple series & their summaries
+ax = df.plot(colormap='Dark2', figsize=(14, 7))
+df_summary = df.describe()
+# Specify values of cells in the table
+ax.table(cellText=df_summary.values, 
+          # Specify width of the table
+          colWidths=[0.3]*len(df.columns), 
+          # Specify row labels
+          rowLabels=df_summary.index, 
+          # Specify column labels
+          colLabels=df_summary.columns, 
+          # Specify location of the table
+          loc='top') 
+plt.show()
+
+
+### faceting multiple line plots, especially for different cols with different scales
+df.plot(subplots=True,
+                linewidth=0.5,
+                layout=(2, 4),   # specifies no. of rows & cols in the figure
+                figsize=(16, 10),
+                sharex=False,
+                sharey=False)
+plt.show()
+
+
 
