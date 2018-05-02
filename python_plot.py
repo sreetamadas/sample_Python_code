@@ -39,6 +39,11 @@ ax.axhspan(8, 6, color='green', alpha=0.3)
 plt.show()
 
 
+### area chart (to plot multiple time series)
+ax = df.plot.area(figsize=(12, 4), fontsize=14)
+plt.show()
+
+
 ### boxplot
 ax1 = df.boxplot()
 ax1.set_xlabel('v1')
