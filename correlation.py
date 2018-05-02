@@ -13,3 +13,9 @@ spearmanr(x, y)
 
 kendalltau(x, y)
 # output: KendalltauResult(correlation=1.0, pvalue=0.0415)
+
+
+
+## compute correlation matrix with selected columns (x1, x2, x3) of a dataframe, & by different methods
+corr_p = df[['X1', 'x2', 'x3']].corr(method='pearson')  # pearson, spearman
+print(corr_p)
