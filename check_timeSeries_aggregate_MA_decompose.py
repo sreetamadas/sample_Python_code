@@ -70,5 +70,19 @@ ax.set_title('Seasonal values of the time series')
 plt.show()
 
 
+## decompose multiple time series
+# Import the statsmodel library
+import statsmodels.api as sm
+# Initialize a dictionary
+my_dict = {}
+# Extract the names of the time series
+ts_names = df.columns
+#print(ts_names)  #['ts1', 'ts2', 'ts3']
+# Run time series decomposition
+for ts in ts_names:
+            ts_decomposition = sm.tsa.seasonal_decompose(jobs[ts])
+            my_dict[ts] = ts_decomposition
 
 
+
+    
