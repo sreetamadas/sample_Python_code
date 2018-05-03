@@ -103,9 +103,16 @@ plt.show()
 ### heatmap of correlation matric
 corr_mat = df.corr(method='pearson')
 import seaborn as sns
-sns.heatmap(corr_mat)
+sns.heatmap(corr_mat, annot=True, linewidths=0.4, annot_kws={"size": 10})
+plt.xticks(rotation=90)
+plt.yticks(rotation=0)
+plt.show()
+
 # clustermap to group together similar columns (using hierarchical clustering)
-sns.clustermap(corr_mat)
+sns.clustermap(corr_mat, row_cluster=True, col_cluster=True,)
+plt.setp(fig.ax_heatmap.xaxis.get_majorticklabels(), rotation=90)
+plt.setp(fig.ax_heatmap.yaxis.get_majorticklabels(), rotation=0)
+plt.show()
 
 
 
