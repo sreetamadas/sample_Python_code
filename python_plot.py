@@ -47,7 +47,7 @@ plt.show()
 
 
 ### boxplot
-ax1 = df.boxplot()
+ax1 = df.boxplot(fontsize=6, vert=False)  # vert specifies whether to plot vertically or horizontally
 ax1.set_xlabel('v1')
 ax1.set_ylabel('values')
 ax1.set_title('Boxplot values of your data var. v1')
