@@ -23,7 +23,7 @@ print "Hello World"   # 'print' adds a default NEWLINE. place a ',' to suppress 
 #print "double ", doubled
 
 ######################################################################################
-### file opening & handling  ###
+### step 1: file opening & handling  ###
 #  this reads the entire file first, closes the file & then iterates through the lines in the file
 #  this permits file access to complete quickly, no back & forth b/w reading & printing a line
 #  this won't work for very large data files
@@ -42,9 +42,29 @@ dat= pandas.read_excel(filepath)
 # alternate way of path input, hardcoded
 dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")   
 
+## see the data
+print(dat.head(n=5))
 
 ########################################################################################################
-## running checks on the input data as dataframe
+## step 2: running checks on the input data as dataframe
+
+## checking types of data in different cols 
+df.dtypes
+df.info()
+
+## get summary statistics
+df.describe()
+df.value_counts()
+
+## time & date format
+## format time stamp, in case of non-standard format; 
+## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
+df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the format from input data here
+# change format
+df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
+
+# Set the datestamp columns as the index of your DataFrame
+df = pd.set_index('Date')
 
 # missing data
 print(df.isnull())
@@ -52,6 +72,7 @@ print(df.notnull())
 
 # count no. of rows with missing values
 print(df.isnull().sum())
+
 
 # code for adding missing values (median/mean or fill using previous value or next value) 
 # https://pandas.pydata.org/pandas-docs/stable/missing_data.html
@@ -61,13 +82,7 @@ df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= usin
 # df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
 df.shape
 
-## checking types of data in different cols 
-df.dtypes
-df.info()
 
-## get summary statistics
-df.describe()
-df.value_counts()
 
 
 #### rename columns
@@ -90,12 +105,6 @@ df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
 df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
 
 
-## time & date format
-## format time stamp, in case of non-standard format; 
-## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
-df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the format from input data here
-# change format
-df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
 
 #######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
