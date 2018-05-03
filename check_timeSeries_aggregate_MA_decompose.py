@@ -70,6 +70,7 @@ ax.set_title('Seasonal values of the time series')
 plt.show()
 
 
+
 ## decompose multiple time series
 # Import the statsmodel library
 import statsmodels.api as sm
@@ -83,6 +84,14 @@ for ts in ts_names:
             ts_decomposition = sm.tsa.seasonal_decompose(jobs[ts])
             my_dict[ts] = ts_decomposition
 
-
+            
+## select the trend components of all the time series from the dict & make a new df
+# Initialize a new dictionnary
+my_dict_trend = {}
+# Extract the trend component
+for ts in ts_names:
+            my_dict_trend[ts] = my_dict[ts].trend
+# Convert to a DataFrame            
+trend_df = pd.DataFrame.from_dict(my_dict_trend)
 
     
