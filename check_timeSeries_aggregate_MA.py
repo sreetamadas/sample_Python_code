@@ -10,6 +10,7 @@
 
 df_mean = df.rolling(window=7).mean()   # set window according to seasonality
 
+
 ## compute aggregates to understand weekly/ monthly/ yearly means
 # eg find mean values during each month of the year
 df = df.set_index('dateTime')
