@@ -64,7 +64,7 @@ df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the f
 df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
 
 # Set the datestamp columns as the index of your DataFrame
-df = pd.set_index('Date')
+df = df.set_index('Date')
 
 # missing data
 print(df.isnull())
