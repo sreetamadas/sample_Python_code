@@ -45,6 +45,9 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 ## see the data
 print(dat.head(n=5))
 
+# write to a file
+df1.to_csv("modified_data.csv", sep=',')
+
 ########################################################################################################
 ## step 2: running checks on the input data as dataframe
 
@@ -63,8 +66,27 @@ df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the f
 # change format
 df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
 
-# Set the datestamp columns as the index of your DataFrame
-df = df.set_index('Date')
+
+# adding an interval to a time stamp
+df["dateUTC"] = pd.to_datetime(df["dateUTC"]) #, format="%Y.%m.%d")  ## specify the format from input data here
+from datetime import datetime, timedelta
+df['dateTime'] = df['dateUTC'] + timedelta(minutes=330)  ## fix dateTime to IST from UTC : add 5 hrs 30 min
+
+
+# insert missing time stamps (for data missed after operating hrs)
+# fill in missing values with previous value
+# 1. Set the datestamp columns as the index of your DataFrame
+df = df.set_index('dateTime')
+df = df.reindex(pd.date_range(start=df.index[0], end=df.index[-1], freq='300s'))
+df = df.fillna(method='ffill')
+
+
+# set dateTime as a separate column instead of index
+df['dateTime'] = df.index
+df = df.reset_index()
+del df['index']
+#df.head(n=2)
+
 
 # missing data
 print(df.isnull())
@@ -105,6 +127,9 @@ df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
 df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
 
 
+########################################################################################################
+## assigning data from one df to another
+new_df.loc[0, 'dateTime'] = df.loc[(rownum), 'dateTime']
 
 #######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
@@ -136,6 +161,15 @@ for i in list:
     t.append(i)
 t = pandas.DataFrame(t) #, columns='a')
 len(t.index)
+
+
+backup = df[:rownum]    # first rownum rows are saved in backup
+for i in range(rownum, len(df.index) ):   # running for loop on certain rows of df
+	#rest of the code ...
+	backup = backup.drop(backup.head(1).index) #, inplace=True)  # remove row from top
+        backup = backup.append(df.iloc[[i]]) #, axis=0)  ## add row at end
+
+
 
 ##############################################################################################################
 ##### if loop  ####
