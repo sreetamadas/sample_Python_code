@@ -147,6 +147,11 @@ len(t.index)
 #	print "1 < 2"
 
 
+df.loc[row_index, 'X2'] = np.where(df.y1 - df.y2 > 5, 1, 0)  # if the diff>5 , x2=1; else x2 = 0-
+# https://stackoverflow.com/questions/19913659/pandas-conditional-creation-of-a-series-dataframe-column
+# see this link for series of if-else conditions
+
+
 #######  while loop  #####
 #while expression:
 #	execute these commands
