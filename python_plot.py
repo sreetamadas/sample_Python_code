@@ -90,7 +90,7 @@ ax.table(cellText=df_summary.values,
 plt.show()
 
 
-### faceting multiple line plots, especially for different cols with different scales
+### FACETING multiple line plots, especially for different cols with different scales  ###
 df.plot(subplots=True,
                 linewidth=0.5,
                 layout=(2, 4),   # specifies no. of rows & cols in the figure
@@ -116,4 +116,18 @@ plt.setp(fig.ax_heatmap.yaxis.get_majorticklabels(), rotation=0)
 plt.show()
 
 
+
+### scatterplots, with points colored by group 
+import numpy as np
+df['col'] = np.where(df['Y'] == 1.0 , 'red', 'yellow')  # red if Y=1; yellow otherwise
+
+df1 = df[['dateTime','Y', 'col']]
+df1['dateTime'] = pd.to_datetime(df1['dateTime'])
+df1['t1'] = df1.dateTime.astype(np.int64)
+
+fig, ax = plt.subplots(figsize=(12,3))
+ax.scatter(df1['t1'],df1['Y'],c=df1['col'], marker = 'o') #, cmap = cm.jet )
+#ax2.set_xlabel('date')
+#ax2.set_ylabel('temperature')
+plt.show()
 
