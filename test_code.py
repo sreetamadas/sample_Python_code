@@ -131,6 +131,15 @@ df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if
 ## assigning data from one df to another
 new_df.loc[0, 'dateTime'] = df.loc[(rownum), 'dateTime']
 
+
+## extract portion from dateTime
+df.loc[row_index, 'hr'] = df.loc[row_index, 'dateTime'].hour
+
+# calculate difference/ interval b/w time stamps
+#df.loc[row_index, 'timedel'] =  (df.loc[row_index, 'dateTime'] - df.loc[(row_index-1), 'dateTime']) #.astype('timedelta64[m]')
+df.loc[row_index, 'timedel'] =  pd.Timedelta(pd.Timestamp(df.loc[row_index, 'dateTime']) - pd.Timestamp(df.loc[(row_index-1), 'dateTime'])).total_seconds()/60 #.astype('timedelta64[m]')
+ 
+
 #######################################################################################################
 ###  arrays in python: list => [] , tuple => ()  ####
 # list can be updated, tuple is read-only list
