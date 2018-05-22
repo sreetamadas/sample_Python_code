@@ -131,3 +131,7 @@ ax.scatter(df1['t1'],df1['Y'],c=df1['col'], marker = 'o') #, cmap = cm.jet )
 #ax2.set_ylabel('temperature')
 plt.show()
 
+
+
+### scattermatrix (similar to pairwise plots of all pairs of colunms in a df ###
+pd.scatter_matrix(df, c=y, figsize=[10,10], s=20, marker='o']    # df has only the input features, y is the target variable
