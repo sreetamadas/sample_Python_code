@@ -59,6 +59,10 @@ df.info()
 df.describe()
 df.value_counts()
 
+## df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
+df.shape
+
+
 ## time & date format
 ## format time stamp, in case of non-standard format; 
 ## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
@@ -66,12 +70,10 @@ df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the f
 # change format
 df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
 
-
 # adding an interval to a time stamp
 df["dateUTC"] = pd.to_datetime(df["dateUTC"]) #, format="%Y.%m.%d")  ## specify the format from input data here
 from datetime import datetime, timedelta
 df['dateTime'] = df['dateUTC'] + timedelta(minutes=330)  ## fix dateTime to IST from UTC : add 5 hrs 30 min
-
 
 # insert missing time stamps (for data missed after operating hrs)
 # fill in missing values with previous value
@@ -79,7 +81,6 @@ df['dateTime'] = df['dateUTC'] + timedelta(minutes=330)  ## fix dateTime to IST 
 df = df.set_index('dateTime')
 df = df.reindex(pd.date_range(start=df.index[0], end=df.index[-1], freq='300s'))
 df = df.fillna(method='ffill')
-
 
 # set dateTime as a separate column instead of index
 df['dateTime'] = df.index
@@ -95,15 +96,10 @@ print(df.notnull())
 # count no. of rows with missing values
 print(df.isnull().sum())
 
-
 # code for adding missing values (median/mean or fill using previous value or next value) 
 # https://pandas.pydata.org/pandas-docs/stable/missing_data.html
 df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
 df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
-
-# df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
-df.shape
-
 
 
 
