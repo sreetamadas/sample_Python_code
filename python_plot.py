@@ -133,8 +133,20 @@ plt.show()
 
 
 
-### scattermatrix (similar to pairwise plots of all pairs of colunms in a df ###
+### scattermatrix (similar to pairwise plots of all pairs of colunms in a df; useful only for numeric data )###
 pd.scatter_matrix(df, c=y, figsize=[10,10], s=20, marker='o']    # df has only the input features, y is the target variable
 # c is for color, s is for marker size
                   
                   
+## seaborn countplot - useful for categorical data
+plt.figure()
+sns.countplot(x='x1', hue='y', data=df, palette='RdBu')
+plt.xticks([0,1], ['No', 'Yes'])
+plt.show()
+# sample data                  
+# sr  x1   x2   y
+# 1   no   ..   A 
+# 2   yes  ..   A
+...
+# 20  no   ..   B
+...                  
