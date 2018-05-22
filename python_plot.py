@@ -18,7 +18,7 @@ df = df.set_index('dateTime')
 # see list of available styles for plots (font, line & point types)
 print(plt.style.available)
 # set style
-plt.style.use('fivethirtyeight')
+plt.style.use('fivethirtyeight')   # fivethirtyeight  ; ggplot
 
 
 ### LinePlot
