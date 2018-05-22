@@ -163,7 +163,10 @@ for key in dict1:
 	#num = int(dict1[key]) * 2 # this gives error with the asignment 'four'
 	#print "num: ", num
 
-
+## alternate way to print keys of a dictionary
+print(dict1.keys())	
+	
+## appending to a list ; also, see append vs extend in python	
 t = []
 list = [1,2,3,4,5,6,7,8,9,10]
 for i in list:
