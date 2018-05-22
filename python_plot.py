@@ -135,3 +135,6 @@ plt.show()
 
 ### scattermatrix (similar to pairwise plots of all pairs of colunms in a df ###
 pd.scatter_matrix(df, c=y, figsize=[10,10], s=20, marker='o']    # df has only the input features, y is the target variable
+# c is for color, s is for marker size
+                  
+                  
