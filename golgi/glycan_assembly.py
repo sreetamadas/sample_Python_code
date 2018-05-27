@@ -2,7 +2,7 @@
 
 #https://stackoverflow.com/questions/14931769/how-to-get-all-combination-of-n-binary-value
 '''
-#method 2:
+# method 1:
 def per(n):
     for i in range(1<<n):
         s=bin(i)[2:]
@@ -70,5 +70,7 @@ comp_distr = random.choice(lst)
 for i in range(num_enzymes): #since, len(comp_distr) = num_enzymes
     if comp_distr[i]==1:
         print map[i]
+        ## remaining steps
         
 
+# STEP 6: update products by going through enzyme assignments in successive compartments
