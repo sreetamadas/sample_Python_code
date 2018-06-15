@@ -57,7 +57,7 @@ df.info()
 
 ## get summary statistics
 df.describe()
-df.value_counts()
+df['colname'].value_counts()
 
 ## df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
 df.shape
