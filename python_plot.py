@@ -1,5 +1,6 @@
 ## plotting methods
 # http://pandas.pydata.org/pandas-docs/version/0.15.0/visualization.html
+# https://www.safaribooksonline.com/library/view/python-data-science/9781491912126/ch04.html
 
 import pandas as pd
 import matplotlib.pyplot as plt
