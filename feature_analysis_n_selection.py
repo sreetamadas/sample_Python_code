@@ -1,6 +1,11 @@
 #################################################################################################################
 ### FEATURE SELECTION : detect factors influencing Y ###
 
+# http://www.scikit-yb.org/en/latest/api/features/importances.html
+# https://stackoverflow.com/questions/21363827/feature-importance-in-sklearn-using-adaboost
+# feature importance plot in python; feature importance plot with stacking regressor in python ; 
+# feature importance plot with adaboost regressor in python
+
 ## to do ##
 ## add plot of Y-vs-time to show variation in Y for similar days
 
