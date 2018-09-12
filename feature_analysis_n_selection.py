@@ -2,7 +2,8 @@
 ### FEATURE SELECTION : detect factors influencing Y ###
 
 # http://www.scikit-yb.org/en/latest/api/features/importances.html
-# https://stackoverflow.com/questions/21363827/feature-importance-in-sklearn-using-adaboost
+# https://stackoverflow.com/questions/21363827/feature-importance-in-sklearn-using-adaboost  (use of coef_ ,
+#                                                      instead of feature_importances_, for linear regressors)
 # feature importance plot in python; feature importance plot with stacking regressor in python ; 
 # feature importance plot with adaboost regressor in python
 
