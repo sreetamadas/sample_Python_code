@@ -301,6 +301,21 @@ plt.xlim([-1, X_train.shape[1]])
 plt.show()
 
 
+'''
+## alternate code for plotting
+feature_importance = 100.0 * (importances / importances.max())
+labels = X_train.columns
+indices = np.argsort(feature_importance)[::-1]
+# Plot the feature importances of the forest
+plt.figure()
+plt.title("Relative Feature importances")
+plt.bar(labels[indices], feature_importance[indices], color="black", align="center")   # yerr=std[indices], range(mytrain.shape[1])
+plt.xticks(labels[indices], rotation='vertical')
+#plt.xlim([-1, X_train.shape[1]])
+#plt.show()
+plt.savefig('varImp_iter_'+str(i)+'.png', bbox_inches='tight')
+plt.close()
+'''
 #################################################################################################################
 
 # parameter tuning
