@@ -22,24 +22,33 @@ print(plt.style.available)
 plt.style.use('fivethirtyeight')   # fivethirtyeight  ; ggplot
 
 
+
 ### LinePlot
+# METHOD 1:
 # describe graph labels
-ax = df.plot(color="blue", figsize=(8,3), linewidth=2, fontsize=6)
+ax = df.plot(color="blue", figsize=(8,3), linewidth=2, fontsize=6, marker='o')  # or, # plt.figure(figsize=(20,2), dpi=100)
 # ax = df.plot(colormap='Dark2', figsize=(14, 7))  # use the colormap option to avoid color repetition for multiple lines in the plot
 ax.set_xlabel('Date')
 ax.set_ylabel('dependent variable Y')
 ax.set_title('Y vs time')
-
 # add horizontal & vertical lines
 ax.axvline(x='2017-12-25', color='red', linestyle='--')
 ax.axhline(y=100, color='green', linestyle='--')
-
 # highlight a region
 ax.axvspan('2017-12-01', '2018-01-01', color='red', alpha=0.3)
 ax.axhspan(8, 6, color='green', alpha=0.3)
-
 # show the plot
 plt.show()
+
+# METHOD 2:
+mc['Date'] = pandas.to_datetime(mc.Date)
+plt.figure(figsize=(14,2), dpi=100) # (width, height)
+plt.plot(mc['Date'], mc['FracPower'], linewidth=0.1, color='black')
+plt.axhline(y=100, linewidth=1, color='r')
+plt.ylabel('Frac Power')
+plt.show()
+
+
 
 
 ### area chart (to plot multiple time series)
@@ -48,12 +57,37 @@ ax = df.plot.area(figsize=(12, 4), fontsize=14)
 plt.show()
 
 
+
 ### boxplot
 ax1 = df.boxplot(fontsize=6, vert=False)  # vert specifies whether to plot vertically or horizontally
 ax1.set_xlabel('v1')
 ax1.set_ylabel('values')
 ax1.set_title('Boxplot values of your data var. v1')
 plt.show()
+
+## box-plot of multiple groups (data by day-of-week)
+from datetime import datetime
+df['Day'] = pandas.to_datetime(df['Day']) 
+df['day_of_week2'] = df['Day'].dt.weekday_name
+df['day_of_week'] = df['Day'].dt.dayofweek
+tmp = pandas.DataFrame(df[['day_of_week','y']])
+fig, ax = plt.subplots(figsize=(10,8))
+plt.suptitle('')
+tmp.boxplot(column=['total_kWh'], by='day_of_week', ax=ax)
+plt.show()
+
+
+
+# barplot: distribution of data in different bins (create a df with labels/bins & corrs. values)
+counts = pandas.DataFrame(pandas.value_counts(df['fac']) * 100/df.shape[0])
+# df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
+counts = counts.reindex(["0","L","M","H","vH"])
+ax = counts.plot(kind='bar', width=0.5, color='black', align='center', alpha=0.5)
+ax.set_ylabel('% of total time')
+ax.set_xlabel('power level')
+ax.legend_.remove()
+plt.show()
+
 
 
 ### histogram
