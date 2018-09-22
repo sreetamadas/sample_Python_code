@@ -11,7 +11,7 @@ sys.version
 import os
 os.chdir('c:\Users\username\Desktop\data\code_python')   ### path is Windows
 print os.getcwd()
-
+##########################################################################################################
 
 print "Hello World"   # 'print' adds a default NEWLINE. place a ',' to suppress this
 #string="Hello world"  # place string inside ""
@@ -38,7 +38,7 @@ FileIN.close()
 ## read in data
 import pandas
 filepath = raw_input("enter fullPath & filename: ")  # C:\Users\username\Desktop\data\sampleData.xls
-dat= pandas.read_excel(filepath)  
+dat= pandas.read_excel(filepath, 'Sheet1')  
 # alternate way of path input, hardcoded
 dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")   
 
