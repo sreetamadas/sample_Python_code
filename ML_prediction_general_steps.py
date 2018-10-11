@@ -81,12 +81,17 @@ y_pred_rf = model_rf.predict(X_test_scaled)
 # 3. check model performance
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred, target_names=class_names))
+# also, see the separate code for confusion matrix
+
 
 
 # cross-validation & hyper-parameter tuning
 
 
 # combine different models
+# voting classifier - weighted, unweighted
+# adaboost, xgboost, stacking regressor
+
 
 
 # bagging data sets
