@@ -26,7 +26,7 @@ dfull.groupby('class').agg({'X1': 'count'})
 # 4. subset only required colunms
 
 
-# 5. convert factor colunms
+# 5. convert factor colunms  (use one hot encoding, if reqd)
 df[['class','class2']] = df[['class','class2']].astype('str') 
 df[['class','class2']] = df[['class','class2']].astype('category')
 
