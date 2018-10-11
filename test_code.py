@@ -11,6 +11,7 @@ sys.version
 import os
 os.chdir('c:\Users\username\Desktop\data\code_python')   ### path is Windows
 print os.getcwd()
+
 ##########################################################################################################
 
 print "Hello World"   # 'print' adds a default NEWLINE. place a ',' to suppress this
@@ -23,6 +24,7 @@ print "Hello World"   # 'print' adds a default NEWLINE. place a ',' to suppress 
 #print "double ", doubled
 
 ######################################################################################
+
 ### step 1: file opening & handling  ###
 #  this reads the entire file first, closes the file & then iterates through the lines in the file
 #  this permits file access to complete quickly, no back & forth b/w reading & printing a line
@@ -48,7 +50,7 @@ print(dat.head(n=5))
 # write to a file
 df1.to_csv("modified_data.csv", sep=',')
 
-########################################################################################################
+############################################################################################################################
 ## step 2: running checks on the input data as dataframe
 
 ## checking types of data in different cols 
@@ -62,6 +64,8 @@ df['colname'].value_counts()
 ## df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
 df.shape
 
+
+###############################################################
 
 ## time & date format
 ## format time stamp, in case of non-standard format; 
@@ -89,6 +93,8 @@ del df['index']
 #df.head(n=2)
 
 
+##################################################################
+
 # missing data
 print(df.isnull())
 print(df.notnull())
@@ -101,6 +107,10 @@ print(df.isnull().sum())
 df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
 df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
 
+## keep rows with finite values in a column
+df_cleaned = df[np.isfinite(df['col_X'])]
+
+################################################################
 
 
 #### rename columns
@@ -135,7 +145,19 @@ df.loc[row_index, 'hr'] = df.loc[row_index, 'dateTime'].hour
 df.loc[row_index, 'timedel'] =  pd.Timedelta(pd.Timestamp(df.loc[row_index, 'dateTime']) - pd.Timestamp(df.loc[(row_index-1), 'dateTime'])).total_seconds()/60 #.astype('timedelta64[m]')
  
 
-#######################################################################################################
+###########################################################################################################
+##### subsetting a dataframe #####
+
+## subset by row
+df = df[df.colname == some_value]
+
+## subset by column
+df = df[['X1','X2','X4','Y']]  # by column name
+df = df.iloc[:,[0,1,3,4]].values     # by column no.
+
+############################################################################################################
+
+
 ###  arrays in python: list => [] , tuple => ()  ####
 # list can be updated, tuple is read-only list
 list1 = [3, 5, 7, 9]
@@ -179,7 +201,7 @@ for i in range(rownum, len(df.index) ):   # running for loop on certain rows of 
 
 
 ##############################################################################################################
-##### if loop  ####
+####  if loop  ####
 #if 1>0.9:  # the condition may be put inside ()
 #	print "nonsense"
 #elif expression2:
@@ -187,8 +209,11 @@ for i in range(rownum, len(df.index) ):   # running for loop on certain rows of 
 #else:
 #	print "1 < 2"
 
+# re-assign values in a column based on certain conditions
+df_cleaned['status'] = [2 if 'Under' in x else 1 if 'Over' in x else 0 for x in df_cleaned['status']]
 
-df.loc[row_index, 'X2'] = np.where(df.y1 - df.y2 > 5, 1, 0)  # if the diff>5 , x2=1; else x2 = 0-
+
+df.loc[row_index, 'X2'] = np.where(df.y1 - df.y2 > 5, 1, 0)  # if the diff>5 , x2=1; else x2 = 0
 # https://stackoverflow.com/questions/19913659/pandas-conditional-creation-of-a-series-dataframe-column
 # see this link for series of if-else conditions
 
