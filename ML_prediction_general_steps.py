@@ -80,25 +80,64 @@ y_pred_rf = model_rf.predict(X_test_scaled)
 
 # 3. check model performance
 from sklearn.metrics import classification_report
+#from sklearn.metrics import precision_recall_fscore_support, confusion_matrix
 print(classification_report(y_test, y_pred, target_names=class_names))
 # also, see the separate code for confusion matrix
 
 
 
-# cross-validation & hyper-parameter tuning
+#### cross-validation & hyper-parameter tuning  ####
+# https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65
 
 
-# combine different models
+####   combine different models  ####
 # voting classifier - weighted, unweighted
 # adaboost, xgboost, stacking regressor
 
 
 
-# bagging data sets
+####  bagging data sets  ####
 
 
 
+#################################################################################
+### compare results from multiple models ###
 
+# check if RMSE of predictions from 2 models are similar; rmse calculated over multiple iterations
+import scipy.stats as stats
+def FindRMSE(pred,act):
+    rmse = math.sqrt(np.mean((pred - act) ** 2))
+    return rmse
+
+stats.ttest_ind(df_pred_model1.rmse, df_pred_model2.rmse, equal_var=True)  ## assuming equal variance"
+stats.ttest_ind(df_pred_model1.rmse, df_pred_model2.rmse, equal_var=False)  ## not assuming equal variance"
+
+
+## kappa statistic confusion matrix  ; Mcnemar's Test P-Value confusion matrix
+#http://standardwisdom.com/softwarejournal/2012/01/comparing-two-confusion-matrices
+#http://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html
+import sklearn
+sklearn.metrics.cohen_kappa_score(df_model1.Pred, df_model2.Pred, labels=None, weights=None, sample_weight=None)"
+
+
+#########################################################################
+### pickling models ###
+# https://stackoverflow.com/questions/35067957/how-to-read-pickle-file
+
+# save the built model as pickled file
+pickle.dump(regr_model, open("C:\\Users\\Desktop\\data\\model_5param.sav",'wb'))
+# to save pickle file built with python 3 as python 2 compatible
+pickle.dump(regr_model, open("C:\\Users\\Desktop\\data\\model_5param.sav",'wb'), protocol=2)
+
+
+# load a pre-saved model for predictions on new data
+loaded_model = pickle.load(open("C:\\Users\\Desktop\\data\\model_5param.sav", 'rb'))
+# or,
+filename="C:\\Users\\Desktop\\data\\model_5param.sav"
+with open(filename, 'rb') as f:
+    x = pickle.load(f)
+# or,
+x = pd.read_pickle("C:\\Users\\Desktop\\data\\model_5param.sav")
 
 
 
