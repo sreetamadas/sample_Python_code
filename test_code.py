@@ -67,6 +67,10 @@ df.shape
 
 ###############################################################
 
+## print current time
+from datetime import datetime
+datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
 ## time & date format
 ## format time stamp, in case of non-standard format; 
 ## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
@@ -153,6 +157,9 @@ df = df[df.colname == some_value]
 
 ## subset by column
 df = df[['X1','X2','X4','Y']]  # by column name
+# or,
+df = df.loc[:, ['X1','X2','X4','Y']]
+
 df = df.iloc[:,[0,1,3,4]].values     # by column no.
 
 ############################################################################################################
