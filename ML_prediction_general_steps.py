@@ -65,7 +65,8 @@ from sklearn.ensemble import GradientBoostingClassifier,RandomForestClassifier
 from sklearn.metrics import auc,accuracy_score
 from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 
-## basic model building ##
+
+## basic model building : CLASSIFICATION ##
 # 1. fit model - vary ML algo & hyperparameters
 model_svc = SVC()  # kernel='linear'
 model_svc.fit(X_train_scaled, y_train)
@@ -83,6 +84,55 @@ from sklearn.metrics import classification_report
 #from sklearn.metrics import precision_recall_fscore_support, confusion_matrix
 print(classification_report(y_test, y_pred, target_names=class_names))
 # also, see the separate code for confusion matrix
+
+
+### basic model building : REGRESSION ###
+from sklearn import linear_model
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import AdaBoostRegressor
+
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import mean_absolute_error
+
+# 1. fit model
+regr = linear_model.LinearRegression()
+# regr = linear_model.Ridge(alpha=0.1)
+# regr = linear_model.Lasso()
+# regr = RandomForestRegressor(n_estimators =10,max_depth=5, random_state=0,verbose =0) 
+#                              max_features=2, min_samples_split=4, n_estimators=50, min_samples_leaf=2
+#gb = GradientBoostingRegressor(loss='quantile', learning_rate=0.0001, n_estimators=50, max_features='log2', min_samples_split=2, max_depth=1)
+#ada_tree_backing = DecisionTreeRegressor(max_features='sqrt', splitter='random', min_samples_split=4, max_depth=3)
+#ab = AdaBoostRegressor(ada_tree_backing, learning_rate=0.1, loss='square', n_estimators=1000)
+regr.fit(X_train_pca, y_train)
+
+# 2. predict
+y_test_predict = regr.predict(X_test_pca)
+
+# 3. model validation
+score = cross_val_score(regr, X_train_pca,y_train, cv=5)
+print("Accuracy: %0.2f (+/- %0.2f)" % (score.mean(), score.std() * 2))
+
+print(mean_absolute_error(y_test_predict, y_test))
+
+print('Reg score train ' + str(regr.score(X_train_pca, y_train, sample_weight=None)))
+print('Reg score test ' + str(regr.score(X_test_pca, y_test, sample_weight=None)))
+y_test_reshaped = (y_test.reshape(y_test.shape[0]))
+print('Reg r2score ' + str(r2_score(y_test_reshaped , dataY_pred)))
+
+y_train_reshaped = (y_train.reshape(y_train.shape[0]))
+accuracies = cross_val_score(estimator = regr, X = X_train_pca, y = y_train_reshaped, cv = 10,scoring='neg_mean_squared_error')
+print('cross_val_score_mean ' + str(accuracies.mean()))
+print('cross_val_score_std ' + str(accuracies.std()))
+
+# Calculate mean absolute percentage error (MAPE)
+# mape = 100 * (errors / y_test)
+# print(mape)
+
+
 
 
 
