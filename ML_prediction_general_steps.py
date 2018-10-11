@@ -3,7 +3,7 @@
 # get data
 
 
-# data pre-processing
+#### data pre-processing  ####
 # 1. clean data - take care of missing values
 
 # 2. check data types
@@ -39,6 +39,26 @@ pca.fit(X_train)
 X_train_pca = pca.transform(X_train)
 X_test_pca = pca.transform(X_test)
 print((pca.explained_variance_ratio_)*100)
+
+
+
+### model building ###
+
+# basic model building
+
+
+# cross-validation & hyper-parameter tuning
+
+
+# combine different models
+
+
+# bagging data sets
+
+
+
+
+
 
 
 
