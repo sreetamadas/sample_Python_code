@@ -71,6 +71,7 @@ df.shape
 from datetime import datetime
 datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
+
 ## time & date format
 ## format time stamp, in case of non-standard format; 
 ## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
@@ -188,7 +189,11 @@ for key in dict1:
 	#print "num: ", num
 
 ## alternate way to print keys of a dictionary
-print(dict1.keys())	
+print(dict1.keys())
+
+# push the keys into a list
+list(dict1.keys())
+
 	
 ## appending to a list ; also, see append vs extend in python	
 t = []
