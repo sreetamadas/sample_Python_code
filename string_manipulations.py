@@ -1,5 +1,9 @@
 ## split a string by some character : the resultants are also strings
-1st_element_of_string = str(somestring.split('_')[0])
+first_element_of_string = str(some_string.split('_')[0])
+
+
+## select a portion of a string by position no.
+ID = filename[2:5]
 
 
 ## getting numeric data from a text file
@@ -12,5 +16,10 @@ for k in range(len(data_new)):
     dat.append(string_to_float)
 data_file=pd.DataFrame(dat)
 
+
+
+## combine many results as string to print as output 
+f= 'status=' + str(value) + ',' + 'X = ' + str(round(frac_result[0],1)) + ',' + 'Y' + '=' + str(int(rate)) 
+print(f)
 
 
