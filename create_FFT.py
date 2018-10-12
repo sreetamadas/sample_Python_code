@@ -22,3 +22,7 @@ def plotSpectrum(y,Fs):
 # np.argmax Returns the index(ices) 'I' of the maximum values of 'abs(Y)'
 # frq[..] returns the value at index I in array frq - this corresponds to the no. of cycles in the signal y
 
+# The FFT function will return a complex array : Amplitudes (Y-axis) & corresponding frequencies (X-axis). 
+# This is 2-sided (w & -w for the same frequency), so take 1-sided frequency.
+# Take absolute value to find Amplitude, & the index of the max amplitude in the frq array corresponds to the dominant frequency.
+
