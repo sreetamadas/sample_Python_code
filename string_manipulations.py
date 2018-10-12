@@ -23,3 +23,7 @@ f= 'status=' + str(value) + ',' + 'X = ' + str(round(frac_result[0],1)) + ',' + 
 print(f)
 
 
+
+
+## check what the following code does: possibly editing the values in a df column
+df['Machine'] = '2MCT ' + df['Machine'].map(str).str[1:]
