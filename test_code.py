@@ -47,8 +47,13 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 ## see the data
 print(dat.head(n=5))
 
+
+
 # write to a file
 df1.to_csv("modified_data.csv", sep=',')
+
+df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
+
 
 ############################################################################################################################
 ## step 2: running checks on the input data as dataframe
