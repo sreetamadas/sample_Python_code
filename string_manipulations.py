@@ -1,3 +1,6 @@
+####  string split & subset operations  ####
+
+
 ## split a string by some character : the resultants are also strings
 first_element_of_string = str(some_string.split('_')[0])
 
@@ -17,13 +20,14 @@ for k in range(len(data_new)):
 data_file=pd.DataFrame(dat)
 
 
-
 ## combine many results as string to print as output 
 f= 'status=' + str(value) + ',' + 'X = ' + str(round(frac_result[0],1)) + ',' + 'Y' + '=' + str(int(rate)) 
 print(f)
 
 
 
-
 ## check what the following code does: possibly editing the values in a df column
 df['Machine'] = '2MCT ' + df['Machine'].map(str).str[1:]
+
+
+
