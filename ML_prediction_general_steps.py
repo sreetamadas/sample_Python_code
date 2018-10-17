@@ -6,9 +6,13 @@ import pandas as pd
 import numpy as np
 import os
 
-# set path, get data
+# set path - either through terminal, or by following command
+os.chdir('C:\\User\\Desktop\\data\\Input_output')
+
+# get data
 
 
+#####################################################################################
 #### data pre-processing  ####
 # 0. check data - missing or not
 df.describe
@@ -58,6 +62,7 @@ X_test_pca = pca.transform(X_test)
 print((pca.explained_variance_ratio_)*100)
 
 
+
 ######################################################################################
 ###### model building - with normalized or PCA-transformed data ######
 from sklearn.svm import SVC
@@ -66,7 +71,8 @@ from sklearn.metrics import auc,accuracy_score
 from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 
 
-## basic model building : CLASSIFICATION ##
+
+#########    basic model building : CLASSIFICATION   #######
 # 1. fit model - vary ML algo & hyperparameters
 model_svc = SVC()  # kernel='linear'
 model_svc.fit(X_train_scaled, y_train)
@@ -86,7 +92,8 @@ print(classification_report(y_test, y_pred, target_names=class_names))
 # also, see the separate code for confusion matrix
 
 
-### basic model building : REGRESSION ###
+
+#######    basic model building : REGRESSION   #######
 from sklearn import linear_model
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import GradientBoostingRegressor
@@ -136,24 +143,24 @@ print('cross_val_score_std ' + str(accuracies.std()))
 
 
 
-#### cross-validation & hyper-parameter tuning  ####
+########     cross-validation & hyper-parameter tuning     ########
 # https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65
 
 
-####   combine different models  ####
+#######    combine different models   #######
 # voting classifier - weighted, unweighted
 # adaboost, xgboost, stacking regressor
 
 
 
-####  bagging data sets  ####
+#######   bagging data sets    #######
 
 
 
 #################################################################################
 ### compare results from multiple models ###
 
-# check if RMSE of predictions from 2 models are similar; rmse calculated over multiple iterations
+# using T-test,  check if RMSE of predictions from 2 models are similar; rmse calculated over multiple iterations
 import scipy.stats as stats
 def FindRMSE(pred,act):
     rmse = math.sqrt(np.mean((pred - act) ** 2))
