@@ -33,7 +33,7 @@ for i in range(len(predicted)):  ## looping over list
     corr.append(np.corrcoef(predicted[i], actual[i]['Y']))
     
 fullact = []
-for i in range(len(testsets)):
+for i in range(len(testsets)):     # testsets is a hash, where each hash element contains a list
     act = testsets[i]['Hb_level']
     #id = testsets[i]['ID']
     #pred = predicted[i]
