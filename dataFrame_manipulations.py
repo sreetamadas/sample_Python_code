@@ -26,6 +26,10 @@ new_df = pd.merge(df1, df2, how='inner', on='ID')
 df=pd.DataFrame(array).T     # T implies taking transpose
 
 
+#### convert data from dataframe colunm to an array
+data_array = pd.np.array(df.iloc[:,[colnum]]).reshape(len(df))
+
+
 
 ####   append, extend
 corr = []
