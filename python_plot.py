@@ -185,3 +185,29 @@ plt.show()
 ...
 # 20  no   ..   B
 ...                  
+
+                  
+                  
+                  
+#### save a plot to an external file
+from sklearn.ensemble import AdaBoostRegressor
+ada = AdaBoostRegressor(DecisionTreeRegressor(max_depth=4),n_estimators=300, random_state=rng)
+ada.fit(X, Y)
+importances_ada = ada.feature_importances_  
+## REALTIVE FEATURE IMPORTANCE ##
+FI_ada = 100.0 * (importances_ada / importances_ada.max())
+labels = mytrain.columns
+indices = np.argsort(FI_ada)[::-1]
+# Plot the feature importances of the forest
+plt.figure()
+plt.title("Relative Feature importances")
+plt.bar(labels[indices], FI_ada[indices], color="black", align="center")   # yerr=std[indices], range(mytrain.shape[1])
+plt.xticks(labels[indices], rotation='vertical')
+#plt.xlim([-1, mytrain.shape[1]])
+#plt.show()
+plt.savefig('varImp_adaB_iter_'+str(i)+'.png', bbox_inches='tight')
+plt.close()
+                  
+                  
+                  
+                   
