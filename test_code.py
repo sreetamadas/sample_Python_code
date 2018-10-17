@@ -84,6 +84,14 @@ df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the f
 # change format
 df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
 
+from datetime import datetime
+#energy['Day'] = pandas.to_datetime(energy['Day']) 
+energy['day_of_week2'] = energy['Day'].dt.weekday_name
+energy['day_of_week'] = energy['Day'].dt.dayofweek
+# https://stackoverflow.com/questions/30222533/create-a-day-of-week-column-in-a-pandas-dataframe-using-python
+# https://stackoverflow.com/questions/28009370/get-weekday-day-of-week-for-datetime-column-of-dataframe
+
+
 # adding an interval to a time stamp
 df["dateUTC"] = pd.to_datetime(df["dateUTC"]) #, format="%Y.%m.%d")  ## specify the format from input data here
 from datetime import datetime, timedelta
