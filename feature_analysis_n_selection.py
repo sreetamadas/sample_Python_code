@@ -1,6 +1,11 @@
 #################################################################################################################
 ### FEATURE SELECTION : detect factors influencing Y ###
 
+# how is feature importance calculated for adaboost in python ; python adaboost feature importance
+# https://stackoverflow.com/questions/15810339/how-are-feature-importances-in-randomforestclassifier-determined/15821880#15821880
+# https://stats.stackexchange.com/questions/324383/feature-value-importance-adaboost-classifier
+# https://stackoverflow.com/questions/36665511/scikit-adaboost-feature-importance
+
 # http://www.scikit-yb.org/en/latest/api/features/importances.html
 # https://stackoverflow.com/questions/21363827/feature-importance-in-sklearn-using-adaboost  (use of coef_ ,
 #                                                      instead of feature_importances_, for linear regressors)
