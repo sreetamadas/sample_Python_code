@@ -239,6 +239,7 @@ df_cleaned['status'] = [2 if 'Under' in x else 1 if 'Over' in x else 0 for x in 
 
 
 df.loc[row_index, 'X2'] = np.where(df.y1 - df.y2 > 5, 1, 0)  # if the diff>5 , x2=1; else x2 = 0
+df['truth_healthy_or_not'] = np.where( (df['status_groundTruth'] == '1'), '1', '0' )
 # https://stackoverflow.com/questions/19913659/pandas-conditional-creation-of-a-series-dataframe-column
 # see this link for series of if-else conditions
 
