@@ -47,7 +47,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 ##  https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65  ##########
 
 
-# 7. normalize the data
+# 7. normalize the data; can also use other scalers like StandardScaler()
+from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
@@ -55,6 +56,7 @@ X_test_scaled = scaler.transform(X_test)
 
 
 # 8. use PCA, instead of actual features, if too many features (or, do a feature importance map)
+from sklearn import decomposition
 pca = decomposition.PCA(n_components=2)
 pca.fit(X_train)
 X_train_pca = pca.transform(X_train)
