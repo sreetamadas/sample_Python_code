@@ -63,3 +63,17 @@ for i in range(0,df.shape[0]):
 
 
     
+### taking subsets    
+match = df[(df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
+           & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) ]
+
+# obtain inverse subset of above; that is, rows not satisfying the conditions
+# https://stackoverflow.com/questions/41800424/remove-rows-in-python-less-than-a-certain-value
+df2 = df[~( (df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
+           & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) )]
+
+
+
+
+    
+    
