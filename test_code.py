@@ -112,6 +112,9 @@ del df['index']
 
 
 ##################################################################
+# GOOGLE: how to detect NA values in python
+# https://stackoverflow.com/questions/29530232/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe
+# https://machinelearningmastery.com/handle-missing-data-python/
 
 # missing data
 print(df.isnull())
