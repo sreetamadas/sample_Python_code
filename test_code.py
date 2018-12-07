@@ -285,6 +285,25 @@ for item in hash1:
 #	print 'file open error:', e
 
 
+## exiting or breaking out of a loop
+# https://www.digitalocean.com/community/tutorials/how-to-use-break-continue-and-pass-statements-when-working-with-loops-in-python-3
+# https://stackoverflow.com/questions/19747371/python-exit-commands-why-so-many-and-when-should-each-be-used
+try:
+   loaded_model, coef_version = pickle.load(open(filename, 'rb'))
+except:
+   OverflowError
+   value = 0
+   value2 = 0
+   f='status=0, value=' + str(int(value)) + ',Index = ' + str(round(np.median(value2),2))
+   filename='Output.txt'
+   filevals= open(file_location+'/'+filename,'w')
+   filevals.write(f)
+   filevals.close()  
+   continue  # continue outside this block         
+   #raise SystemExit
+   #break
+
+
 #######################################################################################
 ##### declaring functions #####
  def function_name (comma-separated list of arguments):
