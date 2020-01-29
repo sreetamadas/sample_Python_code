@@ -1,7 +1,39 @@
-#### steps ####
-##  https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65  ##########
+####################################################################################################################
+#### key steps in using ML for prediction ####
+###### interesting article  
+# https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65  ######
+# https://notast.netlify.com/post/explaining-predictions-random-forest-post-hoc-analysis-permutation-impurity-variable-importance/
+# https://towardsdatascience.com/introducing-model-bias-and-variance-187c5c447793
 
 
+###########################################################################
+#### not covered  ####
+# git usage, SQL
+
+# data visualization
+# https://towardsdatascience.com/become-a-pandas-power-user-with-these-display-customizations-6d3a5a5885c1
+# https://www.marsja.se/python-data-visualization-techniques-you-should-learn-seaborn/
+
+# data set generation (through website scraping: BeautifulSoup, Scrapy, and rvest)
+
+#  graph algorithms, reinforcement learning, HMM, Monte Carlo, genetic algo, GAN
+# https://medium.com/free-code-camp/a-brief-introduction-to-reinforcement-learning-7799af5840db
+# https://www.analyticsindiamag.com/meet-autogan-the-neural-architecture-search-for-generative-adversarial-networks/
+# https://medium.com/sigmoid/https-medium-com-rishabh-anand-on-the-origin-of-genetic-algorithms-fc927d2e11e0
+# https://medium.com/@MohammedAmer/evolutionary-computation-a-primer-e3ca6fb0db5c
+
+# optimisation techniques
+
+##########################################################################
+## interesting websites
+# https://www.analyticsvidhya.com/blog/category/machine-learning/
+# machinelearningmastery
+# kaggle Learn, Datacamp
+# Andrew NG course (youtube) & book chapters
+# Andriy Burkov: machine learning engineering
+
+#########################################################################################################
+########################################################################################################
 import pandas as pd
 import numpy as np
 import os
@@ -13,22 +45,40 @@ os.chdir('C:\\User\\Desktop\\data\\Input_output')
 
 
 #####################################################################################
-#### data pre-processing  ####
+#### data exploration & pre-processing  ####
 # 0. check data - missing or not ; missing data imputation (or removal)
-# => check other custom commands from pandas
 df.describe
+# https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4
+
+##### => check other custom commands from pandas (optional)
+#### https://towardsdatascience.com/pandas-tips-that-will-save-you-hours-of-head-scratching-31d8572218c9
+#### https://www.youtube.com/watch?v=RlIiVeig3hc   => pandas-profiling
+#### https://github.com/8080labs/pyforest   (optional) 
+# https://towardsdatascience.com/python-for-data-science-8-concepts-you-may-have-forgotten-i-did-825966908393  (arange, map, filter, lambda)  
+######
+
 
 # 1. clean data - take care of missing values, outliers
 # for this, explore the data - see the distribution of values in each column (using histogram or boxplot) - are there outliers?
+# # https://towardsdatascience.com/5-useful-statistics-data-scientists-need-to-know-5b4ac29a7da9
 # outlier data imputation or removal
+# https://heartbeat.fritz.ai/how-to-make-your-machine-learning-models-robust-to-outliers-44d404067d07
+
 
 # 2. check data types (in different columns) - convert if data type is not as expected
+# https://lnkd.in/eFNQqVM  (cleaning an object column with mixed data types)
+# look at encoding categorical data
 df.dtypes
+
 
 # check distribution of data in different classes (for classification problems)/ subgroups
 dfull.groupby('class').agg({'X1': 'count'})
 
+
 # 3. create new features (optional, if required; may be based on domain knowledge)
+# https://medium.com/vickdata/four-feature-types-and-how-to-transform-them-for-machine-learning-8693e1c24e80
+# https://towardsdatascience.com/automated-feature-engineering-in-python-99baf11cc219
+
 
 # 4. subset only required colunms (optional, if required; may be based on domain knowledge)
 
@@ -54,8 +104,18 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 ###### use "stratify" option for consistent class distribution between training and test sets  ####
 ##  https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65  ##########
 
+## handling imbalanced data sets - upsample, downsample, SMOTE & its variants (ADASYN?)
+# https://medium.com/coinmonks/smote-and-adasyn-handling-imbalanced-data-set-34f5223e167
+# https://towardsdatascience.com/having-an-imbalanced-dataset-here-is-how-you-can-solve-it-1640568947eb
+# https://towardsdatascience.com/dealing-with-imbalanced-classes-in-machine-learning-d43d6fa19d2
+#  https://machinelearningmastery.com/data-sampling-methods-for-imbalanced-classification/
+#  How to Deal with Imbalanced Data using SMOTE   https://medium.com/analytics-vidhya/balance-your-data-using-smote-98e4d79fcddb
+# cross-validation   https://medium.com/lumiata/cross-validation-for-imbalanced-datasets-9d203ba47e8
+
+
 
 # 7. normalize the data; can also use other scalers like MinMaxScaler()
+# https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
@@ -64,7 +124,12 @@ X_test_scaled = scaler.transform(X_test)
 
 
 # 8. feature reduction (using PCA) or selection
-# use PCA, instead of actual features, if too many features (or, do a feature importance map)
+# use PCA, instead of actual features, if there are too many features (or, do a feature importance map)
+# check: t-SNE (compute intensive), SVD    
+# https://towardsdatascience.com/pca-and-svd-explained-with-numpy-5d13b0d2a4d8
+# https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b?gi=cf02ae64f802
+# https://towardsdatascience.com/feature-selection-techniques-for-classification-and-python-tips-for-their-application-10c0ddd7918b
+# https://towardsdatascience.com/the-5-feature-selection-algorithms-every-data-scientist-need-to-know-3a6b566efd2
 from sklearn import decomposition
 pca = decomposition.PCA(n_components=2)
 pca.fit(X_train)
@@ -84,12 +149,26 @@ from sklearn.svm import SVC
 from sklearn.ensemble import GradientBoostingClassifier,RandomForestClassifier
 from sklearn.metrics import auc,accuracy_score
 from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
+# https://www.kdnuggets.com/2020/01/guide-precision-recall-confusion-matrix.html
+# https://medium.com/swlh/recall-precision-f1-roc-auc-and-everything-542aedf322b9
+# https://www.analyticsvidhya.com/blog/2019/08/detailed-guide-7-loss-functions-machine-learning-python-code/
+# https://www.pyimagesearch.com/2016/09/05/multi-class-svm-loss/      (Svm -> hinge loss)
+# https://medium.com/activating-robotic-minds/demystifying-kl-divergence-7ebe4317ee68
+# https://medium.com/usf-msds/choosing-the-right-metric-for-evaluating-machine-learning-models-part-2-86d5649a5428
+
+## for unsupervised learning (clustering, etc.) , the following section should be replaced by appropriate algos.
 
 
 
 #########    basic model building : CLASSIFICATION   #######
 # 1. fit model - vary ML algo & hyperparameters
-# types of ML algo: logistic, SVM, tree-methods (DT), neural net/MLP, ensemble methods: bagging, random forest, boosting, stacking
+# types of ML algo: 
+#       logistic, SVM, tree-methods (DT), Bayesian models
+#       generalised linear model/GLM (for regression?)
+#       neural net/MLP, CNN & variants (deep learning based methods, transfer learning)
+#       ensemble methods: bagging, random forest, boosting, stacking
+#       https://towardsdatascience.com/ensemble-methods-bagging-boosting-and-stacking-c9214a10a205?gi=f30deb598cb4
+#       https://towardsdatascience.com/stacking-classifiers-for-higher-predictive-performance-566f963e4840
 # for a comprehensive list, see websites: machinelearningmastery, scikitlearn
 model_svc = SVC()  # kernel='linear'
 model_svc.fit(X_train_scaled, y_train)
@@ -159,12 +238,20 @@ print('cross_val_score_std ' + str(accuracies.std()))
 
 
 
+########   use of pipelines   ###########
+# https://www.youtube.com/watch?v=SawQZdAcazY
+
 
 
 ########     cross-validation & hyper-parameter tuning     ########
 # https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65
+# https://towardsdatascience.com/hyperparameter-tuning-explained-d0ebb2ba1d35
+# https://towardsdatascience.com/an-example-of-hyperparameter-optimization-on-xgboost-lightgbm-and-catboost-using-hyperopt-12bc41a271e
+# https://towardsdatascience.com/hyperparameter-tuning-c5619e7e6624
 # create: training, validation & test sets
 # use of k-fold on the training data
+
+## check for overfitting by comparing performance on train & test sets
 
 
 #######    combine different models   #######
