@@ -9,12 +9,13 @@ import os
 # set path - either through terminal, or by following command
 os.chdir('C:\\User\\Desktop\\data\\Input_output')
 
-# get data
+# get data -> save in a dataframe named "df"
 
 
 #####################################################################################
 #### data pre-processing  ####
 # 0. check data - missing or not ; missing data imputation (or removal)
+# => check other custom commands from pandas
 df.describe
 
 # 1. clean data - take care of missing values, outliers
@@ -27,9 +28,9 @@ df.dtypes
 # check distribution of data in different classes (for classification problems)/ subgroups
 dfull.groupby('class').agg({'X1': 'count'})
 
-# 3. create new features
+# 3. create new features (optional, if required; may be based on domain knowledge)
 
-# 4. subset only required colunms
+# 4. subset only required colunms (optional, if required; may be based on domain knowledge)
 
 
 # 5. convert factor colunms  (use one hot encoding, if reqd)
@@ -54,15 +55,16 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 ##  https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65  ##########
 
 
-# 7. normalize the data; can also use other scalers like StandardScaler()
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
+# 7. normalize the data; can also use other scalers like MinMaxScaler()
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 #X_train_scaled.shape
 
 
-# 8. use PCA, instead of actual features, if too many features (or, do a feature importance map)
+# 8. feature reduction (using PCA) or selection
+# use PCA, instead of actual features, if too many features (or, do a feature importance map)
 from sklearn import decomposition
 pca = decomposition.PCA(n_components=2)
 pca.fit(X_train)
@@ -120,6 +122,7 @@ from sklearn.metrics import r2_score
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_absolute_error
 
+
 # 1. fit model
 regr = linear_model.LinearRegression()
 # regr = linear_model.Ridge(alpha=0.1)
@@ -171,6 +174,7 @@ print('cross_val_score_std ' + str(accuracies.std()))
 
 
 #######   bagging data sets    #######
+# creating multiple train sets by taking subsets from original data, and building a model on each of these data subsets
 
 
 
