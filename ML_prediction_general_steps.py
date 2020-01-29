@@ -1,9 +1,23 @@
 ####################################################################################################################
 #### key steps in using ML for prediction ####
-###### interesting article  
-# https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65  ######
-# https://notast.netlify.com/post/explaining-predictions-random-forest-post-hoc-analysis-permutation-impurity-variable-importance/
+
+
+###### interesting article  ####
+# https://gab41.lab41.org/the-10-algorithms-machine-learning-engineers-need-to-know-f4bb63f5b2fa
+
+# https://towardsdatascience.com/how-do-you-know-you-have-enough-training-data-ad9b1fd679ee
 # https://towardsdatascience.com/introducing-model-bias-and-variance-187c5c447793
+
+# https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65 
+# https://notast.netlify.com/post/explaining-predictions-random-forest-post-hoc-analysis-permutation-impurity-variable-importance/
+# https://www.analyticsvidhya.com/blog/2015/12/improve-machine-learning-results/
+
+# https://analyticsindiamag.com/4-python-libraries-for-getting-better-model-interpretability/
+# https://www.analyticsvidhya.com/blog/2019/08/decoding-black-box-step-by-step-guide-interpretable-machine-learning-models-python/
+
+# https://heartbeat.fritz.ai/top-7-libraries-and-packages-of-the-year-for-data-science-and-ai-python-r-6b7cca2bf000
+# https://towardsdatascience.com/automl-and-autodl-simplified-b6786e5560ff
+# https://analyticsindiamag.com/10-popular-automl-tools-developers-can-use/
 
 
 ###########################################################################
@@ -13,6 +27,7 @@
 # data visualization
 # https://towardsdatascience.com/become-a-pandas-power-user-with-these-display-customizations-6d3a5a5885c1
 # https://www.marsja.se/python-data-visualization-techniques-you-should-learn-seaborn/
+# https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000202&fbclid=IwAR0lZAThKTkasEquIeDRtYTJIJnMGYkjBHVgbkeRAvOU4uAi4hNpqPy3rXQ
 
 # data set generation (through website scraping: BeautifulSoup, Scrapy, and rvest)
 
@@ -24,16 +39,22 @@
 
 # optimisation techniques
 
+
 ##########################################################################
 ## interesting websites
 # https://www.analyticsvidhya.com/blog/category/machine-learning/
 # machinelearningmastery
 # kaggle Learn, Datacamp
-# Andrew NG course (youtube) & book chapters
-# Andriy Burkov: machine learning engineering
+# Andrew NG course (youtube) & book chapters  (machine learning yearning?)
+# Andriy Burkov: machine learning engineering   http://themlbook.com/wiki/doku.php
+# https://yle.fi/uutiset/osasto/news/finland_offers_free_online_artificial_intelligence_course_to_anyone_anywhere/10206283
+# https://www.engadget.com/2018/04/02/microsoft-public-courses-building-ai-skills/?_lrsc=d4ac881b-dc72-457c-9ee3-5b597cbdcc0e
+# https://qz.com/1206229/this-is-the-best-book-for-learning-modern-statistics-its-free/
+
 
 #########################################################################################################
 ########################################################################################################
+
 import pandas as pd
 import numpy as np
 import os
@@ -53,12 +74,13 @@ df.describe
 ##### => check other custom commands from pandas (optional)
 #### https://towardsdatascience.com/pandas-tips-that-will-save-you-hours-of-head-scratching-31d8572218c9
 #### https://www.youtube.com/watch?v=RlIiVeig3hc   => pandas-profiling
-#### https://github.com/8080labs/pyforest   (optional) 
+#### https://github.com/8080labs/pyforest   (auto imports libraries) 
 # https://towardsdatascience.com/python-for-data-science-8-concepts-you-may-have-forgotten-i-did-825966908393  (arange, map, filter, lambda)  
 ######
 
 
 # 1. clean data - take care of missing values, outliers
+# https://analyticsindiamag.com/5-ways-handle-missing-values-machine-learning-datasets/
 # for this, explore the data - see the distribution of values in each column (using histogram or boxplot) - are there outliers?
 # # https://towardsdatascience.com/5-useful-statistics-data-scientists-need-to-know-5b4ac29a7da9
 # outlier data imputation or removal
@@ -155,6 +177,7 @@ from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 # https://www.pyimagesearch.com/2016/09/05/multi-class-svm-loss/      (Svm -> hinge loss)
 # https://medium.com/activating-robotic-minds/demystifying-kl-divergence-7ebe4317ee68
 # https://medium.com/usf-msds/choosing-the-right-metric-for-evaluating-machine-learning-models-part-2-86d5649a5428
+# https://www.dataquest.io/blog/understanding-regression-error-metrics/
 
 ## for unsupervised learning (clustering, etc.) , the following section should be replaced by appropriate algos.
 
@@ -169,6 +192,8 @@ from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 #       ensemble methods: bagging, random forest, boosting, stacking
 #       https://towardsdatascience.com/ensemble-methods-bagging-boosting-and-stacking-c9214a10a205?gi=f30deb598cb4
 #       https://towardsdatascience.com/stacking-classifiers-for-higher-predictive-performance-566f963e4840
+#       https://www.kdnuggets.com/2017/02/stacking-models-imropved-predictions.html
+#       https://www.analyticsvidhya.com/blog/2015/08/introduction-ensemble-learning/
 # for a comprehensive list, see websites: machinelearningmastery, scikitlearn
 model_svc = SVC()  # kernel='linear'
 model_svc.fit(X_train_scaled, y_train)
