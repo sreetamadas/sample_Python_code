@@ -14,15 +14,17 @@ os.chdir('C:\\User\\Desktop\\data\\Input_output')
 
 #####################################################################################
 #### data pre-processing  ####
-# 0. check data - missing or not
+# 0. check data - missing or not ; missing data imputation (or removal)
 df.describe
 
-# 1. clean data - take care of missing values
+# 1. clean data - take care of missing values, outliers
+# for this, explore the data - see the distribution of values in each column (using histogram or boxplot) - are there outliers?
+# outlier data imputation or removal
 
-# 2. check data types
+# 2. check data types (in different columns) - convert if data type is not as expected
 df.dtypes
 
-# check distribution of data in different classes
+# check distribution of data in different classes (for classification problems)/ subgroups
 dfull.groupby('class').agg({'X1': 'count'})
 
 # 3. create new features
@@ -33,10 +35,15 @@ dfull.groupby('class').agg({'X1': 'count'})
 # 5. convert factor colunms  (use one hot encoding, if reqd)
 df[['class','class2']] = df[['class','class2']].astype('str') 
 df[['class','class2']] = df[['class','class2']].astype('category')
+# LabelEncoder() ; OneHotEncoder() ; LabelBinarizer() ; to_categorical (keras.utils) - check which to use when
+# https://stackoverflow.com/questions/50473381/scikit-learns-labelbinarizer-vs-onehotencoder
+# GOOGLE: label binarizer vs to categorical
+
 
 
 
 # 6. create train-test data : 2 class
+# should have separate train, validation & test sets
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
@@ -76,6 +83,8 @@ from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 
 #########    basic model building : CLASSIFICATION   #######
 # 1. fit model - vary ML algo & hyperparameters
+# types of ML algo: logistic, SVM, tree-methods (DT), neural net/MLP, ensemble methods: bagging, random forest, boosting, stacking
+# for a comprehensive list, see websites: machinelearningmastery, scikitlearn
 model_svc = SVC()  # kernel='linear'
 model_svc.fit(X_train_scaled, y_train)
 
@@ -147,6 +156,8 @@ print('cross_val_score_std ' + str(accuracies.std()))
 
 ########     cross-validation & hyper-parameter tuning     ########
 # https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65
+# create: training, validation & test sets
+# use of k-fold on the training data
 
 
 #######    combine different models   #######
