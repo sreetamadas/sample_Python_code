@@ -69,6 +69,10 @@ pca.fit(X_train)
 X_train_pca = pca.transform(X_train)
 X_test_pca = pca.transform(X_test)
 print((pca.explained_variance_ratio_)*100)
+# feature importance can be obtained from
+#     randomForest (using MI?),
+#     forward or backward selection (see if these are available in python)
+#     additionally using ridge or LASSO for regression problems (see L1 vs L2 norm) 
 
 
 
