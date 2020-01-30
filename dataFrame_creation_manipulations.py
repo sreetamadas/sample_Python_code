@@ -1,6 +1,16 @@
-#####  dataframe manipulations  #####
+#####  dataframe: creation &  manipulations  #####
+
+##########   CREATION   ##############
+gender = ['male','male','male','female','female','female','squirrel']
+pet1 =['dog','cat','dog','cat','dog','squirrel','dog']
+pet2 =['dog','cat','cat','squirrel','dog','cat','cat']
+
+d = pd.DataFrame(np.column_stack([gender, pet1, pet2]),columns=['gender', 'petl', 'pet2'])
+d['points'] = np.where( ( (d['gender'] == 'male') & (d['pet1'] == d['pet2'] ) ) | 
+                       ( (d['gender'] == 'female') & (d['pet1'].isin(['cat','dog'] ) ) ), 5, 0)
 
 
+##################   MANIPULATIONS   #################
 ####  concatenation  ####
 # ADD 1 df below the other
 newdata = pd.DataFrame()
