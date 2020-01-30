@@ -168,9 +168,9 @@ X_train_pca = pca.transform(X_train)
 X_test_pca = pca.transform(X_test)
 print((pca.explained_variance_ratio_)*100)
 # feature importance can be obtained from
-#     randomForest (using MI?),
+#     randomForest (using MI?) - this method is affected by presence of multicollinearity
 #     forward or backward selection (see if these are available in python)
-#     additionally using ridge or LASSO for regression problems (see L1 vs L2 norm) 
+#     additionally using ridge or LASSO for regression problems (see L1 vs L2 norm) - is it affected by presence of multicollinearity?
 
 
 
