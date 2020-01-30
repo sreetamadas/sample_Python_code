@@ -10,6 +10,23 @@ d['points'] = np.where( ( (d['gender'] == 'male') & (d['pet1'] == d['pet2'] ) ) 
                        ( (d['gender'] == 'female') & (d['pet1'].isin(['cat','dog'] ) ) ), 5, 0)
 
 
+
+##########      CHECKS    #############
+## step 2: running checks on the input data as dataframe
+
+## checking types of data in different cols 
+df.dtypes
+df.info()
+
+## get summary statistics
+df.describe()
+df['colname'].value_counts()
+
+## df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
+df.shape
+
+
+
 ##################   MANIPULATIONS   #################
 ####  concatenation  ####
 # ADD 1 df below the other
