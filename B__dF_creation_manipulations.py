@@ -10,6 +10,11 @@ d['points'] = np.where( ( (d['gender'] == 'male') & (d['pet1'] == d['pet2'] ) ) 
                        ( (d['gender'] == 'female') & (d['pet1'].isin(['cat','dog'] ) ) ), 5, 0)
 
 
+#####  rename cols  ######
+oldname = raw_input("enter 1st columnname: ")  # AL1
+df = df.rename(columns={oldname: 'newname'})
+
+
 
 #######################    CHECKS    #####################
 
@@ -38,14 +43,6 @@ print(df.notnull())
 
 # count no. of rows with missing values
 print(df.isnull().sum())
-
-# code for adding missing values (median/mean or fill using previous value or next value) 
-# https://pandas.pydata.org/pandas-docs/stable/missing_data.html
-df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
-df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
-
-## keep rows with finite values in a column
-df_cleaned = df[np.isfinite(df['col_X'])]
 
 
 
@@ -82,6 +79,19 @@ rem_row = p_row - df.shape[0]
 
 
 
+####   impute missing values  #####
+# code for adding missing values (median/mean or fill using previous value or next value) 
+# https://pandas.pydata.org/pandas-docs/stable/missing_data.html
+df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
+df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
+
+
+
+
+## keep rows with finite values in a column
+df_cleaned = df[np.isfinite(df['col_X'])]
+
+
 
 
 ######   duplicate data handling   #######
@@ -100,11 +110,36 @@ df =  df[col]
 
 
 
-#####  rename cols  ######
-oldname = raw_input("enter 1st columnname: ")  # AL1
-df = df.rename(columns={oldname: 'newname'})
+#####  remove multi-collinearity : for features with corr > 0.9, keep one & drop rest  #########
+# correlation for numeric to numeric columns (def: Pearson; others:kendall, spearman)
+corr_num_num = df[num_columns].corr()
 
+"""
+def cramers_v(x, y):    # x &  y are categorical data columns
+    confusion_matrix = pd.crosstab(x,y)
+    chi2 = ss.chi2_contingency(confusion_matrix)[0]
+    n = confusion_matrix.sum().sum()
+    phi2 = chi2/n
+    r,k = confusion_matrix.shape
+    phi2corr = max(0, phi2-((k-1)*(r-1))/(n-1))
+    rcorr = r-((r-1)**2)/(n-1)
+    kcorr = k-((k-1)**2)/(n-1)
+    return np.sqrt(phi2corr/min((kcorr-1),(rcorr-1)))
 
+def cat_num(cat,num,b=2):
+    #cat_num : converts numerical column to categorical column by quartile binning 
+    #          and performs cramer's v correlation  
+    # cat - categorical column ;   num - numerical column
+    num = pd.Series(num).replace(to_replace=999999,value=-1)
+    bb = pd.qcut(num,b,duplicates='drop')
+    return cramers_v(bb, cat)
+
+# cramer's v correlation for categorical to categorical columns
+corr_cat_cat = df[cat_columns].corr(method=cramers_v)
+# cramer's v correlation for categorical to binned numerical columns
+corr_cat_nu = df[cat_columns+num_columns].corr(method=cat_num)
+corr_cat_nu = cat_nu.loc[num_columns,cat_columns]
+"""
 
 
 
