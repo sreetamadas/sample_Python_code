@@ -89,6 +89,7 @@ df[['class','class2']] = df[['class','class2']].astype('category')
 # 3. check distribution of data in different classes (for classification problems)/ subgroups
 dfull.groupby('class').agg({'X1': 'count'})
 dfull.groupby('class').size()
+dfull.groupby(['id','class']).agg({'delta': 'count'})
 
 
 # 4. create new features (optional, if required; may be based on domain knowledge)
