@@ -98,7 +98,11 @@ df_cleaned = df[np.isfinite(df['col_X'])]
 ######   duplicate data handling   #######
 ####  remove all rows with duplicate values in selected cols
 df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
+# keep 1st row among duplicates
 df.drop_duplicates(inplace=True)  # remove rowwise duplicates, using all columns
+d2 = d2.drop_duplicates(subset=['subject'], keep='first')  # using select columns
+# https://stackoverflow.com/questions/23667369/drop-all-duplicate-rows-in-python-pandas
+
 
 ####  get all rows with duplicate values in selected cols
 df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
