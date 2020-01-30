@@ -139,7 +139,9 @@ plt.show()
 ### heatmap of correlation matric
 corr_mat = df.corr(method='pearson')
 import seaborn as sns
-sns.heatmap(corr_mat, annot=True, linewidths=0.4, annot_kws={"size": 10})
+#sns.heatmap(corr_mat, annot=True, linewidths=0.4, annot_kws={"size": 10})
+sns.heatmap(corr_mat, mask=np.zeros_like(corr_mat, dtype=np.bool), cmap=sns.diverging_palette(220, 10, as_cmap=True),
+square=True, ax=ax)
 plt.xticks(rotation=90)
 plt.yticks(rotation=0)
 plt.show()
