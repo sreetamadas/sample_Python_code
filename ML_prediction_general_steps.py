@@ -17,9 +17,12 @@ df = pd.read_excel(main_file_path)  # from excel  "/home/user/loc/file.xls"
 #####################################################################################
 #### data exploration & pre-processing  ####
 # 1. check data - missing or not  
-df.describe  # shows if any column has less rows
+df.describe  # summary statistics
+df['colname'].value_counts()   # shows if any column has less rows
+df.shape   # (no. of rows, no. of cols)
 
 # 1. check data types (in different columns) - 
+df.info()
 df.dtypes
 df.columns  # list of columns in the df 
 
