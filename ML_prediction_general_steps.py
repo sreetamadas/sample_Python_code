@@ -73,6 +73,7 @@ df.columns  # list of columns in the df
 
 # convert factor colunms  (use one hot encoding, if reqd, for Y in classification problems)
 # convert if column data type is not as expected
+dfull['class2'] = [0 if x == 'wake' else 1 if x == 'sleep_stage_1' else 2 for x in dfull['class2']]
 df[['class','class2']] = df[['class','class2']].astype('str') 
 df[['class','class2']] = df[['class','class2']].astype('category')
 # LabelEncoder() ; OneHotEncoder() ; LabelBinarizer() ; to_categorical (keras.utils) - check which to use when
