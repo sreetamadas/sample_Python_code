@@ -71,46 +71,6 @@ df.shape
 
 
 ###############################################################
-
-## print current time
-from datetime import datetime
-datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-
-## time & date format
-## format time stamp, in case of non-standard format; 
-## non-standard format of datetime can be ascertained by checking the O/P for datetime col in mc.dtypes
-df["Date"] = pandas.to_datetime(df["Date"], format="%Y.%m.%d")  ## specify the format from input data here
-# change format
-df['Date'] = df['Date'].dt.strftime("%Y-%m-%d")
-
-from datetime import datetime
-#energy['Day'] = pandas.to_datetime(energy['Day']) 
-energy['day_of_week2'] = energy['Day'].dt.weekday_name
-energy['day_of_week'] = energy['Day'].dt.dayofweek
-# https://stackoverflow.com/questions/30222533/create-a-day-of-week-column-in-a-pandas-dataframe-using-python
-# https://stackoverflow.com/questions/28009370/get-weekday-day-of-week-for-datetime-column-of-dataframe
-
-
-# adding an interval to a time stamp
-df["dateUTC"] = pd.to_datetime(df["dateUTC"]) #, format="%Y.%m.%d")  ## specify the format from input data here
-from datetime import datetime, timedelta
-df['dateTime'] = df['dateUTC'] + timedelta(minutes=330)  ## fix dateTime to IST from UTC : add 5 hrs 30 min
-
-# insert missing time stamps (for data missed after operating hrs)
-# fill in missing values with previous value
-# 1. Set the datestamp columns as the index of your DataFrame
-df = df.set_index('dateTime')
-df = df.reindex(pd.date_range(start=df.index[0], end=df.index[-1], freq='300s'))
-df = df.fillna(method='ffill')
-
-# set dateTime as a separate column instead of index
-df['dateTime'] = df.index
-df = df.reset_index()
-del df['index']
-#df.head(n=2)
-
-
 ##################################################################
 # GOOGLE: how to detect NA values in python ;  how to remove rows with NAN values in python
 # https://stackoverflow.com/questions/29530232/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe
@@ -144,6 +104,8 @@ df = df.rename(columns={oldname: 'newname'})
 df.drop('Col_not_required', axis=1, inplace=True)
 # method 2
 del df['col_not_reqd']
+# method 3
+df = df.drop(['col1', 'col2'], axis=1)
 
 
 ####  remove all rows with duplicate values in selected cols
