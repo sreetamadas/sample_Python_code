@@ -1,67 +1,12 @@
 ####################################################################################################################
-####    key steps in using ML for prediction : skip to import statements    ####
-
-
-###################################################################################################################
-###### interesting article  ####
-# https://gab41.lab41.org/the-10-algorithms-machine-learning-engineers-need-to-know-f4bb63f5b2fa
-
-# https://towardsdatascience.com/how-do-you-know-you-have-enough-training-data-ad9b1fd679ee
-# https://towardsdatascience.com/introducing-model-bias-and-variance-187c5c447793
-
-# https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65 
-# https://notast.netlify.com/post/explaining-predictions-random-forest-post-hoc-analysis-permutation-impurity-variable-importance/
-# https://www.analyticsvidhya.com/blog/2015/12/improve-machine-learning-results/
-
-# https://analyticsindiamag.com/4-python-libraries-for-getting-better-model-interpretability/
-# https://www.analyticsvidhya.com/blog/2019/08/decoding-black-box-step-by-step-guide-interpretable-machine-learning-models-python/
-
-# https://heartbeat.fritz.ai/top-7-libraries-and-packages-of-the-year-for-data-science-and-ai-python-r-6b7cca2bf000
-# https://towardsdatascience.com/automl-and-autodl-simplified-b6786e5560ff
-# https://analyticsindiamag.com/10-popular-automl-tools-developers-can-use/
-
-
-###########################################################################
-####  not covered here  ####
-# git usage, SQL
-
-# data visualization
-# https://towardsdatascience.com/become-a-pandas-power-user-with-these-display-customizations-6d3a5a5885c1
-# https://www.marsja.se/python-data-visualization-techniques-you-should-learn-seaborn/
-# https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000202&fbclid=IwAR0lZAThKTkasEquIeDRtYTJIJnMGYkjBHVgbkeRAvOU4uAi4hNpqPy3rXQ
-
-# data set generation (through website scraping: BeautifulSoup, Scrapy, and rvest)
-
-#  graph algorithms, reinforcement learning, HMM, Monte Carlo, genetic algo, GAN
-# https://medium.com/free-code-camp/a-brief-introduction-to-reinforcement-learning-7799af5840db
-# https://www.analyticsindiamag.com/meet-autogan-the-neural-architecture-search-for-generative-adversarial-networks/
-# https://medium.com/sigmoid/https-medium-com-rishabh-anand-on-the-origin-of-genetic-algorithms-fc927d2e11e0
-# https://medium.com/@MohammedAmer/evolutionary-computation-a-primer-e3ca6fb0db5c
-
-# optimisation techniques
-
-
-##########################################################################
-## interesting websites
-# https://www.analyticsvidhya.com/blog/category/machine-learning/
-# machinelearningmastery
-# kaggle Learn, Datacamp
-# Andrew NG course (youtube) & book chapters  (machine learning yearning?)
-# Andriy Burkov: machine learning engineering   http://themlbook.com/wiki/doku.php
-# https://yle.fi/uutiset/osasto/news/finland_offers_free_online_artificial_intelligence_course_to_anyone_anywhere/10206283
-# https://www.engadget.com/2018/04/02/microsoft-public-courses-building-ai-skills/?_lrsc=d4ac881b-dc72-457c-9ee3-5b597cbdcc0e
-# https://qz.com/1206229/this-is-the-best-book-for-learning-modern-statistics-its-free/
-
-
-#########################################################################################################
-########################################################################################################
+####    key steps in using ML for prediction  (skip to end-of-file for additional reading material)    ####
 
 import pandas as pd
 import numpy as np
 import os
 
 # set path - either through terminal, or by following command
-os.chdir('C:\\User\\Desktop\\data\\Input_output')
+os.chdir('C:\\User\\Desktop\\data\\Input_output')    # "C:/user/Desktop/data/input"    <- both valid
 
 
 # get data -> save in a dataframe named "df"
@@ -76,6 +21,7 @@ df.describe  # shows if any column has less rows
 
 # 1. check data types (in different columns) - 
 df.dtypes
+df.columns  # list of columns in the df 
 
 ##### => check other custom commands from pandas (this section is optional)
 # https://towardsdatascience.com/pandas-tips-that-will-save-you-hours-of-head-scratching-31d8572218c9
@@ -357,5 +303,57 @@ with open(filename, 'rb') as f:
 x = pd.read_pickle("C:\\Users\\Desktop\\data\\model_5param.sav")
 
 
+
+############################################################################################################################
+############################################################################################################################
+
+###### interesting article  ####
+# https://gab41.lab41.org/the-10-algorithms-machine-learning-engineers-need-to-know-f4bb63f5b2fa
+
+# https://towardsdatascience.com/how-do-you-know-you-have-enough-training-data-ad9b1fd679ee
+# https://towardsdatascience.com/introducing-model-bias-and-variance-187c5c447793
+
+# https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65 
+# https://notast.netlify.com/post/explaining-predictions-random-forest-post-hoc-analysis-permutation-impurity-variable-importance/
+# https://www.analyticsvidhya.com/blog/2015/12/improve-machine-learning-results/
+
+# https://analyticsindiamag.com/4-python-libraries-for-getting-better-model-interpretability/
+# https://www.analyticsvidhya.com/blog/2019/08/decoding-black-box-step-by-step-guide-interpretable-machine-learning-models-python/
+
+# https://heartbeat.fritz.ai/top-7-libraries-and-packages-of-the-year-for-data-science-and-ai-python-r-6b7cca2bf000
+# https://towardsdatascience.com/automl-and-autodl-simplified-b6786e5560ff
+# https://analyticsindiamag.com/10-popular-automl-tools-developers-can-use/
+
+
+####  interesting websites   ######
+# https://www.analyticsvidhya.com/blog/category/machine-learning/
+# machinelearningmastery
+# kaggle Learn, Datacamp
+# Andrew NG course (youtube) & book chapters  (machine learning yearning?)
+# Andriy Burkov: machine learning engineering   http://themlbook.com/wiki/doku.php
+# https://yle.fi/uutiset/osasto/news/finland_offers_free_online_artificial_intelligence_course_to_anyone_anywhere/10206283
+# https://www.engadget.com/2018/04/02/microsoft-public-courses-building-ai-skills/?_lrsc=d4ac881b-dc72-457c-9ee3-5b597cbdcc0e
+# https://qz.com/1206229/this-is-the-best-book-for-learning-modern-statistics-its-free/
+
+
+
+###########################################################################
+####  not covered here  ####
+# git usage, SQL
+
+# data visualization
+# https://towardsdatascience.com/become-a-pandas-power-user-with-these-display-customizations-6d3a5a5885c1
+# https://www.marsja.se/python-data-visualization-techniques-you-should-learn-seaborn/
+# https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000202&fbclid=IwAR0lZAThKTkasEquIeDRtYTJIJnMGYkjBHVgbkeRAvOU4uAi4hNpqPy3rXQ
+
+# data set generation (through website scraping: BeautifulSoup, Scrapy, and rvest)
+
+# graph algorithms, reinforcement learning, HMM, Monte Carlo, genetic algo, GAN
+# https://medium.com/free-code-camp/a-brief-introduction-to-reinforcement-learning-7799af5840db
+# https://www.analyticsindiamag.com/meet-autogan-the-neural-architecture-search-for-generative-adversarial-networks/
+# https://medium.com/sigmoid/https-medium-com-rishabh-anand-on-the-origin-of-genetic-algorithms-fc927d2e11e0
+# https://medium.com/@MohammedAmer/evolutionary-computation-a-primer-e3ca6fb0db5c
+
+# optimisation techniques
 
 
