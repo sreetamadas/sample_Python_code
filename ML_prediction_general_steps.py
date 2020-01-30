@@ -12,6 +12,7 @@ os.chdir('C:\\User\\Desktop\\data\\Input_output')    # "C:/user/Desktop/data/inp
 # get data -> save in a dataframe named "df"
 df = pd.read_csv(main_file_path)  # from csv
 df = pd.read_excel(main_file_path)  # from excel  "/home/user/loc/file.xls"
+df.head(n=5)  # show top 5 rows
 
 
 #####################################################################################
