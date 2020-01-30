@@ -193,7 +193,8 @@ from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 #       logistic, SVM, tree-methods (DT), Bayesian models
 #       generalised linear model/GLM (for regression?)
 #       neural net/MLP, CNN & variants (deep learning based methods, transfer learning)
-#       ensemble methods: bagging, random forest, boosting, stacking
+#       ensemble methods: bagging, random forest, boosting, stacking, voting classifier
+
 #       https://towardsdatascience.com/ensemble-methods-bagging-boosting-and-stacking-c9214a10a205?gi=f30deb598cb4    ****
 #       https://towardsdatascience.com/stacking-classifiers-for-higher-predictive-performance-566f963e4840
 #       https://www.kdnuggets.com/2017/02/stacking-models-imropved-predictions.html
@@ -205,7 +206,18 @@ model_svc.fit(X_train_scaled, y_train)
 
 model_rf = RandomForestClassifier(n_estimators = 501) ## max_depth=5, random_state=0,verbose =0)  
 # max_features=2, min_samples_split=4, n_estimators=50, min_samples_leaf=2
+"""
+model_rf = RandomForestClassifier(max_features='auto', min_samples_split=2, n_estimators = 501)
+#RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+#            max_depth=None, max_features='auto', max_leaf_nodes=None,
+#            min_impurity_decrease=0.0, min_impurity_split=None,
+#           min_samples_leaf=1, min_samples_split=2,
+#            min_weight_fraction_leaf=0.0, n_estimators=501, n_jobs=1,
+#            oob_score=False, random_state=None, verbose=0,
+#            warm_start=False)
+"""
 model_rf.fit(X_train_scaled, y_train)
+
 
 # 2. predict
 y_pred_svc = model_svc.predict(X_test_scaled)
@@ -284,28 +296,17 @@ print('cross_val_score_std ' + str(accuracies.std()))
 ## check for overfitting by comparing performance on train & test sets
 
 
-#######    combine different models   #######
-# voting classifier - weighted, unweighted
+#########    combine different models     #########
+#### voting classifier - weighted, unweighted  ####
 
 # https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html
 from sklearn.ensemble import VotingClassifier
+
 # optimised SVC MODEL 
 model_svc_opt = SVC(C=1000, kernel='linear')
 # other SVC
 model_svc = SVC()
-# optimised RF
-model_rf_opt = RandomForestClassifier(max_features = 3, min_samples_split = 10, n_estimators = 501) 
-# other RF
-model_rf = RandomForestClassifier(max_features='auto', min_samples_split=2, n_estimators = 501)
-#RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-#            max_depth=None, max_features='auto', max_leaf_nodes=None,
-#            min_impurity_decrease=0.0, min_impurity_split=None,
-#           min_samples_leaf=1, min_samples_split=2,
-#            min_weight_fraction_leaf=0.0, n_estimators=501, n_jobs=1,
-#            oob_score=False, random_state=None, verbose=0,
-#            warm_start=False)
-# knn
-model_knn = KNeighborsClassifier(metric='euclidean', n_neighbors=5)
+# etc.
 ## voting classifier: hard
 eclf_hrd = VotingClassifier(estimators=[('svc_opt', model_svc_opt), ('svc', model_svc), 
                                         ('rf_opt', model_rf_opt), ('rf', model_rf),
@@ -314,18 +315,10 @@ eclf_hrd = VotingClassifier(estimators=[('svc_opt', model_svc_opt), ('svc', mode
 eclf_hrd.fit(X_train_scaled, y_train)
 
 
-## voting classifier 2 - soft voting
-# optimised SVC MODEL 
-model_svc_opt = SVC(C=1000, kernel='linear', probability=True)
-# other SVC
-model_svc = SVC(probability=True)
-eclf_sft = VotingClassifier(estimators=[('svc_opt', model_svc_opt), ('svc', model_svc), 
-                                        ('rf_opt', model_rf_opt), ('rf', model_rf),
-                                        ('knn', model_knn)], voting='soft')
+
+######   adaboost, xgboost, stacking regressor   ######
 
 
-
-# adaboost, xgboost, stacking regressor
 
 
 
