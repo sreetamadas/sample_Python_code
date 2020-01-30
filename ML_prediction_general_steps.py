@@ -45,7 +45,10 @@ df.columns  # list of columns in the df
 # generally, drop columns with many missing values,
 
 
-# impute columns with less missing values, drop rows with many missing values
+# impute columns with less missing values
+
+
+# drop rows with many missing values
 
 
 # remove duplicates
@@ -75,6 +78,11 @@ df[['class','class2']] = df[['class','class2']].astype('category')
 # LabelEncoder() ; OneHotEncoder() ; LabelBinarizer() ; to_categorical (keras.utils) - check which to use when
 # https://stackoverflow.com/questions/50473381/scikit-learns-labelbinarizer-vs-onehotencoder
 # GOOGLE: label binarizer vs to categorical
+## some built-in functions ###
+# int(obj)	convert object to integer
+# str(obj)	convert object to string
+# type(obj)	return type of object
+# len(obj)	return length of object
 
 
 
@@ -88,7 +96,7 @@ dfull.groupby('class').agg({'X1': 'count'})
 #### feature aggregation
 
 
-# 5. subset only required colunms (optional, if required; may be based on domain knowledge)
+# 5. subset only required columns (optional, if required; may be based on domain knowledge)
 
 
 
