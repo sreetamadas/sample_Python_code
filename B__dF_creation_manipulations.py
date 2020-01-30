@@ -248,16 +248,7 @@ backup = backup.append(df.iloc[[i]]) #, axis=0)  ## add row at end
     
   
   
-### taking subsets    
-match = df[(df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
-           & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) ]
-
-# obtain inverse subset of above; that is, rows not satisfying the conditions
-# https://stackoverflow.com/questions/41800424/remove-rows-in-python-less-than-a-certain-value
-df2 = df[~( (df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
-           & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) )]
-
-# subset by row
+### taking subsets : subset by row
 df = df[df.colname == some_value]
 
 ## subset by column
@@ -267,5 +258,25 @@ df = df.loc[:, ['X1','X2','X4','Y']]
 
 df = df.iloc[:,[0,1,3,4]].values     # by column no.
 
-    
-    
+
+match = df[(df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
+           & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) ]
+
+# obtain inverse subset of above; that is, rows not satisfying the conditions
+# https://stackoverflow.com/questions/41800424/remove-rows-in-python-less-than-a-certain-value
+df2 = df[~( (df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
+           & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) )]
+
+
+
+"""  
+mismatch = Pred[(Pred.y_test != Pred.y_pred_svc) & (Pred.y_test != Pred.y_pred_rf) & (Pred.y_test != Pred.y_pred_rf_opt) 
+           & (Pred.y_test != Pred.y_pred_svc_opt) & (Pred.y_test != Pred.y_pred_knn) ]    
+
+## get the remaining pediction cases
+df2 = Pred[~( (Pred.y_test == Pred.y_pred_svc) & (Pred.y_test == Pred.y_pred_rf) & (Pred.y_test == Pred.y_pred_rf_opt) 
+           & (Pred.y_test == Pred.y_pred_svc_opt) & (Pred.y_test == Pred.y_pred_knn) )]
+
+df3 = df2[~( (df2.y_test != df2.y_pred_svc) & (df2.y_test != df2.y_pred_rf) & (df2.y_test != df2.y_pred_rf_opt) 
+           & (df2.y_test != df2.y_pred_svc_opt) & (df2.y_test != df2.y_pred_knn) )]
+"""
