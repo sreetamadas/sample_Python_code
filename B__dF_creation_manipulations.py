@@ -144,6 +144,26 @@ corr_cat_nu = cat_nu.loc[num_columns,cat_columns]
 
 
 
+#####   outlier detection & removal  #####
+# use of boxplots
+# other methods: Angle-based Outlier Detector (ABOD), Cluster-based Local Outlier Factor, Histogram-base Outlier Detection (HBOS) 
+#                Feature Bagging, Isolation Forest, K Nearest Neighbors (KNN), Local Outlier Factor (LOF),
+#                Minimum Covariance Determinant (MCD),  One-class SVM (OCSVM), Principal Component Analysis (PCA)
+"""from pyod.models.abod import ABOD
+from pyod.models.cblof import CBLOF
+
+from pyod.models.feature_bagging import FeatureBagging
+from pyod.models.hbos import HBOS
+from pyod.models.iforest import IForest
+from pyod.models.knn import KNN
+from pyod.models.lof import LOF
+from pyod.models.mcd import MCD
+from pyod.models.ocsvm import OCSVM
+from pyod.models.pca import PCA as PCA_pyod"""
+
+
+
+
 ##################   MANIPULATIONS   #################
 ####  concatenation  ####
 # ADD 1 df below the other
