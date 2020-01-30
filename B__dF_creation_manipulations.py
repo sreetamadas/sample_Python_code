@@ -84,8 +84,9 @@ rem_row = p_row - df.shape[0]
 # https://pandas.pydata.org/pandas-docs/stable/missing_data.html
 df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
 df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
-
-
+df[selected_numeric_columns] = df[selected_numeric_columns].fillna(df[selected_numeric_columns].mean())   # impute with mean
+# below imputation for categories; can also use if condition to fill specific values corresponding to value in other cols
+df[categorical_cols] = df[categorical_cols].fillna("nan")  
 
 
 ## keep rows with finite values in a column
