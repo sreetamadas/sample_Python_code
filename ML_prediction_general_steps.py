@@ -120,6 +120,21 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 #  How to Deal with Imbalanced Data using SMOTE   https://medium.com/analytics-vidhya/balance-your-data-using-smote-98e4d79fcddb
 # cross-validation   https://medium.com/lumiata/cross-validation-for-imbalanced-datasets-9d203ba47e8
 
+"""
+def train_test_split(data,frac=0.7,shuffle=True):   # not the inbuilt train_test_split function
+    if shuffle:
+        train_data = data.sample(frac=frac, replace=False, random_state=1)
+        test_index = list(set(range(len(data)))-set(train_data.index))
+    else:
+        train_data = data[:int(0.7*len(data))]
+        test_data = data[int(0.7*len(data)):]
+    train_data = train_data.reset_index(drop=True)
+    test_data = data.iloc[test_index,:].reset_index(drop=True)
+    print('Shape of train data is : ',train_data.shape)
+    print('Shape of test data is : ',test_data.shape)
+    return train_data,test_data
+"""
+
 
 
 # 7. normalize the data; can also use other scalers like MinMaxScaler()
