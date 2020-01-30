@@ -1,6 +1,6 @@
 #####  dataframe: creation &  manipulations  #####
 
-##########   CREATION   ##############
+#####################   CREATION   ########################
 gender = ['male','male','male','female','female','female','squirrel']
 pet1 =['dog','cat','dog','cat','dog','squirrel','dog']
 pet2 =['dog','cat','cat','squirrel','dog','cat','cat']
@@ -11,7 +11,7 @@ d['points'] = np.where( ( (d['gender'] == 'male') & (d['pet1'] == d['pet2'] ) ) 
 
 
 
-##########      CHECKS    #############
+#######################    CHECKS    #####################
 ## step 2: running checks on the input data as dataframe
 
 ## checking types of data in different cols 
@@ -24,6 +24,28 @@ df['colname'].value_counts()
 
 ## df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
 df.shape
+
+
+
+#####   missing data handling  ####
+# GOOGLE: how to detect NA values in python ;  how to remove rows with NAN values in python
+# https://stackoverflow.com/questions/29530232/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe
+# https://machinelearningmastery.com/handle-missing-data-python/
+
+# missing data
+print(df.isnull())
+print(df.notnull())
+
+# count no. of rows with missing values
+print(df.isnull().sum())
+
+# code for adding missing values (median/mean or fill using previous value or next value) 
+# https://pandas.pydata.org/pandas-docs/stable/missing_data.html
+df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
+df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
+
+## keep rows with finite values in a column
+df_cleaned = df[np.isfinite(df['col_X'])]
 
 
 
