@@ -54,36 +54,6 @@ df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
 
 ############################################################################################################################
 
-
-########################################################################################################
-## assigning data from one df to another
-new_df.loc[0, 'dateTime'] = df.loc[(rownum), 'dateTime']
-
-
-## extract portion from dateTime
-df.loc[row_index, 'hr'] = df.loc[row_index, 'dateTime'].hour
-
-# calculate difference/ interval b/w time stamps
-#df.loc[row_index, 'timedel'] =  (df.loc[row_index, 'dateTime'] - df.loc[(row_index-1), 'dateTime']) #.astype('timedelta64[m]')
-df.loc[row_index, 'timedel'] =  pd.Timedelta(pd.Timestamp(df.loc[row_index, 'dateTime']) - pd.Timestamp(df.loc[(row_index-1), 'dateTime'])).total_seconds()/60 #.astype('timedelta64[m]')
- 
-
-###########################################################################################################
-##### subsetting a dataframe #####
-
-## subset by row
-df = df[df.colname == some_value]
-
-## subset by column
-df = df[['X1','X2','X4','Y']]  # by column name
-# or,
-df = df.loc[:, ['X1','X2','X4','Y']]
-
-df = df.iloc[:,[0,1,3,4]].values     # by column no.
-
-############################################################################################################
-
-
 ###  arrays in python: list => [] , tuple => ()  ####
 # list can be updated, tuple is read-only list
 list1 = [3, 5, 7, 9]
