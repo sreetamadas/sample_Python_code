@@ -93,7 +93,8 @@ dfull.groupby('class').agg({'X1': 'count'})
 # 4. create new features (optional, if required; may be based on domain knowledge)
 # https://medium.com/vickdata/four-feature-types-and-how-to-transform-them-for-machine-learning-8693e1c24e80
 # https://towardsdatascience.com/automated-feature-engineering-in-python-99baf11cc219
-#### feature aggregation
+#### feature aggregation (group by some feature & compute mean, sum, etc.)
+## can convert numeric column to categorical by binning
 
 
 # 5. subset only required columns (optional, if required; may be based on domain knowledge)
