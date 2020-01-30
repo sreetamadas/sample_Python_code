@@ -287,6 +287,7 @@ rf = runRFmodel(X_train,y_train,X_test,y_test)
 ### feature importance  ###
 # http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html
 importances = rf.feature_importances_
+'''
 std = np.std([tree.feature_importances_ for tree in rf.estimators_], axis=0)
 # what is this std? how is feature importance calculated in python?
 indices = np.argsort(importances)[::-1]
@@ -306,9 +307,8 @@ plt.bar(range(X_train.shape[1]), importances[indices],
 plt.xticks(range(X_train.shape[1]), indices)
 plt.xlim([-1, X_train.shape[1]])
 plt.show()
-
-
 '''
+
 ## alternate code for plotting
 feature_importance = 100.0 * (importances / importances.max())
 labels = X_train.columns
@@ -322,7 +322,7 @@ plt.xticks(labels[indices], rotation='vertical')
 #plt.show()
 plt.savefig('varImp_iter_'+str(i)+'.png', bbox_inches='tight')
 plt.close()
-'''
+
 #################################################################################################################
 
 # parameter tuning
