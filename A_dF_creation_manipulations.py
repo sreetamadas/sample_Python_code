@@ -12,17 +12,18 @@ d['points'] = np.where( ( (d['gender'] == 'male') & (d['pet1'] == d['pet2'] ) ) 
 
 
 #######################    CHECKS    #####################
-## step 2: running checks on the input data as dataframe
 
-## checking types of data in different cols 
+#### running checks on the input data as dataframe ####
+
+# checking types of data in different cols 
 df.dtypes
 df.info()
 
-## get summary statistics
+# get summary statistics
 df.describe()
 df['colname'].value_counts()
 
-## df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
+# df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
 df.shape
 
 
@@ -46,6 +47,17 @@ df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= usin
 
 ## keep rows with finite values in a column
 df_cleaned = df[np.isfinite(df['col_X'])]
+
+
+
+######   duplicate data handling   #######
+####  remove all rows with duplicate values in selected cols
+df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
+
+####  get all rows with duplicate values in selected cols
+df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
+
+
 
 
 
