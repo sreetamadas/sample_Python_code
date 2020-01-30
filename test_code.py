@@ -54,31 +54,6 @@ df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
 
 ############################################################################################################################
 
-
-###############################################################
-##################################################################
-# GOOGLE: how to detect NA values in python ;  how to remove rows with NAN values in python
-# https://stackoverflow.com/questions/29530232/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe
-# https://machinelearningmastery.com/handle-missing-data-python/
-
-# missing data
-print(df.isnull())
-print(df.notnull())
-
-# count no. of rows with missing values
-print(df.isnull().sum())
-
-# code for adding missing values (median/mean or fill using previous value or next value) 
-# https://pandas.pydata.org/pandas-docs/stable/missing_data.html
-df = df.fillna(method='pad', limit=3)    # using previous value (up to 3 places)
-df = df.fillna(method='bfill')  # backfill: fill using next value  ; ffill= using previous value
-
-## keep rows with finite values in a column
-df_cleaned = df[np.isfinite(df['col_X'])]
-
-################################################################
-
-
 #### rename columns
 oldname = raw_input("enter 1st columnname: ")  # AL1
 df = df.rename(columns={oldname: 'newname'})
