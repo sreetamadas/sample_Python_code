@@ -1,7 +1,8 @@
 ####################################################################################################################
-#### key steps in using ML for prediction ####
+####    key steps in using ML for prediction : skip to import statements    ####
 
 
+###################################################################################################################
 ###### interesting article  ####
 # https://gab41.lab41.org/the-10-algorithms-machine-learning-engineers-need-to-know-f4bb63f5b2fa
 
@@ -21,7 +22,7 @@
 
 
 ###########################################################################
-#### not covered  ####
+####  not covered here  ####
 # git usage, SQL
 
 # data visualization
@@ -62,56 +63,82 @@ import os
 # set path - either through terminal, or by following command
 os.chdir('C:\\User\\Desktop\\data\\Input_output')
 
+
 # get data -> save in a dataframe named "df"
+df = pd.read_csv(main_file_path)  # from csv
+df = pd.read_excel(main_file_path)  # from excel  "/home/user/loc/file.xls"
 
 
 #####################################################################################
 #### data exploration & pre-processing  ####
-# 0. check data - missing or not ; missing data imputation (or removal)
-df.describe
-# https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4
+# 1. check data - missing or not  
+df.describe  # shows if any column has less rows
 
-##### => check other custom commands from pandas (optional)
-#### https://towardsdatascience.com/pandas-tips-that-will-save-you-hours-of-head-scratching-31d8572218c9
-#### https://www.youtube.com/watch?v=RlIiVeig3hc   => pandas-profiling
-#### https://github.com/8080labs/pyforest   (auto imports libraries) 
-# https://towardsdatascience.com/python-for-data-science-8-concepts-you-may-have-forgotten-i-did-825966908393  (arange, map, filter, lambda)  
+# 1. check data types (in different columns) - 
+df.dtypes
+
+##### => check other custom commands from pandas (this section is optional)
+# https://towardsdatascience.com/pandas-tips-that-will-save-you-hours-of-head-scratching-31d8572218c9
+# https://www.youtube.com/watch?v=RlIiVeig3hc   => pandas-profiling
+# https://github.com/8080labs/pyforest   (auto imports libraries) 
+# https://towardsdatascience.com/python-for-data-science-8-concepts-you-may-have-forgotten-i-did-825966908393
+#       above page has links to (arange, map, filter, lambda function, etc.)  
 ######
 
 
-# 1. clean data - take care of missing values, outliers
+
+# 2. clean data 
+# take care of missing values (missing data imputation or removal), outliers
 # https://analyticsindiamag.com/5-ways-handle-missing-values-machine-learning-datasets/
-# for this, explore the data - see the distribution of values in each column (using histogram or boxplot) - are there outliers?
+# https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4
+
+# generally, drop columns with many missing values,
+
+
+# impute columns with less missing values, drop rows with many missing values
+
+
+# remove duplicates
+
+
+# remove col. with 'constant' feature value
+
+
+# cleaning an object column with mixed data types  (https://lnkd.in/eFNQqVM)
+# look at encoding categorical data
+
+
+
+# remove multi-collinearity
+
+
+# explore the data - see the distribution of values in each column (using histogram or boxplot) - are there outliers?
 # # https://towardsdatascience.com/5-useful-statistics-data-scientists-need-to-know-5b4ac29a7da9
 # outlier data imputation or removal
 # https://heartbeat.fritz.ai/how-to-make-your-machine-learning-models-robust-to-outliers-44d404067d07
 
 
-# 2. check data types (in different columns) - convert if data type is not as expected
-# https://lnkd.in/eFNQqVM  (cleaning an object column with mixed data types)
-# look at encoding categorical data
-df.dtypes
-
-
-# check distribution of data in different classes (for classification problems)/ subgroups
-dfull.groupby('class').agg({'X1': 'count'})
-
-
-# 3. create new features (optional, if required; may be based on domain knowledge)
-# https://medium.com/vickdata/four-feature-types-and-how-to-transform-them-for-machine-learning-8693e1c24e80
-# https://towardsdatascience.com/automated-feature-engineering-in-python-99baf11cc219
-
-
-# 4. subset only required colunms (optional, if required; may be based on domain knowledge)
-
-
-# 5. convert factor colunms  (use one hot encoding, if reqd)
+# convert factor colunms  (use one hot encoding, if reqd, for Y in classification problems)
+# convert if column data type is not as expected
 df[['class','class2']] = df[['class','class2']].astype('str') 
 df[['class','class2']] = df[['class','class2']].astype('category')
 # LabelEncoder() ; OneHotEncoder() ; LabelBinarizer() ; to_categorical (keras.utils) - check which to use when
 # https://stackoverflow.com/questions/50473381/scikit-learns-labelbinarizer-vs-onehotencoder
 # GOOGLE: label binarizer vs to categorical
 
+
+
+# 3. check distribution of data in different classes (for classification problems)/ subgroups
+dfull.groupby('class').agg({'X1': 'count'})
+
+
+# 4. create new features (optional, if required; may be based on domain knowledge)
+# https://medium.com/vickdata/four-feature-types-and-how-to-transform-them-for-machine-learning-8693e1c24e80
+# https://towardsdatascience.com/automated-feature-engineering-in-python-99baf11cc219
+#### feature aggregation
+
+
+# 5. subset only required colunms (optional, if required; may be based on domain knowledge)
 
 
 
