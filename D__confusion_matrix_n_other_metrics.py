@@ -88,6 +88,9 @@ print(classification_report(y_test, y_pred, target_names=class_names))
 
 #from sklearn.metrics import precision_recall_fscore_support
 #precision_recall_fscore_support(y_test,y_pred) 
-
+p = precision_recall_fscore_support(y_test,y_pred_sf) 
+sen = p[1][1]
+spec = p[1][0]
+print('sen: ' + str(sen) +' , spec: ' + str(spec))
 
 
