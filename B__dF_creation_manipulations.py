@@ -174,6 +174,15 @@ df = pd.DataFrame()
 newdata = pd.concat([newdata,df],axis=0)  # axis=0 means concatenating by row
 
 
+# https://stackoverflow.com/questions/15923826/random-row-selection-in-pandas-dataframe
+# Randomly sample n elements from your dataframe, & create a new combined df
+d1_elements = d1.sample(n=5000)
+d2_elements = d2.sample(n=5000)
+dw_elements = dw.sample(n=10000)
+dn = pd.DataFrame()
+dn = pd.concat([dw_elements, d1_elements, d2_elements],ignore_index=True)
+
+
 ## ADD dataframes by column
 newdata = pd.DataFrame()
 df = pd.DataFrame()
