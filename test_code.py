@@ -6,7 +6,6 @@ import warnings
 import sys
 sys.version
 
-
 ## set directory
 import os
 os.chdir('c:\Users\username\Desktop\data\code_python')   ### path is Windows
@@ -48,26 +47,12 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 print(dat.head(n=5))
 
 
-
 # write to a file
 df1.to_csv("modified_data.csv", sep=',')
 
 df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
 
-
 ############################################################################################################################
-## step 2: running checks on the input data as dataframe
-
-## checking types of data in different cols 
-df.dtypes
-df.info()
-
-## get summary statistics
-df.describe()
-df['colname'].value_counts()
-
-## df.shape[0] counts num_rows in df; df.shape[1] counts num_cols in df
-df.shape
 
 
 ###############################################################
