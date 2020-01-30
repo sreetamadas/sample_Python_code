@@ -106,12 +106,16 @@ dfull.groupby(['id','class']).agg({'delta': 'count'})
 
 # 6. create train-test data : 2 class
 # should have separate train, validation & test sets
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
 X = df[['X1','X2','X3','X4','X6']]  
 y = df[['class2']]   
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+### check class proportions in train & test sets
+y_train.groupby('class2').size()
+y_test.groupby('class2').size()
+
 ###### use "stratify" option for consistent class distribution between training and test sets  ####
 ##  https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65  ##########
 
