@@ -14,7 +14,6 @@ d['points'] = np.where( ( (d['gender'] == 'male') & (d['pet1'] == d['pet2'] ) ) 
 #######################    CHECKS    #####################
 
 #### running checks on the input data as dataframe ####
-
 # checking types of data in different cols 
 df.dtypes
 df.info()
@@ -85,6 +84,7 @@ df = pd.DataFrame()
 # ... intermediate steps with data manipulations ....
 newdata = pd.concat([newdata,df],axis=0)  # axis=0 means concatenating by row
 
+
 ## ADD dataframes by column
 newdata = pd.DataFrame()
 df = pd.DataFrame()
@@ -96,6 +96,10 @@ newdata = pd.concat([newdata,df],axis=1)  # axis=1 means concatenating by column
 ####  merge  : inner join, outer join, etc
 # https://pandas.pydata.org/pandas-docs/stable/merging.html
 new_df = pd.merge(df1, df2, how='inner', on='ID')
+
+
+## assigning data from one df (by row) to another
+new_df.loc[0, 'dateTime'] = df.loc[(rownum), 'dateTime']
 
 
 
@@ -150,7 +154,15 @@ df2 = df[~( (df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_tes
            & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) )]
 
 
+# subset by row
+df = df[df.colname == some_value]
 
+## subset by column
+df = df[['X1','X2','X4','Y']]  # by column name
+# or,
+df = df.loc[:, ['X1','X2','X4','Y']]
+
+df = df.iloc[:,[0,1,3,4]].values     # by column no.
 
     
     
