@@ -191,83 +191,14 @@ except:
 
 
 #####################################################################################
-### using string format ###
-#who = 'birds'
-#what = 'chi'
-#print 'we are the %s who say %s' % (who, ((what + ' ') * 3) )
-
 
 ## some built-in functions ###
-# int(obj)	convert object to integer
-# str(obj)	convert object to string
-# type(obj)	return type of object
-# len(obj)	return length of object
+
 # range([start,]stop[,step])	
 # gives list of integers, begin at 'start' up to (but not including) 'stop' in increments of 'step'; default => start=0, step = 1
 
 
 ###############################################################################################################
-import pandas as pd
-#import numpy as np
-import os
-
-# create a list with full paths of all files from different locations
-main_list = []
-
-def finalList(L, main_list):
-    files =  os.listdir(L)
-    f_list = [f for f in files if f.endswith('matlab_format.txt')]
-    
-    for f in f_list:
-        main_list.append(L+'/'+f)
-    
-    return main_list
-    
-l1 = 'C:\\Users\\Desktop\\data\\folder1'
-l2 = 'C:\\Users\\Desktop\\data\\folder2'
-l3 = 'C:\\Users\\Desktop\\data\\folder3'
-l4 = 'C:\\Users\\Desktop\\data\\folder4'
-
-main_list = finalList(l1, main_list)
-main_list = finalList(l2, main_list)
-main_list = finalList(l3, main_list)
-main_list = finalList(l4, main_list)
-
-
-## copy the files from different locations to a common location:
-import shutil
-#CK = df[:2]
-for i in range(0, df.shape[0]):  # df has names of files to be copied
-    name = str(df.iloc[i, 0])
-    print(name)
-    
-    # extracting pattern from list
-    # https://stackoverflow.com/questions/16304146/in-python-how-do-i-extract-a-sublist-from-a-list-of-strings-by-matching-a-strin
-    orig = [x for x in main_list if name in x]
-    #f = str(name)+'.txt'
-    shutil.copy2(orig[0], 'C:\\Users\\Desktop\\data\\db\\')
-    # https://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
-
-
-#############################################################################################################
-##### creating checksum of a file ###
-# google : checksum of a pickle file ; pickle file md5sum
-# https://stackoverflow.com/questions/5417949/computing-an-md5-hash-of-a-data-structure/5418117
-
-## load original model
-filename =  '/home/User/path/final_model.sav'   # .pkl or .sav file
-loaded_model = pickle.load(open(filename, 'rb'))
-
-## add version info & dump
-ver = "version 1.0"
-pickle.dump((loaded_model, ver), open("/home/Users/path2/final_model.sav", 'wb'))
-
-## check if version info can be read : LOAD THE FILE
-reload_model, version = pickle.load(open("/home/Users/path2/final_model.sav", 'rb'))
-
-## GET CHECKSUM
-import hashlib, random 
-print(hashlib.md5(reload_model).hexdigest())
 
 
 #############################################################################################################
