@@ -49,15 +49,6 @@ df_cleaned = df[np.isfinite(df['col_X'])]
 
 
 
-######   duplicate data handling   #######
-####  remove all rows with duplicate values in selected cols
-df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
-
-####  get all rows with duplicate values in selected cols
-df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
-
-
-
 #######   drop unnecessary cols (lot of missing values, or containing constant value)  ######
 # method 1
 df.drop('Col_not_required', axis=1, inplace=True)
@@ -65,6 +56,47 @@ df.drop('Col_not_required', axis=1, inplace=True)
 del df['col_not_reqd']
 # method 3
 df = df.drop(['col1', 'col2'], axis=1)
+
+# remove columns with constants
+p_col = col  # original col
+cons_columns = df.nunique()==1  # print this to get which cols have constants
+cons_index = np.where(cons_columns)[0]
+df = df.drop(columns=df.columns[cons_index])
+col = df.columns   # columns remaining after dropping constant col.
+rem_col = set(p_col)-set(col)
+
+# remove col with missing values
+p_col = col
+missing_per = np.sum(df.isnull()) / len(df)
+missing_index = np.where(missing_per > miss_thresh)[0]
+df = df.drop(columns=df.columns[missing_index])
+col = df.columns
+rem_col = set(p_col)-set(col)
+
+# remove rows with missing val
+missing_per_row = np.sum(df.T.isnull()) / len(df)
+missing_index_row = np.where(missing_per_row  > miss_thresh)[0]
+p_row = df.shape[0]
+df = df.drop(df.index[missing_index_row])
+rem_row = p_row - df.shape[0]
+
+
+
+
+
+######   duplicate data handling   #######
+####  remove all rows with duplicate values in selected cols
+df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
+df.drop_duplicates(inplace=True)  # remove rowwise duplicates, using all columns
+
+####  get all rows with duplicate values in selected cols
+df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
+
+
+### remove columnwise duplicates
+col = list(df.T.drop_duplicates().T) # Columnwise duplicates
+df =  df[col]
+
 
 
 
