@@ -59,6 +59,22 @@ df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if
 
 
 
+#######   drop unnecessary cols (lot of missing values, or containing constant value)  ######
+# method 1
+df.drop('Col_not_required', axis=1, inplace=True)
+# method 2
+del df['col_not_reqd']
+# method 3
+df = df.drop(['col1', 'col2'], axis=1)
+
+
+
+#####  rename cols  ######
+oldname = raw_input("enter 1st columnname: ")  # AL1
+df = df.rename(columns={oldname: 'newname'})
+
+
+
 
 
 ##################   MANIPULATIONS   #################
