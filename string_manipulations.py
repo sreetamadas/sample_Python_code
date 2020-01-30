@@ -1,4 +1,5 @@
 ####  string split & subset operations  ####
+# str(obj)	convert object to string
 
 
 ## split a string by some character : the resultants are also strings
@@ -31,3 +32,7 @@ df['Machine'] = '2MCT ' + df['Machine'].map(str).str[1:]
 
 
 
+### using string format ###
+#who = 'birds'
+#what = 'chi'
+#print 'we are the %s who say %s' % (who, ((what + ' ') * 3) )
