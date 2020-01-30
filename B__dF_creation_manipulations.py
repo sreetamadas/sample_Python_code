@@ -144,6 +144,12 @@ for i in range(0,df.shape[0]):
 
 
     
+## removing & adding row to df
+backup = backup.drop(backup.head(1).index) #, inplace=True)  # remove row from top
+backup = backup.append(df.iloc[[i]]) #, axis=0)  ## add row at end
+    
+  
+  
 ### taking subsets    
 match = df[(df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
            & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) ]
@@ -152,7 +158,6 @@ match = df[(df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test
 # https://stackoverflow.com/questions/41800424/remove-rows-in-python-less-than-a-certain-value
 df2 = df[~( (df.y_test == df.ypred_svc) & (df.y_test == df.ypred_rf) & (df.y_test == df.ypred_gb) 
            & (df.y_test == df.ypred_mlp) & (df.y_test == df.ypred_knn) & (df.y_test == df.ypred_dt) )]
-
 
 # subset by row
 df = df[df.colname == some_value]
