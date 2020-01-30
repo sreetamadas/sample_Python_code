@@ -54,26 +54,6 @@ df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
 
 ############################################################################################################################
 
-#### rename columns
-oldname = raw_input("enter 1st columnname: ")  # AL1
-df = df.rename(columns={oldname: 'newname'})
-
-
-### drop unnecessary cols
-# method 1
-df.drop('Col_not_required', axis=1, inplace=True)
-# method 2
-del df['col_not_reqd']
-# method 3
-df = df.drop(['col1', 'col2'], axis=1)
-
-
-####  remove all rows with duplicate values in selected cols
-df_single = df.drop_duplicates(subset=['Date', 'Shift', 'Index'], keep=False)
-
-####  get all rows with duplicate values in selected cols
-df_multi = pandas.concat(g for _, g in df.groupby(['Date', 'Shift', 'Index']) if len(g) > 1)
-
 
 ########################################################################################################
 ## assigning data from one df to another
