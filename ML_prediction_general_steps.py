@@ -28,6 +28,7 @@ df.dtypes
 df.columns  # list of columns in the df 
 
 ##### => check other custom commands from pandas (this section is optional)
+# https://towardsdatascience.com/exploratory-data-analysis-with-pandas-508a5e8a5964
 # https://towardsdatascience.com/pandas-tips-that-will-save-you-hours-of-head-scratching-31d8572218c9
 # https://www.youtube.com/watch?v=RlIiVeig3hc   => pandas-profiling
 # https://github.com/8080labs/pyforest   (auto imports libraries) 
