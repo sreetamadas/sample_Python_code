@@ -45,6 +45,13 @@ print(df.notnull())
 print(df.isnull().sum())
 
 
+### check what the following 4 commands do 
+df[df==np.inf]=np.nan
+df.isnull().any(axis=0) 
+df.dropna(inplace=True) 
+df.reset_index(inplace=True, drop=True)
+
+
 
 #######   drop unnecessary cols (lot of missing values, or containing constant value)  ######
 # method 1
@@ -253,7 +260,8 @@ backup = backup.append(df.iloc[[i]]) #, axis=0)  ## add row at end
   
   
 ### taking subsets : subset by row
-df = df[df.colname == some_value]
+df1 = df[df.colname == some_value]
+df1.reset_index(inplace=True, drop=True)
 
 ## subset by column
 df = df[['X1','X2','X4','Y']]  # by column name
