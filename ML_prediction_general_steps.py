@@ -31,6 +31,10 @@ df.columns  # list of columns in the df
 # https://towardsdatascience.com/exploratory-data-analysis-with-pandas-508a5e8a5964
 # https://towardsdatascience.com/pandas-tips-that-will-save-you-hours-of-head-scratching-31d8572218c9
 # https://www.youtube.com/watch?v=RlIiVeig3hc   => pandas-profiling
+'''pip install pandas-profiling
+conda install -c conda-forge pandas-profiling
+import pandas_profiling
+df.profile_report()'''
 # https://github.com/8080labs/pyforest   (auto imports libraries) 
 # https://towardsdatascience.com/python-for-data-science-8-concepts-you-may-have-forgotten-i-did-825966908393
 #       above page has links to (arange, map, filter, lambda function, etc.)  
