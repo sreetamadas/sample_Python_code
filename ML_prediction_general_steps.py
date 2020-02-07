@@ -315,28 +315,10 @@ print('cross_val_score_std ' + str(accuracies.std()))
 
 
 
-#########    combine different models     #########
-#### voting classifier - weighted, unweighted  ####
 
-# https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html
-from sklearn.ensemble import VotingClassifier
-
-# optimised SVC MODEL 
-model_svc_opt = SVC(C=1000, kernel='linear')
-# other SVC
-model_svc = SVC()
-# etc.
-## voting classifier: hard
-eclf_hrd = VotingClassifier(estimators=[('svc_opt', model_svc_opt), ('svc', model_svc), 
-                                        ('rf_opt', model_rf_opt), ('rf', model_rf),
-                                        ('knn', model_knn)], voting='hard')
-## fit model - vary ML algo & hyperparameters
-eclf_hrd.fit(X_train_scaled, y_train)
-
-
-
-######   adaboost, xgboost, stacking regressor   ######
+######   adaboost, xgboost, stacking    ######
 # parameter tuning for gradient boosting
+# https://stackoverflow.com/questions/32210569/using-gridsearchcv-with-adaboost-and-decisiontreeclassifier
 # https://medium.com/all-things-ai/in-depth-parameter-tuning-for-gradient-boosting-3363992e9bae
 
 # learning rate shrinks the contribution of each tree by learning_rate: high learning rate results in overfitting
@@ -359,6 +341,26 @@ plt.show()
 
 #######   bagging data sets    #######
 # creating multiple train sets by taking subsets from original data, and building a model on each of these data subsets
+
+
+#########    combine different models     #########
+#### voting classifier - weighted, unweighted  ####
+
+# https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html
+from sklearn.ensemble import VotingClassifier
+
+# optimised SVC MODEL 
+model_svc_opt = SVC(C=1000, kernel='linear')
+# other SVC
+model_svc = SVC()
+# etc.
+## voting classifier: hard
+eclf_hrd = VotingClassifier(estimators=[('svc_opt', model_svc_opt), ('svc', model_svc), 
+                                        ('rf_opt', model_rf_opt), ('rf', model_rf),
+                                        ('knn', model_knn)], voting='hard')
+## fit model - vary ML algo & hyperparameters
+eclf_hrd.fit(X_train_scaled, y_train)
+
 
 
 
