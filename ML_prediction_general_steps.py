@@ -212,6 +212,10 @@ from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 #       https://www.analyticsvidhya.com/blog/2015/08/introduction-ensemble-learning/
 # for a comprehensive list, see websites: machinelearningmastery, scikitlearn
 
+# https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/
+# above link calculates train, val & test error, which is useful for model tuning
+
+
 model_svc = SVC()  # kernel='linear'
 model_svc.fit(X_train_scaled, y_train)
 
@@ -239,6 +243,7 @@ from sklearn.metrics import classification_report
 #from sklearn.metrics import precision_recall_fscore_support, confusion_matrix
 print(classification_report(y_test, y_pred, target_names=class_names))
 # also, see the separate code for confusion matrix
+
 
 
 
@@ -305,6 +310,8 @@ print('cross_val_score_std ' + str(accuracies.std()))
 # use of k-fold on the training data
 
 ## check for overfitting by comparing performance on train & test sets
+# https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/
+# above link calculates train, val & test error, which is useful for model tuning
 
 
 #########    combine different models     #########
