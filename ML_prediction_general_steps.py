@@ -314,6 +314,7 @@ print('cross_val_score_std ' + str(accuracies.std()))
 # above link calculates train, val & test error, which is useful for model tuning
 
 
+
 #########    combine different models     #########
 #### voting classifier - weighted, unweighted  ####
 
@@ -335,8 +336,24 @@ eclf_hrd.fit(X_train_scaled, y_train)
 
 
 ######   adaboost, xgboost, stacking regressor   ######
+# parameter tuning for gradient boosting
+# https://medium.com/all-things-ai/in-depth-parameter-tuning-for-gradient-boosting-3363992e9bae
 
-
+# learning rate shrinks the contribution of each tree by learning_rate: high learning rate results in overfitting
+# N_estimators : high -> better learning but compute intensive -> optimise !!
+from sklearn.metrics import roc_curve, auc
+learning_rates = [1, 0.5, 0.25, 0.1, 0.05, 0.01]train_results = []
+test_results = []
+for eta in learning_rates:
+   model = GradientBoostingClassifier(learning_rate=eta)
+   model.fit(x_train, y_train)   train_pred = model.predict(x_train)   false_positive_rate, true_positive_rate, thresholds = roc_curve(y_train, train_pred)
+   roc_auc = auc(false_positive_rate, true_positive_rate)
+   train_results.append(roc_auc)   y_pred = model.predict(x_test)   false_positive_rate, true_positive_rate, thresholds = roc_curve(y_test, y_pred)
+   roc_auc = auc(false_positive_rate, true_positive_rate)
+   test_results.append(roc_auc)from matplotlib.legend_handler import HandlerLine2Dline1, = plt.plot(learning_rates, train_results, ‘b’, label=”Train AUC”)
+line2, = plt.plot(learning_rates, test_results, ‘r’, label=”Test AUC”)plt.legend(handler_map={line1: HandlerLine2D(numpoints=2)})plt.ylabel(‘AUC score’)
+plt.xlabel(‘learning rate’)
+plt.show()
 
 
 
