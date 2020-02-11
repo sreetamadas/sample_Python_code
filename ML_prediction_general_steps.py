@@ -211,9 +211,10 @@ from sklearn.metrics import precision_recall_fscore_support,confusion_matrix
 #       https://www.kdnuggets.com/2017/02/stacking-models-imropved-predictions.html
 #       https://www.analyticsvidhya.com/blog/2015/08/introduction-ensemble-learning/
 # for a comprehensive list, see websites: machinelearningmastery, scikitlearn
+# https://blog.datasciencedojo.com/machine-learning-algorithms/   (101 ML algos)
 
 # https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/
-# above link calculates train, val & test error, which is useful for model tuning
+# above link calculates train, val & test error, which is useful for model tuning  ****
 
 
 model_svc = SVC()  # kernel='linear'
