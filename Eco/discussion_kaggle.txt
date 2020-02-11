@@ -1,0 +1,11 @@
+https://www.kaggle.com/c/datasciencebowl/overview
+https://www.kaggle.com/c/datasciencebowl/discussion/13158
+https://www.kaggle.com/c/datasciencebowl/discussion/12924
+
+
+spatially sparse net
+sparseconvnet
+https://github.com/facebookresearch/SparseConvNet
+https://github.com/btgraham/SparseConvNet/tree/master/SparseConvNet/Data
+
+
