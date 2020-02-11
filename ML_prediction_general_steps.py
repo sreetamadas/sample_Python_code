@@ -166,6 +166,7 @@ X_test_scaled = scaler.transform(X_test)
 # https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b?gi=cf02ae64f802
 # https://towardsdatascience.com/feature-selection-techniques-for-classification-and-python-tips-for-their-application-10c0ddd7918b
 # https://towardsdatascience.com/the-5-feature-selection-algorithms-every-data-scientist-need-to-know-3a6b566efd2
+# https://towardsdatascience.com/pca-and-svd-explained-with-numpy-5d13b0d2a4d8
 from sklearn import decomposition
 pca = decomposition.PCA(n_components=2)
 pca.fit(X_train)
