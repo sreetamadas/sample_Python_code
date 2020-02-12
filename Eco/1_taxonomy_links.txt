@@ -1,0 +1,21 @@
+https://science.sciencemag.org/content/348/6237/1261605   Eukaryotic plankton diversity in the sunlit ocean
+https://www.nature.com/articles/s41467-017-02342-1    A global ocean atlas of eukaryotic genes
+https://science.sciencemag.org/content/348/6237/1261359/tab-figures-data    Structure and function of the global ocean microbiome
+https://www.nature.com/articles/sdata2017203     The reconstruction of 2,631 draft metagenome-assembled genomes from the global oceans
+
+
+
+google:
+tara reference reference genomes
+http://ocean-microbiome.embl.de/companion.html
+http://ocean-microbiome.embl.de/companion.html#taxonomic
+eukaryotic plankton diversity in the sunlit ocean companion website
+http://taraoceans.sb-roscoff.fr/EukDiv/
+
+
+http://www.genoscope.cns.fr/tara/
+
+
+http://tolweb.org/tree/home.pages/search.html#group     **** (tree of life)
+https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi   ****
+https://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/
