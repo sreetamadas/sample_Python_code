@@ -82,8 +82,11 @@ dfull['class2'] = [0 if x == 'wake' else 1 if x == 'sleep_stage_1' else 2 for x 
 df[['class','class2']] = df[['class','class2']].astype('str') 
 df[['class','class2']] = df[['class','class2']].astype('category')
 # LabelEncoder() ; OneHotEncoder() ; LabelBinarizer() ; to_categorical (keras.utils) - check which to use when
-# https://stackoverflow.com/questions/50473381/scikit-learns-labelbinarizer-vs-onehotencoder
-# GOOGLE: label binarizer vs to categorical
+# integer encoding vs one-hot encoding
+# https://stackoverflow.com/questions/50473381/scikit-learns-labelbinarizer-vs-onehotencoder  ***
+# https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
+# https://chrisalbon.com/machine_learning/preprocessing_structured_data/one-hot_encode_features_with_multiple_labels/
+# GOOGLE: label binarizer vs to categorical ; why use one hot encoding for multi class classification
 ## some built-in functions ###
 # int(obj)	convert object to integer
 # str(obj)	convert object to string
