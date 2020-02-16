@@ -170,6 +170,7 @@ X_test_scaled = scaler.transform(X_test)
 # https://towardsdatascience.com/feature-selection-techniques-for-classification-and-python-tips-for-their-application-10c0ddd7918b
 # https://towardsdatascience.com/the-5-feature-selection-algorithms-every-data-scientist-need-to-know-3a6b566efd2
 # https://towardsdatascience.com/pca-and-svd-explained-with-numpy-5d13b0d2a4d8
+# https://towardsdatascience.com/an-approach-to-choosing-the-number-of-components-in-a-principal-component-analysis-pca-3b9f3d6e73fe
 from sklearn import decomposition
 pca = decomposition.PCA(n_components=2)
 pca.fit(X_train)
