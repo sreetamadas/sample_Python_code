@@ -1,0 +1,25 @@
+https://machinelearningmastery.com/how-to-develop-a-convolutional-neural-network-to-classify-photos-of-dogs-and-cats/#comment-516177
+https://machinelearningmastery.com/start-here/#better
+https://machinelearningmastery.com/use-pre-trained-vgg-model-classify-objects-photographs/
+https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/
+
+https://keras.io/preprocessing/image/
+https://keras.io/applications/#mobilenet
+
+https://stackoverflow.com/questions/47555829/preprocess-input-method-in-keras
+google: 
+using preprocess_input with datagen  , preprocess_input keras vgg16
+https://github.com/keras-team/keras/issues/9624
+
+
+
+google:
+phylogenetic inference from image classification
+https://openreview.net/pdf?id=r17RD2oxe
+https://www.biorxiv.org/content/biorxiv/early/2019/03/08/559054.full.pdf
+https://www.nature.com/scitable/topicpage/reading-a-phylogenetic-tree-the-meaning-of-41956/
+
+
+https://www.draw.io/
+https://towardsdatascience.com/computer-vision-auto-grading-handwritten-mathematical-answersheets-8974744f72dd
+
