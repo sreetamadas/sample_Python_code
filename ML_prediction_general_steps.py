@@ -38,6 +38,8 @@ df.profile_report()'''
 # https://github.com/8080labs/pyforest   (auto imports libraries) 
 # https://towardsdatascience.com/python-for-data-science-8-concepts-you-may-have-forgotten-i-did-825966908393
 #       above page has links to (arange, map, filter, lambda function, etc.)  
+# numpy commands
+# https://towardsdatascience.com/the-ultimate-beginners-guide-to-numpy-f5a2f99aef54
 ######
 
 
