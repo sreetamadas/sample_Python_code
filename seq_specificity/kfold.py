@@ -158,6 +158,7 @@ print('avg accuracy: ' + str(metrics.accuracy.mean()))
 
 
 #####################################################################################
+### run grid search ###
 # https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65
 
 from sklearn.metrics import make_scorer,recall_score,accuracy_score,precision_score   #roc_curve, precision_recall_curve, auc, confusion_matrix
@@ -214,9 +215,100 @@ def grid_search_wrapper(refit_score='recall_score'):
     print(pd.DataFrame(confusion_matrix(y_test, y_pred),
                  columns=['pred_neg', 'pred_pos'], index=['neg', 'pos']))
     return grid_search, results
+###
+
+grid_search_clf, results = grid_search_wrapper(refit_score='recall_score')
+#grid_search_clf
+
+results = pd.DataFrame(grid_search_clf.cv_results_)
+results = results.sort_values(by='mean_test_recall_score', ascending=False)
+results.columns
+#results
+#results[['mean_test_precision_score', 'mean_test_recall_score', 'mean_test_accuracy_score']].round(3)#.head() 
+# 'param_max_features', 'param_min_samples_split', 'param_n_estimators'
+#results.round(3)
+results[['mean_test_accuracy_score', 'mean_test_precision_score', 'mean_test_recall_score',
+         'param_C', 'param_gamma', 'param_kernel','rank_test_recall_score',
+       'std_test_accuracy_score', 'std_test_precision_score', 'std_test_recall_score']].round(3)
+
 #######################################################################################
 
-### run grid search ###
-grid_search_clf, results = grid_search_wrapper(refit_score='recall_score')
+#### random search 
+# https://www.mikulskibartosz.name/xgboost-hyperparameter-tuning-in-python-using-grid-search/ 
+
+clf = xgb(objective = 'binary:logistic', scale_pos_weight=1)  # this runs the computation in parallel
+
+param_grid = {"n_estimators": [1, 4, 8, 16, 64, 100, 500],
+              "learning rate": [0.1, 0.05, 0.01],
+              "max_depth": [2, 8, 16, 64],
+               "subsample": [0.8, 0.9, 1], 
+              "colsample_bytree": [0.8, 1],
+              "gamma": [0,1,5]
+              }  
+
+scorers = {
+    'precision_score': make_scorer(precision_score),
+    'recall_score': make_scorer(recall_score),
+    'accuracy_score': make_scorer(accuracy_score)
+}
+
+def random_search_wrapper(refit_score='recall_score'):
+    """
+    fits a GridSearchCV classifier using refit_score for optimization
+    prints classifier performance metrics
+    """
+    skf = StratifiedKFold(n_splits = 4)
+    random_search_clf = RandomizedSearchCV(clf, param_grid, scoring=scorers, refit=refit_score,
+                           cv=skf, return_train_score=True, n_jobs=-1)
+    random_search_clf.fit(x_tr, y_tr.values)  # X_train.values
+    print('grid done!')
+
+    print('Best params for {}'.format(refit_score))
+    print(random_search_clf.best_params_)
+    
+    results = pd.DataFrame(random_search_clf.cv_results_)
+    #print(results)
+    results = results[['mean_train_recall_score','mean_test_recall_score','mean_train_accuracy_score','mean_test_accuracy_score','mean_train_precision_score','mean_test_precision_score']] 
+    #print(results.T)
+    
+    # make the predictions
+    y_prd = random_search_clf.predict(x_ts)
+
+    # confusion matrix on the test data.
+    print('\nConfusion matrix of XGB optimized for {} on the test data:'.format(refit_score))
+    print(pd.DataFrame(confusion_matrix(y_ts, y_prd),
+                 columns=['pred_neg', 'pred_pos'], index=['neg', 'pos']))
+    print("classification report", classification_report(y_ts, y_prd))
+    return random_search_clf, results
+  
+  
+x_tr, x_ts, y_tr, y_ts = train_test_split(x, y, test_size =0.3, stratify = y, random_state = 42)
+random_search_clf, results = random_search_wrapper(refit_score='recall_score')
+
+## sort by different metrics & plot ##
+results = results.sort_values(by='mean_train_accuracy_score', ascending=False)
+# dataframe & plots
+fig, ax2 = plt.subplots(1, 1)
+#ax2.hold(True)
+ax2.plot(results['mean_train_accuracy_score'],label='Traning set')
+ax2.plot(results['mean_test_accuracy_score'],label='Validation set')
+#ax2.set_title("Training and Validation precision")
+ax2.set_ylabel("accuracy")
+ax2.set_xlabel("Iterations")
+ax2.set_xlim([0,20])
+ax2.legend(fancybox=True)
+
+#model_xgb = xgb(objective = 'binary:logistic', subsample = 0.9, n_estimators= 100, max_depth= 64, learning_rate =0.05, gamma = 1, colsample_bytree = 1, random_state = 42)
+#model_xgb.fit(x_train, y_train)
+#p =model_xgb.predict(x_test)
+#print('f1_score:', f1_score(y_test,p, average = 'weighted'))
+#print('accuracy:', accuracy_score(y_test, p))
+#print(classification_report(y_test, p))
+
+
+  
+
+
+
 
 
