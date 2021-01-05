@@ -254,7 +254,7 @@ from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
 ####################################################
-####   GradCAM  #####
+####   GradCAM : works for 2 labels   #####
 #'''
 from fastai.vision import *
 from fastai.callbacks.hooks import *
@@ -462,13 +462,58 @@ def file_name(i):
   img = test[i]
   gcam = GradCam.from_one_img(learn,img)
   fig = gcam.plot()
-  #fig.savefig(os.path.join(save_path,file_name))
+  fig.savefig(os.path.join(save_path,file_name))  # save the images
   #return fig
   #print(type(fig))
   #return fig
 
 file_name(3)
 file_name(359)
+
+
+####################################################
+
+######  CNN with CAM : for multiple labels ######
+from fastai.callbacks.hooks import *
+
+def visualize_cnn_by_cam(learn, data_index):
+    x, _y = learn.data.valid_ds[data_index]
+    y = _y.data
+    if not isinstance(y, (list, np.ndarray)): # single label -> one hot encoding
+        y = np.eye(learn.data.valid_ds.c)[y]
+
+    m = learn.model.eval()
+    xb,_ = learn.data.one_item(x)
+    xb_im = Image(learn.data.denorm(xb)[0])
+    xb = xb.cuda()
+
+    def hooked_backward(cat):
+        with hook_output(m[0]) as hook_a: 
+            with hook_output(m[0], grad=True) as hook_g:
+                preds = m(xb)
+                preds[0,int(cat)].backward()
+        return hook_a,hook_g
+    def show_heatmap(img, hm, label):
+        _,axs = plt.subplots(1, 2)
+        axs[0].set_title(label)
+        img.show(axs[0])
+        axs[1].set_title(f'CAM of {label}')
+        img.show(axs[1])
+        axs[1].imshow(hm, alpha=0.6, extent=(0,img.shape[1],img.shape[1],0),
+                      interpolation='bilinear', cmap='magma');
+        plt.show()
+
+    for y_i in np.where(y > 0)[0]:
+        hook_a,hook_g = hooked_backward(cat=y_i)
+        acts = hook_a.stored[0].cpu()
+        grad = hook_g.stored[0][0].cpu()
+        grad_chan = grad.mean(1).mean(1)
+        mult = (acts*grad_chan[...,None,None]).mean(0)
+        show_heatmap(img=xb_im, hm=mult, label=str(learn.data.valid_ds.y[data_index]))
+
+for idx in range(100):
+    visualize_cnn_by_cam(learn, idx)
+
 
 ###################################
 
@@ -626,49 +671,5 @@ def plot_heatmap_overview(interp:ClassificationInterpretation, classes=['Negativ
 #'''
 
 plot_heatmap_overview(interp, ['Crazing','Inclusion','Patches','Pitted-surface','Rolled-in scale','Scratches'])
-
-
-####################################################
-
-######  CNN with CAM  ######
-from fastai.callbacks.hooks import *
-
-def visualize_cnn_by_cam(learn, data_index):
-    x, _y = learn.data.valid_ds[data_index]
-    y = _y.data
-    if not isinstance(y, (list, np.ndarray)): # single label -> one hot encoding
-        y = np.eye(learn.data.valid_ds.c)[y]
-
-    m = learn.model.eval()
-    xb,_ = learn.data.one_item(x)
-    xb_im = Image(learn.data.denorm(xb)[0])
-    xb = xb.cuda()
-
-    def hooked_backward(cat):
-        with hook_output(m[0]) as hook_a: 
-            with hook_output(m[0], grad=True) as hook_g:
-                preds = m(xb)
-                preds[0,int(cat)].backward()
-        return hook_a,hook_g
-    def show_heatmap(img, hm, label):
-        _,axs = plt.subplots(1, 2)
-        axs[0].set_title(label)
-        img.show(axs[0])
-        axs[1].set_title(f'CAM of {label}')
-        img.show(axs[1])
-        axs[1].imshow(hm, alpha=0.6, extent=(0,img.shape[1],img.shape[1],0),
-                      interpolation='bilinear', cmap='magma');
-        plt.show()
-
-    for y_i in np.where(y > 0)[0]:
-        hook_a,hook_g = hooked_backward(cat=y_i)
-        acts = hook_a.stored[0].cpu()
-        grad = hook_g.stored[0][0].cpu()
-        grad_chan = grad.mean(1).mean(1)
-        mult = (acts*grad_chan[...,None,None]).mean(0)
-        show_heatmap(img=xb_im, hm=mult, label=str(learn.data.valid_ds.y[data_index]))
-
-for idx in range(100):
-    visualize_cnn_by_cam(learn, idx)
 
 
