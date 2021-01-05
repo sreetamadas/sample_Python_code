@@ -255,6 +255,7 @@ InteractiveShell.ast_node_interactivity = "all"
 
 ####################################################
 ####   GradCAM  #####
+#'''
 from fastai.vision import *
 from fastai.callbacks.hooks import *
 import scipy.ndimage
@@ -444,7 +445,7 @@ def get_grad_heatmap(learn,xb,y,size):
     xb_grad = np.einsum('ijk, jk->jki',xb_grad, hmap_scaleup) #(224,224,3)
     
     return hmap,xb_grad
-##########################
+##'''
 
 path = '/content/drive/My Drive/VQI/darknet/build/darknet/x64/data/obj'
 learn = load_learner(path, 'export.pkl')
