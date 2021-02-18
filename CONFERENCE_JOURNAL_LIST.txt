@@ -1,0 +1,19 @@
+gtc S21313
+tensorflow, torch etc
+https://www.nvidia.com/en-us/deep-learning-ai/education/ 
+
+CONFERENCES:
+http://www.laurent-duval.eu/siva-conferences.html 
+http://www.iitj.ac.in/icvgip2020/ 
+https://www.journals.elsevier.com/artificial-intelligence-in-medicine/call-for-papers/deep-learning-methods-for-medical-applications  
+
+https://www.conference-service.com/conferences/image-processing.html
+http://www.guide2research.com/topconf/computer-vision
+http://www.guide2research.com/journals/
+http://www.guide2research.com/journal/signal-processing-image-communication
+https://www.journals.elsevier.com/engineering-applications-of-artificial-intelligence ****  (IF 4.201)
+https://www.springer.com/journal/11760/updates/18077074  (IF: 2.27) - Signal, Image and Video Processing - covid issue
+
+https://www.journals.elsevier.com/image-and-vision-computing (more tough)
+https://www.journals.elsevier.com/computer-vision-and-image-understanding (very tough)
+https://signalprocessingsociety.org/publications-resources/ieee-transactions-image-processing (very tough)
