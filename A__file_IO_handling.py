@@ -28,6 +28,11 @@ dat = pandas.read_csv("C:\\Users\\username\\Desktop\\data\\sampleData.csv")
 print(dat.head(n=5))
 
 
+
+files=os.listdir(file_location)
+file_list = [f for f in files if f.startswith('PPG_input')]   
+
+
 # write to a file
 df1.to_csv("modified_data.csv", sep=',')
 df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
