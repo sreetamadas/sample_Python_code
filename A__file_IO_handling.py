@@ -78,5 +78,21 @@ for file_val in file_list:
     for k in range(len(data_new)):
 
 
+######################
+# file copy
+import shutil
+#CK = df[:2]
+for i in range(0, df.shape[0]):  # CK.shape[0]
+    name = str(df.iloc[i, 0])
+    print(name)
+    
+    # extracting pattern from list
+    # https://stackoverflow.com/questions/16304146/in-python-how-do-i-extract-a-sublist-from-a-list-of-strings-by-matching-a-strin
+    orig = [x for x in main_list if name in x]
+    #f = str(name)+'.txt'
+    shutil.copy2(orig[0], 'full_path_of 2nd folder')
+    # https://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
+
+
 
 
