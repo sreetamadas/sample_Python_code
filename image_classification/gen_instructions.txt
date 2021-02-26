@@ -1,0 +1,37 @@
+Segmentation in medical domain - the algo should work on images from multiple sources. Try nuclei segmentation. 
+For agnosticism try Stain normalization , Color pertubation using HistonomicsTK. 
+For instance when working with CT scans and MRI scans , for removing noise there are diffent filter types you can use , 
+like the Non local means edge preserving filter.
+Interest: validation algos wherein you do not have enough Ground truth, and where you have multiple varying Ground truths. 
+           For Multiple varying groundtruths you can use STaple A\Lgo .
+           
+Dataset: the cancer imaging archive , research gate, paperswithcode.
+https://staintools.readthedocs.io/en/latest/
+https://github.com/Peter554/StainTools   <-stain normalization
+
+https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e
+
+image segmentation
+semantic vs instance segmentation
+https://medium.com/analytics-vidhya/image-segmentation-using-fastai-ddded25f811e
+https://nbviewer.jupyter.org/github/fastai/course-v3/blob/master/nbs/dl1/lesson3-camvid.ipynb
+https://github.com/mschulz/Image-Segmentation
+https://towardsdatascience.com/image-segmentation-with-fastai-9f8883cc5b53
+https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/
+https://github.com/MrGiovanni/UNetPlusPlus/tree/master/pytorch
+
+https://canvas.instructure.com/login/canvas
+
+
+# prema
+https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation/notebooks?datasetId=181273&sortBy=voteCount 
+Brain MRI Segmentation| Using Unet | Keras | Kaggle 
+https://www.deeplearning.ai/ai-for-medicine/ 
+https://www.coursera.org/learn/ai-for-medical-diagnosis  , Week3 
+https://www.kaggle.com/paultimothymooney/chiu-2015
+https://www.kaggle.com/c/histopathologic-cancer-detection 
+
+DATA ENGINEERING
+https://medium.com/better-programming/5-great-data-engineering-online-courses-784e62f57ddd 
+https://digitaldefynd.com/best-data-engineering-courses/ 
+udacity nanodegree
