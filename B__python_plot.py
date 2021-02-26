@@ -211,5 +211,13 @@ plt.savefig('varImp_adaB_iter_'+str(i)+'.png', bbox_inches='tight')
 plt.close()
                   
                   
+##################################################                  
+def func_plot():
+    ...
+    plt.plot(temp) #, marker='o', markersize=2) #, label=str(m)) 
+    plt.scatter(x=x,y=y,c='r')
+    plt.legend(loc='best')
                   
-                   
+plt.subplot(221)
+func_plot(pd.np.array(data_file1.iloc[:,useful_col[0]]).reshape(len(data_file1)),pat_id
+
