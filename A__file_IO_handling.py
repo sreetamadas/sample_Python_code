@@ -37,3 +37,46 @@ file_list = [f for f in files if f.startswith('PPG_input')]
 df1.to_csv("modified_data.csv", sep=',')
 df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
 
+
+######################################
+import os
+## get list of all directories in jan_2019_cyient
+filedir = os.listdir(file_location)
+
+def find_files( files, dirs=[], extensions=[]):
+    new_dirs = []
+    for d in dirs:
+        try:
+            new_dirs += [ os.path.join(d, f) for f in os.listdir(d) ]
+        except OSError:
+            if os.path.splitext(d)[1] in extensions:
+                files.append(d)
+
+    if new_dirs:
+        find_files(files, new_dirs, extensions )
+    else:
+        return
+
+
+for Dir in filedir:
+    #print(Dir)
+    files = []
+    find_files( files, dirs=[Dir], extensions=['.txt'] )
+    
+    print(files[0])
+    f=open(file_location + files[0])
+
+	
+################3
+#reading a file
+for file_val in file_list:
+    loc=file_location+'/'+file_val
+    f=open(loc)
+    data=f.read()
+    data_new=data.splitlines()
+    dat=[]
+    for k in range(len(data_new)):
+
+
+
+
