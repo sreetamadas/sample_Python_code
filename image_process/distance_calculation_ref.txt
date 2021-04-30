@@ -1,3 +1,18 @@
+https://zbigatron.com/mapping-camera-coordinates-to-a-2d-floor-plan/   : transforms the image to top view
+https://www.pyimagesearch.com/2016/03/28/measuring-size-of-objects-in-an-image-with-opencv/    (discussion on calibration in comments)
+https://www.pyimagesearch.com/2016/04/04/measuring-distance-between-objects-in-an-image-with-opencv/ 
+
+https://github.com/harshilpatel312/KITTI-distance-estimation  (distance from camera to object)
+https://medium.com/@marekgalovic/distance-estimation-using-cascade-classification-and-regression-ad240e70285c 
+https://github.com/paul-pias/Object-Detection-and-Distance-Measurement 
+https://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/ 
+https://thesai.org/Downloads/Volume9No9/Paper_77-Deep_Learning_based_Object_Distance_Measurement.pdf
+
+https://hal.archives-ouvertes.fr/hal-02343350/document (Real TimeObject Detection, Tracking, and Distance and Motion Estimation based on Deep Learning: Appli-cation to Smart Mobility.)
+
+
+####################################################################################################
+
 # Distance calculation using reference object, no camera parameters
 
 Inputs: 
