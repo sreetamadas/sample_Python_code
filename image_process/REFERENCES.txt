@@ -49,7 +49,8 @@ https://www.datasetlist.com/  <- link to check license of dataset  ***
 https://viratdata.org/
 * top view images  http://homepages.inf.ed.ac.uk/rbf/FORUMTRACKING/
 * perspective cameras  https://sites.google.com/site/piropodatabase/   
-http://people.csail.mit.edu/jxiao/SUN360/index_high.html 
+* Panorama http://people.csail.mit.edu/jxiao/SUN360/index_high.html 
+
 
 * link to a dataset with images captured on the dark  
 https://github.com/cs-chan/Exclusively-Dark-Image-Dataset and associated blog   https://medium.com/towards-artificial-intelligence/custom-object-detection-using-efficientdet-the-simplest-way-32749fb93359
@@ -63,9 +64,11 @@ https://riemenschneider.hayko.at/vision/dataset/index.php?filter=+crowd
 https://lionbridge.ai/datasets/20-best-bounding-box-image-and-video-datasets-for-machine-learning/ 
 
 
-how to download selected classes from Google open images dataset
+# how to download selected classes from Google open images dataset
 https://medium.com/@c.n.veeraganesh/how-to-prepare-your-own-customized-dataset-using-open-images-dataset-v4-8dfce9b9e147 
 https://www.learnopencv.com/fast-image-downloader-for-open-images-v4/   
+https://towardsdatascience.com/faster-r-cnn-object-detection-implemented-by-keras-for-custom-data-from-googles-open-images-125f62b9141a   (object detection on Google open images)
+ 
 
 #####################################################################################################
 
@@ -110,6 +113,10 @@ https://github.com/ayooshkathuria/pytorch-yolo-v3/blob/master/detect.py
 https://github.com/eriklindernoren/PyTorch-YOLOv3/blob/master/utils/utils.py 
 https://paperswithcode.com/paper/yolov3-an-incremental-improvement#code
 https://pjreddie.com/darknet/yolo/
+* codebase sources of Keras implementation of YOLO3 training pipeline.
+https://github.com/qqwweee/keras-yolo3
+https://github.com/experiencor/keras-yolo3
+
 
 https://stackoverflow.com/questions/45662253/can-i-run-keras-model-on-gpu
 https://github.com/princefr/EfficientNet-Light-Head-RCNN 
@@ -221,6 +228,21 @@ https://medium.com/beyondlabsey/creating-a-simple-region-of-interest-roi-inside-
 https://people.revoledu.com/kardi/tutorial/Python/Video+Analysis+using+OpenCV-Python.html 
 https://plantcv.readthedocs.io/en/latest/roi_objects/ 
 
+
+#####################################################################################
+
+# methods to improve recall
+
+1. just like we can specify different class weights in SVM for imbalanced dataset, to give priority to the smaller class - can we do something similar in image classification - Yes, one way is to use svm on the features, another can be to use some ensemble and use different weigts
+
+2. generally use data augmentation.. shift and rotate the images in the imbalanced class so that images are equal
+
+3. https://towardsdatascience.com/handling-imbalanced-datasets-in-deep-learning-f48407a0e758 
+https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/ 
+
+4. loss function with weights (for CNNs) - https://pytorch.org/docs/master/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss 
+weight (Tensor, optional) – a manual rescaling weight given to each class. If given, it has to be a Tensor of size C. Otherwise, it is treated as if having all ones
+
 ################################################################################################
 
 *** Re-training / Transfer learning
@@ -235,6 +257,9 @@ Fine-tuning/ training (google: finetune object detection algorithm)
 https://www.pyimagesearch.com/2018/05/14/a-gentle-guide-to-deep-learning-object-detection/
 https://medium.com/@sshleifer/how-to-finetune-tensorflows-object-detection-models-on-kitti-self-driving-dataset-c8fcfe3258e9 
 https://www.ee.cuhk.edu.hk/~xgwang/papers/ouyangWZYcvpr16.pdf
+
+https://towardsdatascience.com/object-detection-on-aerial-imagery-using-retinanet-626130ba2203
+https://medium.com/towards-artificial-intelligence/custom-object-detection-using-efficientdet-the-simplest-way-32749fb93359   (for night condition images)
 
 
 http://www.robots.ox.ac.uk/~vgg/software/via/  , labelme, labelimg , CVAT -> annotation tool 
@@ -266,14 +291,5 @@ https://hackernoon.com/efficient-implementation-of-mobilenet-and-yolo-object-det
 https://www.youtube.com/watch?v=Tm_7fGolVGE
 opencv warpperspective
 
- 
- 
-
 ################################################################################################################
-
-
-
-
-
-
 
