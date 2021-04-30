@@ -73,6 +73,9 @@ http://oa.upm.es/46043/1/INVE_MEM_2016_247811.pdf
 https://arxiv.org/pdf/1405.0312.pdf   (Microsoft COCO)
 
 yolo : https://github.com/AlexeyAB/darknet/blob/master/darknet.py 
+https://github.com/ayooshkathuria/pytorch-yolo-v3/blob/master/detect.py 
+https://github.com/eriklindernoren/PyTorch-YOLOv3/blob/master/utils/utils.py 
+
 
 https://paperswithcode.com/paper/yolov3-an-incremental-improvement#code
 https://stackoverflow.com/questions/45662253/can-i-run-keras-model-on-gpu
@@ -157,7 +160,7 @@ https://nanonets.com/blog/how-to-automate-surveillance-easily-with-deep-learning
 
 ###############################################################################################
 
-# Metrics & other links
+# Metrics & other evaluation links
 
 https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173
 https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/
@@ -165,12 +168,21 @@ https://blog.zenggyu.com/en/post/2018-12-16/an-introduction-to-evaluation-metric
 https://towardsdatascience.com/what-is-map-understanding-the-statistic-of-choice-for-comparing-object-detection-models-1ea4f67a9dbd
 https://towardsdatascience.com/evaluating-performance-of-an-object-detection-model-137a349c517b  
 
-https://github.com/rafaelpadilla/Object-Detection-Metrics#asterisk 
+https://github.com/rafaelpadilla/Object-Detection-Metrics#asterisk  *****
+https://github.com/rafaelpadilla/Object-Detection-Metrics#asterisk  <- tool used for evaluation
+
 https://github.com/wangzhe0623/Object-Detection-Evaluation-Tool
 https://medium.com/@timothycarlen/understanding-the-map-evaluation-metric-for-object-detection-a07fe6962cf3 
 
+https://towardsdatascience.com/evaluating-performance-of-an-object-detection-model-137a349c517b   (PASCAL VOC metric implementation used) 
+
+https://github.com/cocodataset/cocoapi/tree/master/PythonAPI   <- evaluator
+Convert GT (http://cocodataset.org/#format-data ) & detections (http://cocodataset.org/#format-results ) to json files
+
+
 Google: anchor box in object detction
 https://medium.com/@andersasac/anchor-boxes-the-key-to-quality-object-detection-ddf9d612d4f9  
+
 Google: IOU vs NMS threshols
 https://medium.com/@whatdhack/reflections-on-non-maximum-suppression-nms-d2fce148ef0a 
 
@@ -193,17 +205,45 @@ Fine-tuning/ training (google: finetune object detection algorithm)
 https://www.pyimagesearch.com/2018/05/14/a-gentle-guide-to-deep-learning-object-detection/
 https://medium.com/@sshleifer/how-to-finetune-tensorflows-object-detection-models-on-kitti-self-driving-dataset-c8fcfe3258e9 
 https://www.ee.cuhk.edu.hk/~xgwang/papers/ouyangWZYcvpr16.pdf
-http://www.robots.ox.ac.uk/~vgg/software/via/  , labelme, labelimg -> annotation tool 
+http://www.robots.ox.ac.uk/~vgg/software/via/  , labelme, labelimg , CVAT -> annotation tool 
 
 #############################################################################################
 
-
-
+EfficientDet (xuan) is compiled for Linux – using for windows required running setup.py
+Some other errors- cudnn error on tf2 env  https://github.com/tensorflow/tensorflow/issues/24828 
 
 #################################################################################################
 
+https://www.kapwing.com/resources/make-side-by-side-video/    how to show 2 videos side by side 
 
 
+###############################################################################
+
+## vectorise code 
+
+https://towardsdatascience.com/data-science-with-python-turn-your-conditional-loops-to-numpy-vectors-9484ff9c622e
+https://realpython.com/numpy-array-programming/
+
+https://hackernoon.com/efficient-implementation-of-mobilenet-and-yolo-object-detection-algorithms-for-image-annotation-717e867fa27d    -> code in this link did not work
+
+##########################################################################################
+
+https://www.youtube.com/watch?v=Tm_7fGolVGE
+opencv warpperspective
+https://www.linkedin.com/posts/thotarahul_social-distance-monitoring-activity-6661331982951284736-pLni
+PeopleNet - https://devblogs.nvidia.com/training-custom-pretrained-models-using-tlt/
+
+https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/pretrained-models.html 
+https://docs.openvinotoolkit.org/latest/_models_intel_person_detection_retail_0013_description_person_detection_retail_0013.html 
+ 
+
+https://github.com/tzutalin/labelImg 
+ 
+Pose estimation:
+https://github.com/thomasgolda/Human-Pose-Estimation-for-Real-World-Crowded-Scenarios
+https://static.aminer.org/pdf/PDF/000/293/435/detection_of_multiple_partially_occluded_humans_in_a_single_image.pdf 
+
+################################################################################################################
 
 
 
