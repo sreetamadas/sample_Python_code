@@ -2,11 +2,59 @@ REQUIREMENT:tracking an individual across cameras
 
 Literature: https://asp-eurasipjournals.springeropen.com/articles/10.1186/s13634-017-0482-z#Sec13  (Human tracking over camera networks: a review)
 
+###############################################################################
 
-Approaches:
+# background 
+SOLUTION: using NCA-Net (offline tracking)
+Training phase:
+– extract sequences of people bounding boxes – extract features using a shallow network 
+– normalize the 2nd last layer – calculate distance measure (using NCA neighborhood component analysis instead of triplet loss)
+– use the distribution of distance values, for intra-person matches & inter-person mis-matches, to decide the threshold distance value
+– Use of Mahalanobis distance instead of Triplet loss
+
+Mahalanobis distance == data normalization + Euclidean distance
+https://www.machinelearningplus.com/statistics/mahalanobis-distance/ 
+
+
+# ISSUE / CHALLENGES:
+Suitable for offline tracking – is it good for real-time use?
+Performance is poor when there are occlusions
+Some trackers assign new IDS if there are occlusions in the same feed itself
+When restricting detections to ROI, how to account for violations outside the ROI?
+Challenging to track a person across feeds (variation in illumination, complex background, posture change)
+Should there be some overlap b/w camera views?
+Does it need to be used with a separate tracker (fairMOT, motpy)?
+
+Challenges when scaling up:
+Need to maintain a database of violators from one feed, to compare across other feeds?
+When to remove IDs from db?
+
+
+# 
+Approaches for multi-object (person) multi-camera detection
+When the cameras have good overlap (what %?) in FOV
+Look for pixel correspondence between cameras
+Multi-camera callibration
+Cameras with no overlap in FOV
+ReID based approaches – Siamese network
+Poorer results in general 
+
+For robust performance, use both methods to filter predictions (won’t this be compute intensive & hence, expensive?)
+
+Look for :
+Multi-camera tracking datasets
+Performance from benchmark methods
+
+
+#################################################################################
+
+**  Approaches:
 
 1. When the cameras have good overlap (what %?) in FOV
    a) Look for pixel correspondence between cameras - simpler approach (implementation)
+     
+     Use keypoint matching to find overlapping areas in cameras (ISSUE: SIFT does not work in openCV4.2) -> Find detection boxes lying in overlapping region -> Use keypoint matching to find the correspondence b/w same people in 2 feeds
+
 
    b) Multi-camera calibration: Most methods in literature survey require knowing the camera layout beforehand, which is explicitly used in the code. Some are also using camera parameters.
 Ref: https://github.com/mvondracek/VUT-FIT-POVa-2018-Pedestrian-Tracking (uses camera parameters, implementation is on offline videos; tracks one person from two cameras, using histogram features for matching)
@@ -14,7 +62,13 @@ Ref: https://github.com/mvondracek/VUT-FIT-POVa-2018-Pedestrian-Tracking (uses c
  
 
 2. Cameras with no overlap in FOV
-   ReID based approaches – Siamese network/ Triplet loss based methods; NCA-Net: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6210313/pdf/sensors-18-03400.pdf  (Mahalanobis distance based
+   ReID based approaches – How to obtain features for Person ReID across cameras ?
+            either using Triplet loss or distance-based method like NCA-Net (with shallow features)
+            use a pre-trained model (available?) or re-train; can we re-use FairMOT (?)
+            Once re-identified, continue with tracking
+   
+   Siamese network/ Triplet loss based methods; 
+   NCA-Net: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6210313/pdf/sensors-18-03400.pdf  (Mahalanobis distance based)
    Cons:
         I) Requires pre-trained model before deployment;
        II)  Many of these methods are suited for offline searches - how well will they perform for online deployment ? Implementation for training available - how to use for matching at runtime?
@@ -27,4 +81,43 @@ https://github.com/layumi/Person_reID_baseline_pytorch/tree/master/tutorial
 https://github.com/layumi/Person_reID_baseline_pytorch
 https://github.com/arvganesh/Multi-Camera-Object-Tracking  (requires camera layout info)
 
+
+
+
+
+
+
+
+
+
+##################################################################################
+
+references:
+Dataset:
+https://tev.fbk.eu/technologies/multi-camera-people-tracking-datasets   ;  http://www.cvg.reading.ac.uk/PETS2016/a.html  ; http://mevadata.org/#getting-data 
+
+Trackers:  https://www.pyimagesearch.com/2018/07/23/simple-object-tracking-with-opencv/ (centroid tracking) ;  
+https://www.pyimagesearch.com/2018/07/30/opencv-object-tracking/   (list of trackers)   ;   
+https://www.pyimagesearch.com/2018/08/06/tracking-multiple-objects-with-opencv/ ; https://www.pyimagesearch.com/2018/10/29/multi-object-tracking-with-dlib/  (parallel processing)
+https://www.pyimagesearch.com/2018/08/13/opencv-people-counter/   (uses detection+tracking)
+https://www.pyimagesearch.com/2017/09/18/real-time-object-detection-with-deep-learning-and-opencv/    (detection, mobilenetSSD with openCV dnn)
+
+https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/ 
+Kalman filter-based tracker , motpy , FairMOT  https://arxiv.org/pdf/2004.01888.pdf 
+https://dl.acm.org/doi/pdf/10.1145/2089094.2089107   (A Reliable People Counting System via Multiple Cameras )
+NCA-Net: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6210313/pdf/sensors-18-03400.pdf 
+STAM-CCF: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6651151/ 
+https://www.epfl.ch/labs/cvlab/research/research-surv/research-body-surv-index-php/ 
+
+Others:
+Neighbourhood components analysis, Neighbourhood components analysis loss function , metric learning
+https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NeighborhoodComponentsAnalysis.html   ;  https://www.cs.toronto.edu/~hinton/absps/nca.pdf
+https://sebastianraschka.com/Articles/2014_about_feature_scaling.html (standardisation vs normalization; standardscaler , minmaxscaler)
+
+
+https://towardsdatascience.com/people-tracking-using-deep-learning-5c90d43774be   (DeepSORT)
+https://medium.com/datadriveninvestor/multiple-object-tracking-using-person-re-identification-f9b7360cda1a   (detection + ReID with triplet loss + DeepSORT tracking; evaluation; additional training on internal dataset + Market 1501 , TriNet)
+https://blog.ml6.eu/ml6-internship-pedestrian-tracking-over-multiple-non-overlapping-camera-viewpoints-5b405c6df7e0   (detection + DeepSORT tracking with background subtraction + ReID eg OSNet; suggests use of pose detector as improvement)  (https://arxiv.org/pdf/1610.02984.pdf  review of ReID techniques)
+https://medium.com/@niruhan/a-practical-guide-to-person-re-identification-using-alignedreid-7683222da644     (ReID: challenges, different approaches; AlignedReID  https://github.com/huanghoujing/AlignedReID-Re-Production-Pytorch )
+https://nanonets.com/blog/object-tracking-deepsort/   (challenges in tracking, tracking with deepsort)
 
