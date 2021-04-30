@@ -1,0 +1,213 @@
+
+https://zbigatron.com/mapping-camera-coordinates-to-a-2d-floor-plan/   : transforms the image to top view
+https://www.pyimagesearch.com/2016/03/28/measuring-size-of-objects-in-an-image-with-opencv/    (discussion on calibration in comments)
+https://www.pyimagesearch.com/2016/04/04/measuring-distance-between-objects-in-an-image-with-opencv/ 
+
+##############################################################################################################
+DATASETS:
+http://host.robots.ox.ac.uk/pascal/VOC/voc2007/        http://www.cbsr.ia.ac.cn/users/sfzhang/WiderPerson/ 
+coco: object segmentation dataset  (http://cocodataset.org/#home )
+KITTI dataset: semantic & instance seg. (http://www.cvlibs.net/datasets/kitti/eval_semantics.php)
+Cityscapes: stereo video sequences, segmentation (https://www.cityscapes-dataset.com/) 
+Imagenet: classification ONLY  
+https://www.robots.ox.ac.uk/ActiveVision/Research/Projects/2009bbenfold_headpose/project.html 
+http://visal.cs.cityu.edu.hk/downloads/ 
+TownCentreXVID.avi 
+New York Times Square vid feed
+London bus feed
+Mall dataset annotation   https://personal.ie.cuhk.edu.hk/~ccloy/downloads_mall_dataset.html  
+https://www.datasetlist.com/  <- link to check license of dataset
+
+https://viratdata.org/
+* top view images  http://homepages.inf.ed.ac.uk/rbf/FORUMTRACKING/
+* perspective cameras  https://sites.google.com/site/piropodatabase/   
+http://people.csail.mit.edu/jxiao/SUN360/index_high.html 
+* link to a dataset with images captured on the dark  
+https://github.com/cs-chan/Exclusively-Dark-Image-Dataset and associated blog   https://medium.com/towards-artificial-intelligence/custom-object-detection-using-efficientdet-the-simplest-way-32749fb93359
+https://www.nightowls-dataset.org/
+GOOGLE: people detection dataset, humans crowding dataset, dataset for object detection
+https://www.cis.upenn.edu/~jshi/ped_html/
+https://www.crowdhuman.org/      http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/ 
+http://homepages.inf.ed.ac.uk/rbf/CVonline/Imagedbase.htm#people 
+https://riemenschneider.hayko.at/vision/dataset/index.php?filter=+crowd 
+https://lionbridge.ai/datasets/20-best-bounding-box-image-and-video-datasets-for-machine-learning/ 
+https://www.datasetlist.com/ 
+
+how to download selected classes from Google open images dataset
+https://medium.com/@c.n.veeraganesh/how-to-prepare-your-own-customized-dataset-using-open-images-dataset-v4-8dfce9b9e147 
+https://www.learnopencv.com/fast-image-downloader-for-open-images-v4/   
+
+
+https://camio.com/covid-19 
+https://blog.camio.com/social-distancing-detection-for-covid-19-a5c9e8d6c760
+https://www.itsinternational.com/its4/news/openspace-tracks-passenger-social-distancing
+Landing.ai https://landing.ai/landing-ai-creates-an-ai-tool-to-help-customers-monitor-social-distancing-in-the-workplace/ 
+https://towardsdatascience.com/monitoring-social-distancing-using-ai-c5b81da44c9f
+https://github.com/aqeelanwar/SocialDistancingAI 
+https://github.com/IIT-PAVIS/Social-Distancing 
+
+###############################################################################################
+
+## Object detection vs semantic segmentation vs instance segmentation
+
+Object detection: classify & localize using bounding box (where is the object located?)
+https://kharshit.github.io/blog/2019/03/15/quick-intro-to-object-detection (R-CNN, YOLO, SSD; density-based methods from Bijon’s talk)
+https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4
+https://pjreddie.com/darknet/yolov2/ 
+
+Semantic segmentation: pixel-wise classification; doesn’t care how many separate objects of a class
+Choice of base model
+https://kharshit.github.io/blog/2019/08/09/quick-intro-to-semantic-segmentation (UNet)
+https://divamgupta.com/image-segmentation/2019/06/06/deep-learning-semantic-segmentation-keras.html 
+https://github.com/jocicmarko/ultrasound-nerve-segmentation 
+
+Instance segmentation: detects multiple objects of a class (Mask R-CNN, faster R-CNN)
+https://kharshit.github.io/blog/2019/08/23/quick-intro-to-instance-segmentation 
+GOOGLE: when to use segmentation vs object detection
+
+#############################################################################
+
+https://towardsdatascience.com/retinanet-how-focal-loss-fixes-single-shot-detection-cb320e3bb0de 
+https://nanonets.com/blog/how-to-automate-surveillance-easily-with-deep-learning/
+http://oa.upm.es/46043/1/INVE_MEM_2016_247811.pdf
+https://arxiv.org/pdf/1405.0312.pdf   (Microsoft COCO)
+
+yolo : https://github.com/AlexeyAB/darknet/blob/master/darknet.py 
+
+https://paperswithcode.com/paper/yolov3-an-incremental-improvement#code
+https://stackoverflow.com/questions/45662253/can-i-run-keras-model-on-gpu
+https://pjreddie.com/darknet/yolo/
+https://github.com/princefr/EfficientNet-Light-Head-RCNN 
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md#coco-trained-models-coco-models
+
+https://paperswithcode.com/sota/real-time-object-detection-on-coco
+https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html 
+https://lilianweng.github.io/lil-log/2017/12/15/object-recognition-for-dummies-part-2.html
+
+http://www.robots.ox.ac.uk/~vgg/software/via/  -> annotation tool 
+
+https://github.com/harshilpatel312/KITTI-distance-estimation  (distance from camera to object)
+https://medium.com/@marekgalovic/distance-estimation-using-cascade-classification-and-regression-ad240e70285c 
+https://github.com/paul-pias/Object-Detection-and-Distance-Measurement 
+https://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/ 
+https://thesai.org/Downloads/Volume9No9/Paper_77-Deep_Learning_based_Object_Distance_Measurement.pdf 
+
+https://hal.archives-ouvertes.fr/hal-02343350/document (Real TimeObject Detection, Tracking, and Distance and Motion Estimation based on Deep Learning: Appli-cation to Smart Mobility.)
+
+https://machinelearningmastery.com/how-to-perform-object-detection-with-yolov3-in-keras/
+https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-keras/
+https://towardsdatascience.com/faster-r-cnn-object-detection-implemented-by-keras-for-custom-data-from-googles-open-images-125f62b9141a
+
+https://towardsdatascience.com/faster-r-cnn-object-detection-implemented-by-keras-for-custom-data-from-googles-open-images-125f62b9141a   (object detection on Google open images)
+
+##############################################################################################
+
+# Speeding up openCV with CUDA
+https://www.pyimagesearch.com/2020/02/03/how-to-use-opencvs-dnn-module-with-nvidia-gpus-cuda-and-cudnn/    (installation instruction on linux)
+https://www.pyimagesearch.com/2020/02/10/opencv-dnn-with-nvidia-gpus-1549-faster-yolo-ssd-and-mask-r-cnn/
+
+https://www.pyimagesearch.com/2016/07/11/compiling-opencv-with-cuda-support/ 
+https://www.pyimagesearch.com/2019/12/09/how-to-install-tensorflow-2-0-on-ubuntu/ 
+
+https://pterneas.com/2018/11/02/opencv-cuda/
+https://jamesbowley.co.uk/opencv-3-4-gpu-cuda-performance-comparison-nvidia-vs-intel/ 
+https://jamesbowley.co.uk/accelerate-opencv-4-2-0-build-with-cuda-and-python-bindings/ 
+https://jamesbowley.co.uk/downloads/ 
+
+Issues with dnn speed up by openCV with CUDA
+https://answers.opencv.org/question/216793/opencv-41-python-3-cuda/
+
+https://docs.opencv.org/4.1.0/d6/d0f/group__dnn.html#ga186f7d9bfacac8b0ff2e26e2eab02625
+https://github.com/opencv/opencv/blob/8c25a8eb7b10fb50cda323ee6bec68aa1a9ce43c/samples/dnn/object_detection.py#L129-L150  <- available dnn backends
+
+https://gist.github.com/YashasSamaga/a84cf2826ab2dc755005321fe17cd15d  (allow openCV’s dnn module to work with GPU)
+
+Darknet Yolo v3 on C++ / object detection yolov3 C++
+https://www.learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/ 
+
+
+#########################################################################################
+
+https://www.pyimagesearch.com/2018/11/12/yolo-object-detection-with-opencv/
+https://www.pyimagesearch.com/2017/11/06/deep-learning-opencvs-blobfromimage-works/
+https://www.pyimagesearch.com/2018/05/14/a-gentle-guide-to-deep-learning-object-detection/ 
+https://www.pyimagesearch.com/2019/10/14/why-is-my-validation-loss-lower-than-my-training-loss/
+
+
+https://github.com/google/automl/tree/master/efficientdet
+https://github.com/google/automl/blob/master/efficientdet/tutorial.ipynb
+https://github.com/Tessellate-Imaging/Monk_Object_Detection    *** (website hosting object detection modules)
+https://github.com/xuannianz/EfficientDet (keras)  ;   https://github.com/signatrix/efficientdet   (torch)
+
+https://towardsdatascience.com/efficientdet-scalable-and-efficient-object-detection-review-4472ffc34fd9    ***
+
+https://www.analyticsvidhya.com/blog/2019/02/building-crowd-counting-model-python/ 
+Density aware person detection paper (implementation: nanonet)
+
+https://github.com/ifzhang/FairMOT
+https://github.com/WongKinYiu/CrossStagePartialNetworks
+https://ieeexplore.ieee.org/document/8281079  (FlodNet)
+
+https://paperswithcode.com/sota/real-time-object-detection-on-coco 
+
+Nanonet
+https://medium.com/nanonets/nanonets-how-to-use-deep-learning-when-you-have-limited-data-f68c0b512cab
+https://github.com/thatbrguy/Pedestrian-Detection
+https://nanonets.com/blog/how-to-automate-surveillance-easily-with-deep-learning/ 
+
+###############################################################################################
+
+# Metrics & other links
+
+https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173
+https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/
+https://blog.zenggyu.com/en/post/2018-12-16/an-introduction-to-evaluation-metrics-for-object-detection/
+https://towardsdatascience.com/what-is-map-understanding-the-statistic-of-choice-for-comparing-object-detection-models-1ea4f67a9dbd
+https://towardsdatascience.com/evaluating-performance-of-an-object-detection-model-137a349c517b  
+
+https://github.com/rafaelpadilla/Object-Detection-Metrics#asterisk 
+https://github.com/wangzhe0623/Object-Detection-Evaluation-Tool
+https://medium.com/@timothycarlen/understanding-the-map-evaluation-metric-for-object-detection-a07fe6962cf3 
+
+Google: anchor box in object detction
+https://medium.com/@andersasac/anchor-boxes-the-key-to-quality-object-detection-ddf9d612d4f9  
+Google: IOU vs NMS threshols
+https://medium.com/@whatdhack/reflections-on-non-maximum-suppression-nms-d2fce148ef0a 
+
+ROI  (google: region of interest python opencv video)
+https://medium.com/beyondlabsey/creating-a-simple-region-of-interest-roi-inside-a-video-streaming-using-opencv-in-python-30fd671350e0 
+https://people.revoledu.com/kardi/tutorial/Python/Video+Analysis+using+OpenCV-Python.html 
+https://plantcv.readthedocs.io/en/latest/roi_objects/ 
+
+################################################################################################
+
+*** Re-training / Transfer learning
+https://towardsdatascience.com/object-detection-on-aerial-imagery-using-retinanet-626130ba2203
+
+TRANSFER LEARNING FOR OBJECT DETECTION https://medium.com/practical-deep-learning/a-complete-transfer-learning-toolchain-for-semantic-segmentation-3892d722b604https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-keras/
+  
+https://github.com/cs-chan/Exclusively-Dark-Image-Dataset 
+and associated blog   https://medium.com/towards-artificial-intelligence/custom-object-detection-using-efficientdet-the-simplest-way-32749fb93359
+
+Fine-tuning/ training (google: finetune object detection algorithm)
+https://www.pyimagesearch.com/2018/05/14/a-gentle-guide-to-deep-learning-object-detection/
+https://medium.com/@sshleifer/how-to-finetune-tensorflows-object-detection-models-on-kitti-self-driving-dataset-c8fcfe3258e9 
+https://www.ee.cuhk.edu.hk/~xgwang/papers/ouyangWZYcvpr16.pdf
+http://www.robots.ox.ac.uk/~vgg/software/via/  , labelme, labelimg -> annotation tool 
+
+#############################################################################################
+
+
+
+
+#################################################################################################
+
+
+
+
+
+
+
+
+
+
