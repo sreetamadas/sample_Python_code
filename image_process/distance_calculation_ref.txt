@@ -1,0 +1,14 @@
+Inputs: 
+actual size of reference object (W), distance of reference object from camera (D), image dimension of reference object (P)
+
+Using triangle similarity, perceived focal length, F (in pixels) = D x P / W
+For any new object, object distance D’ = F x (object actual size)/ (image size)
+
+Issues:
+Manual effort to set up a reference object (known size), and measure its distance correctly – F measurement is not very accurate without true camera calibration
+Clearly able to identify reference object in image
+Should know size of each new object detected
+
+REF: 
+https://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/
+https://photo.stackexchange.com/questions/12434/how-do-i-calculate-the-distance-of-an-object-in-a-photo/12437#12437   (alternate formula) 
