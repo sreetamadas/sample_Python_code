@@ -1,3 +1,5 @@
+# Distance calculation using reference object, no camera parameters
+
 Inputs: 
 actual size of reference object (W), distance of reference object from camera (D), image dimension of reference object (P)
 
@@ -11,4 +13,33 @@ Should know size of each new object detected
 
 REF: 
 https://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/
+
 https://photo.stackexchange.com/questions/12434/how-do-i-calculate-the-distance-of-an-object-in-a-photo/12437#12437   (alternate formula) 
+Distance to object (mm) = f (mm)  x  real height (mm)  x  image height (pixels) / [ object height (pixels)  x  sensor height (mm) ]
+
+######################################################################################################
+
+# Distance calculation using camera parameters
+
+camera calibration:
+Obtain focal length from calibration (in mm) & substitute in triangle formula
+distance_mm = object_real_world_mm * focal_length_mm / object_image_sensor_mm
+
+
+Issues:
+We are not doing this calibration as part of our current algorithm
+Need camera sensor details (pixels per millimeter (px/mm))
+
+REF (for calibration using checkerboard images):
+https://docs.opencv.org/3.1.0/dc/dbb/tutorial_py_calibration.html
+http://www.vision.caltech.edu/bouguetj/calib_doc/htmls/parameters.html
+https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#solvepnp 
+https://www.scantips.com/lights/subjectdistance.html (calculator)
+https://photo.stackexchange.com/questions/90059/how-to-calculate-the-size-of-object-in-pixels-knowing-the-camera-properties-and 
+
+https://stackoverflow.com/questions/14038002/opencv-how-to-calculate-distance-between-camera-and-object-using-image 
+
+
+
+
+
