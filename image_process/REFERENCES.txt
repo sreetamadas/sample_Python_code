@@ -4,7 +4,9 @@ https://www.pyimagesearch.com/2016/03/28/measuring-size-of-objects-in-an-image-w
 https://www.pyimagesearch.com/2016/04/04/measuring-distance-between-objects-in-an-image-with-opencv/ 
 
 ##############################################################################################################
-DATASETS:
+
+# DATASETS:
+
 http://host.robots.ox.ac.uk/pascal/VOC/voc2007/        http://www.cbsr.ia.ac.cn/users/sfzhang/WiderPerson/ 
 coco: object segmentation dataset  (http://cocodataset.org/#home )
 KITTI dataset: semantic & instance seg. (http://www.cvlibs.net/datasets/kitti/eval_semantics.php)
@@ -37,6 +39,7 @@ how to download selected classes from Google open images dataset
 https://medium.com/@c.n.veeraganesh/how-to-prepare-your-own-customized-dataset-using-open-images-dataset-v4-8dfce9b9e147 
 https://www.learnopencv.com/fast-image-downloader-for-open-images-v4/   
 
+#####################################################################################################
 
 https://camio.com/covid-19 
 https://blog.camio.com/social-distancing-detection-for-covid-19-a5c9e8d6c760
@@ -67,6 +70,8 @@ GOOGLE: when to use segmentation vs object detection
 
 #############################################################################
 
+# object detection algos 
+
 https://towardsdatascience.com/retinanet-how-focal-loss-fixes-single-shot-detection-cb320e3bb0de 
 https://nanonets.com/blog/how-to-automate-surveillance-easily-with-deep-learning/
 http://oa.upm.es/46043/1/INVE_MEM_2016_247811.pdf
@@ -75,19 +80,28 @@ https://arxiv.org/pdf/1405.0312.pdf   (Microsoft COCO)
 yolo : https://github.com/AlexeyAB/darknet/blob/master/darknet.py 
 https://github.com/ayooshkathuria/pytorch-yolo-v3/blob/master/detect.py 
 https://github.com/eriklindernoren/PyTorch-YOLOv3/blob/master/utils/utils.py 
-
-
 https://paperswithcode.com/paper/yolov3-an-incremental-improvement#code
-https://stackoverflow.com/questions/45662253/can-i-run-keras-model-on-gpu
 https://pjreddie.com/darknet/yolo/
+
+https://stackoverflow.com/questions/45662253/can-i-run-keras-model-on-gpu
 https://github.com/princefr/EfficientNet-Light-Head-RCNN 
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md#coco-trained-models-coco-models
+https://github.com/google/automl/tree/master/efficientdet
+https://github.com/google/automl/blob/master/efficientdet/tutorial.ipynb
+https://github.com/Tessellate-Imaging/Monk_Object_Detection    *** (website hosting object detection modules)
+https://github.com/xuannianz/EfficientDet (keras)  ;   https://github.com/signatrix/efficientdet   (torch)
+https://towardsdatascience.com/efficientdet-scalable-and-efficient-object-detection-review-4472ffc34fd9    ***
 
 https://paperswithcode.com/sota/real-time-object-detection-on-coco
 https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html 
 https://lilianweng.github.io/lil-log/2017/12/15/object-recognition-for-dummies-part-2.html
 
-http://www.robots.ox.ac.uk/~vgg/software/via/  -> annotation tool 
+https://www.linkedin.com/posts/thotarahul_social-distance-monitoring-activity-6661331982951284736-pLni
+PeopleNet - https://devblogs.nvidia.com/training-custom-pretrained-models-using-tlt/
+
+https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/pretrained-models.html 
+https://docs.openvinotoolkit.org/latest/_models_intel_person_detection_retail_0013_description_person_detection_retail_0013.html 
+
 
 https://github.com/harshilpatel312/KITTI-distance-estimation  (distance from camera to object)
 https://medium.com/@marekgalovic/distance-estimation-using-cascade-classification-and-regression-ad240e70285c 
@@ -102,6 +116,31 @@ https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-k
 https://towardsdatascience.com/faster-r-cnn-object-detection-implemented-by-keras-for-custom-data-from-googles-open-images-125f62b9141a
 
 https://towardsdatascience.com/faster-r-cnn-object-detection-implemented-by-keras-for-custom-data-from-googles-open-images-125f62b9141a   (object detection on Google open images)
+
+
+https://www.pyimagesearch.com/2018/11/12/yolo-object-detection-with-opencv/
+https://www.pyimagesearch.com/2017/11/06/deep-learning-opencvs-blobfromimage-works/
+https://www.pyimagesearch.com/2018/05/14/a-gentle-guide-to-deep-learning-object-detection/ 
+https://www.pyimagesearch.com/2019/10/14/why-is-my-validation-loss-lower-than-my-training-loss/
+
+https://github.com/ifzhang/FairMOT
+https://github.com/WongKinYiu/CrossStagePartialNetworks
+https://ieeexplore.ieee.org/document/8281079  (FlodNet)
+
+https://paperswithcode.com/sota/real-time-object-detection-on-coco 
+
+Nanonet
+https://medium.com/nanonets/nanonets-how-to-use-deep-learning-when-you-have-limited-data-f68c0b512cab
+https://github.com/thatbrguy/Pedestrian-Detection
+https://nanonets.com/blog/how-to-automate-surveillance-easily-with-deep-learning/ 
+https://www.analyticsvidhya.com/blog/2019/02/building-crowd-counting-model-python/ 
+Density aware person detection paper (implementation: nanonet)
+
+
+Pose estimation:
+https://github.com/thomasgolda/Human-Pose-Estimation-for-Real-World-Crowded-Scenarios
+https://static.aminer.org/pdf/PDF/000/293/435/detection_of_multiple_partially_occluded_humans_in_a_single_image.pdf 
+
 
 ##############################################################################################
 
@@ -128,35 +167,6 @@ https://gist.github.com/YashasSamaga/a84cf2826ab2dc755005321fe17cd15d  (allow op
 Darknet Yolo v3 on C++ / object detection yolov3 C++
 https://www.learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/ 
 
-
-#########################################################################################
-
-https://www.pyimagesearch.com/2018/11/12/yolo-object-detection-with-opencv/
-https://www.pyimagesearch.com/2017/11/06/deep-learning-opencvs-blobfromimage-works/
-https://www.pyimagesearch.com/2018/05/14/a-gentle-guide-to-deep-learning-object-detection/ 
-https://www.pyimagesearch.com/2019/10/14/why-is-my-validation-loss-lower-than-my-training-loss/
-
-
-https://github.com/google/automl/tree/master/efficientdet
-https://github.com/google/automl/blob/master/efficientdet/tutorial.ipynb
-https://github.com/Tessellate-Imaging/Monk_Object_Detection    *** (website hosting object detection modules)
-https://github.com/xuannianz/EfficientDet (keras)  ;   https://github.com/signatrix/efficientdet   (torch)
-
-https://towardsdatascience.com/efficientdet-scalable-and-efficient-object-detection-review-4472ffc34fd9    ***
-
-https://www.analyticsvidhya.com/blog/2019/02/building-crowd-counting-model-python/ 
-Density aware person detection paper (implementation: nanonet)
-
-https://github.com/ifzhang/FairMOT
-https://github.com/WongKinYiu/CrossStagePartialNetworks
-https://ieeexplore.ieee.org/document/8281079  (FlodNet)
-
-https://paperswithcode.com/sota/real-time-object-detection-on-coco 
-
-Nanonet
-https://medium.com/nanonets/nanonets-how-to-use-deep-learning-when-you-have-limited-data-f68c0b512cab
-https://github.com/thatbrguy/Pedestrian-Detection
-https://nanonets.com/blog/how-to-automate-surveillance-easily-with-deep-learning/ 
 
 ###############################################################################################
 
@@ -205,7 +215,11 @@ Fine-tuning/ training (google: finetune object detection algorithm)
 https://www.pyimagesearch.com/2018/05/14/a-gentle-guide-to-deep-learning-object-detection/
 https://medium.com/@sshleifer/how-to-finetune-tensorflows-object-detection-models-on-kitti-self-driving-dataset-c8fcfe3258e9 
 https://www.ee.cuhk.edu.hk/~xgwang/papers/ouyangWZYcvpr16.pdf
+
+
 http://www.robots.ox.ac.uk/~vgg/software/via/  , labelme, labelimg , CVAT -> annotation tool 
+http://www.robots.ox.ac.uk/~vgg/software/via/  -> annotation tool 
+https://github.com/tzutalin/labelImg
 
 #############################################################################################
 
@@ -230,18 +244,9 @@ https://hackernoon.com/efficient-implementation-of-mobilenet-and-yolo-object-det
 
 https://www.youtube.com/watch?v=Tm_7fGolVGE
 opencv warpperspective
-https://www.linkedin.com/posts/thotarahul_social-distance-monitoring-activity-6661331982951284736-pLni
-PeopleNet - https://devblogs.nvidia.com/training-custom-pretrained-models-using-tlt/
 
-https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/pretrained-models.html 
-https://docs.openvinotoolkit.org/latest/_models_intel_person_detection_retail_0013_description_person_detection_retail_0013.html 
  
-
-https://github.com/tzutalin/labelImg 
  
-Pose estimation:
-https://github.com/thomasgolda/Human-Pose-Estimation-for-Real-World-Crowded-Scenarios
-https://static.aminer.org/pdf/PDF/000/293/435/detection_of_multiple_partially_occluded_humans_in_a_single_image.pdf 
 
 ################################################################################################################
 
