@@ -1,0 +1,30 @@
+REQUIREMENT:tracking an individual across cameras
+
+Literature: https://asp-eurasipjournals.springeropen.com/articles/10.1186/s13634-017-0482-z#Sec13  (Human tracking over camera networks: a review)
+
+
+Approaches:
+
+1. When the cameras have good overlap (what %?) in FOV
+   a) Look for pixel correspondence between cameras - simpler approach (implementation)
+
+   b) Multi-camera calibration: Most methods in literature survey require knowing the camera layout beforehand, which is explicitly used in the code. Some are also using camera parameters.
+Ref: https://github.com/mvondracek/VUT-FIT-POVa-2018-Pedestrian-Tracking (uses camera parameters, implementation is on offline videos; tracks one person from two cameras, using histogram features for matching)
+ https://github.com/Mhttx2016/Multi-Camera-Object-Tracking-via-Transferring-Representation-to-Top-View  (implementation is on offline videos)
+ 
+
+2. Cameras with no overlap in FOV
+   ReID based approaches – Siamese network/ Triplet loss based methods; NCA-Net: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6210313/pdf/sensors-18-03400.pdf  (Mahalanobis distance based
+   Cons:
+        I) Requires pre-trained model before deployment;
+       II)  Many of these methods are suited for offline searches - how well will they perform for online deployment ? Implementation for training available - how to use for matching at runtime?
+      III) poorer results in general.
+
+Ref: https://github.com/Wanggcong/Spatial-Temporal-Re-identification  (https://github.com/Wanggcong/Spatial-Temporal-Re-identification/issues/26  "If you do not want to re-train a model, you can use our trained models, please read the discussion above. I summarize it as follows...")
+https://github.com/huanghoujing/AlignedReID-Re-Production-Pytorch
+https://github.com/KaiyangZhou/deep-person-reid
+https://github.com/layumi/Person_reID_baseline_pytorch/tree/master/tutorial
+https://github.com/layumi/Person_reID_baseline_pytorch
+https://github.com/arvganesh/Multi-Camera-Object-Tracking  (requires camera layout info)
+
+
