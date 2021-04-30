@@ -1,7 +1,34 @@
+# region of interest detection
+
+https://medium.com/beyondlabsey/creating-a-simple-region-of-interest-roi-inside-a-video-streaming-using-opencv-in-python-30fd671350e0 
+ https://answers.opencv.org/question/18619/region-of-interest-in-video-file/
+keywords - region of interest python opencv video 
+
+#############################################################################################
 
 https://zbigatron.com/mapping-camera-coordinates-to-a-2d-floor-plan/   : transforms the image to top view
 https://www.pyimagesearch.com/2016/03/28/measuring-size-of-objects-in-an-image-with-opencv/    (discussion on calibration in comments)
 https://www.pyimagesearch.com/2016/04/04/measuring-distance-between-objects-in-an-image-with-opencv/ 
+
+https://github.com/harshilpatel312/KITTI-distance-estimation  (distance from camera to object)
+https://medium.com/@marekgalovic/distance-estimation-using-cascade-classification-and-regression-ad240e70285c 
+https://github.com/paul-pias/Object-Detection-and-Distance-Measurement 
+https://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/ 
+https://thesai.org/Downloads/Volume9No9/Paper_77-Deep_Learning_based_Object_Distance_Measurement.pdf 
+
+https://hal.archives-ouvertes.fr/hal-02343350/document (Real TimeObject Detection, Tracking, and Distance and Motion Estimation based on Deep Learning: Appli-cation to Smart Mobility.)
+
+
+https://photo.stackexchange.com/questions/12434/how-do-i-calculate-the-distance-of-an-object-in-a-photo/12437#12437
+https://photo.stackexchange.com/questions/80195/calculation-for-getting-dimension-of-object-in-image-not-working
+
+http://www.emaraic.com/blog/distance-measurement 
+https://www.youtube.com/watch?v=sW4CVI51jDY  (stereo image calibration)
+https://github.com/paul-pias/Object-Detection-and-Distance-Measurement    (formula not clear)
+
+https://www.mathworks.com/matlabcentral/answers/404250-how-can-i-measure-the-distance-between-camera-and-object-usingle-single-camera 
+https://de.mathworks.com/help/vision/examples/measuring-planar-objects-with-a-calibrated-camera.html 
+
 
 ##############################################################################################################
 
@@ -14,26 +41,27 @@ Cityscapes: stereo video sequences, segmentation (https://www.cityscapes-dataset
 Imagenet: classification ONLY  
 https://www.robots.ox.ac.uk/ActiveVision/Research/Projects/2009bbenfold_headpose/project.html 
 http://visal.cs.cityu.edu.hk/downloads/ 
-TownCentreXVID.avi 
-New York Times Square vid feed
-London bus feed
+TownCentreXVID.avi , New York Times Square vid feed , London bus feed
 Mall dataset annotation   https://personal.ie.cuhk.edu.hk/~ccloy/downloads_mall_dataset.html  
-https://www.datasetlist.com/  <- link to check license of dataset
+
+https://www.datasetlist.com/  <- link to check license of dataset  ***
 
 https://viratdata.org/
 * top view images  http://homepages.inf.ed.ac.uk/rbf/FORUMTRACKING/
 * perspective cameras  https://sites.google.com/site/piropodatabase/   
 http://people.csail.mit.edu/jxiao/SUN360/index_high.html 
+
 * link to a dataset with images captured on the dark  
 https://github.com/cs-chan/Exclusively-Dark-Image-Dataset and associated blog   https://medium.com/towards-artificial-intelligence/custom-object-detection-using-efficientdet-the-simplest-way-32749fb93359
 https://www.nightowls-dataset.org/
+
 GOOGLE: people detection dataset, humans crowding dataset, dataset for object detection
 https://www.cis.upenn.edu/~jshi/ped_html/
 https://www.crowdhuman.org/      http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/ 
 http://homepages.inf.ed.ac.uk/rbf/CVonline/Imagedbase.htm#people 
 https://riemenschneider.hayko.at/vision/dataset/index.php?filter=+crowd 
 https://lionbridge.ai/datasets/20-best-bounding-box-image-and-video-datasets-for-machine-learning/ 
-https://www.datasetlist.com/ 
+
 
 how to download selected classes from Google open images dataset
 https://medium.com/@c.n.veeraganesh/how-to-prepare-your-own-customized-dataset-using-open-images-dataset-v4-8dfce9b9e147 
@@ -102,14 +130,6 @@ PeopleNet - https://devblogs.nvidia.com/training-custom-pretrained-models-using
 https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/pretrained-models.html 
 https://docs.openvinotoolkit.org/latest/_models_intel_person_detection_retail_0013_description_person_detection_retail_0013.html 
 
-
-https://github.com/harshilpatel312/KITTI-distance-estimation  (distance from camera to object)
-https://medium.com/@marekgalovic/distance-estimation-using-cascade-classification-and-regression-ad240e70285c 
-https://github.com/paul-pias/Object-Detection-and-Distance-Measurement 
-https://www.pyimagesearch.com/2015/01/19/find-distance-camera-objectmarker-using-python-opencv/ 
-https://thesai.org/Downloads/Volume9No9/Paper_77-Deep_Learning_based_Object_Distance_Measurement.pdf 
-
-https://hal.archives-ouvertes.fr/hal-02343350/document (Real TimeObject Detection, Tracking, and Distance and Motion Estimation based on Deep Learning: Appli-cation to Smart Mobility.)
 
 https://machinelearningmastery.com/how-to-perform-object-detection-with-yolov3-in-keras/
 https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-keras/
@@ -221,7 +241,8 @@ http://www.robots.ox.ac.uk/~vgg/software/via/  , labelme, labelimg , CVAT -> ann
 http://www.robots.ox.ac.uk/~vgg/software/via/  -> annotation tool 
 https://github.com/tzutalin/labelImg
 
-#############################################################################################
+
+###############################################################################################
 
 EfficientDet (xuan) is compiled for Linux – using for windows required running setup.py
 Some other errors- cudnn error on tf2 env  https://github.com/tensorflow/tensorflow/issues/24828 
