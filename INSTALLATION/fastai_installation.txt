@@ -1,0 +1,113 @@
+1. please enable admin rights & ensure latest password is updated in environmental variables
+
+HTTP_PROXY & HTTPS_PROXY & .condarc file (a notepad file in C:/Users/Your Userid)
+
+content of ".condarc file" (Open only in notepadd ++) : (line 6-11)
+
+proxy_servers:
+http: http://userid:password@website:8080
+https: https://userid:password@website:8080
+ssl_verify: true
+channels:
+- defaults
+
+
+
+http_proxy and https_proxy: update latest password in HTTP_PROXY & HTTPS_PROXY under 
+control panel > system > advanced system settings > environment variables
+
+http_proxy: http://userid:password@website:8080 (add /  after :8080, works for few machines - http://userid:password@proxywebsite.com:8080/)
+https_proxy : https://userid:password@website:8080 (add / after :8080, works for few machines - http://userid:password@proxywebsite.com:8080/)
+
+If you have special characters in your password, use url escape characters 
+https://docs.microfocus.com/OMi/10.62/Content/OMi/ExtGuide/ExtApps/URL_encoding.htm while setting up environmental variables. But better to avoid special characters like @ and * in the password.
+
+
+#######################################################################################
+
+2. For fastai installation, please create a separate virtual env. 
+
+# create new environment for fastai
+
+> conda create --name fastai_py37 python=3.7 pip=20.0.2   
+# adding an older version of pip may resolve the issue  
+
+# verify the new environment is installed correctly
+> conda env list
+
+# change to the new environment
+> conda activate myenv
+
+# to deactivate an environment
+> conda deactivate
+
+# to remove an environment, deactivate it & run following
+conda remove --name myenv --all
+conda info --envs
+
+
+#######################################################################################
+
+
+3. install the dependencies (you may skip this step, & let the fastai installation take care of dependencies)
+
+numpy==1.16.4
+pandas==0.25.0
+scikit-learn==0.22.1
+scipy==1.4.1
+
+#######################################################################################
+
+
+4. install torch & torch-vision
+torch==1.4.0
+torchvision==0.5.0
+
+if pip install does not work, install wheel files using appropriate command from https://pytorch.org/   or  https://pytorch.org/get-started/previous-versions/
+
+pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+
+
+If pip install of torch & torch-vision fail, GPU version may be obtained here
+
+\\10.165.240.180\01_Internal\16_Products\visual_quality_inspection\software\torch-1.4.0-cp37-cp37m-win_amd64.whl   ,
+
+\\10.165.240.180\01_Internal\16_Products\visual_quality_inspection\software\torchvision-0.5.0-cp37-cp37m-win_amd64.whl
+
+CPU version here  \\10.165.240.180\01_Internal\16_Products\visual_quality_inspection\software\cpu_only
+
+    pip install "C:\Users\ntid\Desktop\data\Software\torch-1.4.0+cpu-cp37-cp37m-win_amd64.whl"  etc.
+
+
+#######################################################################################
+
+
+5. install Microsoft visual studio 2019 for C++. Otherwise, we may get error with “bottleneck” library during fastai installation (Prema Kathiresan Vasagam (SX/EDS-DL11) please add the steps here)
+
+install community version
+
+Latest and older versions of Visual studio: https://visualstudio.microsoft.com/vs/older-downloads/  
+
+CPU: VS 2019
+
+Compatible versions using CUDA: CUDA 10.1 + VS2017 + Python 3.7.4 https://towardsdatascience.com/installing-tensorflow-with-cuda-cudnn-and-gpu-support-on-windows-10-60693e46e781 
+
+
+#######################################################################################
+
+
+6. install fastai
+
+pip install fastai==1.0.60
+
+
+#######################################################################################
+
+#### Installing on the VM 
+
+In Windows the version of Pytorch/torchvison/fast ai was  torch==1.6.0 ,torchvision==0.7.0,fastai==1.0.61 was working fine.
+But for Linux fast ai was updated to 2.0 where we were facing some issues for inferencing the code ,So downgrade the version to 1.6.
+Downgrading was also not possible because of Bottleneck installation (PEP 517 was not able to build the Wheel fine.)
+So move the 1.6 version of Fast ai package from Windows to Linux which will be placed in Python3.6/lib/sitepackages/fastai where you installed the Python.
+(Moving of Files done via WinSCP)
+So in  both Linux/Windows we will be running the fast ai version 1.6 with no issues.
