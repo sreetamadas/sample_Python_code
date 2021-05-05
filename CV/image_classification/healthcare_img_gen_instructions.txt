@@ -23,7 +23,7 @@ https://github.com/MrGiovanni/UNetPlusPlus/tree/master/pytorch
 https://canvas.instructure.com/login/canvas
 
 
-# prema
+####  Problem sets
 https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation/notebooks?datasetId=181273&sortBy=voteCount 
 Brain MRI Segmentation| Using Unet | Keras | Kaggle 
 https://www.deeplearning.ai/ai-for-medicine/ 
@@ -31,7 +31,4 @@ https://www.coursera.org/learn/ai-for-medical-diagnosis  , Week3
 https://www.kaggle.com/paultimothymooney/chiu-2015
 https://www.kaggle.com/c/histopathologic-cancer-detection 
 
-DATA ENGINEERING
-https://medium.com/better-programming/5-great-data-engineering-online-courses-784e62f57ddd 
-https://digitaldefynd.com/best-data-engineering-courses/ 
-udacity nanodegree
+
