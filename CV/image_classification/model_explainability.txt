@@ -19,3 +19,21 @@ https://github.com/anurags25/FastAI-LIME
 https://github.com/marcotcr/lime/issues/374
 https://github.com/anurags25/FastAI-LIME/blob/master/LIME-Pets.ipynb
 https://github.com/anurags25/FastAI-LIME/blob/master/lime_image.py
+check if this implementation works https://github.com/jacobgil/pytorch-grad-cam 
+https://github.com/yiskw713/SmoothGradCAMplusplus 
+The current working implementation: https://www.kaggle.com/daisukelab/verifying-cnn-models-with-cam-and-etc-fast-ai
+
+
+this blog is trying separate maps for each of the classes https://towardsdatascience.com/multi-label-classification-and-class-activation-map-on-fashion-mnist-1454f09f5925
+Another link https://github.com/mingming97/multilabel-cam   this is marked as multi-label - will need to check if this works
+https://glassboxmedicine.com/2020/05/29/grad-cam-visual-explanations-from-deep-networks/   says we should be able to use this for multiple classes
+ 
+
+general reading:
+https://forums.fast.ai/t/is-there-a-generic-heatmap-grad-cam-api/57218/2
+https://forums.fast.ai/t/using-class-activation-maps-cam-for-visualization/18864
+https://jacobgil.github.io/deeplearning/class-activation-maps
+https://medium.com/@mrsalehi/a-review-of-different-interpretation-methods-in-deep-learning-part-1-saliency-map-cam-grad-cam-3a34476bc24d
+https://medium.com/@mrsalehi/a-review-of-different-interpretation-methods-in-deep-learning-part-2-input-gradient-layerwise-e077609b6377 
+
+
