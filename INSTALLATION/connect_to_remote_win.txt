@@ -1,0 +1,24 @@
+1.	Open up windows terminal on local desktop and type the following (userid should be without braces) 
+For FastAI/PyTorch GPU env: 
+ssh -N -L localhost:8889:localhost:8889 userid@10.47.59.140 -o ServerAliveInterval=60 ServerAliveCountMax=6000 TcpKeepAlive yes
+
+type in your login password. keep the terminal window open
+
+
+2.	open firefox, type the following in the address bar & hit enter
+localhost:8889/           
+
+
+3.	give password
+
+4.	jupyter notebook opens, with folders for each user  
+
+5.	within the folder, open up a new notebook & start working
+6.	to have a local copy of the relevant data on the GPU, copy it from local machine using winSCP
+
+7. please zip the data to enable faster copying. To avoid timeout error during file transfer, please set the server response timeout value to a high number. 
+
+
+References:
+•	https://www.pugetsystems.com/labs/hpc/How-To-Run-Remote-Jupyter-Notebooks-with-SSH-on-Windows-10-1477/
+
