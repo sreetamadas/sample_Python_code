@@ -1,0 +1,231 @@
+1.1. Pre-requisites for installation: NVIDIA CUDA driver, CUDA toolkit and cuDNN
+Check NVIDIA drivers and CUDA architecture using the command nvidia-smi .
+
+Find the compute capability of the GPU card from the NVIDIA architecture.
+
+For the Azure integration system: TESLA K80 GPU with compute capability = 3.7
+
+Install CUDA toolkit & cuDNN, using instructions in below link.
+
+Ref: https://www.pyimagesearch.com/2019/12/09/how-to-install-tensorflow-2-0-on-ubuntu/ 
+
+
+
+1.2.  Installation instructions for building dnn with CUDA support
+Ref: https://www.pyimagesearch.com/2020/02/03/how-to-use-opencvs-dnn-module-with-nvidia-gpus-cuda-and-cudnn/ 
+
+
+
+#######################################################################
+
+2. STEPS:
+1. Install nvidia graphics driver
+https://docs.nvidia.com/deploy/cuda-compatibility/index.html
+
+02a-NVIDIA Runtime installation 
+
+2. check driver details
+$ nvidia-smi
+https://developer.nvidia.com/cuda-gpus  (check the relevant GPU details here, Compute capability can be checked from here)
+
+3. install CUDA
+
+download relevant CUDA toolkit from the following page - https://developer.nvidia.com/cuda-toolkit-archive
+other details on -  https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html 
+ref - https://www.pyimagesearch.com/2019/12/09/how-to-install-tensorflow-2-0-on-ubuntu/
+ 
+$ cd ~
+$ mkdir installers
+$ cd installers/
+$ wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+$ chmod +x cuda_10.2.89_440.33.01_linux.run
+$ sudo ./cuda_10.2.89_440.33.01_linux.run --override       #sudo sh cuda_10.2.89_440.33.01_linux.run
+
+
+
+#####################################################
+for cuda 10.0  https://www.pyimagesearch.com/2019/12/09/how-to-install-tensorflow-2-0-on-ubuntu/
+$ wget http://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux
+$ mv cuda_10.0.130_410.48_linux cuda_10.0.130_410.48_linux.run
+$ chmod +x cuda_10.0.130_410.48_linux.run
+$ sudo ./cuda_10.0.130_410.48_linux.run --override
+
+
+for cuda 10.1   https://gist.github.com/Mahedi-61/2a2f1579d4271717d421065168ce6a73
+#####################################################
+
+
+
+Add CUDA path to ~/.bashrc file
+# NVIDIA CUDA toolkit path
+export PATH=/usr/local/cuda-10.2/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
+
+
+$ source ~/.bashrc
+
+# also refer to post-installation instructions in https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions   or   907 GPU Setup for Ubuntu (Linux)
+
+
+query CUDA to ensure that it is successfully installed
+
+$ nvcc -V
+
+
+
+if installation fails due to driver incompatibility, uninstall & reinstall
+$ sudo apt-get --purge -y remove 'cuda*'
+$ sudo apt-get --purge -y remove 'nvidia*'
+$ sudo reboot
+
+(the above commands were not suffcient; hence tried following
+ref - https://enterinit.com/ubuntu-remove-nvidia-cuda-drivers/
+sudo apt-get remove nvidia-cuda-toolkit
+sudo apt-get remove --auto-remove nvidia-cuda-toolkit
+)
+
+
+
+
+
+
+
+4. install cuDNN (appropriate version) from https://developer.nvidia.com/rdp/cudnn-archive#a-collapse750-10
+$ cd ~/installers                                # in /mnt directory
+$ tar -zxf cudnn-10.2-linux-x64-v7.6.5.32.tgz    #cudnn-10.0-linux-x64-v7.6.4.38.tgz
+$ cd cuda
+$ sudo cp -P lib64/* /usr/local/cuda/lib64/
+$ sudo cp -P include/* /usr/local/cuda/include/
+$ cd ~
+
+
+5. create virtual env
+$ python3 -m venv dark_yolov4                                     # to create env
+$ source dark_yolov4/bin/activate                                 # activate env
+$ pip install package_name   # or, pip install requirements.txt   # install packages
+$ deactivate                                                      # to deactivate env
+##  packages
+numpy==1.16.4
+pandas==0.25.0
+scikit-learn==0.22.1
+scipy==1.4.1
+
+
+
+6. install openCV
+
+ A. for Tesla M60, we will install regular openCV   (https://pypi.org/project/opencv-python/   https://www.pyimagesearch.com/2018/09/19/pip-install-opencv/)
+$ pip install opencv-python   # main modules only
+$ pip install opencv-contrib-python
+
+
+## the above commands are failing; run the following (ref- https://github.com/NVIDIA/nvidia-docker/issues/864)
+sudo apt-get update
+sudo apt-get install -y libsm6 libxext6 libxrender-dev
+sudo pip install opencv-contrib-python
+
+## The above commands install OpenCV into the appropriate virtual env, which can be verified by import cv2; however, Darknet can't be installed with this version. 
+
+B. for accelerated openCV  
+(ref - https://www.pyimagesearch.com/2020/02/03/how-to-use-opencvs-dnn-module-with-nvidia-gpus-cuda-and-cudnn/
+     https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/)
+
+
+     a.  download appropriate opencv & opencv_contrib  
+      ( https://github.com/opencv/opencv , https://github.com/opencv/opencv/releases , https://github.com/opencv/opencv_contrib/releases)
+
+
+     b. run following command
+$ cd ~/opencv
+$ mkdir build
+$ cd build
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+ -D CMAKE_INSTALL_PREFIX=/usr/local \
+ -D INSTALL_PYTHON_EXAMPLES=ON \
+ -D INSTALL_C_EXAMPLES=OFF \
+ -D OPENCV_ENABLE_NONFREE=ON \
+ -D WITH_CUDA=ON \
+ -D WITH_CUDNN=ON \
+ -D OPENCV_DNN_CUDA=ON \
+ -D ENABLE_FAST_MATH=1 \
+ -D CUDA_FAST_MATH=1 \
+ -D CUDA_ARCH_BIN=7.0 \
+ -D WITH_CUBLAS=1 \
+ -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+ -D HAVE_opencv_python3=ON \
+ -D PYTHON_EXECUTABLE=~/.virtualenvs/opencv_cuda/bin/python \
+ -D BUILD_EXAMPLES=ON ..
+
+
+   c. for M60, architecture doesn't support with cuda_on
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+ -D CMAKE_INSTALL_PREFIX=/usr/local \
+ -D INSTALL_PYTHON_EXAMPLES=ON \
+ -D INSTALL_C_EXAMPLES=OFF \
+ -D OPENCV_ENABLE_NONFREE=ON \
+ -D WITH_CUDA=OFF \
+ -D WITH_CUDNN=OFF \
+ -D OPENCV_DNN_CUDA=OFF \
+ #-D ENABLE_FAST_MATH=1 \  # did not type on terminal
+ #-D CUDA_FAST_MATH=1 \      # did not type on terminal
+ #-D CUDA_ARCH_BIN=5.2 \     # did not type on terminal
+ #-D WITH_CUBLAS=1 \
+ -D OPENCV_EXTRA_MODULES_PATH=/mnt/installers/opencv_contrib-4.2.0/modules \
+ -D HAVE_opencv_python3=ON \
+ -D PYTHON_EXECUTABLE=/mnt/dark_yolov4/bin/python \
+ -D BUILD_EXAMPLES=ON ..
+
+## or, the following
+
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D WITH_CUDA=OFF \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+    -D OPENCV_ENABLE_NONFREE=ON \
+    -D BUILD_EXAMPLES=ON ..
+
+
+$ make -j4
+$ sudo make install
+$ sudo ldconfig
+
+   C. from apt
+$ sudo apt-get install libopencv-dev
+# ref - https://github.com/pjreddie/darknet/issues/691  , https://saferauto.home.blog/2019/04/06/4o-how-to-install-yolo-darknet-with-cuda-and-opencv-in-ubuntu/  ,   https://docs.opencv.org/4.2.0/d2/de6/tutorial_py_setup_in_ubuntu.html
+
+# this installs opencv3.2.0 & is compatible with darknet
+# however, import cv2 command in dark_yolov4 virtual env gives modulenotfounderror -> some links are required
+
+
+
+###############################################################################
+
+2.1. References to sort CUDA related errors during installation
+https://gist.github.com/Mahedi-61/2a2f1579d4271717d421065168ce6a73    cuda_10.1_installation_on_Ubuntu_18.04
+
+https://saferauto.home.blog/2019/04/06/4o-how-to-install-yolo-darknet-with-cuda-and-opencv-in-ubuntu/
+
+
+
+2.2.  Checking that dnn is CUDA-enabled, during model inference
+set the following commands right after loading the model
+
+              net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+              net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+
+Ref:  https://www.pyimagesearch.com/2020/02/10/opencv-dnn-with-nvidia-gpus-1549-faster-yolo-ssd-and-mask-r-cnn/ 
+
+
+
+2.3. Points to keep in mind during installation
+Opencv version 4.1.0 does not have the CUDA backend support neither configured to operate on CUDA . We need a minimum version of opencv 4.2.0 .
+Already checked version 4.0.0 and 4.1.0: they cannot trigger GPU support for DNN module of CUDA .
+Also, cuDNN-accelerated openCV (min. version 4.2) requires GPU compute capability 5.3 and above
+
+
+
+
+
+
+
