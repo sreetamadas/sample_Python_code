@@ -66,17 +66,14 @@ torchvision==0.5.0
 if pip install does not work, install wheel files using appropriate command from https://pytorch.org/   or  https://pytorch.org/get-started/previous-versions/
 
 pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 
 
-If pip install of torch & torch-vision fail, GPU version may be obtained here
+# else, download the files & install using full path
+https://download.pytorch.org/whl/torch_stable.html  <- download wheel files from here & do pip install
 
-\\10.165.240.180\01_Internal\16_Products\visual_quality_inspection\software\torch-1.4.0-cp37-cp37m-win_amd64.whl   ,
-
-\\10.165.240.180\01_Internal\16_Products\visual_quality_inspection\software\torchvision-0.5.0-cp37-cp37m-win_amd64.whl
-
-CPU version here  \\10.165.240.180\01_Internal\16_Products\visual_quality_inspection\software\cpu_only
-
-    pip install "C:\Users\ntid\Desktop\data\Software\torch-1.4.0+cpu-cp37-cp37m-win_amd64.whl"  etc.
+pip install path_on_local/torch-1.4.0+cpu-cp37-cp37m-win_amd64.whl
+pip install path_on_local/torchvision-0.5.0+cpu-cp37-cp37m-win_amd64.whl
 
 
 #######################################################################################
@@ -111,3 +108,21 @@ Downgrading was also not possible because of Bottleneck installation (PEP 517 wa
 So move the 1.6 version of Fast ai package from Windows to Linux which will be placed in Python3.6/lib/sitepackages/fastai where you installed the Python.
 (Moving of Files done via WinSCP)
 So in  both Linux/Windows we will be running the fast ai version 1.6 with no issues.
+
+
+
+
+####################################################################################################
+######################################################################################################
+
+wheel for bottleneck
+pip install fastai gives error
+https://github.com/fastai/fastai/blob/master/README.md#conda-install
+https://docs.fast.ai/troubleshoot.html
+https://www.scivision.co/python-windows-visual-c-14-required/
+
+
+
+
+
+
