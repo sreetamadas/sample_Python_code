@@ -1,4 +1,12 @@
 ####################################################################################################
+'''
+methods to solve optimisation prob:
+
+gurobi solver : simplex method
+CBC solver : branch & bound algorithm
+
+'''
+######################################################################################################
 ##### OPTIMISE cost of production (of items on different machines), given time & demand  #######
 
 import pandas #as pd
