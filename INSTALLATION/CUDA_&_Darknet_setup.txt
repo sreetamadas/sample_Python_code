@@ -1,0 +1,115 @@
+#  Installations Steps for Tesla M60 GPU - CUDA Toolkit (v. 11.0) + NVIDIA Driver (v. 450) + cuDNN installation + Darknet build
+
+
+1. Install all the required libraries for CUDA tookit and Darknet
+   sudo apt-get install build-essential git libopencv-dev
+
+2. Create a folder in mount drive for installation (To avoid space issues)
+   cd /mnt
+   mkdir work_dir
+   sudo chown vqiuser: work_dir
+   cd work_dir
+
+3. Installing CUDA toolkit and NVIDIA Driver
+   wget https://developer.download.nvidia.com/compute/cuda/11.0.3/local_installers/cuda_11.0.3_450.51.06_linux.run
+   sudo sh cuda_11.0.3_450.51.06_linux.run
+
+4. Set the CUDA toolkit path
+  #Update the bashrc file
+  vi ~/.bashrc
+  #Add following line then press Ctrl+x, Save - Y
+  export PATH=/usr/local/cuda-11.0/bin${PATH:+:${PATH}}
+  export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64\
+                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+ 
+5. Download and Install cuDNN
+https://developer.nvidia.com/cudnn-download-survey
+   # Unzip the cuDNN package.
+   tar -xzvf cudnn-11.0-linux-x64-v8.0.3.33
+ 
+ 
+   # Copy the following files into the CUDA Toolkit directory, and change the file permissions
+  sudo cp cuda/include/cudnn*.h /usr/local/cuda/include
+  sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+  sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+
+
+6. Restart and Verify Installation
+   sudo reboot
+   # relogin & check driver installation
+   nvidia-smi
+   # check nvcc
+   nvcc
+
+
+7. Darknet build using make
+   git clone https://github.com/AlexeyAB/darknet.git
+   cd darknet
+   
+   # Edit the Makefile using nano
+   sudo nano Makefile
+ 
+******************************************************************** 
+# Change following lines then Ctrl+x, Save-Y
+GPU=1
+CUDNN=1
+OPENCV=1
+AVX=1
+OPENMP=1
+LIBSO=1
+ 
+ 
+ARCH= -gencode arch=compute_52,code=[sm_52,compute_52]
+NVCC=/usr/local/cuda/bin/nvcc
+# Tesla A100 (GA100), DGX-A100, RTX 3080
+# ARCH= -gencode arch=compute_80,code=[sm_80,compute_80]
+## Tesla M60
+##  ARCH= -gencode arch=compute_52,code=[sm_52,compute_52]
+## ARCH= -gencode arch=compute_52,code=compute_52  (#which one works?)
+## ARCH= -gencode arch=compute_52,code=sm_52
+********************************************************************* 
+ 
+   # Build the darknet
+   sudo make
+
+
+Editing the Makefile through scripts 
+% cd darknet
+!sed -i 's/OPENCV=0/OPENCV=1/g' Makefile
+!sed -i 's/GPU=0/GPU=1/g' Makefile
+!sed -i 's/CUDNN=0/CUDNN=1/g' Makefile
+!sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/g' Makefile
+
+# ref: https://medium.com/@today.rafi/yolo-v4-easy-installation-and-inferencing-on-an-image-or-video-266efd036a7e 
+
+
+
+8. Test the Yolo v4 FPS for example video
+Download a test video: https://github.com/theAIGuysCode/YOLOv4-Cloud-Tutorial/raw/master/videos/test.mp4 (Town center clip)
+
+   wget https://github.com/theAIGuysCode/YOLOv4-Cloud-Tutorial/raw/master/videos/test.mp4
+  ./darknet detector demo cfg/coco.data cfg/yolov4.cfg yolov4.weights test.mp4 -dont_show -ext_output
+
+
+
+
+########################################################################
+Darknet-based yolo v4 has the following dependencies
+    CMake >= 3.12
+    CUDA 10.0
+    cuDNN >= 7.0 for CUDA 10.0
+    OpenCV >= 2.4
+    Windows or Linux
+https://medium.com/analytics-vidhya/implementing-yolov4-to-detect-custom-objects-using-google-colab-6691c98b15ff
+
+
+References for troubleshooting
+https://gist.github.com/Mahedi-61/2a2f1579d4271717d421065168ce6a73    cuda_10.1_installation_on_Ubuntu_18.04
+https://saferauto.home.blog/2019/04/06/4o-how-to-install-yolo-darknet-with-cuda-and-opencv-in-ubuntu/  ## run updates before installation
+https://github.com/pjreddie/darknet/issues/1480
+https://github.com/pjreddie/darknet/issues/691  (openCV issues)
+https://docs.opencv.org/4.2.0/d2/de6/tutorial_py_setup_in_ubuntu.html
+
+
