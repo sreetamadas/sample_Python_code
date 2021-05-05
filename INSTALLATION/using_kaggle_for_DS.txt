@@ -1,0 +1,85 @@
+**** Using Kaggle for your Data Science Work.  ***
+
+free, online cloud computing (with some
+limitations). So if your computer either gets too hot, takes too long to run, or doesn’t
+have enough processing power or memory to run your models, you can use Kaggle’s
+kernels to run your code!
+
+
+Benefits of using Kaggle
+It’s free! With a Kaggle account, you can use their servers at no cost to you.
+Cloud computing. You can run a model, commit the changes, go downtown, and
+pull up your model on another computer. As long as you have access to the
+internet, your work can follow you (without using Git)!
+GPU. For computationally intensive models, you can use up to 2 cores and 13 GB
+of GPU RAM. For those who can’t afford expensive GPUs, why not use Kaggle’s?
+Notebook or script. Import your code in a style that you’re comfortable in!
+No need to pip install . Kaggle has most python packages already preinstalled
+(you can even pip install package that Kaggle doesn’t support).
+Dark mode. Because it’s better.
+
+
+Drawbacks and limitations
+It’s not all neural net sunshine and kernel rainbows. First and foremost, Kaggle is
+owned by Google. So if you are uncomfortable with Alphabet having your facial
+recognition models on their servers, then Kaggle’s kernels might not be for you.
+Also, the kernel that runs on your webpage can only run for an hour without user
+input. So if you were to run your model and you walk away for more than an hour,
+your kernel will stop. You will lose all your outputs and must restart your kernel. You
+can overcome this by committing your code. The code will run in a separate kernel
+than that of the one that you can see on your webpage. But a caveat of committing is
+that the committed kernel’s output can only be seen once the kernel has completely
+ran. So if your total runtime is 5 hours, you can’t check on your committed kernel
+for 5 hours. And if your code has a fatal error, well you won’t know until 5 hours 🙃
+
+Here are the hardware and time limitations when working with Kaggle:
+9 hours execution time
+5 Gigabytes of auto-saved disk space (/kaggle/working)
+16 Gigabytes of temporary, scratchpad disk space (outside /kaggle/working)
+
+CPU Specifications
+4 CPU cores
+16 Gigabytes of RAM
+
+GPU Specifications
+2 CPU cores
+13 Gigabytes of RAM
+
+
+
+
+Getting started with Kaggle
+Sign into your Kaggle account
+In the top bar, click Notebooks
+Then select New Notebook
+Select either Python or R
+Select the coding style
+If you want to use GPU, click Show Advanced Settings, then select GPU on
+Then hit Create
+
+
+The Kaggle Kernel
+If you selected notebook style, you should feel right at home a la Jupyter Notebook.
+To upload your data, click on the top right on + Add Data . You can select a
+preexisting Kaggle dataset or upload your own. Keep in mind, that you are limited to
+16GBs of data.
+On the right sidebar, you can keep track of your online kernel. The Sessions tab
+keeps track of how much computing power you have available. Think of your
+Workspace tab as a GUI file structure. If you’re using a Kaggle dataset, your files will
+be in /kaggle/input/your-kaggle-dataset . If you’ve uploaded a dataset, your files will
+be in /kaggle/input/your-uploaded-data . On the Settings tab, you can change settings
+that you’ve previously set.
+Now you’re all set! Code away and enjoy your free online notebook. When you’re
+done or when you ready to commit, hit the Commit button on the top right. Your
+code will run in a separate kernel. Once all your code has been run, it becomes a
+version. You can go back to any version or your committed code and see the outputs
+(if it ran properly).
+
+
+If you’re submitting to a kaggle competition, you would then go to your kernel’s
+version. On the left side, click Outputs. If you have a .csv output, you will be able to
+see it here. Select your .cvs file, and click Submit to Competition.
+
+
+
+
