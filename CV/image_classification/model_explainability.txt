@@ -1,0 +1,21 @@
+PROBLEM STATEMENT: Can we use GradCAM to show the defective region (as predicted by the model) on the image, when using classification models?
+
+SAMPLE DATA: NEU dataset
+
+TASKS:
+need to set up code to run with test images, which are not part of imagedatabunch
+output should show the test images with the heat map
+compare this to raw test images with ground truth (GT) bounding box
+
+
+
+https://towardsdatascience.com/anomaly-detection-in-images-777534980aeb  (keras)
+https://www.pyimagesearch.com/2020/03/09/grad-cam-visualize-class-activation-maps-with-keras-tensorflow-and-deep-learning/ 
+https://www.kaggle.com/daisukelab/verifying-cnn-models-with-cam-and-etc-fast-ai 
+google "activation map in fastai" - throws up relevant links
+
+
+https://github.com/anurags25/FastAI-LIME
+https://github.com/marcotcr/lime/issues/374
+https://github.com/anurags25/FastAI-LIME/blob/master/LIME-Pets.ipynb
+https://github.com/anurags25/FastAI-LIME/blob/master/lime_image.py
