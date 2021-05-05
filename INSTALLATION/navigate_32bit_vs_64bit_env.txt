@@ -1,0 +1,74 @@
+
+***  Creating new 32 bit environment   ****
+
+#1st - Activating 32 bit anaconda
+1- >>set CONDA_FORCE_32BIT=1
+#Creating new environment: 
+2- >>conda create -n py32 python=3.6
+
+A new environment will get created with python = 3.6 , which you can change depending upon your requirement
+----------------------------------------------------------------------------------------------------------------------------
+To activate py32 anytime you want
+
+>>set CONDA_FORCE_32BIT=1
+>>conda activate py32
+
+Now, Install all the required packages you need to run the code like sklearn, numpy, scipy, mlxtend, xlrd etc.
+
+Note : prefer conda install <Package> over pip install <package>, wherever conda doesnot work, you can just google conda install <package_name> , 
+it will give you the right command for it.
+
+to close the environment,
+Either close that command prompt or do 
+
+>>conda deactivate
+
+to revert back to 64 bit,
+>>set CONDA_FORCE_32BIT=0
+
+----------------------------------------------------------------------------------------------------------------------------
+
+For jupyter notebook, spyder:
+
+For each new environment you create like py32 etc, you have to install separate jupyter-notebook, 
+spyder or else it will launch the jupyter-notebook, spyder of anaconda base. 
+
+So first launch the new environment,
+>>set CONDA_FORCE_32BIT=1
+>>conda activate py32
+
+then install both
+>>conda install jupyter-notebook
+>>conda install spyder
+
+----------------------------------------------------------------------------------------------------------------------------
+
+For creating a bat file to save effort of launching spyder, jupyter notebook everytime:
+
+1st - create a text document and input these lines in it:
+
+#I always want jupyter/spyder to launch from this directory to save me from navigation each time, so set according to yourself
+>>cd C:\Users\name\Desktop\project
+
+#Change this below according to your system path
+>>call "C:\Users\name\AppData\Local\Continuum\anaconda3\Scripts\activate.bat"
+
+>>call set CONDA_FORCE_32BIT=1
+>>call conda activate py32
+>>call spyder OR >>call jupyter-notebook
+
+
+Create each text document for spyder and jupyter and save it as a .bat file. For example jupy_heme32.bat
+This bat file will auto launch jupter or spyder for you with 32 bit anaconda
+
+
+---------------------------------------------------------
+Example of .bat file in my laptop :
+
+cd C:\Users\name\Desktop\project
+call "C:\Users\name\AppData\Local\Continuum\anaconda3\Scripts\activate.bat"
+call set CONDA_FORCE_32BIT=1
+call conda activate py32
+call jupyter-notebook
+
+
