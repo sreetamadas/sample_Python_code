@@ -1,0 +1,45 @@
+1. Prerequisites
+Visual studio
+Opencv Source codes from GitHub
+CMake
+CUDA
+cuDNN
+
+
+2. Building the CUDA enabled openCV from scratch 
+link to follow the instruction : https://jamesbowley.co.uk/accelerate-opencv-4-3-0-build-with-cuda-and-python-bindings/
+
+
+3. Installing openCV with already build python bindings
+link to download the python bindings based on opencv and CUDA version requirement 
+
+https://jamesbowley.co.uk/downloads/
+
+   a) Download the python bindings and unzip the downloaded file
+   b) copy the downloaded bindings  (cv2.cp37-win_amd64.pyd) to the site packages directly
+      "%USERPROFILE%\Anaconda3\Lib\site-packages\"
+   c) To verify this and ensure that there are no historic installations of OpenCV either through pip or conda before continuing, type the following:
+       dir "%USERPROFILE%\Anaconda3\Lib\site-packages\cv2*"
+     and inspect the output and ensure that the date of the bindings copied to your installation of python  corresponds to the date and time of the copy
+     action. Additionally you must make sure that there are no other entries. also make sure there are no additional output like showing a cv2 
+     directory implies that there is an existing installation of OpenCV, either through pip or a previous build. 
+     This needs to be removed before continuing, with the method of removeal depending on how it was installed.
+   d) Include the path to the opencv_world430.dll and opencv_img_hash430.dll shared libraries in your user or system path or temporarily by entering:
+         set path=%openCvBuild%\install\x64\vc16\bin;%path%
+   e) Test the freshly compiled python module can be located and loads correctly by entering:
+         python -c "import cv2; print(f'OpenCV: {cv2.__version__} for python installed and working')"
+   f) and checking the output as shown below, if you can see this output indicates that opencv is successfully compiled.
+         OpenCV: 4.3.0 for python installed and working
+   
+   
+4. Other links for reference
+https://pterneas.com/2018/11/02/opencv-cuda
+https://jamesbowley.co.uk/opencv-3-4-gpu-cuda-performance-comparison-nvidia-vs-intel 
+         
+
+   
+
+
+
+
+
