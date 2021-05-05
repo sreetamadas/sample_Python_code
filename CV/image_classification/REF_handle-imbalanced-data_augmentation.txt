@@ -36,6 +36,27 @@ link for image resizing & TTA
 
 
 
+###   Data augmentation for object detection needs to ensure bbox information is correctly updated when transforms (involving changes to object locations/ orientations) are applied
+need to see: generalising for different bbox formats ; saving the transformed image & bbox coordinates
+
+https://github.com/albumentations-team/albumentations
+https://colab.research.google.com/drive/1JuZ23u0C0gx93kV0oJ8Mq0B6CBYhPLXy#scrollTo=GwFN-In3iagp&forceEdit=true&offline=true&sandboxMode=true 
+https://blog.roboflow.com/yolov4-data-augmentation/           
+https://albumentations.ai/docs/examples/example_bboxes/ 
+https://blog.roboflow.com/why-preprocess-augment/
+
+
+
+
+
+
+
+
+
+
+
+
+
 # https://towardsdatascience.com/complete-image-augmentation-in-opencv-31a6b02694f5  (color changes while viewing using openCV)
 
 # https://towardsdatascience.com/color-identification-in-images-machine-learning-application-b26e770c4c71 
