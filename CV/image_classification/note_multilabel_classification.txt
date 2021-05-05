@@ -1,0 +1,7 @@
+1. the sigmoid parameter converts the predicted values to a range (0,1), since we already use probability values, we set sigmoid = False.
+
+2. newer versions of fast.ai use the skleran metric's to calculate the fbeta scores. Ref: https://github.com/fastai/fastai/blob/master/fastai/metrics.py#L233
+
+3. based on many kaggle competitions, the most used performance metric is the fbeta score.
+
+4. the fbeta score from the sklern metric's is only used as a performance metric
