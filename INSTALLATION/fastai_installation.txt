@@ -122,7 +122,17 @@ https://docs.fast.ai/troubleshoot.html
 https://www.scivision.co/python-windows-visual-c-14-required/
 
 
+verify the installation
+Please check that the software are installed correctly.
+Install jupyter notebook for the corresponding environment using Anaconda, or through command line
 
+
+
+https://pytorch.org/get-started/locally/#mac-installation
+https://conda.anaconda.org/pytorch/noarch
+https://conda.anaconda.org/pytorch/win-64
+
+https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 
 
 
