@@ -58,7 +58,8 @@ def abline():
     gca.plot(gca.get_xlim(),gca.get_ylim(),color='b')
 
 plt.figure(figsize=(10,8))
-plt.scatter(d['p'],d['a'],color='b',alpha=0.7,s = 1)
+plt.scatter(d['p'],d['a'],color='w',alpha=0.7,s = 1) # color='b'
+ax.set_facecolor('xkcd:black')
 plt.title('scatter & line plot',fontsize=22)
 plt.ylabel('Actual y', fontsize=20)
 plt.xlabel('Predicted y', fontsize=20)
