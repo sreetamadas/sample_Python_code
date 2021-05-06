@@ -1,2 +1,14 @@
-Extract deep learning features from images using simple python interface
+# Extract deep learning features from images using simple python interface
 https://github.com/chsasank/image_features
+
+
+
+# Feature extraction using image processing:
+keypoint descriptors , SIFT
+shape contexts
+spatial pyramid pooling
+DPM based on HOG (histogram of gradients)
+
+
+
+
