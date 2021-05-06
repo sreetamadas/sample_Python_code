@@ -16,6 +16,14 @@ for Line in FileIN:
 FileIN.close()
 
 
+# read : 2
+imag_list = []
+with open(filename, 'r') as fobj:
+	for line in fobj:
+		imag_list.append[line.rstrip("\n")]
+
+
+
 ## read in data
 import pandas
 filepath = raw_input("enter fullPath & filename: ")  # C:\Users\username\Desktop\data\sampleData.xls
@@ -36,6 +44,17 @@ file_list = [f for f in files if f.startswith('PPG_input')]
 # write to a file
 df1.to_csv("modified_data.csv", sep=',')
 df.to_excel("C:\\Users\\Desktop\\data\\outfile.xlsx")
+
+
+
+# write using file handle
+f = 'content_to_write'
+filename='Output.txt'
+filevals= open(file_location+filename,'w')
+filevals.write(f)
+filevals.flush()
+os.fsync(filevals)
+filevals.close()
 
 
 ######################################
