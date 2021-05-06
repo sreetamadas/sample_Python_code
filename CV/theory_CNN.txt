@@ -1,4 +1,9 @@
+inputs: image shape & color
+as we go deeper into the network, nH & nW decrease while nC increases (nC corresponds to no. of filters/ channels in previous layer)
 
+
+
+# Theory 
 Forward propagation: computation of activation function or g(z) = 1/(1 + e^ -z) using inputs & weights (theta) at each layer.
 use random initialisation of theta in [-€,€]
 
@@ -10,10 +15,144 @@ predicting very well on training data)
 
 For NN, the cost function J-theta is non-convex & is theoretically susceptible to getting stuck in local minima.
 
+
+
+
+# parameters & hyperparameters
+model parameters (weights in the filters, bias) vs 
+hyper-parameters (filter size, padding size, stride size; learning rate alpha, # iterations, # hidden layers, # hidden units in each layer, 
+choice of activation function, minibatch size, regularization parameters, momentum *). 
+Are hyperparameters set through CV# ?
+* gradient descent with exponentially weighted average - use of beta
+
+Reduce the no. of parameters in a DNN (roughly by half for CrystalNet) by adding 2 Maxpool layers, & 
+compensate the reduced complexity by increasing the non-linearity of the network through added depth.
+
+hyperparameter tuning - use of appropriate scale, parallel training of multiple models vs incremental change to a model
+
+
+
+
+# types of layers:
+1. convolution layer (with filter, pad, stride & activation function); conv layer has less parameters than FC layer
+   where do we use? - filtering (= feature extraction); usually 3x3, 5x5 or 7x7 filters are used; f should be odd
+   how to choose 
+        a) values of filter size: f (should be odd), 
+        b) no. of filters in a layer (start with fewer, add more as required), 
+        c) padding, stride ? -see below
+
+2. pooling layer (Keeps a high number in the portion where it detects a particular type of feature) - maxPool, avgPool. 
+    Has hyperParameters filter & stride (set through CV) but no parameters/weights to learn (from backProp). 
+    reduces the height and width of the input. 
+    It helps reduce computation, as well as helps make feature detectors more invariant to its position in the input.
+    
+3. fully connected/ FC layer (this is usually followed by a softmax layer which has outputs = no. of class predictions)
+
+advantage of conv layer over FC layer: 1. parameter sharing ; 2. sparsity of connections
+
+usage intruction:
+1. use padding (valid or same - to keep image from shrinking & also use corner pixels to avoid info loss)
+2. strided convolution (using stride>1 shrinks images)
+3. volume convolution (to work with RGB images; to apply multiple filters simultaneously)
+4. "flatten (unroll the 3D volume into a 1D vector; the flattened vector can be passed through softmax/logistic
+  layer to make the prediction for the final output)"
+5. dense (this shows the connection between input (flattened from previous layer) & output in the fully connected layer
+
+
+
+
+# types of activation functions (g):
+sigmoid or logistic (sigmoid is a special case of logistic)
+softmax (generalized logistic for multiclass); logistic, softmax - are these same ?
+tanh (tanh & sigmoid suffer from vanishing gradient problem)
+ReLU
+leaky ReLU
+
+Q) Is the activation function used only in the last layer to do the prediction (see week 1 part 10, Andrew ng), or also in intermediate layers (week 1, part 7; course ipython notebook) ? Last layer has softmax, other layers can be ReLU/ leaky ReLU. All hidden layers should have same type of act func.
+Q) Vanishing gradient problem
+
+
+
+
+# what are the different loss functions? 
+categorical cross-entropy, binary cross-entropy, hinge loss, etc.*) 
+Where are they being used ? In cost function J
+1. log-loss / cross-entropy : for binary class
+2. categorical cross entropy loss function: for multi-class
+* https://keras.io/losses/?source=post_page---------------------------        
+https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a        
+https://blog.algorithmia.com/introduction-to-loss-functions/              
+https://heartbeat.fritz.ai/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0          
+
+
+
+
+
+# methods to speed up training deep neural nets:
+1. vanishing/exploding gradients can make training slow (slow convergence?) - choose appropriate initial weights
+2. use mini-batch instead of batch (full training data) gradient descent. 1 pass through the full training set using mini-batch gradient descent is also called 1 epoch of training - this covers multiple steps of gradient descent. We take multiple steps till convergence (convg.of what? - attaining minimum of cost function). choice of mini-batch size. Do we also specify the no. of epochs? (start with less epochs, increase if loss between successive epochs is still large after completion of all epochs)
+
+# each epoch can have several iterations/ mini-batches. 1 epoch sees full training set once. Complete all epochs on the training set, then with those values of hyper-parameters, run on the validation set & check accuracy & other parameters (accuracy for balanced classes; sensitivity & specficity for imbalance)
+https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/
+
+
+
+
+
+# how to avoid overfitting with NN ?
+- CNN is less prone to overfitting, since the no. of features with N fxfxf filters will be N(F3 + 1), no matter how large the input image
+
+# methods to reduce over-fitting (does over-fitting arise from the multiple hyper-parameters we have to choose from?)
+1. dropout/ dropout regularization (randomly dropping nodes in hidden layers; 
+   in which layer should this be implemented ?- not in final O/P layer, implement in the last few hidden layers; may not be useful for images) 
+   Is this same as L2 regularisation ?- not exactly, but has similar effect (see Andrew lec)
+2. batch normalization - this makes NN robust to the choice of hyperparameters (makes hyperparameter search easier & the training go faster). 
+   Here we normalize activations (either z[l] or a[l]), as well as inputs x(i).
+   https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/
+3. L2 regularization (find appropriate lambda; how to implement?) 
+   https://www.kaggle.com/cdeotte/how-to-choose-cnn-architecture-mnist
+4. early stopping (doing less no. of iterations/epochs to prevent overfitting; 
+    how to select the no. of iterations ?- when there are low changes in loss & accuracy)
+    https://towardsdatascience.com/a-simple-2d-cnn-for-mnist-digit-recognition-a998dbc1e79a
+5. data augmentation
+
+
+
+
+
+# types of optimisers: where is it used? 
+To optimise parameters (filter weights, bias) to reduce the cost function J (convergence of J?)
+1. gradient descent
+2. gradient descent with momentum (exponentially weighted averages)
+3. RMSprop
+4. adam optimisation (alpha, beta1, beta2, epsilon)
+https://keras.io/optimizers/?source=post_page---------------------------
+
+where is the alpha parameter (step size/ learning rate) here?
+- it is part of the update step when finding optimal weights & bias. 
+1. Set alpha by seeing how fast the loss on the training set is decreasing. 
+2. or, specify different learning rates for different epochs (first10 & so on). 
+3. cyclic learning rate
+
+
+
+
+
+
+Segmentation : Final submission: RLE vs IoU
+RLE-encoded output for the training set  (what exactly is this?)
+- this is representation of the training images, and is redundant with the mask image files.
+- training data has images & annotated masks; for test data, we have to predict the masks
+
+
+
+*****  QUESTIONS  ******
 should there be train-test or train-validation-test sets for CNN ?
 
 do we find from literature what kind of networks were used for similar input data ?
+common networks: LeNet5,alexnet, imagenet, vgg, resnet, capsnet, InceptionNet (google), mobileNet, XceptionNet
 
+Network design choice for practical application: Efficient-Nets, Squeeze Nets, Knowledge Distillation
 
 
 
