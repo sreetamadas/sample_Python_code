@@ -1,0 +1,43 @@
+# Extract deep learning features from images using simple python interface
+https://github.com/chsasank/image_features
+
+
+
+## image pre-processing b4 deep learning
+
+1. image smoothing / blurring / noise removal
+    https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html
+    https://docs.opencv.org/master/d4/d13/tutorial_py_filtering.html
+    
+2. contrast enhancement
+
+3. morphological operations - erosion, dilation
+    https://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures/ImageProcessing-html/topic4.htm
+    https://himnickson.medium.com/morphological-operations-in-image-processing-cb8045b98fcc
+    google: effect of kernel shape on morphological transform
+
+4. contour approximation
+    https://www.pyimagesearch.com/2014/04/21/building-pokedex-python-finding-game-boy-screen-step-4-6/
+    cv2.findContour
+    cv2.boundingRect
+    
+5. edge detection
+
+
+# google: hole filling using spline curve python
+https://stackoverflow.com/questions/9478347/how-do-i-fill-holes-in-an-image
+
+# google: how to create a circular mask in opencv
+https://stackoverflow.com/questions/25074488/how-to-mask-an-image-using-numpy-opencv/25114860
+
+
+
+# Feature extraction using image processing:
+keypoint descriptors , SIFT
+shape contexts
+spatial pyramid pooling
+DPM based on HOG (histogram of gradients)
+
+
+
+
