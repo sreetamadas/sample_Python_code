@@ -109,6 +109,26 @@ plt.show()
 
 
 
+## plots of individual feat.s vs class
+df_list = df.columns.tolist()
+for i in range(3,16):
+    plt.scatter(df['status'], df.iloc[:, i], alpha=0.5) #alpha=0.2,cmap='viridis'
+    plt.xlabel('status')
+    plt.ylabel(df_list[i]) #('A660_80')
+    plt.show()
+
+
+    
+for i in range(3,16):
+    fig, ax = plt.subplots(figsize=(6,5))
+    plt.suptitle(df_list[i])
+    df.boxplot(column=df_list[i], by='status', ax=ax)
+    plt.show()    
+    
+    
+    
+    
+
 ### histogram
 ax2 = df.plot(kind='hist', bins=100)
 ax2.set_xlabel('v1')
