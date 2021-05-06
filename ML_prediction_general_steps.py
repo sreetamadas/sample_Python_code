@@ -347,6 +347,35 @@ plt.show()
 
 
 
+# stacked model
+from mlxtend.regressor import StackingRegressor
+from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet, BayesianRidge, RANSACRegressor
+from sklearn.svm import SVR
+
+from sklearn.ensemble import AdaBoostRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+# defining the regressor models:
+svr_lin = SVR(kernel='linear')
+ridge = Ridge(alpha = .5)
+lasso = Lasso()
+en = ElasticNet()
+
+# defining the meta regressor:
+rng = np.random.RandomState(1)
+ada = AdaBoostRegressor(DecisionTreeRegressor(max_depth=4),n_estimators=300, random_state=rng)
+   
+# building the stacking regressor:
+stregr = StackingRegressor(regressors=[ada, lasso, en, ridge], meta_regressor=svr_lin)
+    
+# training and predicting
+stregr.fit(X_train, Y_train)
+predicted = stregr.predict(x_test)
+
+
+
+
 #######   bagging data sets    #######
 # creating multiple train sets by taking subsets from original data, and building a model on each of these data subsets
 
