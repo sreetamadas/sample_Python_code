@@ -1,0 +1,22 @@
+
+Forward propagation: computation of activation function or g(z) = 1/(1 + e^ -z) using inputs & weights (theta) at each layer.
+use random initialisation of theta in [-€,€]
+
+back propagation (bp) algorithm to minimise cost function for NN; we are back-propagating the errors from the output layer to the input layer.
+
+why have regularization term in cost functionJ-theta ? Is this related to the problem with vanishing gradients ? 
+(vanishing gradient is related to backProp, which is related to J. However, this is not related to over-fitting, which is 
+predicting very well on training data)
+
+For NN, the cost function J-theta is non-convex & is theoretically susceptible to getting stuck in local minima.
+
+should there be train-test or train-validation-test sets for CNN ?
+
+do we find from literature what kind of networks were used for similar input data ?
+
+
+
+
+
+
+
