@@ -51,6 +51,25 @@ plt.show()
 
 
 
+# fit line to scatter data
+def abline():
+    gca = plt.gca()
+    gca.set_autoscale_on(True)
+    gca.plot(gca.get_xlim(),gca.get_ylim(),color='b')
+
+plt.figure(figsize=(10,8))
+plt.scatter(d['p'],d['a'],color='b',alpha=0.7,s = 1)
+plt.title('scatter & line plot',fontsize=22)
+plt.ylabel('Actual y', fontsize=20)
+plt.xlabel('Predicted y', fontsize=20)
+plt.scatter(range(15),range(15),color='w',alpha=0.1)
+abline()
+plt.show()
+
+
+
+
+
 ### area chart (to plot multiple time series)
 # does area chart display cumulative values by default ?
 ax = df.plot.area(figsize=(12, 4), fontsize=14)
