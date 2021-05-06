@@ -1,0 +1,5 @@
+Super-Convergence:
+
+Learning rate finder and One cycle policy training
+
+https://www.youtube.com/watch?v=bR7z2MA0p-o
