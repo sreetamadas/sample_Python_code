@@ -57,6 +57,89 @@ os.fsync(filevals)
 filevals.close()
 
 
+
+
+#
+file_list=[f for f in files if f.endswith('_format.txt')]  
+#file_val=file_list[0]
+
+for file_val in file_list:
+    loc=file_location+'/'+file_val #file_list[123]
+    f=open(loc)
+    data=f.read()
+    
+    # remove extra lines in patient PPG; not for incident intensity
+    data_new = [line for line in data.splitlines() if line.strip() != '']
+    if len(data_new) > 1:
+        data_new.pop()  # remove the last line with status
+    
+    # remove [ &  1st 2 cols; replace ] with , ; print to new file
+    newname = file_location + Dir + '/' + (file_val.split("\\")[-1]).split("_format")[0] + '_input.txt'
+    out = open(newname,'a')   
+    
+    for i in range(len(data_new)):
+        data_new[i] = data_new[i].replace(']', ",\n")
+        #data_new[i] = data_new[i] + str(",\n") #.join(",\n") #.append(",\n")
+        data_new[i] = data_new[i][9:]
+        out.write(data_new[i])
+    out.close() 
+
+
+
+
+####    create patient ID data ####
+import pandas as pd
+#import numpy as np
+import os
+from datetime import datetime, date
+
+def calculate_age(born_str):
+    born = datetime.strptime(born_str,"%d-%m-%Y").date()
+    today = date.today()    
+	 #return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+    y = today.year - born.year
+    if today.month < born.month or today.month == born.month and today.day < born.day:
+        y = y - 1
+    return y
+
+
+#df = pd.DataFrame()
+df=[]
+
+file_list = [f for f in files if f.endswith('patient_inf.txt')] 
+
+for file_val in file_list:   
+    # read in patient data file
+    loc=file_location + '/' + file_val
+    f=open(loc)
+    data=f.read()
+    
+    # split the fields
+    dat_arr = data.split("\n")
+    
+    pat_id = dat_arr[0]
+    #print(pat_id)
+    
+    dob = dat_arr[3]
+    age = calculate_age(dob)
+    
+    if dat_arr[1] == 'Male':
+        gender = 0
+    else:
+        gender = 1
+   
+    PS = 1
+    df.append([pat_id,dob,age, gender, PS])
+    
+df=pd.DataFrame(df,columns=['pat_id','dob','age','gender', 'PS'])
+pat_info_filename = file_location + Dir + '/age_info.csv'
+df.to_csv(pat_info_filename)   # 
+
+
+
+
+
+
 ######################################
 import os
 ## get list of all directories in jan_2019_cyient
