@@ -1,3 +1,30 @@
+Theory:
+Deep Learning Book: https://www.deeplearningbook.org/ 
+Chapters 5-9 cover ML, NN and CNN, slides also available (“Lectures”). 
+
+Practical:
+Keras Deep Learning library (with Theano/Tensorflow back-end) tutorials 
+https://machinelearningmastery.com/start-here/ 
+See “Deep Learning (Keras)” section
+Google Chrome, https://colab.research.google.com/ 
+Google’s online GPU collaboratory
+
+https://cs224d.stanford.edu/notebooks/vanishing_grad_example.html 
+https://playground.tensorflow.org 
+
+Dropout regularization:  https://medium.com/@amarbudhiraja/https-medium-com-amarbudhiraja-learning-less-to-learn-better-dropout-in-deep-machine-learning-74334da4bfc5
+
+sample code: https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data 
+First register login in Kaggle and then give your credentials  in this line of the code:
+!kg config -g -u 'kaggleloginname' -p 'kagglepassword' -c 'challenges-in-representation-learning-facial-expression-recognition-challenge' 
+
+# in this code: 
+why divide by 255 ? To scale the data from 0 to 1
+what is reshape doing ? - convert from 2dim to 1D vector
+
+###########################################################################
+
+
 inputs: image shape & color
 as we go deeper into the network, nH & nW decrease while nC increases (nC corresponds to no. of filters/ channels in previous layer)
 
@@ -8,6 +35,11 @@ Forward propagation: computation of activation function or g(z) = 1/(1 + e^ -z) 
 use random initialisation of theta in [-€,€]
 
 back propagation (bp) algorithm to minimise cost function for NN; we are back-propagating the errors from the output layer to the input layer.
+The process is called “Backpropagation” because we begin with the final layer’s output error and this error gets propagated backwards through the network in order to update the weights. 
+Simple intuitive explanation of backpropagation – https://ayearofai.com/rohan-lenny-1-neural-networks-the-backpropagation-algorithm-explained-abf4609d4f9d
+Detailed maths hand-calculation steps – https://medium.com/@14prakash/back-propagation-is-very-simple-who-made-it-complicated-97b794c97e5c
+Summary of mathematical steps – http://alexminnaar.com/deep-learning-basics-neural-networks-backpropagation-and-stochastic-gradient-descent.html 
+
 
 why have regularization term in cost functionJ-theta ? Is this related to the problem with vanishing gradients ? 
 (vanishing gradient is related to backProp, which is related to J. However, this is not related to over-fitting, which is 
@@ -59,6 +91,21 @@ usage intruction:
 5. dense (this shows the connection between input (flattened from previous layer) & output in the fully connected layer
 
 
+# Convolutional layer
+Let kernel size = KxK; input= M @ DxD;
+K : filter dimension , N: no. of filters , M: no of channels in input (?)
+then, no. of parameters = K.K.M.N
+
+Output feature map = N
+No. of parameters = M.K.K.N (N filters of size (To be learned) MxKxK)
+Complexity for stride 1 = MKKN[(D-K+1)^2]
+Typically N > M
+Size of the filters has to match the size/scale of the patterns we want to detect (Task Dependent)
+Output resolution is decreased due to stride and pooling
+
+
+
+
 
 
 # types of activation functions (g):
@@ -69,7 +116,18 @@ ReLU
 leaky ReLU
 
 Q) Is the activation function used only in the last layer to do the prediction (see week 1 part 10, Andrew ng), or also in intermediate layers (week 1, part 7; course ipython notebook) ? Last layer has softmax, other layers can be ReLU/ leaky ReLU. All hidden layers should have same type of act func.
-Q) Vanishing gradient problem
+
+
+Issues in deep learn : Vanishing gradient problem
+Sigmoid or tanh activation functions 'squash' their input into a very small output range [0,1] or [-1,1] in a very non-linear fashion. 
+Even a large change in the input will produce very small gradient (no change). 
+Multiple hidden layers: Mapped to an even smaller region in later layers. 
+
+How to avoid this problem?
+Activation functions which don't have this property of 'squashing' the input space into a small region. 
+https://cs224d.stanford.edu/notebooks/vanishing_grad_example.html 
+https://playground.tensorflow.org 
+
 
 
 
