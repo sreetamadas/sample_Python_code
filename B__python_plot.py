@@ -59,7 +59,23 @@ def abline():
 
 plt.figure(figsize=(10,8))
 plt.scatter(d['p'],d['a'],color='w',alpha=0.7,s = 1) # color='b'
+
+fig.patch.set_facecolor('xkcd:black')
 ax.set_facecolor('xkcd:black')
+
+ax.spines['bottom'].set_color('white')
+ax.spines['top'].set_color('white')
+ax.spines['left'].set_color('white')
+ax.spines['right'].set_color('white')
+ax.xaxis.label.set_color('white')
+ax.yaxis.label.set_color('white')
+ax.tick_params(axis='x', colors='white')
+ax.tick_params(axis='y', colors='white')
+
+ax.tick_params(axis='both', which='major', labelsize=14)
+ax.xaxis.set_ticks(np.arange(0, 16, 2))
+ax.yaxis.set_ticks(np.arange(0, 16, 2))
+
 plt.title('scatter & line plot',fontsize=22)
 plt.ylabel('Actual y', fontsize=20)
 plt.xlabel('Predicted y', fontsize=20)
