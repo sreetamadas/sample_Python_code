@@ -6,7 +6,7 @@ correct xml files with missing file extension
 import os
 import pandas as pd
 
-file_loc = "C:/Users/DAR9KOR/Desktop/data/sample_datasets/defect_detection/2_codes/NEU_detection_efficientdet/voc2coco-master/correct_xml_files/"
+file_loc = "C:/Users/Desktop/data/NEU_detection_efficientdet/voc2coco-master/correct_xml_files/"
 files = os.listdir(file_loc)
 file_list = [f for f in files if f.endswith('.xml')]
 
