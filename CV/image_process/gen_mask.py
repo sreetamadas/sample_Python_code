@@ -2,6 +2,29 @@
 # coding: utf-8
 
 # In[ ]:
+'''
+Hough Transform: Findings
+1.	The circles are not generated correctly for all the test images – need to finetune the pre-processing step. 
+        tried several variants
+        OTSU thresholding performed worse than adaptive for some cases, with complete darkening of the image
+
+2.	Also, I found the code was very slow when processing the full size images (2048 x 1536, ~9MB), about 66-240 s , compared to < 1 s for the resized images.
+	# without resizing: results not generating on the 1st image in 2-3 min; interrupted the code
+
+3.     I generated the intermediate images – it shows the well boundary – not sure why Hough transform is not picking it up.
+		added morphological open-close to improve
+
+4.     For the large-sized images from phase 1, the results change if I resize the images.
+
+5.    I also tried the contour-based method. It works for some images, but not for the others. Results are poorer than the Hough circle method.
+
+6.    floodfill & connectedComponents did not work
+
+
+TO DO:
+1. mask & segment the well
+2. remove the boundary & pad by black / white pixels
+'''
 
 
 # generate masks for well content using image processing
