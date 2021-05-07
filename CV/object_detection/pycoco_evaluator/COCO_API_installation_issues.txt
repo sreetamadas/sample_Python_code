@@ -1,0 +1,11 @@
+Instead of using the master branch of the coco evaluator , install from the following git link set to build the tool using VS 2015 C++ build .
+pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+
+Once installed -> there is another bug that needs to be addressed  of floating point number not being interpreted as integer in the lines:
+       self.iouThrs = np.linspace(.5, 0.95, np.round((0.95 - .5) / .05) + 1, endpoint=True)
+        self.recThrs = np.linspace(.0, 1.00, np.round((1.00 - .0) / .01) + 1, endpoint=True) . 
+       
+However the 3rd parameter needs to be integer as per the linspace documentation . So replace the lines with : 
+
+        self.iouThrs = np.linspace(.5, 0.95, int(np.round((0.95 - .5) / .05) + 1), endpoint=True)
+        self.recThrs = np.linspace(.0, 1.00, int(np.round((1.00 - .0) / .01) + 1), endpoint=True)
