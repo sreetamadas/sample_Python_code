@@ -1,3 +1,40 @@
+https://bdtechtalks.com/2020/08/12/what-is-one-shot-learning/   
+one shot learning, Triplet loss, Siamese network
+
+
+#############################################################################################
+
+https://public.roboflow.ai/classification/covid-19-and-pneumonia-scans/1 
+https://www.sirm.org/category/senza-categoria/covid-19/ 
+
+ social distancing:
+1. metric for detector
+https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173 - should low conf boxes be dropped? 
+-does metric vary on changing #images?
+
+6. theory of object detection
+https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/
+https://developer.ibm.com/recipes/tutorials/deep-learning/
+https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html
+
+4. paper / background for nanonet
+Density-aware person detection and tracking in crowds
+5. invention report
+
+ml4a.github.io/guides/YoloLive
+
+SD steps: 
+1. calibration at each site
+2. detect the objects (bounding box)
+3. find 1st nearest neighbors (to avoid dist. calc. b/w all pairs), or
+ abort distance calculation if no. of objects > threshold
+4. calculate distance from nearest neighbors (using centroid of bounding box)
+
+tracking:
+https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_feature_homography/py_feature_homography.html#feature-homography
+
+###############################################################################################
+
 # region of interest detection
 
 https://medium.com/beyondlabsey/creating-a-simple-region-of-interest-roi-inside-a-video-streaming-using-opencv-in-python-30fd671350e0 
