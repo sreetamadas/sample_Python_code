@@ -28,17 +28,13 @@ TO DO:
 
 
 # generate masks for well content using image processing
-
 # adaptive threshold + dilation-erosion + opening
-
-
 
 # output:
 # 3 panel image : original, original + circle, mask (0 & 1)
 # excel sheet with serial no, image path+name
 
 # check the outputs, & add the correct/ incorrect labels to the above excel
-
 # the correctly labeled images will be used for training segmentation
 
 
@@ -55,7 +51,7 @@ import pandas as pd
 #from imutils import contours
 import cv2
 
-
+#######################################################
 # #### create input image filelist
 
 # In[2]:
@@ -139,7 +135,7 @@ len(files)
 
 
 
-
+#######################################################
 # #### getting circles on well boundary
 
 # In[17]:
@@ -370,7 +366,7 @@ for image in image_List:
 
 
 
-
+#######################################################
 # #### separate image & masks
 
 # In[ ]:
