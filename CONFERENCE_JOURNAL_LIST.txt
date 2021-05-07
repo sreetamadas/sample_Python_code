@@ -17,3 +17,91 @@ https://www.springer.com/journal/11760/updates/18077074  (IF: 2.27) - Signal, Im
 https://www.journals.elsevier.com/image-and-vision-computing (more tough)
 https://www.journals.elsevier.com/computer-vision-and-image-understanding (very tough)
 https://signalprocessingsociety.org/publications-resources/ieee-transactions-image-processing (very tough)
+
+
+
+
+############################################################################################
+
+ACM India Joint International Conference on Data Science & Management of Data (CODS-COMAD)	https://cods-comad.in/
+IEEE Global Conference on Artificial Intelligence and Internet of Things	https://gcaiot.org/
+IEEE Symposium iSAI-NLP & AIoT	https://isai-nlp-aiot2020.aiat.or.th
+Smart World Congress (1)	"http://www.swinflow.org/confs/2020/swc/index.htm;
+https://www.scimagojr.com/journalsearch.php?q=21100795610&tip=sid&clean=0"
+IEEE Symposium Series on Computational Intelligence (1)	"http://www.ieeessci2020.org/ ;
+https://www.scimagojr.com/journalsearch.php?q=21100803187&tip=sid&clean=0"
+The Intelligent Internet of Things and Applications (AIOT)	https://aiot2021.sigappfr.org/
+Int'l Conference on Data Science, Machine Learning & Applications (1)	https://www.icdsmla.com/
+IEEE International Conference on Data Science and Systems (DSS) (2)	http://cse.stfx.ca/~dss/2020/
+10th International Conference on Pattern Recognition Applications and Methods (ICPRAM) (1)	
+AAAI Conference on Artificial Intelligence (1)	https://aaai.org/Conferences/AAAI-21/
+	
+IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)	https://2021.ieeeicassp.org/
+International Conference on Data Science, E-learning and Information Systems 2021	https://www.iares.net/Conference/DATA2021
+Augmented Human International Conference	https://www.augmented-human.com/
+IEEE Digital Twins (IEEE Internet Computing Special Issue)	https://www.computer.org/digital-library/magazines/ic/call-for-papers-special-issue-on-digital-twins
+SIAM International Conference on Data Mining	https://www.siam.org/conferences/cm/conference/sdm21
+	
+	
+International Confernce on Machine Learning (ICML) 2021	
+"SIGKDD CONFERENCE ON KNOWLEDGE DISCOVERY
+AND DATA MINING (KDD 2021) 
+"	
+Conference on Neural Information Processing Systems (NeurIPS) 2021	
+International Conference on Artificial Intelligence and Statistics (AISTATS) 2021 (2)	https://www.aistats.org/aistats2021/
+PAKDD (Pacific Asia Knowledge Discovery and Data Mining) (2)	
+IEEE Data Science & Advanced Analytics (DSAA) 2021	
+Asian Confernce on Machine Learning (ACML) 2021	
+European Confernce on Machine Learning (ECML KDD) 2021	https://wp.bcamath.org/news/en/2020/01/09/bilbao-will-host-the-european-conference-on-machine-learning-and-principles-and-practice-of-knowledge-discovery-in-databases-ecml-pkdd-in-2021/
+European Signal Processing Conference (EUSIPCO) 2021	https://eusipco2021.org/
+Conference of the International Speech Communication Association (INTERSPEECH)	https://www.interspeech2021.org/
+WCCI: World Congress on Computational Intelligence 2022 (does not happen in 2021; in 2021 the 3 conferences IJCNN, FUZZ, CEC happen separately in different places)	
+"International Conference
+on Intelligent Computing in Data Sciences (ICDS) 2021"	
+
+
+
+################################################################################
+
+Analytics Summit 2019	http://www.cvent.com/events/analytics-summit-2019/event-summary-a3a9111a2be342ecac91bb1a06ff7f44.aspx	
+Big Data & AI Leaders Summit Boston 2019	https://forwardleading.co.uk/summits/Big-data-AI-boston-2019?utm_source=KDNuggets&utm_medium=List&utm_campaign=BDAI+Boston+2020	
+2019 INFORMS Business Analytics Conference	http://meetings2.informs.org/wordpress/analytics2019/	
+AI & Big Data Expo Global	https://www.ai-expo.net/global/	
+Predictive Analytics Innovation Summit	https://www.theinnovationenterprise.com/summits/predictive-analytics-innovation-summit-san-diego-2019	
+		
+		
+PAW Industry: Predictive Analytics World Industry 4.0.	https://predictiveanalyticsworld.de/en/industry4-0/muenchen2019/?utm_source=kdneventlist	
+The Innovation Enterprise DATAx Conference	https://www.theinnovationenterprise.com/summits/calendar?utf8=%E2%9C%93&country=usa&city=&division=	
+Real Business Intelligence	https://realbusinessintelligence.com/	
+The Data Science Conference	https://www.thedatascienceconference.com/spring2019	
+		
+Aegis Data Science Congress		
+		
+		
+		
+AI Toronto	http://www.ai-toronto.com/	
+Predictive Analytics World	https://www.predictiveanalyticsworld.com/lasvegas/?utm_source=kdneventlist	
+Artificial Intelligence Conference	https://ai.oreilly.com.cn/ai-cn	
+AI & Big Data Expo Europe	https://www.ai-expo.net/europe/	
+Customer Experience Emotion	http://cx-emotion.com/	
+5th Research and Applied AI Summit	https://raais.co/	
+		
+		
+Industrial Conference on Data Mining	http://www.data-mining-forum.de/	
+The Innovation Enterprise DATAx Conference	https://www.theinnovationenterprise.com/summits/calendar?utf8=%E2%9C%93&country=usa&city=&division=	
+		
+ISSAT International Conference on Data Science and Intelligent Systems	https://www.issatconferences.org/dsis2019.html	
+		
+ODSC India: Open Data Science Conference.	https://hubs.ly/H0fZtfP0	https://india.odsc.com/why-partner-with-odsc-india
+		
+Cypher Analytics India summit	https://www.analyticsindiasummit.com/	https://www.analyticsindiasummit.com/home_new/sponsors-2018/
+		
+		
+Artificial Intelligence Conference	https://conferences.oreilly.com/artificial-intelligence/ai-eu	
+		
+Forrester 2019 Data Strategies & Insights Forum	https://events.forrester.com/ehome/index.php?eventid=377872&	
+		
+Bengaluru Tech Summit	https://www.bengalurutechsummit.com/	
+
+
+
