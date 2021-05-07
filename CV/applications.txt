@@ -1,0 +1,61 @@
+testing leads in HTS on microplates (during development) 
+
+
+Alpha-screen : HTS to identify small molecule inhibitors from compound libraries
+Alpha-screen : CV-based Approach , Intact substrate (i.e. inhibited protein), yields high signal; otherwise low signal
+
+Ref:
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5444910/ AlphaScreen-Based Assays: Ultra-High-Throughput Screening for Small-Molecule Inhibitors of Challenging Enzymes and Protein-Protein Interactions
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2676116/ 
+
+
+
+
+High content screening / phenotypic screening: for drug discovery
+changes in the flourescense pattern in the absence vs presence of inhibitors
+
+Ref:
+https://www.sciencedirect.com/science/article/pii/S0167779910000351  (High content screening: seeing is believing)
+https://www.sciencedirect.com/science/article/pii/S2452310018300027    (Machine learning and image-based profiling in drug discovery)
+
+
+
+HTS ref
+https://hidex.com/products/hidex-sense/  (video showing plate reader)
+https://www.sciencedirect.com/science/article/pii/S1074552114002440 
+https://iccb.med.harvard.edu/files/iccb/files/alphalisa-assay-development-guide_onepage_rev4_oct08.pdf
+https://link.springer.com/protocol/10.1007/978-1-4939-3756-1_30 
+https://www.bmglabtech.com/pherastar-measures-alphascreen-assay-to-develop-selective-inhibitors-for-the-human-yeats-domains/
+https://www.bmglabtech.com/alphascreen/
+https://beantownbiotech.com/home/assays/alphascreen-and-alphalisa/
+https://hidex.com/products/hidex-sense/  (video showing plate reader)
+
+
+
+
+
+automate RT-PCR
+Using initial & final concentrations of known sample (standard) to estimate the initial concentration of unknown sample. Final concentrations of all 3 are known.
+
+Tool: Pcr.ai
+Company: Diagnostics.ai
+ 
+http://diagnostics.ai/studies/Utilization%20of%20Azure%20PCR%20AccuCall%20Software%20to%20Improve%20Analysis%20of%20PCR%20Data.pdf 
+http://diagnostics.ai/studies/Novel%20Fully%20Automated%20Method%20Allows%20Efficient%20Analysis%20of%20qPCR%20Data%20for%20Qualitative%20Calling%20Based%20on%20Comparative%20Cq.pdf 
+https://www.sciencedirect.com/science/article/pii/S138665321930174X?via%3Dihub 
+https://www.qcnet.com/Portals/50/PDFs/QCWorkbook2008_Jun08.pdf - LJ Plot
+
+ http://diagnostics.ai/Diagnostics.ai_COVID-19_approach.pdf
+
+
+http://diagnostics.ai/Diagnostics.ai_COVID-19_approach.pdf *
+https://www.sciencedirect.com/science/article/pii/S138665321930174X?via%3Dihub *
+https://www.qcnet.com/Portals/50/PDFs/QCWorkbook2008_Jun08.pdf - LJ Plot
+https://www.google.com/search?q=amplification+curves+of+PCR.ai&rlz=1C1GCEB_enIN864IN864&sxsrf=ALeKk03HW1NgxoYIomwSZM-muEtFrjW8iw:1586943108514&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjM0Ivij-roAhWYbX0KHYZQBcsQ_AUoAXoECAwQAw&biw=2048&bih=963 – Amplification curves
+
+
+
+
+
+
+
