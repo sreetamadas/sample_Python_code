@@ -1,0 +1,134 @@
+# calculate camera specs (resolution, focal length), based on field of view (FOV), minimum measurable length & working distance (W) 
+
+references:
+https://www.ni.com/en-in/support/documentation/supplemental/18/calculating-camera-sensor-resolution-and-lens-focal-length.html
+https://www.1stvision.com/machine-vision-solutions/2015/07/imaging-basics-calculating-resolution.html  
+
+
+
+####################################
+
+sensor resolution
+sensor resolution = Pixel_min x (FOV) / smallest feature
+pixel_min: no. of pixels spanning the feature of minimum size
+FOV and smallest feature to be measured should be in mm
+sensor resolution is in pixel
+camera sensor resolution should be greater than or equal to that calculated in this formula
+NOTE: if FOV is X*Y, calculate the above formula with X and Y separately
+
+
+SAMPLE CALCULATION	
+FOV (mm)	900
+smallest feature (mm)	10
+pixel_min	40
+resolution (pixel)	3600
+
+
+######################################
+
+sensor size
+sensor size = pixel size x resolution
+choose a camera from the link - find pixel size from specs
+https://www.e-consystems.com/   
+https://www.e-consystems.com/industrial-digital-camera.asp#Sensor-Features
+
+
+
+SAMPLE CALCULATION		
+pixel size (um)	   1.25  	1.25
+resolution (pixel)	4912	3684
+		
+sensor size (mm)	 6.14	  4.605
+diagonal sensor size (mm)	7.675	
+
+
+###########################################
+
+focal length
+focal length x FOV = sensor size x working distance
+
+
+
+Common lens focal lengths include 6 mm, 8 mm, 12.5 mm, 25 mm, and 50 mm. 
+Once you choose a lens whose focal length is closest to the focal length required by your imaging system, 
+you need to adjust the working distance to get the object under inspection in focus.
+
+
+Note: Lenses with short focal lengths (less than 12 mm) produce images with a significant amount of distortion. 
+If your application is sensitive to image distortion, try to increase the working distance and use a lens with a higher focal length. 
+If you cannot change the working distance, you are somewhat limited in choosing a lens.
+
+
+
+
+SAMPLE CALCULATION (for focal length)		
+sensor size (mm)	7.675	
+FOV (mm)	900	
+working distance (mm)	1350	
+		
+focal length (mm)	11.5125	
+		
+		
+INFERENCE		
+focal length of 8mm will give working distance < 1350 mm; this focal length is supposed to give distortion		
+
+
+
+
+SAMPLE CALCULATION (for working distance	
+sensor size (mm)	7.67
+FOV	900
+focal length (mm)	12
+	
+working distance (mm)	1408.083442
+
+
+focal length (mm)	sensor size (mm)	FOV (mm)	working distance (mm)	comment
+12	5.7623	1000	2082.5	not feasible
+12	5.7623	800	1666	not feasible
+8	5.7623	800	1110.7	feasible
+8	5.7623	1000	1388.3	not feasible
+12	7.67	800	1251.6	feasible
+
+
+#############################################################
+
+
+Google:
+sensor resolution from FOV and smallest feature
+field of view
+standard aspect ratios
+
+
+
+https://www.ni.com/en-in/support/documentation/supplemental/18/calculating-camera-sensor-resolution-and-lens-focal-length.html  
+
+https://www.1stvision.com/machine-vision-solutions/2015/07/imaging-basics-calculating-resolution.html 
+
+
+https://static1.squarespace.com/static/551ecf1ae4b0b101cf72bfa3/t/55412684e4b0512f43caa5de/1430333060072/Resolution_calculation.pdf   (how to calculate image resolution)
+
+https://www.edmundoptics.com/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view    (understanding focal length & field of view)
+
+If image-to-object dist is less than focal length, then out of focus.
+If you take an object very close to camera, then it will be out of focus.
+"Working dist" means the optimal "should be" dist to get good focus.
+"Object dist" means the actual dist b/w it & camera. It should be close to Working dist if u want pics to be focused.
+
+
+https://www.vision-doctor.com/en/optical-basics.html  
+
+
+spec calculators:
+https://www.kowa-lenses.com/en/lens-calculator 
+http://www.jvsg.com/online/  
+ 
+
+
+
+
+
+
+
+
+
