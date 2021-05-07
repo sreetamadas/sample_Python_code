@@ -1,0 +1,28 @@
+https://opendatascience.com/15-open-datasets-for-healthcare/   
+
+
+
+### NLP
+http://blog.aylien.com/text-analysis-10-business-use-cases-you-may-not/
+https://www.synaptica.com/text-analytics-use-cases-the-knowns/
+https://www.quora.com/What-are-the-most-interesting-use-cases-of-natural-language-processing
+https://healthitanalytics.com/news/4-natural-language-processing-use-cases-for-healthcare-orgs
+https://www.beckershospitalreview.com/artificial-intelligence/12-healthcare-use-cases-for-natural-language-processing.html
+https://www.forbes.com/sites/bernardmarr/2016/09/30/what-are-the-top-10-use-cases-for-machine-learning-and-ai/#3d65eb0a94c9
+http://wizdee.com/home/4-use-cases-natural-language-analytics/
+
+https://towardsdatascience.com/machine-learning-nlp-text-classification-using-scikit-learn-python-and-nltk-c52b92a7c73a
+
+GOOGLE:
+https://www.analyticsvidhya.com/blog/2017/07/30-questions-test-data-scientist-natural-language-processing-solution-skilltest-nlp/ 
+nlp use cases   (in finance, healthcare...)
+text classification problem
+text classification vs topic modeling
+https://www.hackerearth.com/practice/machine-learning/advanced-techniques/regular-expressions-string-manipulation-r/tutorial/
+topic modling vs association rule mining
+topic modling
+text summarization
+
+
+
+
