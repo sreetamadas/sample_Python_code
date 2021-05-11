@@ -1,0 +1,2 @@
+pixel level encoding, as image mask files 
+pixel level encoding, in a csv
