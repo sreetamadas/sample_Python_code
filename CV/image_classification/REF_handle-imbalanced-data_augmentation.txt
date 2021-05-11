@@ -22,8 +22,8 @@ https://www.kaggle.com/tanlikesmath/oversampling-mnist-with-fastai
 
 8. progressive re-sizing – the images are large & some of the defects are small. Re-sizing images may be leading to information loss. There is a fastai blog on this – google “progressive resizing fastai)  https://forums.fast.ai/t/progressive-resizing-in-fastai-v1/25004/3
 
-9. Test Time Augmentation in Fastai - Research - not working
-
+9. Test Time Augmentation in Fastai
+  https://towardsdatascience.com/augmentation-for-image-classification-24ffcbc38833
 
 
 https://twitter.com/jeremyphoward/status/1175177461920698368  oversampling is supposed to work better than class weights
