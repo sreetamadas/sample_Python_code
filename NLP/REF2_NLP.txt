@@ -19,8 +19,8 @@ nlp use cases   (in finance, healthcare...)
 text classification problem
 text classification vs topic modeling
 https://www.hackerearth.com/practice/machine-learning/advanced-techniques/regular-expressions-string-manipulation-r/tutorial/
-topic modling vs association rule mining
-topic modling
+topic modeling vs association rule mining
+topic modeling
 text summarization
 
 
