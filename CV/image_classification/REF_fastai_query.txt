@@ -1,0 +1,18 @@
+Variation in performance on different machines (colab vs GPU)
+
+Can we save imageDataBunch?
+Saving model: save vs export commands – difference
+.pkl file is not saved if full path is not specified
+
+Finding the no. of trainable parameters when unfreezing and using lr_find()
+
+learn.recorder.plot_losses() did not run for 2 epochs; runs only when model is explicitly loaded;
+“learn.recorder.plot_losses() AttributeError: 'Learner' object has no attribute 'losses‘”
+Explanation of fig
+ClassificationInterpretation.top_losses() did not run
+
+Why GradCAM focuses on the wrong region?
+
+Timing predictions – how does this work? (difference in O/P in the 2 notebooks)
+Predicting on test images of different size?
+Implementation pipeline for accelerator – code modules ?
