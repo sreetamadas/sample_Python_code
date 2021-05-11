@@ -37,3 +37,49 @@ Unzip the file. And place the .dll, .h and .lib in the corresponding CUDA folder
 import tensorflow as tf
 tf.test.is_built_with_cuda() (True)
 tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None) (True)
+
+
+
+
+##################################################
+
+# on LINUX
+
+# install cuda, cudnn
+
+python3 -m venv env_tf2
+source env_tf2/bin/activate
+pip install numpy==1.16.4 pandas==0.25.0 scikit-learn==0.22.1 scipy==1.4.1
+pip install opencv-python==3.4.2.16 opencv-contrib-python==3.4.2.16
+pip install --upgrade pip
+pip install tensorflow-gpu    # pip install –upgrade tensorflow-gpu
+
+
+## test the installation
+python
+tf.test.is_built_with_cuda()
+tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)
+
+
+cd models/research/
+sudo apt install protobuf-compiler
+protoc object_detection/protos/*.proto --python_out=.
+cp object_detection/packages/tf2/setup.py .
+python -m pip install .
+
+## testing the object detection API installation
+python ./models/research/object_detection/builders/model_builder_tf2_test.py
+
+
+
+### done from colab folder copy
+# workspace
+# data preprocess
+# pipeline config file
+## copy the pipeline.config file to appropriate folder & start running
+
+
+
+
+
+
