@@ -24,3 +24,9 @@ learning rate:
 https://kiranscaria.github.io/general/2019/08/16/learning-rate-schedules.html 
 https://www.jeremyjordan.me/nn-learning-rate/ 
 https://cs231n.github.io/neural-networks-3/#baby 
+
+
+
+description of efficientdet variants https://towardsdatascience.com/new-tf2-object-detection-api-5c6ea8362a8c 
+
+
