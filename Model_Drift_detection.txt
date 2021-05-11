@@ -1,0 +1,89 @@
+TASKS:
+accepted levels & drift threshold
+automated tracking logic
+workflows - corrected annotations to be saved & verified
+model risk index to capture drift & raise alerts
+
+
+
+
+# Types of model drift
+Concept drift : definition of target variable changes
+Data drift/ covariate shift: statistical properties of the predictors/ underlying data distribution changes (training & test data are different)
+Ref: https://neptune.ai/blog/concept-drift-best-practices
+
+
+
+# Ways to detect model drift
+1. If actual ground truth becomes quickly available, predictions & GT may be compared & metrics like accuracy, F1-score monitored – any dips beneath pre-defined thresholds can be flagged
+2. If GT is not quickly available
+    a) A rapid change in the distribution of predicted labels is usually indicative of an issue. 
+    b) Look at the probabilities (classification confidence score) of the predictions
+    c) monitor underlying data distributions and their changes
+        i) Monitor the distribution of incoming data against original training data — you can do this using the Kolmogorov-Smirnov (K-S) testor simply comparing the z-score (or students t-test)
+       ii) Monitor a time series dataset for drift from the previous time period — you may want to deploy the Population Stability Index (PSI)metric to do so
+
+Ref: 
+https://www.kdnuggets.com/2020/11/future-proof-data-science-project.html 
+https://towardsdatascience.com/monitoring-machine-learning-models-62d5833c7ecc
+
+
+
+
+# Detecting data drift for image data
+A) concept: 
+build a machine learned representation of the training dataset →  
+use this representation to reconstruct data that is being presented to the model → 
+If the reconstruction error is high, then the data being presented to the model is different from what it was trained on.
+
+B) Steps:
+1)  Learn a low dimensional representation of the training dataset (encoder)
+2)  Reconstruct a validation dataset using the representation from Step 1 (decoder) and store reconstruction loss as baseline reconstruction loss
+3)  Reconstruct batch of data that is being sent for predictions using encoder and decoder in Steps 1 and 2; store reconstruction loss
+4)  If reconstruction loss of dataset being used for predictions exceeds the baseline reconstruction loss by a predefined threshold set off an alert 
+Ref: https://blog.dominodatalab.com/data-drift-detection-for-image-classifiers/
+
+
+
+
+# Tools to monitor model drift
+alerting tool like Prometheus
+scikit-multiflow library for Python
+Ref: https://www.explorium.ai/blog/understanding-and-handling-data-and-concept-drift/
+
+
+
+# Ways to tackle model drift
+Periodically (how frequently?) re-train the model
+Online training as new data come in
+
+
+
+
+# strategies to automate model re-training & deployment post drift detection  
+1. When a model is deployed, we shouldn’t immediately route all traffic to the new version endpoint.
+    a) Only a fraction of the traffic (~5 percent) should be routed to the new model and should be assessed using one or more of the thresholds.
+    b) If a violation of a threshold is detected, the system should flag the appropriate model as decommissioned, and roll back (the 5 percent of requests) to the latest stable version.
+    c) If a violation isn’t detected after a specific amount of time, the system should start rolling out (the remaining 95 percent) to the new model and flag it as the latest stable version.
+
+2. If you decide to retrain your model periodically, then batch retraining is perfectly sufficient. 
+   This approach involves scheduling model training processes on a recurring basis using a job scheduler such as Jenkins or Kubernetes CronJobs.
+
+3. If you’ve automated model drift detection, then it makes sense to trigger model retraining when drift is identified.
+    a) For instance, you may have periodic jobs that compare the feature distributions of live data sets to those of the training data.
+    b) When a significant deviation is identified, the system can automatically schedule model retraining to automatically deploy a new model, 
+    with a job scheduler like Jenkins or by using Kubernetes Jobs.
+
+4. Finally, it may make sense to utilize online learning techniques to update the model that is currently in production. 
+    This approach relies on "seeding" a new model with the model that is currently deployed. 
+    As new data arrives, the model parameters are updated with the new training data.
+
+Ref: 
+https://algorithmia.com/blog/model-drift-and-ensuring-a-healthy-machine-learning-lifecycle
+https://www.kdnuggets.com/2020/09/model-server-build-ml-powered-services.html   (canary vs shadowing)
+https://databricks.com/blog/2019/09/18/productionizing-machine-learning-from-deployment-to-drift-detection.html
+https://towardsdatascience.com/monitoring-your-machine-learning-model-6cf98c106e99
+https://www.kdnuggets.com/2019/12/ultimate-guide-model-retraining.html
+
+
+
