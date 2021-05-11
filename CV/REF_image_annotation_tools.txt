@@ -1,0 +1,39 @@
+1. CVAT
+https://github.com/opencv/cvat
+MIT License
+The data (Images Uploaded is stored in The uploaded data is stored in the  docker volume)
+Ref: https://github.com/opencv/cvat/blob/develop/cvat/apps/documentation/faq.md#where-are-uploaded-imagesvideos-stored
+Easy to use
+
+
+2. VGG Image Annotator (VIA)
+http://www.robots.ox.ac.uk/~vgg/software/via/
+BSD-2 clause
+Data Should be Uploaded to the Platform .It is running as a offline application in most modern web browsers.
+https://gitlab.com/vgg/via/-/tree/master
+Easy To Use as it a Simple Html File, to Annotate the Objects
+
+
+3. VOTT ( Visual Object Tagging Tools (VOTT) )
+https://github.com/microsoft/VoTT/blob/master/LICENSE
+MIT License
+Developed By Microsoft. To use the web-app version, We need our data to be hosted on Azure, the cloud computing service of Microsoft 
+(however, the electron version allows us to use data on our hard drive disk but we need to install it with npm).
+https://www.sicara.ai/blog/2019-09-01-top-five-open-source-annotation-tools-computer-vision
+UI is good but exporting to YOLO is not supported.
+
+
+4. Scalable AI
+https://github.com/ucbdrive/scalabel
+Apache 2.0 License
+Data Can be kept in local or can be pushed to Amazon S3.
+https://www.scalabel.ai/doc/data-preparation.html
+UI is good
+
+
+ref:
+https://medium.com/@ashamohana/image-annotation-tools-2f9b58eecade
+https://prodi.gy/
+https://forums.fast.ai/t/image-annotation-tool/30773/6
+
+
