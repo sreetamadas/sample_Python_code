@@ -1,0 +1,91 @@
+https://confluence.atlassian.com/bitbucketserver0610/basic-git-commands-989761056.html?utm_campaign=in-app-help&utm_medium=in-app-help&utm_source=stash
+https://www.atlassian.com/git/tutorials/advanced-overview
+
+#######################################################################
+
+# create the repo on bit-bucket
+
+# Configure Git for the first time
+git config --global user.name "Das Sreetama (other detail)"
+git config --global user.email "Sreetama.Das@xxxxcom"
+
+
+# to clone a new repo on local system,
+# While cloning using sourcetree, you can select destination path (on local system) - this should be an empty folder
+# if using git, cd to the appropriate folder & type the following:
+cd existing-project
+git clone https://sourcecode.socialcodingx.com/scm/~id/test1.git
+
+
+# if you already have code ready to be pushed to this repository 
+# Sourcetree: add new files in the project folder on local. They are automatically shown in sourcetree.
+# stage & commit, then push to appropriate repo
+# in git bash, do the following:
+cd existing-project
+git init
+git add --all
+git commit -m "Initial Commit"
+git remote add origin https://sourcecode.socialcodingx.com/scm/~id/test1.git
+git push -u origin master
+
+
+
+# if we need to clone a specific branch of the repo , & add our updates
+# Select respective branch you’ll be working with: Main Menu > Repository > Checkout... > Checkout New Branch tab > then select the branch on bit-bucket
+# or we can create a fork. Then in sourcetree, we can see the corresponding branch
+# else, type the following in git bash
+cd localSystem/projectA_forkedBranchB
+git clone https://sourcecode.socialcodingx.com/scm/ParentProject/projectA.git  --branch branchB
+git init
+git add --all
+git commit -m "Initial Commit"
+git remote add projectA https://sourcecode.socialcodingx.com/scm/ParentProject/projectA.git
+git push -u projectA branchB
+
+
+
+# If your code is already tracked by Git then set this repository as your "origin" to push to.
+cd existing-project
+git remote set-url origin https://sourcecode.socialcodingx.com/scm/~id/test1.git
+git push -u origin --all
+git push origin --tags
+
+
+
+# if multiple people are working on a repo:
+1. Create a fork from the master repository ("golden master") under your name - this will reflect in personal bitbucket  ("local master"). 
+
+2. Once forked you will now have your own copy of the master code. It is advisable to "pull" from the master branch of golden repository 
+   every morning into your own forked repository to avoid conflicts during code merge and to ensure that the code you write does not cause
+   errors when merged with golden repository code. 
+   
+3. Once forked you will have the latest code under your respective ID/ personal bitbucket  ("local master").
+   Clone it to your local system using Sourcetree or Git cmd.
+   # git config --global user.name "Das Sreetama (other detail)"
+   # git config --global user.email "Sreetama.Das@xxxxcom"
+   # git clone https://sourcecode.socialcodingx.com/scm/~id/test1.git
+    
+   
+4. Once you have made changes on the local system, it is time to commit and push the changes to your local repository. 
+   Try maintaining two branches in your local: one is for Master and one Development. 
+   In Source tree: move files from Unstaged to Staged for commit 
+   Then "commit" , add comments
+   then push to your own repo ("local master")
+   
+   cd existing-project
+   git init
+   git add --all
+   git commit -m "Initial Commit"
+   git remote add projectA https://sourcecode.socialcodingx.com/scm/~id/projectA.git
+   git push -u projectA master
+
+   
+5.	Once you have validated the changes on your bit bucket, Create a pull request to the Golden Repository.
+    Source is your personal repository and Destination is the golden repository.
+    Press Continue and the request will go to reviewer for approval who will check for all conflicts and thereafter approve the pull request 
+    
+6. raise merge request to merge with master branch
+
+
+
+
