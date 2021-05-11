@@ -1,6 +1,11 @@
 How to check for overfitting? is there scope for early stopping?
 Can both train & val loss be checked in tensorboard?
 
+
+https://stackoverflow.com/questions/63313107/how-to-stop-training-in-tensorflow-2-object-detection-api-and-start-again-from-t    (stop- start training)
+https://stackoverflow.com/questions/58356750/how-can-i-stop-a-training-job-in-tensorflow 
+
+
 the events file generated during training has to be opened via tensorboard to monitor training progress
 1. the events file generated when training on colab is not updating , only 40 B in size
 2. the events file generated when training on local linux is of larger size (~277 MB for 500 steps) – so it is getting updated there
@@ -19,6 +24,22 @@ https://www.datacamp.com/community/tutorials/tensorboard-tutorial
 https://github.com/tensorflow/tensorboard/blob/master/README.md
 https://github.com/tensorflow/tensorboard/issues/1756
 
+
+
+GENERATING PLOTS FOR DIFFERENT METRICS   (mAP, different loss functions)
+https://stackoverflow.com/questions/60526403/overfitting-in-tensorflow-object-detection-api?rq=1
+https://stackoverflow.com/questions/51999924/tensorflow-object-detection-api-showing-loss-for-training-and-validation-on-on?rq=1
+https://stackoverflow.com/questions/58203837/tensorflow-object-detection-api-validation-loss-behaviour?rq=1
+https://stackoverflow.com/questions/52849514/plot-validation-loss-in-tensorflow-object-detection-api?rq=1
+
+
+
+CHECKING CLASSWISE AP VALUES ON TENSORFLOW
+https://github.com/tensorflow/models/issues/4778   
+https://stackoverflow.com/questions/54260896/how-to-calculate-evaluation-metrics-on-training-data-in-tensorflows-object-dete
+https://github.com/Cartucho/mAP
+https://medium.com/analytics-vidhya/understanding-the-map-mean-average-precision-evaluation-metric-for-object-detection-432f5cca53b7    (tool with github link)
+https://github.com/ultralytics/yolov3/issues/310   (metrices for ultrolytics yolo v3)
 
 
 
