@@ -1,0 +1,39 @@
+How to check for overfitting? is there scope for early stopping?
+Can both train & val loss be checked in tensorboard?
+
+the events file generated during training has to be opened via tensorboard to monitor training progress
+1. the events file generated when training on colab is not updating , only 40 B in size
+2. the events file generated when training on local linux is of larger size (~277 MB for 500 steps) – so it is getting updated there
+we may need to save the STOUT as a log file, & use the loss values printed there for checking training progress
+
+
+checking on tensorboard https://towardsdatascience.com/creating-your-own-object-detector-ad69dda69c85 
+https://github.com/tensorflow/models/issues/5112
+
+
+
+ENABLING TENSORBOARD
+https://towardsdatascience.com/new-tf2-object-detection-api-5c6ea8362a8c   (Allegro Trains: efficient experiment management solution & alternative to tensorboard (classwise metrics?)
+https://colab.research.google.com/drive/1h9fJm6D6VhGpJqpCxOklEWmtH-luLtCM?usp=sharing   allegro notebook
+https://www.datacamp.com/community/tutorials/tensorboard-tutorial
+https://github.com/tensorflow/tensorboard/blob/master/README.md
+https://github.com/tensorflow/tensorboard/issues/1756
+
+
+
+
+
+
+https://datascience.stackexchange.com/questions/31994/map-scores-on-tensorboard-tensorflow-object-detection-api-are-all-0-even-thoug      
+https://stackoverflow.com/questions/52849514/plot-validation-loss-in-tensorflow-object-detection-api?rq=1   (eval_config:  num_examples & max_evals :  are these for TF 1?
+https://github.com/tensorflow/models/issues/2225
+https://stackoverflow.com/questions/61035726/tensorflow-object-detection-api-validation-loss-starts-low-and-goes-up     (eval_config:  num_examples & max_evals :  are these for TF 1?
+https://stackoverflow.com/questions/60526403/overfitting-in-tensorflow-object-detection-api      (dropout, etc)
+https://medium.com/coinmonks/modelling-transfer-learning-using-tensorflows-object-detection-model-on-mac-692c8609be40
+https://github.com/tensorflow/models/issues/8326  (train vs val loss)
+
+
+
+
+
+
