@@ -226,6 +226,12 @@ Also, cuDNN-accelerated openCV (min. version 4.2) requires GPU compute capabilit
 
 
 
+References for troubleshooting
+https://gist.github.com/Mahedi-61/2a2f1579d4271717d421065168ce6a73    cuda_10.1_installation_on_Ubuntu_18.04
+https://saferauto.home.blog/2019/04/06/4o-how-to-install-yolo-darknet-with-cuda-and-opencv-in-ubuntu/  ## run updates before installation
+https://github.com/pjreddie/darknet/issues/1480
+https://github.com/pjreddie/darknet/issues/691  (openCV issues)
+https://docs.opencv.org/4.2.0/d2/de6/tutorial_py_setup_in_ubuntu.html
 
 
 
