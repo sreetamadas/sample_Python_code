@@ -1,5 +1,6 @@
 https://confluence.atlassian.com/bitbucketserver0610/basic-git-commands-989761056.html?utm_campaign=in-app-help&utm_medium=in-app-help&utm_source=stash
 https://www.atlassian.com/git/tutorials/advanced-overview
+https://towardsdatascience.com/a-quick-primer-to-version-control-using-git-3fbdbb123262
 
 #######################################################################
 
