@@ -6,6 +6,59 @@ https://albumentations.ai/docs/getting_started/image_augmentation/ - Classificat
 
 '''
 
+#########################################################
+####  Passing augmentation transformation as part of fastai  ######
+
+import pandas as pd
+from fastai.vision import *
+torch.cuda.empty_cache()
+
+import albumentations as A
+
+def tensor2np(x):
+    np_image = x.cpu().permute(1, 2, 0).numpy()
+    np_image = (np_image * 255).astype(np.uint8)    
+    return np_image
+
+
+def alb_tfm2fastai(alb_tfm):
+    def _alb_transformer(x):
+        # tensor to numpy
+        np_image = tensor2np(x)
+
+        # apply albumentations
+        transformed = alb_tfm(image=np_image)['image']
+
+        # back to tensor
+        tensor_image = pil2tensor(transformed, np.float32)
+        tensor_image.div_(255)
+        return tensor_image
+
+    transformer = TfmPixel(_alb_transformer) 
+    return transformer()
+
+
+src = (ImageList.from_csv(path,'training_manual.csv',folder='training', suffix='.jpg')  
+        .split_from_df(col='Validation')
+        .label_from_df())
+# training_manual.csv has 3 columns: image_filename , defect_class, Validation (TRUE / FALSE)
+
+tfms = alb_tfm2fastai(A.Compose(
+    [                   
+    A.RandomCrop(width=256, height=256),
+    A.HorizontalFlip(p=0.5),
+    A.RandomBrightnessContrast(p=0.2),
+    ]
+))
+
+
+data = (src.transform(get_transforms(xtra_tfms=tfms),size=256)
+       .databunch(num_workers=0)
+       .normalize(imagenet_stats))
+data.show_batch(rows=3, figsize=(12,9))
+
+
+
 ########################################################
 ####   checking albumentation  #####
 import albumentations as A
