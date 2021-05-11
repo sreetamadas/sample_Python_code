@@ -164,6 +164,12 @@ def data_creation(data_path):
         outfile = data_path + 'training2.csv'
         print(outfile)
         df.to_csv(outfile,index=False)
+        
+        # if the above does not create equal proportions of diff. classes in train & val, try the following:
+        # pull out some examples from train+val , & remove those examples from train set
+        df_val = df.sample(frac = 0.2)
+        remove  = df_val.index.tolist()  # removing val set from train 
+        df = df.drop(remove)             # removing val set from train
         '''
 
     if not os.path.exists(test_path):
