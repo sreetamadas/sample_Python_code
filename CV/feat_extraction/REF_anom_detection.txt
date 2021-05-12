@@ -1,21 +1,60 @@
 
 # STRATEGIES:
+
 1. similarity based techniques : 
      comparing against a set of reference images (without defects) by extracting the image features using DL algorithm & comparing using distance measures 
      https://github.com/microsoft/computervision-recipes/tree/master/scenarios/similarity
      Image similarity: https://github.com/microsoft/computervision-recipes/tree/master/scenarios/similarity
      
+
+2. using auto encoders : reconstruction error of images with defects should be higher compared to normal images
+  VAE: https://github.com/tarekmuallim/Anomaly-Detection-using-Variational-Autoencoders    
+   AE: https://www.pyimagesearch.com/2020/03/02/anomaly-detection-with-keras-tensorflow-and-deep-learning/  
+     
+     
+3. standard anomaly detection algos: 
+extracting image features using DL algo & passing through trained ML methods line one-class SVM, or other anomaly detection techniques (should have 2 classes: good vs others)
+
+    https://machinelearningmastery.com/model-based-outlier-detection-and-removal-in-python/
+     1. Isolation forest (contamination = 0.1), removes outliers(few instances or abnormal values from dataset) will be removed.
+     2. Minimum covariance determinant: (Hypersphere - ellipsoid - elliptic_envelope(contamination = 0.01))
+     3. Local outlier factor (Far from feature space) - works for few features - (contamination = 0.1)
+     4. One class SVM (nu = 0.01)  - setting nu is trial and error method
+     
+     https://towardsdatascience.com/similar-images-recommendations-using-fastai-and-annoy-16d6ceb3b809 - Try 2nd*
+     Fastai
+     pytorch's hook - In order to get the output of an intermediate layer from a model in PyTorch, we use a functionality called Hook. 
+          Hooks can be added to extract intermediate values of a model from either the forward pass or the backward pass. 
+          "Hook - functionality to save the embeddings in 2nd last layer of our trained model"
+          Spotify's Annoy (Approximate nearest neighbour oh yeah)- Using binary trees for ANN
+     
+     https://blog.usejournal.com/fastai-image-similarity-search-pytorch-hooks-spotifys-annoy-9161bf517aaf
+     - Hook & Annoy - Code (Try 2nd*)
+
+     
+     https://becominghuman.ai/extract-a-feature-vector-for-any-image-with-pytorch-9717561d1d4c
+     Uses feature embeddings*  - pytorch
+     "If you plan to use images that are very different from ImageNet, you may benefit in using an earlier layer or fine-tuning the model."
+     Cosine similarity between two images. How to run for entire dataset?
+     
+     
+     https://forums.fast.ai/t/extracting-features-from-learn-model-resnext50/15063
+     Above method implementation only in fastai - Expected runtime error - (check if code is run on cpu, or gpu  and change unfreeze accordingly)
+     
+     https://www.kaggle.com/jtbontinck/cnn-features-extraction-xgb-submission
+     Code for feature embeddings + XGB
+     
+     
+     https://datascience.stackexchange.com/questions/25122/pre-trained-cnn-for-feature-extraction   (extracting features from cnn in keras)
+     https://forums.fast.ai/t/how-to-remove-the-last-fully-connected-layer-from-a-cnn-in-fastai-to-stack-more-than-one-cnn-into-a-fc-nn/26438
+     
+
      Anomaly detection using isolation forest:
      https://www.pyimagesearch.com/2020/01/20/intro-to-anomaly-detection-with-opencv-computer-vision-and-scikit-learn/
      https://medium.com/swlh/algorithms-to-detect-anomalies-in-images-56a1793eba56 - Includes Isolation forest(Pt.2) & Keras Anomaly det method
      Uses isolation forest (ml ensemble method) – based on color, hue and saturation bins – cant detect small differences in images
      works on color channel of the images. Train on green colour images (forest) and test on blue or red images(sea, street) - flags as anomaly
 
-2. using auto encoders : reconstruction error of images with defects should be higher compared to normal images
-  VAE: https://github.com/tarekmuallim/Anomaly-Detection-using-Variational-Autoencoders    
-   AE: https://www.pyimagesearch.com/2020/03/02/anomaly-detection-with-keras-tensorflow-and-deep-learning/  
-     
-3. standard anomaly detection algos: extracting image features using DL algo & passing through trained ML methods line one-class SVM, or other anomaly detection techniques (should have 2 classes: good vs others)
 
 4. siamese networks & triplet loss
      "building image pairs for siamese networks with python " on pyimagesearch 
