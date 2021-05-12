@@ -1,5 +1,38 @@
-# Extract deep learning features from images using simple python interface
-https://github.com/chsasank/image_features
+## background to image pre-processing
+Basic image pre-processing
+    Differences in illumination across captured images
+    Sizes
+    Shape – square vs rectangle
+Feature extraction from CNNs
+Handling imbalanced data sets – save augmented images?
+Type of augmentations to apply (flip, rotate, crop, jitter, etc)
+Image labeling?
+Checking for duplicates
+Use of un-supervised approaches?
+Greyscaling color images – is this same as normalization?
+Choice of image size for network, apart from pre-specified size
+
+
+
+## Following are the pre-processing methods we can apply.
+Image resizing
+RGB -> Gray scale
+Image normalization
+K-means clustering (
+    noise removal,  
+    Remove unnecessary details
+SLIC super pixel segmentation – some values from each segment – use these as features to ML (RF, SVM, etc)
+Histogram modification
+    Histogram equalization – improve contrast (no apriori idea about good images)
+    Histogram modification – improve quality/contrast of target images using histogram of contrast from good images
+Edge detection for segmentation (Canny edge detection)
+For segmentation without labelled info – region growing methods
+Image filters 
+    High pass- Laplacian filter
+    Low pass- mean filter, Gaussian, median
+
+
+
 
 
 
@@ -37,6 +70,20 @@ keypoint descriptors , SIFT
 shape contexts
 spatial pyramid pooling
 DPM based on HOG (histogram of gradients)
+Feature extraction methods: HOG, SIFT, LBP, PCA.
+
+
+
+# Extract deep learning features from images using simple python interface
+https://github.com/chsasank/image_features
+
+
+
+
+
+# ref Book: Gonzales/ (gonsalves) Digital image processing
+
+
 
 
 
