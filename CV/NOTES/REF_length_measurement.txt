@@ -1,4 +1,4 @@
-POC: for object measurement
+# for object measurement
 Edge detection -> find distance b/w endpoints
 Would require reference lengths
 
