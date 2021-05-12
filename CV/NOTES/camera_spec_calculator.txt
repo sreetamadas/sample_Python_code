@@ -23,6 +23,7 @@ Image capture:
 	- periodic camera recalibration is required to mitigate motion artifacts (not valid for systems with continuous vibration). 
 	- Smaller blurring effects can be corrected through image pre-processing with appropriate deblurring filters, provided they do not give rise to additional artifacts in the context of quality inspection
 
+Image pre-processing: (to mitigate effect of vibration on images) - http://www.robots.ox.ac.uk/~az/lectures/ia/lect3.pdf 
 
 ####################################
 
