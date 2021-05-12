@@ -1,0 +1,41 @@
+POC: for object measurement
+Edge detection -> find distance b/w endpoints
+Would require reference lengths
+
+Requirement: measure distance correct to 1mm (at what temperature? 900-1200C?)
+
+Do we get crisper images with IR than visible light?
+How are IR images different from thermal camera image?
+
+Link to check what resolution of camera is required, to measure a certain length, upto certain tolerance
+https://www.keyence.com/ss/products/vision/visionbasics/use/inspection03/
+https://www.ni.com/en-in/support/documentation/supplemental/18/calculating-camera-sensor-resolution-and-lens-focal-length.html 
+https://www.1stvision.com/machine-vision-solutions/2015/07/imaging-basics-calculating-resolution.html 
+
+https://www.e-consystems.com/   
+https://www.e-consystems.com/camera-selector.asp?CS_Resolution=1-3mp&CS_Resolution=0-3mp   
+
+
+
+
+
+Google: hot object length measurement using computer vision
+https://ieeexplore.ieee.org/document/8916635
+https://link.springer.com/content/pdf/10.1007/s00138-008-0135-1.pdf 
+https://www.sciencedirect.com/science/article/pii/S0924013604013159?via%3Dihub 
+https://ieeexplore.ieee.org/abstract/document/6745259   (less relevant?)
+https://liu.diva-portal.org/smash/get/diva2:918038/FULLTEXT01.pdf (less relevant?)
+https://ieeexplore.ieee.org/document/8932817 (less relevant?)
+https://hal.inria.fr/hal-01614170/document (fish measurement; less relevant?)
+
+Google: measuring size of objects in an image with opencv github
+https://github.com/intel-iot-devkit/object-size-detector-python  ; 
+
+https://www.pyimagesearch.com/2016/03/28/measuring-size-of-objects-in-an-image-with-opencv/  (discussion about slight errors without distortion correction)
+https://towardsdatascience.com/canny-edge-detection-step-by-step-in-python-computer-vision-b49c3a2d8123 
+https://pgaleone.eu/computer-vision/2019/01/18/camera-setup-measurement/ (less relevant?)
+https://www.keyence.com/ss/products/vision/visionbasics/use/inspection03/ 
+
+May not be relevant, but:
+http://www.xenics.cn/Upload/File/201607/ae156419fce7438998bb9b6459b7a51e.pdf 
+https://www.sciencedirect.com/science/article/pii/0167931795003487
