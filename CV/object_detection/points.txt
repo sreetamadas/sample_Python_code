@@ -1,0 +1,95 @@
+## yolo
+
+As image resolution increases, there's a drop in mAP value. mAP drops from 92% for 416x416 to 81% for 832x832
+As mentioned in the below link, one way could be to calculate anchors for 832x832 and use the new set of anchors.
+https://github.com/pjreddie/darknet/issues/901
+
+https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolov4-tiny_3l.cfg  (For training small objects using modified model)
+https://paperswithcode.com/sota/real-time-object-detection-on-coco  (Comparison of algo in terms of mAP and FPS)
+
+
+
+## A good boost to mAP is obtained from implementing data augmentation:
+yolo v4:  mosaic (combination of 4 images), random (training Yolo for different resolutions) , mixup (convex overlaying of image pairs and their labels) ,
+          flip, rotation (angle),
+         (default: saturation, exposure, hue, resize) 
+         https://blog.roboflow.com/yolov4-data-augmentation/ 
+
+As input image resolution/size increases, there's a drop in mAP value. mAP drops from 92% for 416x416 to 81% for 832x832
+
+efficientdet d1: vert_flip, adjust_brightness, adjust_hue, adjust_saturation   
+                                (default: random_scale_crop_pad_to_square, horizontal flip)
+                                (can possibly include dropout and RandomBlackPatches, RandomRotation90) 
+                                https://github.com/tensorflow/models/blob/master/research/object_detection/protos/preprocessor.proto
+
+
+With efficientDet, less improvement is seen by changing optimiser and learning rate. 
+More improvement by adding data augmentation and increasing no. of steps.
+Also, some issues with TF2 implementation:
+1. saves last checkpoint instead of best, unlike yolo v4 - needs monitoring through tensorboard or changes to TF code
+2. does not give class-wise metrics like yolo v4
+
+
+
+## No. of steps & epochs:
+
+model        data        #training_img     #class     #steps      batchsize      subdivision      #batches (steps) in 1 epoch       #epochs           mAP (%)
+tinyYolo	   GC10	           586           	4	         8000	        64	             32	             586/64 = 9.15 ~ 10	           8000/10 = 800	    93.02
+effdet-d1    GC10	           586          	4	         18000	       8              	_	             586/8 = 73.25 ~ 74	           18000/ 74 = 243    78.2
+tinyyolo     NEU	          1080          	6          12000	      64	             32	            1080/64 = 16.875 ~ 17	         12000/ 17 = 706	   60.0
+effdet-d1	   NEU	          1080          	6          24000	       8              	_	            1080/8 = 135	                 24000/135 = 178	   69.2
+
+no. of batches in 1 epoch = # training images / batch_size
+no. of epochs = total no. of steps / no. of batches 
+Tiny Yolo v4 achieves good performance faster than efficientdet, since batch size is higher. 
+It takes more passes (epochs) through the data. Overfitting is prevented by selecting best weights.
+
+
+
+########################################################################################################
+
+## if classification vs obj detection is bad:
+The NEU dataset shows accuracy > 90% with classification, but mAP 51-61% with detection algorithms (yolov4 tiny & yolov4).
+
+hyperparameters tested: img size, batch size, LR, mosaic
+
+dataset size: ideally 1000 images/class 
+            - may use less depending on the dataset; use offline augmentation only when imbalanced
+
+Since there are only 6 classes, and 1 defect per image, it should ideally have higher mAP.
+
+
+Steps going forward:  For the current model,
+
+1. check what are the metrics reported for NEU dataset 
+ref- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7146379/
+       https://www.sciencedirect.com/science/article/pii/S2405896318321001 
+      https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7085592/
+2. calculate precision & recall like a classification model, after choosing an IOU threshold, as follows
+    Choose the best model based on mAP
+    Decide an IOU threshold
+    Based on IOU, we decide which predictions are TP, FP & FN
+    Then we calculate precision & recall from there
+3. plot the test images , showing the GT & the prediction boxes, to see if they are way off
+     find darknet code to extract box info
+4. check the output of the augmentation step - is it happening correctly
+     find darknet code to extract output of augmentation
+
+
+For further model improvement through tuning: check if the anchor box sizes need to be tuned to dataset 
+[https://github.com/pjreddie/darknet/issues/911, 
+https://github.com/pjreddie/darknet/issues/568, 
+https://medium.com/@vivek.yadav/part-1-generating-anchor-boxes-for-yolo-like-network-for-vehicle-detection-using-kitti-dataset-b2fe033e5807}
+
+
+
+Low mAP numbers of localization algorithm is due to following reasons:
+1) Certain defects in the dataset cannot be used for localization, its more of a classification problem. 
+    Defects like crazing, inclusion , pitted surface, rolled in scale cannot be localized.
+2) Issues with ground truth bounding boxes. In some cases, ground truth bbox covers the entire image. 
+  There's no clear separation between defective & non-defective areas in the image. 
+3) In a few other cases, there's overlapping of ground truth bbox. Multiple, overlapping bboxes are present rather than a single gt bbox.
+4) Top 2 defects should be taken (patches, scratches ) for localization and  mAP numbers should be shown for the same(currently, above 80%) .
+5) Also, need to check for a better dataset that can be used for localization.
+
+
