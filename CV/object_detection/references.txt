@@ -1,3 +1,6 @@
+https://towardsdatascience.com/mmdetection-tutorial-an-end2end-state-of-the-art-object-detection-library-59064deeada3
+
+
 Object detection using TF:
 
 https://towardsdatascience.com/custom-object-detection-using-tensorflow-from-scratch-e61da2e10087   (SSD MobileNet V2 on Tensorflow)
