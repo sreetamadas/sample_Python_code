@@ -2,6 +2,10 @@ pixel level encoding, as image mask files
 pixel level encoding, in a csv
 
 
+nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation
+https://www.nature.com/articles/s41592-020-01008-z  
+
+
 
 # IMAGE SEGMENTATION TECH.
 1. Thresholding method - Based on peaks – Simplest method 
