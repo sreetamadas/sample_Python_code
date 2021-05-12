@@ -1,12 +1,16 @@
+# alternate methods (eg - multiple binary classifiers, but there may be a challenge if the occurrence of some classes is correlated)
+
+
 # Multi-label classification metrics:
 Hamming loss - How many labels are incorrectly predicted? Hamming loss corresponds to the Hamming distance between y_true and y_pred
 Hamming score - Label based accuracy
 Micro F1 Score (Weighted Harmonic mean)
-Subset accuracy - % of samples that have all their labels classified correctly.
+Subset accuracy / exact match ratio - % of samples that have all their labels classified correctly.
 Accuracy
 Precision
 Recall
-exact match ratio
+** error_rate is not a valid metric for multilabel classification. It holds good for multiclass, & error_rate = 1 - accuracy
+
 
 ref:
 http://dml.cs.byu.edu/~cgc/docs/atdm/Readings/MLM-Overview.pdf
@@ -28,15 +32,21 @@ https://i.stack.imgur.com/PQqVt.png
   Understanding: As sigmoid(0.2)≈0.55 . So by giving a threshold of 0.2, we get rid of any predictions where our model isn’t more than 55% confident about the prediction.
 
 2. F-beta; Fß = (1 + ß^2) * (precision * recall) / (ß^2 .precision + recall)
-
+The beta is 2 by default, https://github.com/hiromis/notes/blob/master/Lesson3.md
 
 ref:
 https://datascience.stackexchange.com/questions/22234/explanation-of-the-f-beta-formula
 https://forums.fast.ai/t/why-is-the-accuracy-threshold-so-low-in-lesson-3-planet-kaggle-exercise/43929
 https://en.wikipedia.org/wiki/F1_score
 https://neptune.ai/blog/evaluation-metrics-binary-classification#10
+https://github.com/hiromis/notes/blob/master/Lesson3.md
+https://nbviewer.jupyter.org/github/fastai/course-v3/blob/master/nbs/dl1/lesson3-planet.ipynb
 
-
+https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff   (different strategies for solving multi-label classification)
+https://stats.stackexchange.com/questions/233275/multilabel-classification-metrics-on-scikit
+https://medium.com/towards-artificial-intelligence/understanding-multi-label-classification-model-and-accuracy-metrics-1b2a8e2648ca
+https://towardsdatascience.com/create-a-multi-label-classification-ai-train-our-ai-part-2-85064466d55a
+https://course.fast.ai/videos/?lesson=6 (Watch post 1 hr timestamp in the video)
 
 
 
