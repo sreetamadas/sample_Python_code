@@ -1,18 +1,88 @@
-VAE vs AE? 
-Intermediate & latent dimension
-Metrics used for Autoencoders
-Codes for color image (3 dimensions)
 
+# STRATEGIES:
+1. similarity based techniques : 
+     comparing against a set of reference images (without defects) by extracting the image features using DL algorithm & comparing using distance measures 
+     https://github.com/microsoft/computervision-recipes/tree/master/scenarios/similarity
+     Image similarity: https://github.com/microsoft/computervision-recipes/tree/master/scenarios/similarity
+     
+     Anomaly detection using isolation forest:
+     https://www.pyimagesearch.com/2020/01/20/intro-to-anomaly-detection-with-opencv-computer-vision-and-scikit-learn/
+     https://medium.com/swlh/algorithms-to-detect-anomalies-in-images-56a1793eba56 - Includes Isolation forest(Pt.2) & Keras Anomaly det method
+     Uses isolation forest (ml ensemble method) – based on color, hue and saturation bins – cant detect small differences in images
+     works on color channel of the images. Train on green colour images (forest) and test on blue or red images(sea, street) - flags as anomaly
+
+2. using auto encoders : reconstruction error of images with defects should be higher compared to normal images
+  VAE: https://github.com/tarekmuallim/Anomaly-Detection-using-Variational-Autoencoders    
+   AE: https://www.pyimagesearch.com/2020/03/02/anomaly-detection-with-keras-tensorflow-and-deep-learning/  
+     
+3. standard anomaly detection algos: extracting image features using DL algo & passing through trained ML methods line one-class SVM, or other anomaly detection techniques (should have 2 classes: good vs others)
+
+4. siamese networks & triplet loss
+     "building image pairs for siamese networks with python " on pyimagesearch 
+     
+5. GANs
+
+
+
+####################################################################
+# anom detection using AE:
+
+1. VAE vs AE?
+https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf 
+     An autoencoder accepts input, compresses it, and then recreates the original input.
+     A variational autoencoder assumes that the source data has some sort of underlying probability distribution (such as Gaussian) and then attempts to find the parameters of the distribution. It provides a probabilistic manner for describing an observation in latent space. Thus, rather than building an encoder which outputs a single value to describe each latent state attribute, we'll formulate our encoder to describe a probability distribution for each latent attribute. 
+
+
+2. Metrics used for Autoencoders? - Losses
+VAE loss- KL loss(Encoder) + Reconstruction loss(decoder) (Variational Auto Encoders)
+MSE loss (Autoencoders)
+Kernel density estimation(In bottleneck) - Adverserial Autoencoder  (https://medium.com/@judewells/image-anomaly-detection-novelty-detection-using-convolutional-auto-encoders-in-keras-1c31321c10f2)
+
+
+3. Intermediate and latent space in A.E?
+
+An autoencoder reduce an input of many dimensions, to a vector space of less dimension, 
+then it recompute the lossed dimension from that limited number of intermediate vectors. 
+This intermediate dimension is called the latent space.
+
+In code,
+intermediate_dim = 256 - Bottle neck to 256  or 256 neurons/classes/features
+latent_dim = 2 - Latent variable is 2D (Need clarity)
+
+
+4. Color channels? - RGB (Codes for color image (3 dimensions))
+
+
+5. Types of A.E:  
+https://towardsdatascience.com/deep-inside-autoencoders-7e41f319999f 
+https://blog.keras.io/building-autoencoders-in-keras.html
+
+
+
+Step1: 
+VAE: https://github.com/tarekmuallim/Anomaly-Detection-using-Variational-Autoencoders  - Reconstruction loss too high 
+Image Tiling: https://stackoverflow.com/questions/28496848/convert-and-crop-image-in-tiles-with-python 
+Image similarity: https://github.com/microsoft/computervision-recipes/tree/master/scenarios/similarity  
+AE: https://www.pyimagesearch.com/2020/03/02/anomaly-detection-with-keras-tensorflow-and-deep-learning/ 
+
+Step 2:
+https://www.pyimagesearch.com/2020/01/20/intro-to-anomaly-detection-with-opencv-computer-vision-and-scikit-learn/
+https://paperswithcode.com/task/anomaly-detection/latest
+https://github.com/hoya012/awesome-anomaly-detection 
+https://medium.com/swlh/algorithms-to-detect-anomalies-in-images-56a1793eba56
+
+http://www.innovationatiris.com/iris-innovation/files/2019/11/NatasaSDj_DiscoveryScience2019.pdf
+
+####################################################################################
+
+
+
+
+# points:
 1.  VAE based method doesn't work for highly similar images with small differences (Not much distinguishable features - Reconstruction loss too high), 
      it works well for distinctly different classes
 2. Image similarity: comparison using distance measures (between 0 and 1)
 3. Extract features using CNN & use standard classifiers like SVMs
-
-
-
-VAE: https://github.com/tarekmuallim/Anomaly-Detection-using-Variational-Autoencoders 
-Image similarity: https://github.com/microsoft/computervision-recipes/tree/master/scenarios/similarity 
-AE: https://www.pyimagesearch.com/2020/03/02/anomaly-detection-with-keras-tensorflow-and-deep-learning/ 
 
 
 
@@ -22,3 +92,14 @@ REf:
 An Attention-Based Network for Textured Surface Anomaly Detection - Appl. Sci. 2020, 10, 6215; doi:10.3390/app10186215
 Classification is a Strong Baseline for Deep Metric Learning - Andrew Zhai , Hao-Yu Wu
 Anomaly detection with convolutional neural networks for industrial surface inspection - Benjamin Staar, Michael Lütjen, Michael Freitag
+
+https://www.sciencedirect.com/science/article/pii/S1474034620300744   ( Conv layers in AE)
+https://ieeexplore.ieee.org/abstract/document/8354254?casa_token=gKlOvvP6vGgAAAAA:nqOAdmEHSwbMvkuRLFXuT8HQBYxuD02DJB1PoVMJ7sYS70JdwwiCop2BIkVaIDfqGTZCbtb3XxY  
+https://www.sciencedirect.com/science/article/pii/S2212827119302409  -> triplet loss, may be more computationally intensive – need to check
+
+https://towardsdatascience.com/a-compact-cnn-for-weakly-supervised-textured-surface-anomaly-detection-2572c3a65b80
+https://medium.com/swlh/how-to-detect-defects-on-images-16d6cf3ddc1a
+
+
+
+
