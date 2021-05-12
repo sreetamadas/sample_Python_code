@@ -1,26 +1,24 @@
 https://blog.roboflow.ai/getting-started-with-cvat/
+https://www.datasetlist.com/tools/ : website compiling different tools )
 
+Tips on data annotation:
+ Label all the way around the object in question
+ Label occluded objects entirely
+ Avoid too much space around the object in question
  
-https://stackoverflow.com/questions/54374935/how-to-fix-this-strange-error-runtimeerror-cuda-error-out-of-memory
-Changed a few parameters : batch size, width and height 
-https://blog.roboflow.ai/training-yolov4-on-a-custom-dataset/   lower no. of subdivisions & max_batches
+ 
+possible data annotation formats:
+1. coco format as json file (see pycoco website); coco format additionally requires label map file (name → id mapping)
+2. xml format
+3. text file, with id and bbox coordinates
+create train, val & test sets with appropriate folder structure for images & annotations.
 
 
-1. How to assess localization algo has trained sufficiently – is there an optimal mAP ? 
-  Right now, we are stopping when there are no changes in mAP for a few cycles.
-  can look at loss <= half of starting loss
+Training or transfer learning
+1. transfer learning- if the class to be trained on, is similar to one of the classes for the pre-trained model. Requires less images
+2. Training - if the class is dissimilar to the original training set. Requires more data (heavy augmentation)
 
-2. Generally, we use the val set to tune model parameters & find optimal model – is something similar being done for localization? 
-  Which parameters are we tuning for localization?
-https://medium.com/hackernoon/efficient-implementation-of-mobilenet-and-yolo-object-detection-algorithms-for-image-annotation-717e867fa27d 
-
-3. If we are not using the val set to tune for alternate models & only using for testing, do we need a separate test set? 
-
-4. We should also be checking recall, not just precision (as in pycoco tool)
-
-
-
-##################################################
+#####################################################
 
 ###   yolo training  ###
 
@@ -54,16 +52,15 @@ https://medium.com/ai-world/how-to-train-yolov4-for-custom-objects-detection-in-
 https://medium.com/analytics-vidhya/implementing-yolov4-to-detect-custom-objects-using-google-colab-6691c98b15ff
 
 
-#############
 
-check if localization algo works with empty annotation file - yes.
+#####    check if localization algo works with empty annotation file - yes. #####
 Yolo requires empty .txt files. 
 We need to add negative images, if there are certain classes which are present & similar to our classes of interest, but which we don't want to detect. 
 For defective parts, the images should already be having the good part of the sheet in the background, & so we will not require separate good images for training.
 
 
 
-# Saving predicted box information in text files:
+#### Saving predicted box information in text files:  #####
 Save the paths of test images in a file & send it to the following code - I did not get segmentation fault with any of the following:
 
 OPTION 1: the output is as json file, & coordinates are in fraction format, & centre_x, centre_y, width, height
@@ -79,14 +76,85 @@ OPTION 2: output is text file; it has pixel coordinates, but also additional inf
   
   
   
-##############################################################
-
-Editing darknet Makefile from colab
-
+######  Editing darknet Makefile from colab  ####
 !cat Makefile   # see contents of makefile
 !sed -i 's/ARCH= -gencode arch=compute_37,code=sm_37/#ARCH= -gencode arch=compute_37,code=sm_37/g' Makefile
 !sed -i 's/#ARCH= -gencode arch=compute_75,/ARCH= -gencode arch=compute_75,/g' Makefile  # making changes
 !cat Makefile   # verify changes were made
+
+
+########  Other issues  #######
+
+https://stackoverflow.com/questions/54374935/how-to-fix-this-strange-error-runtimeerror-cuda-error-out-of-memory
+Changed a few parameters : batch size, width and height 
+https://blog.roboflow.ai/training-yolov4-on-a-custom-dataset/   lower no. of subdivisions & max_batches
+
+
+1. How to assess localization algo has trained sufficiently – is there an optimal mAP ? 
+  Right now, we are stopping when there are no changes in mAP for a few cycles.
+  can look at loss <= half of starting loss
+
+2. Generally, we use the val set to tune model parameters & find optimal model – is something similar being done for localization? 
+  Which parameters are we tuning for localization?
+https://medium.com/hackernoon/efficient-implementation-of-mobilenet-and-yolo-object-detection-algorithms-for-image-annotation-717e867fa27d 
+
+3. If we are not using the val set to tune for alternate models & only using for testing, do we need a separate test set? 
+
+4. We should also be checking recall, not just precision (as in pycoco tool)
+
+
+
+
+####  Hyperparameter tuning - tiny YOLOv4 (darknet)  #####
+
+yolo hyperparameters:
+
+data augmentation: 
+mosaic, mosaic bound, blur, angle
+random (=1 will increase precision by training Yolo for different resolutions; If you encounter an error out of memory just increase the subdivisions parameter to a higher value)
+saturation, exposure, hue, resize
+https://blog.roboflow.com/yolov4-data-augmentation/       
+https://blog.roboflow.com/why-preprocess-augment/ 
+
+
+training:   image size/ network size: width=416 height=416 or any value multiple of 32
+            batch (ie, batch size =no. of images per iteration, eg 64);     1 Epoch = images_in_train_txt / batch iterations
+            subdivisions (no. of pieces the batch is broken into, for GPU memory, eg 16);  
+             classes  (change in each of 3 yolo layers) 
+             learning rate (optimal value?); (step decay learning rate scheduling strategy? https://medium.com/@riteshkanjee/yolov4-superior-faster-more-accurate-object-detection-7e8194bf1872)
+               momentum (??)
+               decay  (??)
+               filters = (classes + 5)x3 in the 3 [convolutional] before each [yolo] layer, keep in mind that it only has to be the last [convolutional] before each of the [yolo] layers. 
+               max_batches = 2000 x #classes  , but not less than #training images;   
+               steps = 80% and 90% of max_batches
+               IOU threshold,    NMS threshold
+
+[ learning rate: too small → too slow convergence during training; too big → unstable training & oscillations in train/test accuracy.
+         fixed lr + momentum : helps in faster convergence, for a given fixed learning rate  : (use large momentum & small decay)
+         learning rate schedule: reduces learning rate using a decay parameter, or a patience parameter (no. of epochs to wait before changing LR, when no change is occurring in the monitored metric eg., loss)
+         adaptive learning rate: The performance of the model on the training dataset can be monitored by the learning algorithm and the learning rate can be adjusted in response. (RMSprop, Adam)
+          https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/  ]
+
+
+# default data aug in yolo:
+Random=0
+saturation=1.5
+exposure=1.5
+hue=0.1
+resize=1.5
+
+# edited aug
+mosaic=1
+random=1
+flip=1
+angle=30
+mixup=1
+policy=sgdr
+
+
+
+##################################################################
+
 
 
 
