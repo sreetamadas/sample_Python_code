@@ -64,6 +64,9 @@ https://stackoverflow.com/questions/9478347/how-do-i-fill-holes-in-an-image
 https://stackoverflow.com/questions/25074488/how-to-mask-an-image-using-numpy-opencv/25114860
 
 
+# ref Book: Gonzales/ (gonsalves) Digital image processing
+
+########################################################
 
 # Feature extraction using image processing:
 keypoint descriptors , SIFT
@@ -79,9 +82,9 @@ https://github.com/chsasank/image_features
 
 
 
+################################################################
 
 
-# ref Book: Gonzales/ (gonsalves) Digital image processing
 
 
 
