@@ -23,7 +23,9 @@ why divide by 255 ? To scale the data from 0 to 1
 what is reshape doing ? - convert from 2dim to 1D vector
 
 
+
 ###########################################################################
+
 
 # HYPERPARAMETERS VARIED IN CODE TESTS:
 1. learning rate & different types of LR finders/ schedulers (step LR, exponential LR, cosine annealing LR)
@@ -39,7 +41,29 @@ what is reshape doing ? - convert from 2dim to 1D vector
 6. batch size, epochs, early stopping callback
 
 
+
+https://github.com/tensorflow/models/blob/master/research/object_detection/protos/optimizer.proto 
+https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/  (use large momentum & small decay)
+-> Try RMSProp or Adam optimisers.
+
+Sample config file with rmsprop https://stackoverflow.com/questions/47462962/tensorflow-object-detection-api-with-mobilenets-overfits-custom-multiclass-datas 
+https://github.com/tensorflow/models/blob/master/research/object_detection/configs/tf2/ssd_mobilenet_v1_fpn_640x640_coco17_tpu-8.config 
+
+optimisers:
+https://towardsdatascience.com/understanding-rmsprop-faster-neural-network-learning-62e116fcf29a 
+https://ruder.io/optimizing-gradient-descent/
+https://towardsdatascience.com/learning-rate-schedules-and-adaptive-learning-rate-methods-for-deep-learning-2c8f433990d1 
+https://medium.com/syncedreview/iclr-2019-fast-as-adam-good-as-sgd-new-optimizer-has-both-78e37e8f9a34  
+
+learning rate:
+https://kiranscaria.github.io/general/2019/08/16/learning-rate-schedules.html 
+https://www.jeremyjordan.me/nn-learning-rate/ 
+https://cs231n.github.io/neural-networks-3/#baby 
+
+
+
 ###########################################################################
+
 
 
 inputs: image shape & color
