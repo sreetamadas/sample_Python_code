@@ -1,5 +1,6 @@
 TASKS:
-accepted levels & drift threshold
+accepted levels & drift threshold : re-training the model will make sense when the change in sensitivity &/or specificity is 5 - 10%. 
+                                  Retraining may not show much improvement for a shift of 1-2%
 automated tracking logic
 workflows - corrected annotations to be saved & verified
 model risk index to capture drift & raise alerts
