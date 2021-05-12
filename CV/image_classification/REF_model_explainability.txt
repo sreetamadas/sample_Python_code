@@ -6,6 +6,21 @@ Reference https://www.groundai.com/project/smooth-grad-cam-an-enhanced-inference
 It is built on top of last convolution layer before predicting the layers
 
 
+
+GradCAM can be used with any CNN based architecture irrespective of the task. 
+Their official page has demo links for image captioning and visual question answering as well . (http://gradcam.cloudcv.org/)
+ What GradCAM tries to show is - how intensely the input image activates different channels by how important each channel is with regard to the class
+
+The advantage of GradCAM is that, its predecessor – CAM works only for specific CNN architectures (which have global average pooling over convolutional maps immediately before prediction) whereas GradCAM works for any CNN architecture
+
+ref: 
+https://towardsdatascience.com/demystifying-convolutional-neural-networks-using-gradcam-554a85dd4e48
+https://www.hackevolve.com/where-cnn-is-looking-grad-cam/
+
+
+
+
+
 SAMPLE DATA: NEU dataset
 
 
