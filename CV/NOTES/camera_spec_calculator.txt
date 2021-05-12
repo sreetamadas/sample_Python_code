@@ -49,6 +49,10 @@ https://www.ni.com/en-in/innovations/white-papers/12/a-practical-guide-to-machin
 https://www.vision-systems.com/boards-software/article/16736434/ten-basic-steps-to-successful-machinevisionsystem-design
 https://www.qualitymag.com/articles/91422-how-to-choose-the-right-lighting-for-machine-vision-applications
 
+
+environment factors
+https://www.vision-doctor.com/en/avoid-interference.html
+
 ####################################
 
 
