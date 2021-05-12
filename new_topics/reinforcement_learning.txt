@@ -1,0 +1,71 @@
+# Reinforcement learning : training of machine learning models to make a sequence of decisions
+Does not require labeled input/ output pairs during training
+The algorithm/ agent employs trial & error to achieve the solution
+The algorithm/ agent gets either rewards or penalties for the actions it performs. Its goal is to maximize the total reward
+
+
+# CHALLENGES
+Requires a lot of data, is computing-heavy and time-consuming, especially when the action space is large
+Preparing realistic simulation environment, which is highly dependent on the task to be performed
+Scaling & tweaking the network – communication with the agent is only through rewards/ penalties – old knowledge may be erased by new knowledge 
+Reaching a local optimum
+Obtain reward without performing task
+https://deepsense.ai/what-is-reinforcement-learning-the-complete-guide
+
+
+# important terms used
+https://www.guru99.com/reinforcement-learning-tutorial.html  , https://wiki.pathmind.com/deep-reinforcement-learning 
+
+
+
+# Can RL solve my problem? 
+1. A simulated environment: Lots of iterations are needed before a RL algorithm to work. 
+   Therefore, a simulated environment that can correctly reflect the real world is needed
+
+2. MDP: You would need to formulate your problem into MDP (Markov Decision Process). 
+      You need to design the state space, action space, reward function and so on. 
+      Your agent will do what it is rewarded to do under the constraints. You may not get the results you want if you design the things differently
+
+3. Algorithms: There are different RL algorithms you can choose and questions to ask yourself. 
+You want to directly find out the policy or you want to learn the value function? 
+You want to go model-free or model-based? 
+Do you need to combine other kinds of deep neural network or methods to solve your problems?
+
+check if your problem has some of the following characteristics before deciding to use RL: 
+a) trial-and-error (can be learned to do better by receiving feedback from the environment); 
+b) delayed rewards; 
+c) can be modeled as MDP; 
+d) your problem is a control problem
+https://towardsdatascience.com/applications-of-reinforcement-learning-in-real-world-1a94955bcd12
+
+
+
+# applications (eg dynamic treatment regime)
+https://towardsdatascience.com/applications-of-reinforcement-learning-in-real-world-1a94955bcd12
+https://neptune.ai/blog/reinforcement-learning-applications  
+https://www.oreilly.com/radar/practical-applications-of-reinforcement-learning-in-industry/ 
+
+
+
+#########################################################################
+Tutorials:
+https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/
+https://neptune.ai/blog/best-reinforcement-learning-tutorials-examples-projects-and-courses
+https://towardsdatascience.com/reinforcement-learning-tutorial-part-1-q-learning-cadb36998b28
+https://github.com/aikorea/awesome-rl#tutorials--websites
+
+Algorithms:
+Q-learning , DQN (Deep Q-Network) , Multi-agent Deep Q-Network
+https://github.com/aikorea/awesome-rl#papers--thesis
+https://github.com/dennybritz/reinforcement-learning
+
+Libraries:
+Pyqlearning , KerasRL Tensorforce , RL_Coach (Intel) , MushroomRL
+https://www.guru99.com/reinforcement-learning-tutorial.html
+https://towardsdatascience.com/simple-reinforcement-learning-q-learning-fcddc4b6fe56
+https://analyticsindiamag.com/python-libraries-reinforcement-learning-dqn-rl-ai/ 
+
+
+
+
+
