@@ -1,2 +1,38 @@
 pixel level encoding, as image mask files 
 pixel level encoding, in a csv
+
+
+
+# IMAGE SEGMENTATION TECH.
+1. Thresholding method - Based on peaks – Simplest method 
+2. Edge based method - Not suitable for our use case 
+3. Region based method (Time expensive, immune to noise, portioning images into homogenous regions)
+4. Clustering method (Based on division in homogenous clusters, More useful in real time problems)
+5. Watershed method (Better at Boundary detection)
+6. NN : Unets, Mask R-CNN /Fast R-CNN (Efficient and better accuracy) 
+
+ref: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6512995/ - Manufacturing images
+https://www.sciencedirect.com/science/article/pii/S2214317319301957 - Plant disease detection 
+https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
