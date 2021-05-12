@@ -1,0 +1,69 @@
+Federated learning
+1. datasets are heterogenous, sizes may span several orders of magnitude.
+2. aims at training on heterogeneous datasets
+3. Client machines are typically low-power mobile phones & IoT devices, connected through wi-fi
+
+  
+  
+#  Distributed learning.
+1. local datasets are identically distributed (i.i.d.) and roughly have same size
+2. aims at parallelizing computing power 
+3. Clients are computationally powerful datacentres connected via fast networks
+
+
+
+
+# fed. learning
+Trains an algorithm across multiple decentralized edge devices/ servers holding local data, without exchanging them. 
+Trains local models on local data samples and exchanging parameters (eg the weights and biases of a deep neural network) between these local nodes at some frequency to generate a global (averaged) model shared by all nodes. 
+
+# CHALLENGES:
+communication in the network can be slower than local computation by many orders of magnitude, hence expensive - optimise
+Device heterogeneity (variability in hardware (CPU, memory), network connectivity (3G, 4G, 5G, wifi), and power (battery level))
+Data heterogeneity
+privacy at the cost of reduced model performance or system efficiency; some privacy concerns
+https://en.wikipedia.org/wiki/Federated_learning  , https://blog.ml.cmu.edu/2019/11/12/federated-learning-challenges-methods-and-future-directions/ 
+https://www.mi.fu-berlin.de/inf/groups/ag-ti/theses/download/Hartmann_F18.pdf 
+
+
+# key principles
+Differential Privacy: to prevent the model from saving information about individual training samples in their parameters, 
+                   Differential Privacy perturbs the model by adding noise to the parameters. 
+                   The noise is scaled in such a way that the model cannot hold any information about an individual sample 
+                   but just the generalization over all samples
+Secure Aggregation: by taking a closer look at the model parameters, general conclusions about the underlying training data 
+                       still can be drawn. Hence, ensure that parameter changes cannot be mapped to a participant.
+Federated Averaging: models of participants holding higher number of samples are taken into account more than the ones holding just a few. 
+
+https://www.inovex.de/blog/federated-learning-collaborative-training-part-1/ 
+
+ 
+
+Tutorials
+https://towardsdatascience.com/federated-learning-3097547f8ca3 , 
+https://blog.openmined.org/upgrade-to-federated-learning-in-10-lines/  (PySyft)
+https://www.tensorflow.org/federated/tutorials/federated_learning_for_image_classification , 
+https://towardsdatascience.com/federated-learning-a-step-by-step-implementation-in-tensorflow-aac568283399 
+https://github.com/coMindOrg/federated-averaging-tutorials 
+
+
+Algorithms: 
+FedAvg, FedProx, FedMa, FedOpt , Scaffold
+https://github.com/chaoyanghe/Awesome-Federated-Learning , 
+https://www.researchgate.net/publication/329106719_A_Performance_Evaluation_of_Federated_Learning_Algorithms , 
+https://towardsdatascience.com/introduction-to-federated-learning-and-challenges-ea7e02f260ca 
+
+
+Libraries: 
+Federated-learning-lib (IBM) , Tensorflow federated learning , Pysyft (pytorch) , FATE, FLOWER, PaddleFL
+
+comparison of different frameworks 
+1. TFF does not support Secure Aggregation for improved security and does not run on GPUs
+2. PySyft does not come with an implementation of Differential Privacy, but there is one that is currently under development. 
+    However, it supports Secure Aggregation and execution on GPUs 
+3, (both PySyft and TensorFlow) The data used for training can not be loaded from the remote worker itself but must be sliced and 
+    distributed by the central curator. This is contrary to the paradigm of Federated Learning, making them unsuitable for real-world application
+https://www.inovex.de/blog/federated-learning-frameworks-part-2/ , https://towardsdatascience.com/federated-learning-3097547f8ca3  , https://github.com/FederatedAI/FATE 
+https://medium.com/digital-catapult/federated-learning-from-platform-independent-libraries-to-open-ecosystems-72f66897629f 
+
+
