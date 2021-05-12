@@ -266,6 +266,38 @@ https://people.revoledu.com/kardi/tutorial/Python/Video+Analysis+using+OpenCV-Py
 https://plantcv.readthedocs.io/en/latest/roi_objects/ 
 
 
+
+# derive precision & recall from localization predictions
+https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=1387223964  (section on metric calculation)
+https://sourcecode.socialcoding.bosch.com/projects/COV19AI/repos/facemaskdetection/browse
+https://github.com/biubug6/Pytorch_Retinaface/blob/master/widerface_evaluate/evaluation.py
+
+
+
+
+# Following are links/ codes for evaluation metric calculation, usually mAP, but these should be calculating TP, FP, FN internally. 
+We need to extract those numbers.
+
+1. see criteria to be satisfied for assigning, TP, FP & FP
+https://blog.zenggyu.com/en/post/2018-12-16/an-introduction-to-evaluation-metrics-for-object-detection/ 
+https://towardsdatascience.com/what-is-map-understanding-the-statistic-of-choice-for-comparing-object-detection-models-1ea4f67a9dbd  
+https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173
+https://manalelaidouni.github.io/manalelaidouni.github.io/Evaluating-Object-Detection-Models-Guide-to-Performance-Metrics.html
+
+
+2. Code links:
+https://github.com/rafaelpadilla/Object-Detection-Metrics/blob/master/lib/Evaluator.py  (need to extract relevant part of code)
+https://medium.com/@timothycarlen/understanding-the-map-evaluation-metric-for-object-detection-a07fe6962cf3
+https://towardsdatascience.com/evaluating-performance-of-an-object-detection-model-137a349c517b
+https://github.com/wangzhe0623/Object-Detection-Evaluation-Tool  (haven't checked the code)
+
+
+3. Link to code for extracting bbox info from yolo v3
+https://sourcecode.socialcoding.bosch.com/users/dar9kor/repos/socialdistancing/browse/src/lib/people_detection_v2.py?at=refs%2Fheads%2Frelease%2FSD-1.0   
+(see towards the end of the code; net & ln refer to the yolo v3 model, as mentioned in https://www.pyimagesearch.com/2018/11/12/yolo-object-detection-with-opencv/)
+
+
+
 #####################################################################################
 
 # methods to improve recall
