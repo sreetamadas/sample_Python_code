@@ -63,4 +63,16 @@ For defective parts, the images should already be having the good part of the sh
 
 
 
+# Saving predicted box information in text files:
+Save the paths of test images in a file & send it to the following code - I did not get segmentation fault with any of the following:
 
+OPTION 1: the output is as json file, & coordinates are in fraction format, & centre_x, centre_y, width, height
+!./darknet detector test ./build/darknet/x64/data/obj.data ./build/darknet/x64/cfg/yolo-obj.cfg \
+  ./build/darknet/x64/backup/yolov4_60_20_20/yolo-obj_last.weights \
+  -ext_output -dont_show -out result.json < ./infer_image_list.txt
+
+
+OPTION 2: output is text file; it has pixel coordinates, but also additional info in the file
+!./darknet detector test ./build/darknet/x64/data/obj.data ./build/darknet/x64/cfg/yolo-obj.cfg \
+  ./build/darknet/x64/backup/yolov4_60_20_20/yolo-obj_last.weights \
+  -dont_show -ext_output < ./infer_image_list.txt > pred_coord2.txt
