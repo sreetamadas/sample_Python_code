@@ -1,3 +1,5 @@
+also see https://github.com/sreetamadas/sample_Python_code/blob/master/CV/feat_extraction/REF_anom_detection.txt
+
 ## background to image pre-processing
 Basic image pre-processing
     Differences in illumination across captured images
