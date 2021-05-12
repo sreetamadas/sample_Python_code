@@ -89,4 +89,20 @@ git push origin --tags
 
 
 
+###########################################################################
+
+# if authentication fails during git push
+- could be due to password reset
+
+1. edit the password in Sourcetree (> tools > option > authentication ) - 
+delete the entries under "GIT saved password" , then open & edit the password under "ACCOUNTS"
+2.	$ set HTTP_PROXY=http://USERNAME:PASSWORD@website.com:xxxx on git terminal
+https://wet-boew.github.io/v4.0-ci/docs/proxy-en.html
+
+
+
+
+
+
+
 
