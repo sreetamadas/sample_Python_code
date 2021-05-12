@@ -1,0 +1,69 @@
+# Check any existing graphics card and driver software
+1. going to the Windows start menu, typing ‘run’ , then type dxdiag 
+2. the DirectX diagnostic tool opens (Figure below). See graphics card details under "Display 2" tab, 
+
+
+
+# Get the latest driver software for your GPU 
+1. https://www.nvidia.co.uk/Download/index.aspx?lang=en-uk
+
+
+
+# Install Visual Studio Express - community version
+ https://visualstudio.microsoft.com/vs/express/. 
+
+
+
+# Install CUDA Toolkit for windows
+https://developer.nvidia.com/cuda-toolkit-archive
+
+
+
+#  find a compatible version of CuDNN
+https://developer.nvidia.com/cudnn
+eg. For CUDA 10.1, the corresponding version of cuDNN is version 7.6.5.
+
+
+
+# cuDNN Setup
+There are three files in the unzipped cuDNN folder sub-directories which are to be copied into the CUDA Toolkit directories.
+Copy "cuda\bin\cudnn64_7.dll" to "C:\Program Files\NVIDA GPU Computing Toolkit\CUDA\v10.1\bin"
+Copy "cuda\ include\cudnn.h" to "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\"
+Copy "cuda\lib\x64\cudnn.lib" to "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\"
+
+
+
+# Checking CUDA environment variables are set in Windows
+https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-windows
+1. set CUDA_PATH in environment variables  (CUDA_PATH    C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1)
+2. add the following to path   (C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp )
+
+
+
+# Verify your GPU installation
+
+### tensorflow  (https://www.tensorflow.org/guide/gpu)
+from __future__ import absolute_import, division, print_function, unicode_literals
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+### pytorch
+from __future__ import absolute_import, division, print_function, unicode_literals
+import torch
+cuda = torch.cuda.is_available()
+print("CUDA availability ?",cuda)
+
+
+
+ref:
+https://towardsdatascience.com/pimp-up-your-pc-for-machine-learning-d11f68c2815
+https://towardsdatascience.com/installing-tensorflow-with-cuda-cudnn-and-gpu-support-on-windows-10-60693e46e781
+https://www.tensorflow.org/install/gpu
+https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
+https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#install-windows
+
+
+
+
+
+
