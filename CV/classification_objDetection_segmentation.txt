@@ -2,9 +2,12 @@ classification
 image is 1 of N classes (or m of N , in casae of multiLabel classification)
 
 
+
+
 object detection:
 show the pixel coordinate location of the object
 metric: precision at bounding box level
+
 
 
 
@@ -12,4 +15,29 @@ Segmentation:
 pixel-wise classification ; U-net
 Mask : input / output label
 precision at patch level, IoU
+
+
+BASIC STEPS:
+1. data preprocessing : different types & sizes of microscopy images observed from EDA - issues with size scaling & intensity variations
+- use of scaling/ splitting images, contrast-enhanced images with histogram equalization, conversion to grayscale
+
+2. data augmentation: flipping, random rotation & cropping
+
+3. build the CNN / U-net model & run on training data
+https://www.kaggle.com/keegil/keras-u-net-starter-lb-0-277
+"fit the model on the training data, using a validation split of 0.1. We use a small batch size because we have so little data. 
+I recommend using checkpointing and early stopping when training your model. 
+I won't do it here to make things a bit more reproducible (although it's very likely that your results will be different anyway).
+I'll just train for 10 epochs, which takes around 10 minutes in the Kaggle kernel with the current parameters."
+
+
+4. check predictions on some random images in the training & validation set
+
+5. make predictions on test set
+"need to keep a record of the original sizes of the test images to upsample our predicted masks and create correct run-length encodings later on"
+
+6. clean up the images before submission (remove single pixels, connect nearby regions) ?
+
+7. encode to RLE & submit  (do we need to check the RLEs for the training data?)
+
 
