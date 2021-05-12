@@ -18,6 +18,19 @@ STaDA: Style Transfer as Data Augmentation
 
 Image Segmentation using K-means Clustering Algorithm and Subtractive Clustering Algorithm
 nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation
+# blogs
+https://www.vicos.si/Research/DefectDetection                                                              segmentation
+https://medium.com/@abhimanyu.contact/metal-surface-defect-detection-4e4c8c79bb6b                         segmentation
+https://medium.com/@guildbilla/steel-defect-detection-image-segmentation-using-keras-dae8b4f986f0         segmentation
+https://aip.scitation.org/doi/pdf/10.1063/1.5137871    Metal surface defect detection based on few defect datasets 
+https://ieeexplore.ieee.org/document/8764994           Classification of Steel Surface Defect Using Convolutional Neural Network with Few Images
+https://www.tandfonline.com/doi/full/10.1080/03019233.2020.1816806?needAccess=true     Surface defect detection of steel strips based on classification priority YOLOv3-dense network
+https://www.mdpi.com/2076-3417/9/15/3127/htm           Periodic Surface Defect Detection in Steel Plates Based on Deep Learning
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7146379/      Deep Metallic Surface Defect Detection: The New Benchmark and Detection Network       (talks about hard negative mining)
+https://link.springer.com/article/10.1007%2Fs10921-020-0668-4     Automatic Defect Detection for Small Metal Cylindrical Shell Using Transfer Learning and Logistic Regression
+https://reader.elsevier.com/reader/sd/pii/S2405896318321001?token=577898401EF9066FBBA220BEA16047C3F8868E91CDF44A20179DF1A865DABAA94CFE3B307F6D544561934F6CC16534A5    
+
+
 
 
 DIFFRANET: AUTOMATIC CLASSIFICATION OF SERIAL CRYSTALLOGRAPHY DIFFRACTION PATTERNS
