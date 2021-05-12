@@ -2,13 +2,46 @@
 
 references:
 https://www.ni.com/en-in/support/documentation/supplemental/18/calculating-camera-sensor-resolution-and-lens-focal-length.html
-https://www.1stvision.com/machine-vision-solutions/2015/07/imaging-basics-calculating-resolution.html  
+https://www.1stvision.com/machine-vision-solutions/2015/07/imaging-basics-calculating-resolution.html
 
+https://www.vision-systems.com/boards-software/article/16736434/ten-basic-steps-to-successful-machinevisionsystem-design
+https://www.photonics.com/Articles/Machine_Vision_Cameras_Making_the_Right_Selection/a58427
+https://www.ni.com/en-in/innovations/white-papers/12/a-practical-guide-to-machine-vision-lighting.html
+https://www.qualitymag.com/gdpr-policy?url=https%3A%2F%2Fwww.qualitymag.com%2Farticles%2F91422-how-to-choose-the-right-lighting-for-machine-vision-applications
+https://www.vision-doctor.com/en/avoid-interference.html
+https://www.photometrics.com/learn/white-papers/rolling-vs-global-shutter
+
+
+
+Image capture:
+1. uniform lighting
+2. reduce dust & heat with camera housing & cooling system
+3. Motion artifact minimization: Take steps to reduce blur in images in presence of vibration.
+	- use of short exposure times (speedy image capture), 
+	- cameras with global shutters 
+	- the use of vibration dampeners. 
+	- periodic camera recalibration is required to mitigate motion artifacts (not valid for systems with continuous vibration). 
+	- Smaller blurring effects can be corrected through image pre-processing with appropriate deblurring filters, provided they do not give rise to additional artifacts in the context of quality inspection
 
 
 ####################################
 
-sensor resolution
+
+The choice of camera lens resolution is guided by 
+1. the dimensions of the minimum defect size to be imaged. 
+2. Additional constraints may arise from the working distance available for mounting the cameras
+
+key camera parameters are: 
+1. resolution (in pixels), 
+2. spatial resolution that is how many pixels-per-inch (ppi) on the sensor, 
+3. focal length, 
+4. the zoom level required to accommodate the area of interest
+5. field of view (FOV), which is the angular measurement window that can be seen by the lens
+
+
+
+
+# PART 1: sensor resolution
 sensor resolution = Pixel_min x (FOV) / smallest feature
 pixel_min: no. of pixels spanning the feature of minimum size
 FOV and smallest feature to be measured should be in mm
@@ -24,9 +57,8 @@ pixel_min	40
 resolution (pixel)	3600
 
 
-######################################
 
-sensor size
+# PART 2: sensor size
 sensor size = pixel size x resolution
 choose a camera from the link - find pixel size from specs
 https://www.e-consystems.com/   
@@ -42,9 +74,9 @@ sensor size (mm)	 6.14	  4.605
 diagonal sensor size (mm)	7.675	
 
 
-###########################################
 
-focal length
+
+# PART 3: focal length
 focal length x FOV = sensor size x working distance
 
 
