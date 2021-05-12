@@ -1,0 +1,15 @@
+classification
+image is 1 of N classes (or m of N , in casae of multiLabel classification)
+
+
+object detection:
+show the pixel coordinate location of the object
+metric: precision at bounding box level
+
+
+
+Segmentation:
+pixel-wise classification ; U-net
+Mask : input / output label
+precision at patch level, IoU
+
