@@ -1,0 +1,49 @@
+# counting circular objects
+
+
+
+# Image Processing-based methods (affected by noise)
+
+1. Hough Circle Transform based ( Generic method, require very clear edges and constant lighting conditions )
+
+2. Blob detection and Counting
+    LOG : Slowest and Most accurate, not recommended for big objects/blobs, color variation issue 
+    DOG : Faster than LOG but suffers with almost same issues as LOG
+    DOH : Fastest of all 3, can identify big blobs as well, but it misses some small blobs
+    
+3. Morphological Separations Based Contour Approximation
+     1. Wiener Filtering for denoising
+     2. Adaptive Histogram Equalization
+     3. Gaussian Smoothing 
+     4. Contour approximations based on size thresholding
+
+    Cons : 1. Wont be able to count if size variation is higher than  a predetermined threshold
+	         2. Camera placements, Lighting plays a major role
+
+
+
+
+
+
+# deep-learning based
+
+1. Detect objects and Count
+   a. SSD+Mobilenet , SSD + inception v2, SSD + resnet50 , faster RCNN + NASNET (fast+low mAP to heavy+high mAP)
+   b. Issues with large dataset annotation, draw boxes across each appearance 
+   c. Not good with Biological Images or crowded scenes, works fine where edges and its variance is very high, training is compute-intensive
+   
+2. Density Maps Regression based Counting  (UNET + density maps generation -> take integral of resulting image)
+    a. Object Counting by Estimating a Density Map with UNet
+    b. intuition: Encoder of Unet gives 'what' information; Decoder gives 'where' information
+    c. works well in controlled env images with low complexity
+    d. steps:
+         i. image annotation
+         ii. Generate Gaussian Filtered density map, using Gaussian kernel size = diameter of the circle size to be detected
+
+
+
+
+
+
+
+
