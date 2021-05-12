@@ -15,6 +15,7 @@ https://deepsense.ai/what-is-reinforcement-learning-the-complete-guide
 
 # important terms used
 https://www.guru99.com/reinforcement-learning-tutorial.html  , https://wiki.pathmind.com/deep-reinforcement-learning 
+https://traffic-signal-control.github.io/
 
 
 
@@ -40,11 +41,12 @@ https://towardsdatascience.com/applications-of-reinforcement-learning-in-real-wo
 
 
 
-# applications (eg dynamic treatment regime)
+
+# applications (eg dynamic treatment regime , traffic)
 https://towardsdatascience.com/applications-of-reinforcement-learning-in-real-world-1a94955bcd12
 https://neptune.ai/blog/reinforcement-learning-applications  
 https://www.oreilly.com/radar/practical-applications-of-reinforcement-learning-in-industry/ 
-
+https://traffic-signal-control.github.io/  (slides + code)
 
 
 #########################################################################
