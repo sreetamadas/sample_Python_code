@@ -1,7 +1,52 @@
+# Multi-label classification metrics:
+Hamming loss - How many labels are incorrectly predicted? Hamming loss corresponds to the Hamming distance between y_true and y_pred
+Hamming score - Label based accuracy
+Micro F1 Score (Weighted Harmonic mean)
+Subset accuracy - % of samples that have all their labels classified correctly.
+Accuracy
+Precision
+Recall
+exact match ratio
+
+ref:
+http://dml.cs.byu.edu/~cgc/docs/atdm/Readings/MLM-Overview.pdf
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.hamming_loss.html
+https://stats.stackexchange.com/questions/233275/multilabel-classification-metrics-on-scikit
+https://hivemall.incubator.apache.org/userguide/eval/multilabel_classification_measures.html
+https://stackoverflow.com/questions/32239577/getting-the-accuracy-for-multi-label-prediction-in-scikit-learn
+https://i.stack.imgur.com/PQqVt.png
+
+
+
+
+
+
+# Multi-label classification metrics in fastai:
+
+1. Accuracy threshold : we are predicting prob for multiple classes. If prob for class > threshold -> that class is present
+  In the multi-label fast.ai lecture, 0.2 is the threshold for that competition and he advices us to use 0.2 and it seems to work pretty well. 
+  Understanding: As sigmoid(0.2)≈0.55 . So by giving a threshold of 0.2, we get rid of any predictions where our model isn’t more than 55% confident about the prediction.
+
+2. F-beta; Fß = (1 + ß^2) * (precision * recall) / (ß^2 .precision + recall)
+
+
+ref:
+https://datascience.stackexchange.com/questions/22234/explanation-of-the-f-beta-formula
+https://forums.fast.ai/t/why-is-the-accuracy-threshold-so-low-in-lesson-3-planet-kaggle-exercise/43929
+https://en.wikipedia.org/wiki/F1_score
+https://neptune.ai/blog/evaluation-metrics-binary-classification#10
+
+
+
+
+
+####################################################################
+
+# notes from fastai implementation
+
 1. the sigmoid parameter converts the predicted values to a range (0,1), since we already use probability values, we set sigmoid = False.
-
 2. newer versions of fast.ai use the skleran metric's to calculate the fbeta scores. Ref: https://github.com/fastai/fastai/blob/master/fastai/metrics.py#L233
-
 3. based on many kaggle competitions, the most used performance metric is the fbeta score.
-
 4. the fbeta score from the sklern metric's is only used as a performance metric
+
+
