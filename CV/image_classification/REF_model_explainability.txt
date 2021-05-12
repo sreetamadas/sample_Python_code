@@ -1,6 +1,13 @@
 PROBLEM STATEMENT: Can we use GradCAM to show the defective region (as predicted by the model) on the image, when using classification models?
 
+
+“region of interest highlighting” – is this valid for multi-label classification? 
+Reference https://www.groundai.com/project/smooth-grad-cam-an-enhanced-inference-level-visualization-technique-for-deep-convolutional-neural-network-models/1  . 
+It is built on top of last convolution layer before predicting the layers
+
+
 SAMPLE DATA: NEU dataset
+
 
 TASKS:
 need to set up code to run with test images, which are not part of imagedatabunch
