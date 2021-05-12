@@ -3,7 +3,10 @@ Intermediate & latent dimension
 Metrics used for Autoencoders
 Codes for color image (3 dimensions)
 
-VAE based method doesn't work for highly similar images with small differences, it works well for distinctly different classes
+1.  VAE based method doesn't work for highly similar images with small differences (Not much distinguishable features - Reconstruction loss too high), 
+     it works well for distinctly different classes
+2. Image similarity: comparison using distance measures (between 0 and 1)
+3. Extract features using CNN & use standard classifiers like SVMs
 
 
 
