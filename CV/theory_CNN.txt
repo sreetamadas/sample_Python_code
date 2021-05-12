@@ -22,6 +22,23 @@ First register login in Kaggle and then give your credentials  in this line of t
 why divide by 255 ? To scale the data from 0 to 1
 what is reshape doing ? - convert from 2dim to 1D vector
 
+
+###########################################################################
+
+# PARAMETERS VARIED IN CODE TESTS:
+1. learning rate & different types of LR finders/ schedulers (step LR, exponential LR, cosine annealing LR)
+      # sample step LR: Assuming optimizer uses lr = 0.05 for all groups (lr = 0.05 if epoch < 30 ; lr = 0.005 if 30 <= epoch < 60 ; lr = 0.0005 if 60 <= epoch < 90)
+      # stopping criteria: mean(Loss) > 2 * Initial Loss
+
+2. Optimization function: SGD, RMSProp, Adadelta, Nesterov Momentum, Adam
+     # in practice, any adaptive learning rate techniques should be used for complex neural network, specially if data is sparse
+
+3. neural network architecture
+4. train-val-test split %, image size,  
+5. image augmentations
+6. batch size, epochs, early stopping callback
+
+
 ###########################################################################
 
 
