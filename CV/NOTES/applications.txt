@@ -31,7 +31,7 @@ https://beantownbiotech.com/home/assays/alphascreen-and-alphalisa/
 https://hidex.com/products/hidex-sense/  (video showing plate reader)
 
 
-
+##################################################################################
 
 
 automate RT-PCR
@@ -55,7 +55,61 @@ https://www.google.com/search?q=amplification+curves+of+PCR.ai&rlz=1C1GCEB_enIN8
 
 
 
+##################################################################################
 
+Identify defects in objects at different stages of production (visible light images, X-ray images)
+https://www.kaggle.com/c/severstal-steel-defect-detection 
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=2ahUKEwjznqnQ7rznAhVEfX0KHQ3AAiYQFjADegQIBxAB&url=https%3A%2F%2Fwww.mdpi.com%2F2076-3417%2F8%2F9%2F1575%2Fpdf&usg=AOvVaw2oWeF-xcE_MbuYIQkEMFpR   (Automatic Metallic Surface Defect Detection and Recognition with Convolutional Neural Networks)
+https://www.sciencedirect.com/science/article/pii/S2405896315006904 
+
+
+Identifying different items in scrap/trash for recycling – automated sorter
+https://github.com/garythung/trashnet/blob/master/data/dataset-resized.zip    (has segregated images data – may not be representative of how the actual images look)
+https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478      (classification in fastai)
+https://www.kaggle.com/c/waste-classification   ,   https://www.kaggle.com/techsash/waste-classification-data 
+https://www.kaggle.com/asdasdasasdas/garbage-classification   , https://www.kaggle.com/data/40778 
+https://www.ge.com/reports/dumpster-diving-robots-using-ai-smart-recycling/    
+https://github.com/IBM/watson-waste-sorter 
+https://www.dumpsters.com/blog/smart-waste-management-technology   ,   https://techcrunch.com/2019/07/05/china-garbage-recycle/ 
+Google: Image classifier, waste sorting, image based trash sorter, kaggle classify waste category from images
+
+
+Severstal steel defect detection  (gray scale images)
+https://www.kaggle.com/sriramr/fruits-fresh-and-rotten-for-classification/discussion
+https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0203192#sec015  (has dataset – visible light, metal boxes)
+https://domingomery.ing.puc.cl/material/gdxray/   (GRIMA database of X-ray images (GDXray))
+
+Papers & blogs
+https://towardsdatascience.com/quality-inspection-in-manufacturing-using-deep-learning-based-computer-vision-daa3f8f74f45
+https://medium.com/deepquestai/ai-in-agriculture-detecting-defects-in-apples-b246799b329c    (yolo)
+
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=2ahUKEwjznqnQ7rznAhVEfX0KHQ3AAiYQFjADegQIBxAB&url=https%3A%2F%2Fwww.mdpi.com%2F2076-3417%2F8%2F9%2F1575%2Fpdf&usg=AOvVaw2oWeF-xcE_MbuYIQkEMFpR   (Automatic Metallic Surface Defect Detection and Recognition with Convolutional Neural Networks)
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6512995/   (Detection & Segmentation of Manufacturing Defects with CNN & Transfer Learning)
+https://www.sciencedirect.com/science/article/pii/S2405896315006904 (textile defects; TILDA textile texture database: link not working) 
+Google: spoilt fruit detection, 
+https://www.sciencedirect.com/science/article/pii/S131915781830209X (Fruits & vegetables quality evaluation using cv: review ; has links to other work)
+https://arrow.tudublin.ie/cgi/viewcontent.cgi?article=1170&context=scschcomdis  (thesis+code; Spoilage Detection in Raspberry Fruit Based on Spectral Imaging Using Convolutional Neural Networks Using Convolutional Neural Netwo)
+https://www.rsipvision.com/automated-defect-inspection-using-deep-learning/
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5017387/  (DeepFruits: A Fruit Detection System Using Deep Neural Networks)
+https://ieeexplore.ieee.org/document/8862367  (Segmentation Techniques for Rotten Fruit detection – conf. paper)
+https://elibrary.asabe.org/abstract.asp?aid=49903   (paper on optical imaging technique) 
+
+
+https://www.researchgate.net/post/Can_anyone_recommend_an_infrared_image_dataset_with_categories_of_images
+http://datasets.visionbib.com/
+
+thermal image data defect detection
+https://pdfs.semanticscholar.org/16ec/d1c1644e53cdfecfd6ff6435a42da0db1cc0.pdf   (A Defect Detection Approach in Thermal Images)
+
+
+https://www.linkedin.com/posts/abhishek-kumar-annamraju_internshipopportunity-internships-interns-ugcPost-6630065847958364160-rxE6/    (post on building UI for CV problems)
+https://github.com/Tessellate-Imaging/Monk_Gui 
+
+
+https://www.bmglabtech.com/microplate-reader/
+https://www.medicaldesignandoutsourcing.com/automating-microplate-handling-instruments/ 
+https://pubs.acs.org/doi/full/10.1021/acsnano.5b03203  (Cellphone-Based Hand-Held Microplate Reader for Point-of-Care Testing of Enzyme-Linked Immunosorbent Assays)
+https://www.sciencedirect.com/topics/nursing-and-health-professions/microplate-reader 
 
 
 
