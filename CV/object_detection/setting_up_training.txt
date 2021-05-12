@@ -20,3 +20,47 @@ https://medium.com/hackernoon/efficient-implementation-of-mobilenet-and-yolo-obj
 
 
 
+##################################################
+
+###   yolo training  ###
+
+# clone the repo
+# set GPU card config in makefile (line no. 27-50)
+# install using make
+
+# prepare the dataset & the annotations ( .txt file in the same directory with the same name. 
+# Each text file contains the class id and coordinates of a bounding box for every object as shown below
+# <object-class> <x_center> <y_center> <width> <height> 
+# <x_center> <y_center> <width> <height> are float values relative to width and height of image,
+# it can be equal from (0.0 to 1.0])
+# if the annotations in the source data are not in yolo format, convert to that format using https://github.com/ssaru/convert2Yolo
+
+# create configuration file (.cfg) & set model parameters here
+# copy yolo4-custom.cfg now - rename the copied file to yolo-obj.cfg
+
+# create the following files describing the data
+# obj.names, obj.data, train.txt, validate.txt, test.txt
+
+# download the pre-trained weights "yolov4.conv.137" for the convolutional layers and put in the directory build\darknet\x64
+
+# After training is complete weights will be saved as yolo-obj_last.weights for every 100 iterations and 
+# saved as yolo-obj_xxxx.weights for every 1000 iterations in the directory build\darknet\x64\backup
+
+# test predictions
+
+# saving intermediate checkpoints: intermediate weights saved in folder: build/darknet/x64/backup/
+
+https://medium.com/ai-world/how-to-train-yolov4-for-custom-objects-detection-in-google-colab-1e934b8ef685
+https://medium.com/analytics-vidhya/implementing-yolov4-to-detect-custom-objects-using-google-colab-6691c98b15ff
+
+
+#############
+
+check if localization algo works with empty annotation file - yes.
+Yolo requires empty .txt files. 
+We need to add negative images, if there are certain classes which are present & similar to our classes of interest, but which we don't want to detect. 
+For defective parts, the images should already be having the good part of the sheet in the background, & so we will not require separate good images for training.
+
+
+
+
