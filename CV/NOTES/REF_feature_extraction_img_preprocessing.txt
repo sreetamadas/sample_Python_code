@@ -12,6 +12,13 @@ Use of un-supervised approaches?
 Greyscaling color images – is this same as normalization?
 Choice of image size for network, apart from pre-specified size
 
+note:
+most of the existing algorithms train fast with smaller image sizes (in the range of 200 x 200 to 416 x 416 , etc.) 
+- this may lead to loss of small features when images are resized to small dimensions
+most algorithms work with square images
+
+
+
 
 
 ## Following are the pre-processing methods we can apply.
@@ -31,6 +38,16 @@ Image filters
     High pass- Laplacian filter
     Low pass- mean filter, Gaussian, median
 
+
+
+For large images:
+1. try progressive resizing during training, 
+2. crop the original large image into multiple segments, predict on each crop & get consensus prediction (class or list of bounding boxes)
+
+For rectangular images:
+1. pad the smaller dimension
+2. crop the larger image into multiple square images
+3. crop into multiple sections & pad to make square
 
 
 
