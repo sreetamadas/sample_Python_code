@@ -10,7 +10,7 @@ https://www.ni.com/en-in/innovations/white-papers/12/a-practical-guide-to-machin
 https://www.qualitymag.com/gdpr-policy?url=https%3A%2F%2Fwww.qualitymag.com%2Farticles%2F91422-how-to-choose-the-right-lighting-for-machine-vision-applications
 https://www.vision-doctor.com/en/avoid-interference.html
 https://www.photometrics.com/learn/white-papers/rolling-vs-global-shutter
-
+paper : Vibration Detection and Motion Compensation for Multi-Frequency Phase-Shifting-Based 3D Sensors; Sensors 2019, 19, 1368; doi:10.3390/s19061368
 
 
 Image capture:
