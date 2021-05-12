@@ -25,7 +25,7 @@ what is reshape doing ? - convert from 2dim to 1D vector
 
 ###########################################################################
 
-# PARAMETERS VARIED IN CODE TESTS:
+# HYPERPARAMETERS VARIED IN CODE TESTS:
 1. learning rate & different types of LR finders/ schedulers (step LR, exponential LR, cosine annealing LR)
       # sample step LR: Assuming optimizer uses lr = 0.05 for all groups (lr = 0.05 if epoch < 30 ; lr = 0.005 if 30 <= epoch < 60 ; lr = 0.0005 if 60 <= epoch < 90)
       # stopping criteria: mean(Loss) > 2 * Initial Loss
@@ -44,6 +44,7 @@ what is reshape doing ? - convert from 2dim to 1D vector
 
 inputs: image shape & color
 as we go deeper into the network, nH & nW decrease while nC increases (nC corresponds to no. of filters/ channels in previous layer)
+
 
 
 
@@ -67,6 +68,7 @@ For NN, the cost function J-theta is non-convex & is theoretically susceptible t
 
 
 
+
 # parameters & hyperparameters
 model parameters (weights in the filters, bias) vs 
 hyper-parameters (filter size, padding size, stride size; learning rate alpha, # iterations, # hidden layers, # hidden units in each layer, 
@@ -78,6 +80,7 @@ Reduce the no. of parameters in a DNN (roughly by half for CrystalNet) by adding
 compensate the reduced complexity by increasing the non-linearity of the network through added depth.
 
 hyperparameter tuning - use of appropriate scale, parallel training of multiple models vs incremental change to a model
+
 
 
 
@@ -158,6 +161,11 @@ Where are they being used ? In cost function J
 https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a        
 https://blog.algorithmia.com/introduction-to-loss-functions/              
 https://heartbeat.fritz.ai/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0          
+
+
+For checking the loss topology: https://github.com/tomgoldstein/loss-landscape  , 
+ideally networks with skip connections have a smoother topology combined with a 2D plot of a loss vs epoch gives us the best network . 
+For spooling the 3d Network loss topology, In the above github link there are instructions to convert the h5 file to vtp file and then create the said plot using Paraview 
 
 
 
