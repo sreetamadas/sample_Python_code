@@ -16,3 +16,7 @@ Why GradCAM focuses on the wrong region?
 Timing predictions – how does this work? (difference in O/P in the 2 notebooks)
 Predicting on test images of different size?
 Implementation pipeline for accelerator – code modules ?
+
+
+Need a method to reduce fastai models for edge deployment – no native support (ONNX)
+https://forums.fast.ai/t/running-deploying-fastai-successes-links-tutorials-stories/64026 
