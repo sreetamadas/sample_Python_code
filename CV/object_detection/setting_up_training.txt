@@ -1,0 +1,22 @@
+https://blog.roboflow.ai/getting-started-with-cvat/
+
+ 
+https://stackoverflow.com/questions/54374935/how-to-fix-this-strange-error-runtimeerror-cuda-error-out-of-memory
+Changed a few parameters : batch size, width and height 
+https://blog.roboflow.ai/training-yolov4-on-a-custom-dataset/   lower no. of subdivisions & max_batches
+
+
+1. How to assess localization algo has trained sufficiently – is there an optimal mAP ? 
+  Right now, we are stopping when there are no changes in mAP for a few cycles.
+  can look at loss <= half of starting loss
+
+2. Generally, we use the val set to tune model parameters & find optimal model – is something similar being done for localization? 
+  Which parameters are we tuning for localization?
+https://medium.com/hackernoon/efficient-implementation-of-mobilenet-and-yolo-object-detection-algorithms-for-image-annotation-717e867fa27d 
+
+3. If we are not using the val set to tune for alternate models & only using for testing, do we need a separate test set? 
+
+4. We should also be checking recall, not just precision (as in pycoco tool)
+
+
+
