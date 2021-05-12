@@ -1,0 +1,79 @@
+Object detection using TF:
+
+https://towardsdatascience.com/custom-object-detection-using-tensorflow-from-scratch-e61da2e10087   (SSD MobileNet V2 on Tensorflow)
+https://www.mygreatlearning.com/blog/object-detection-using-tensorflow/  (SSD Inception v2 on Tensorflow)
+https://medium.com/hackernoon/efficient-implementation-of-mobilenet-and-yolo-object-detection-algorithms-for-image-annotation-717e867fa27d  (comparison on darknet yolo v3 & caffe SSD; link to image labeling tool & datasets)
+
+
+
+Object Localisation/Detection:
+https://github.com/lars76/object-localization
+https://medium.com/practical-deep-learning/a-complete-transfer-learning-toolchain-for-semantic-segmentation-3892d722b604   (transfer learning with TensorFlow, faster rcnn resnet50, annotation ?)
+https://machinelearningmastery.com/how-to-train-an-object-detection-model-with-keras  (Keras, mask R-CNN , xml annotation extracted using parsers)
+https://medium.com/deepquestai/ai-in-agriculture-detecting-defects-in-apples-b246799b329c  (some high level wrapper called ImageAI)
+
+
+
+EfficientDet:
+https://github.com/google/automl/tree/master/efficientdet
+https://github.com/xuannianz/EfficientDet  (EfficientDet, Tensorflow, Apache 2)
+https://github.com/signatrix/efficientdet  (Pytorch, MIT license), https://paperswithcode.com/paper/efficientdet-scalable-and-efficient-object
+https://github.com/rwightman/efficientdet-pytorch  (alternate pytorch implementation) 
+https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch  (LGPL license, which points to certain shortcomings in the signatrix implementation)
+https://towardsdatascience.com/training-efficientdet-object-detection-model-with-a-custom-dataset-25fb0f190555
+https://colab.research.google.com/drive/1ZmbeTro4SqT7h_TfW63MLdqbrCUk_1br#scrollTo=nspgbsjTdSjZ
+https://medium.com/towards-artificial-intelligence/custom-object-detection-using-efficientdet-the-simplest-way-32749fb93359
+https://www.kaggle.com/shonenkov/training-efficientdet (training efficientdet on custom data, alternate solution) https://www.kaggle.com/shonenkov/inference-efficientdet  
+
+
+
+tiny YOLO :
+https://medium.com/@today.rafi/train-your-own-tiny-yolo-v3-on-google-colaboratory-with-the-custom-dataset-2e35db02bf8f
+https://blog.roboflow.com/train-yolov4-tiny-on-custom-data-lighting-fast-detection/
+
+
+
+YOLOv5: 
+https://github.com/ultralytics/yolov5  (PyTorch implementation - GPL License) - CAN'T BE USED
+https://medium.com/towards-artificial-intelligence/yolo-v5-is-here-custom-object-detection-tutorial-with-yolo-v5-12666ee1774e
+https://towardsdatascience.com/how-to-train-a-custom-object-detection-model-with-yolo-v5-917e9ce13208  (metrics for trained detector performance evaluation)
+https://github.com/avBuffer/Yolov5_tf      (yolo v5, v4, v3 in tensorflow; no license information)
+
+
+Annotation format for YOLOv5 - (.txt files)
+https://github.com/AlexeyAB/Yolo_mark/issues/60#issuecomment-401854885
+
+Converting annotations to YOLO format :
+https://github.com/ssaru/convert2Yolo
+
+
+
+YOLOv4: (Backbone - CSPDarknet53)
+https://blog.roboflow.ai/training-yolov4-on-a-custom-dataset/  
+https://github.com/AlexeyAB/darknet
+https://medium.com/ai-world/how-to-train-yolov4-for-custom-objects-detection-in-google-colab-1e934b8ef685    (changing different options; setting up colab optimally)
+https://medium.com/analytics-vidhya/implementing-yolov4-to-detect-custom-objects-using-google-colab-6691c98b15ff  (yolo v4 darknet version; (see configurations tip))
+https://github.com/theAIGuysCode/tensorflow-yolov4-tflite   (yolov4, TensorFlow, MIT license)
+https://github.com/Ma-Dan/keras-yolo4  (yolo v4 , keras, MIT license)
+https://github.com/Tianxiaomo/pytorch-YOLOv4  (yolo v4, Pytorch, Apache 2 license)  https://github.com/Tianxiaomo/pytorch-YOLOv4/blob/master/Use_yolov4_to_train_your_own_data.md
+
+
+
+Implementation of YOLOv4 on PyTorch:
+https://medium.com/analytics-vidhya/faster-real-time-object-detection-yolov4-in-pytorch-6eef8436ba75
+https://github.com/Tianxiaomo/pytorch-YOLOv4 (Doc not very clear) 
+- alternate link with training info & Apache licence https://github.com/roboflow-ai/pytorch-YOLOv4     https://colab.research.google.com/drive/1b08y_nUYv5UtDY211NFfINY7Hy_pgZDt#scrollTo=mIlhqP2S57Ub
+https://github.com/WongKinYiu/PyTorch_YOLOv4/tree/master (License info not available)
+https://github.com/maudzung/Complex-YOLOv4-Pytorch (GPL License - cant be used)
+https://github.com/VCasecnikovs/Yet-Another-YOLOv4-Pytorch/  ( bugs in the code - function is called before definition )
+
+
+
+Implementation of YOLOv4 on TF:
+https://github.com/SoloSynth1/tensorflow-yolov4
+https://github.com/hunglc007/tensorflow-yolov4-tflite
+https://github.com/onnx/models/tree/master/vision/object_detection_segmentation/yolov4   (code error)
+https://pypi.org/project/yolov4/0.1.0/
+https://github.com/sicara/tf2-yolov4
+https://github.com/pythonlessons/TensorFlow-2.x-YOLOv3
+
