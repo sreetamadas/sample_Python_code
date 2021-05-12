@@ -1,0 +1,31 @@
+# papers:
+Bag of Tricks for Image Classification with Convolutional Neural Networks
+Cyclical Learning Rates for Training Neural Networks
+A DISCIPLINED APPROACH TO NEURAL NETWORK HYPER-PARAMETERS: PART 1 – LEARNING RATE, BATCH SIZE, MOMENTUM, AND WEIGHT DECAY
+Improved Regularization of Convolutional Neural Networks with Cutout
+
+
+Visualizing and Understanding Convolutional Networks
+A Benchmark for Interpretability Methods in Deep Neural Networks
+[ Extract deep learning features from images using simple python interface https://github.com/chsasank/image_features ]
+
+
+
+Style Augmentation: Data Augmentation via Style Randomization
+STaDA: Style Transfer as Data Augmentation
+
+
+
+Image Segmentation using K-means Clustering Algorithm and Subtractive Clustering Algorithm
+nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation
+
+
+DIFFRANET: AUTOMATIC CLASSIFICATION OF SERIAL CRYSTALLOGRAPHY DIFFRACTION PATTERNS
+
+
+
+An Attention-Based Network for Textured Surface Anomaly Detection - Appl. Sci. 2020, 10, 6215; doi:10.3390/app10186215
+Classification is a Strong Baseline for Deep Metric Learning - Andrew Zhai , Hao-Yu Wu
+Anomaly detection with convolutional neural networks for industrial surface inspection - Benjamin Staar, Michael Lütjen, Michael Freitag
+
+
