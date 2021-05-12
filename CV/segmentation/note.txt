@@ -21,7 +21,12 @@ https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cn
 
 
 
-
+#
+https://www.analyticsvidhya.com/blog/2018/11/implementation-faster-r-cnn-python-object-detection/
+https://jaspereb.github.io/FasterRCNNTutorial/
+https://towardsdatascience.com/training-a-tensorflow-faster-r-cnn-object-detection-model-on-your-own-dataset-b3b175708d6d   (link not opening on my laptop)
+https://www.kaggle.com/maherdeebcv/pytorch-faster-r-cnn-with-resnet152-backbone
+https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html
 
 
 
