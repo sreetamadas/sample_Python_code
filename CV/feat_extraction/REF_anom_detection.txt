@@ -1,5 +1,8 @@
+# Extract deep learning features from images using simple python interface
+https://github.com/chsasank/image_features
 
-# STRATEGIES:
+
+# STRATEGIES for anom detection:
 
 1. similarity based techniques : 
      comparing against a set of reference images (without defects) by extracting the image features using DL algorithm & comparing using distance measures 
