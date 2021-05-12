@@ -18,6 +18,8 @@ Training or transfer learning
 1. transfer learning- if the class to be trained on, is similar to one of the classes for the pre-trained model. Requires less images
 2. Training - if the class is dissimilar to the original training set. Requires more data (heavy augmentation)
 
+
+
 #####################################################
 
 ###   yolo training  ###
@@ -53,14 +55,16 @@ https://medium.com/analytics-vidhya/implementing-yolov4-to-detect-custom-objects
 
 
 
-#####    check if localization algo works with empty annotation file - yes. #####
+#####   
+####   check if localization algo works with empty annotation file - yes. #####
 Yolo requires empty .txt files. 
 We need to add negative images, if there are certain classes which are present & similar to our classes of interest, but which we don't want to detect. 
 For defective parts, the images should already be having the good part of the sheet in the background, & so we will not require separate good images for training.
 
 
 
-#### Saving predicted box information in text files:  #####
+#### 
+####   Saving predicted box information in text files:  #####
 Save the paths of test images in a file & send it to the following code - I did not get segmentation fault with any of the following:
 
 OPTION 1: the output is as json file, & coordinates are in fraction format, & centre_x, centre_y, width, height
@@ -76,13 +80,16 @@ OPTION 2: output is text file; it has pixel coordinates, but also additional inf
   
   
   
+######  
 ######  Editing darknet Makefile from colab  ####
 !cat Makefile   # see contents of makefile
 !sed -i 's/ARCH= -gencode arch=compute_37,code=sm_37/#ARCH= -gencode arch=compute_37,code=sm_37/g' Makefile
-!sed -i 's/#ARCH= -gencode arch=compute_75,/ARCH= -gencode arch=compute_75,/g' Makefile  # making changes
+!sed -i 's/#ARCH= -gencode arch=compute_75,/ARCH= -gencode arch=compute_75,/g' Makefile                    # making changes
 !cat Makefile   # verify changes were made
 
 
+
+#######
 ########  Other issues  #######
 
 https://stackoverflow.com/questions/54374935/how-to-fix-this-strange-error-runtimeerror-cuda-error-out-of-memory
@@ -104,8 +111,8 @@ https://medium.com/hackernoon/efficient-implementation-of-mobilenet-and-yolo-obj
 
 
 
-
-####  Hyperparameter tuning - tiny YOLOv4 (darknet)  #####
+#######
+#######  Hyperparameter tuning - tiny YOLOv4 (darknet)  #####
 
 yolo hyperparameters:
 
@@ -154,6 +161,112 @@ policy=sgdr
 
 
 ##################################################################
+
+Q. How to speed up training?
+
+https://blog.roboflow.ai/training-yolov4-on-a-custom-dataset/ 
+1. lower the number of subdivisions (change the subdivision size to speed up training (smaller subdivisions are faster) or if your GPU does not have enough memory (larger subdivisions require less memory)
+
+https://medium.com/ai-world/how-to-train-yolov4-for-custom-objects-detection-in-google-colab-1e934b8ef685  (changing different options; setting up colab optimally)
+https://medium.com/analytics-vidhya/implementing-yolov4-to-detect-custom-objects-using-google-colab-6691c98b15ff   (see configurations tip)
+
+2. To speedup training (with decreasing detection accuracy), set param stopbackward=1 for layer-136 in cfg-file  (https://github.com/AlexeyAB/darknet)
+
+
+
+
+Q. How to train small objects? 
+increase the network resolution in yolo-obj.cfg to 608x608 or 832x832 — this makes it possible to detect small objects.
+
+
+
+Q. How to improve object detection? 
+https://blog.paperspace.com/improving-yolo/  
+https://towardsdatascience.com/object-detection-accuracy-map-cheat-sheet-8f710fd79011   (increasing mAP)
+https://github.com/AlexeyAB/darknet#how-to-train-to-detect-your-custom-objects 
+
+1. before training
+    a. set flag random=1 in your .cfg-file - it will increase precision by training Yolo for different resolutions
+    b. increase network resolution in your .cfg-file (height=608, width=608 or any value multiple of 32) - it will increase precision
+    c. for training for small objects (smaller than 16x16 after the image is resized to 416x416) - set layers = 23, stride=4
+    d. for training for both small and large objects use modified models
+    e. recalculate anchors for your dataset for width and height from cfg-file; make corresponding changes to other parameters
+    
+2. after training
+    a. Increase network-resolution by setting in your .cfg-file (height=608 and width=608) or (height=832 and width=832) or (any value multiple of 32) 
+    - this increases the precision and makes it possible to detect small objects: link
+    b. it is not necessary to train the network again, just use .weights-file already trained for 416x416 resolution
+    c. to get even greater accuracy you should train with higher resolution 608x608 or 832x832, note: if error Out of memory occurs then in .cfg-file you should increase subdivisions=16, 32 or 64
+
+** Bag of freebies & bag of specials:
+* freebies: 
+Cutmix and Mosaic data augmentations,
+Dropblock regularization
+Class label Smoothing
+Cosine annealing scheduler
+Optimal hyper-parameters, 
+Random training shapes (of images), etc.
+
+* specials: 
+MISH activation, etc
+
+https://medium.com/@riteshkanjee/yolov4-superior-faster-more-accurate-object-detection-7e8194bf1872
+https://medium.com/@jonathan_hui/yolov4-c9901eaa8e61
+https://towardsdatascience.com/yolo-v4-optimal-speed-accuracy-for-object-detection-79896ed47b50  (data augmentation: photometric distortions like brightness, saturation, contrast or  geometric distortions like rotate, crop, etc.)
+
+
+
+
+Q. How to resolve CUDA out of memory error during training?
+reduce batch size, image with & height
+increase subdivisions=16, 32 or 64   https://github.com/AlexeyAB/darknet#how-to-train-to-detect-your-custom-objects
+
+
+
+Q. How to save intermediate check-points?
+https://medium.com/ai-world/how-to-train-yolov4-for-custom-objects-detection-in-google-colab-1e934b8ef685   (specific to Darknet yolo v4, on colab)
+after each 1000 epoch, weights are saved in the backup folder - so we could just retrain from there
+
+
+
+Q. what are the different metrics to be monitored during training (for object detection)?
+https://towardsdatascience.com/how-to-train-a-custom-object-detection-model-with-yolo-v5-917e9ce13208  
+     (yolov5 → F1, mAP, precision, recall, cls_loss, gIoU loss, obj_loss - how to extract these in darknet framework?)
+https://github.com/ultralytics/yolov5/issues/6    
+    (GIoU, objectness, classification, precision, recall, val GIou, val objectness, val classification, mAP@0.5, mAP@0.5:0.95)
+https://medium.com/swlh/on-object-detection-metrics-ae1e2090bd65
+https://github.com/pjreddie/darknet/issues/614
+https://blog.floydhub.com/localize-and-detect-corrosion-with-tensorflow-object-detection-api/    
+https://manalelaidouni.github.io/manalelaidouni.github.io/Evaluating-Object-Detection-Models-Guide-to-Performance-Metrics.html
+https://medium.com/analytics-vidhya/object-detection-with-yolo-aa2dfab21d56  
+    ** code to extract the metrics (mAP & training loss) & plot separately, without depending on the .jpg generated by darknet Yolo v4
+https://docs.khadas.com/vim3/HowToTrainYolo.html    
+    explanation of metrics printed on console at train tim
+
+
+
+Q. when to stop training (for object detection)?
+When the average loss 0.xxxxxx avg (smaller is better) no longer decreases at many iterations then you should stop training. The final average loss can be from 0.05 (for a small model and easy dataset) to 3.0 (for a big model and a difficult dataset).
+Train while mAP increases.
+
+
+
+Q. What is the minimum number of images required for training?
+https://petewarden.com/2017/12/14/how-many-images-do-you-need-to-train-a-neural-network/   (Thumb rule -1000 images per class, but not always, depends on CV scenario)
+https://appen.com/blog/how-to-create-training-data-for-computer-vision-use-cases/
+https://towardsdatascience.com/introduction-to-computer-vision-model-training-c8d22a9af22b
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
