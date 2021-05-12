@@ -1,0 +1,41 @@
+images from different spectra
+
+
+Flexible deployment model (Hybrid, Cloud, Edge) - Optimize for edge processing
+
+
+Independent code modules for Image Uploads, Model training, Inferencing
+Use of Dockers for customized deployments based on the DL platform
+Audit Trail for Model Building
+
+
+Easy-to-use navigation
+Dashboard KPIs to quickly understand status / analytics
+Segregated user personas for different tasks
+
+
+Choice of algorithm, based on requirement and annotations available (anomaly detection , classification, detection)
+Choose the Model Architecture and modify the hyperparameters
+Continuous learning: Accommodate new classes and update existing models - Automated Model Drift detection; 
+                     raise re-training request (deployment only after vetting, HIL)
+Integrated data labeling tool
+Custom image pre-processing, post-processing (resize, tile, file compression formats, etc)
+     Algorithm Intelligence to detect & correct image quality (vibration correction, poor light, other interference)
+     Detect & remove corrupt images
+
+
+Workflow management
+
+Integrated camera registration and configuration, for easier data collection & metadata tagging
+PLC integration , AR/VR integration *
+
+
+
+
+CHALLENGES:
+Data imbalance
+Different scale of item of interest 
+Different image sizes
+Large intra-class variations, less inter-class variations
+
+
