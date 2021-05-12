@@ -11,6 +11,7 @@ strategies:
    https://github.com/albumentations-team/albumentations        https://towardsdatascience.com/complete-image-augmentation-in-opencv-31a6b02694f5
 
 
+
 2.class-weighted loss functions : modify the loss function to have more weightage for the smaller class 
    https://forums.fast.ai/t/how-to-use-class-weights-in-loss-function-for-imbalanced-dataset/19589  
    https://www.kaggle.com/tanlikesmath/oversampling-mnist-with-fastai 
