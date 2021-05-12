@@ -1,12 +1,17 @@
 classification
 image is 1 of N classes (or m of N , in casae of multiLabel classification)
 
+ref: https://towardsdatascience.com/fastai-image-classification-32d626da20
+FastAI website
+https://link.springer.com/article/10.1186/s13640-017-0197-y  (classification on small dataset)
+https://github.com/abin24/Surface-Inspection-defect-detection-dataset
 
 
 
 object detection:
 show the pixel coordinate location of the object
 metric: precision at bounding box level
+ref: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7085592/  
 
 
 
@@ -15,6 +20,7 @@ Segmentation:
 pixel-wise classification ; U-net
 Mask : input / output label
 precision at patch level, IoU
+ref: https://github.com/msminhas93/FabricDefect/tree/master/FabricDataset
 
 
 BASIC STEPS:
