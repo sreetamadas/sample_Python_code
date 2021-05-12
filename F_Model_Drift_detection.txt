@@ -87,3 +87,42 @@ https://www.kdnuggets.com/2019/12/ultimate-guide-model-retraining.html
 
 
 
+
+
+
+############################################################################################
+
+Covariate shift is a common problem when dealing with real data. 
+Quite often the experimental conditions under which a training set is generated are subtly different from the situation in which the system is deployed. 
+For instance, in cancer diagnosis the training set may have an overabundance of diseased patients, often of a specific subtype endemic in the location where the data was gathered.
+
+Covariate shift correction allows one to perform supervised learning even when the distribution of the covariates/inputs on the training set does not match that on the test set. This is achieved by re-weighting inputs or the features
+
+
+papers that can be implemented: 
+
+1.	Doubly robust covariate shift correction (most recent paper)
+2.	Covariate shift by kernel mean matching
+3.	Discriminative learning for differing training and test distributions
+4.	Improving predictive inference under covariate shift by weighting the log-likelihood function
+5.	Adaptive learning with covariate shift-detection for motor imagery-based brain–computer interface
+
+good reads:
+
+6.	Learning under Differing Training and Test Distributions
+7.	When Training and Test Sets are Different: Characterizing Learning Transfer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
