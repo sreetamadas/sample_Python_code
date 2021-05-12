@@ -6,26 +6,54 @@ strategies:
 1. offline data augmentation:
    https://twitter.com/jeremyphoward/status/1175177461920698368  oversampling is supposed to work better than class weights
    https://medium.com/analytics-vidhya/image-data-augmentation-to-balance-dataset-in-classification-tasks-5e25bbd9a228 
+   https://blog.roboflow.com/yolov4-data-augmentation/            https://blog.roboflow.com/why-preprocess-augment/              
+   https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/       
+   https://github.com/albumentations-team/albumentations        https://towardsdatascience.com/complete-image-augmentation-in-opencv-31a6b02694f5
 
 
 2.class-weighted loss functions : modify the loss function to have more weightage for the smaller class 
-https://forums.fast.ai/t/how-to-use-class-weights-in-loss-function-for-imbalanced-dataset/19589  
-https://www.kaggle.com/tanlikesmath/oversampling-mnist-with-fastai 
-https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html    to compute the class weights . 
-https://datascience.stackexchange.com/questions/13490/how-to-set-class-weights-for-imbalanced-classes-in-keras
+   https://forums.fast.ai/t/how-to-use-class-weights-in-loss-function-for-imbalanced-dataset/19589  
+   https://www.kaggle.com/tanlikesmath/oversampling-mnist-with-fastai 
+   https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html    to compute the class weights . 
+   https://datascience.stackexchange.com/questions/13490/how-to-set-class-weights-for-imbalanced-classes-in-keras
+   
+   https://towardsdatascience.com/handling-class-imbalanced-data-using-a-loss-specifically-made-for-it-6e58fd65ffab    (eg. Focal loss?)
+   https://forums.fast.ai/t/how-to-use-class-weights-in-loss-function-for-imbalanced-dataset/19589/4   
+   https://forums.fast.ai/t/how-to-use-class-weights-in-loss-function-for-imbalanced-dataset/19589   
+   https://forums.fast.ai/t/how-to-use-class-weights-in-loss-function-for-imbalanced-dataset/19589/7
+   https://towardsdatascience.com/handling-imbalanced-datasets-in-deep-learning-f48407a0e758   
+
 
 3. imbalanced data sampling - same as point 2
+    https://github.com/ufoym/imbalanced-dataset-sampler    (this works by assigning class weights - same as above)
+    https://forums.fast.ai/t/is-there-any-built-in-method-to-oversample-minority-classes/46838/10   
+    https://forums.fast.ai/t/is-there-any-built-in-method-to-oversample-minority-classes/46838/17  
+    https://colab.research.google.com/drive/1hU181nhBvYTeknHDqbmCyg5IdSaeCVm2    
+    https://colab.research.google.com/drive/1CywUICHqgdsfl_pY6My98XR0ocGBjKC2
+    https://forums.fast.ai/t/paper-on-imbalanced-classes/42708/22
+
 
 4. Early stopping:
+    https://www.pyimagesearch.com/2016/09/19/understanding-regularization-for-image-classification-and-machine-learning/
+    
 
 5. You can also explore changing learning rate, as in fastai tutorials.
 
+
 6. Creating multiple hierarchical models to balance the dataset, in this case good vs rest, then defect1 vs rest, then defect2 vs defect3 
-(Good 94, defect1 32, Rust 11, Grind_Marks 7)
+
 
 7. check how to change probability thresholds in fastai, to change the class assignments? - may not be feasible / useful for multiclass
 
-8. progressive re-sizing – the images are large & some of the defects are small. Re-sizing images may be leading to information loss. There is a fastai blog on this – google “progressive resizing fastai)  https://forums.fast.ai/t/progressive-resizing-in-fastai-v1/25004/3
+8. progressive re-sizing – the images are large & some of the defects are small. Re-sizing images may be leading to information loss. 
+There is a fastai blog on this – google “progressive resizing fastai)  https://forums.fast.ai/t/progressive-resizing-in-fastai-v1/25004/3
+    https://towardsdatascience.com/boost-your-cnn-image-classifier-performance-with-progressive-resizing-in-keras-a7d96da06e20  (useful for imbalance & diff. sized features in images)
+   https://forums.fast.ai/t/progressive-resizing-in-fastai-v1/25004/3   
+   https://www.kaggle.com/prajwalprashanth/progressive-resizing-code-explained-93-2epochs   
+   https://www.kaggle.com/dipam7/intel-scene-progressive-image-resizing    
+   https://colab.research.google.com/github/muellerzr/fastblog/blob/master/_notebooks/2020-03-23-CoralID.ipynb   
+   https://www.mdeditor.tw/pl/2uSj/zh-tw   
+
 
 9. Test Time Augmentation in Fastai
   https://towardsdatascience.com/augmentation-for-image-classification-24ffcbc38833
