@@ -1,8 +1,18 @@
 # calculate camera specs (resolution, focal length), based on field of view (FOV), minimum measurable length & working distance (W) 
 
+If image-to-object dist is less than focal length (object very close to camera), then image will be out of focus.
+"Working distance" means the optimal "should be" distance to get good focus.
+"Object distance" means the actual distance b/w it & camera. It should be close to Working distance if we want pics to be focused.
+
+
+
 references:
 https://www.ni.com/en-in/support/documentation/supplemental/18/calculating-camera-sensor-resolution-and-lens-focal-length.html
 https://www.1stvision.com/machine-vision-solutions/2015/07/imaging-basics-calculating-resolution.html
+https://static1.squarespace.com/static/551ecf1ae4b0b101cf72bfa3/t/55412684e4b0512f43caa5de/1430333060072/Resolution_calculation.pdf   (how to calculate image resolution)
+https://www.edmundoptics.com/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view    (understanding focal length & field of view)
+https://www.vision-doctor.com/en/optical-basics.html  
+
 
 https://www.vision-systems.com/boards-software/article/16736434/ten-basic-steps-to-successful-machinevisionsystem-design
 https://www.photonics.com/Articles/Machine_Vision_Cameras_Making_the_Right_Selection/a58427
@@ -12,8 +22,14 @@ https://www.vision-doctor.com/en/avoid-interference.html
 https://www.photometrics.com/learn/white-papers/rolling-vs-global-shutter
 paper : Vibration Detection and Motion Compensation for Multi-Frequency Phase-Shifting-Based 3D Sensors; Sensors 2019, 19, 1368; doi:10.3390/s19061368
 
+spec calculators:
+https://www.kowa-lenses.com/en/lens-calculator
+http://www.jvsg.com/online/  
 
-Image capture:
+
+
+
+# Image capture:
 1. uniform lighting
 2. reduce dust & heat with camera housing & cooling system
 3. Motion artifact minimization: Take steps to reduce blur in images in presence of vibration.
@@ -23,7 +39,15 @@ Image capture:
 	- periodic camera recalibration is required to mitigate motion artifacts (not valid for systems with continuous vibration). 
 	- Smaller blurring effects can be corrected through image pre-processing with appropriate deblurring filters, provided they do not give rise to additional artifacts in the context of quality inspection
 
+
 Image pre-processing: (to mitigate effect of vibration on images) - http://www.robots.ox.ac.uk/~az/lectures/ia/lect3.pdf 
+
+
+Lighting
+https://www.visiononline.org/userAssets/aiaUploads/file/CVP_Beginning-Lighting-for-Machine-Vision_Daryl-Martin.pdf
+https://www.ni.com/en-in/innovations/white-papers/12/a-practical-guide-to-machine-vision-lighting.html
+https://www.vision-systems.com/boards-software/article/16736434/ten-basic-steps-to-successful-machinevisionsystem-design
+https://www.qualitymag.com/articles/91422-how-to-choose-the-right-lighting-for-machine-vision-applications
 
 ####################################
 
