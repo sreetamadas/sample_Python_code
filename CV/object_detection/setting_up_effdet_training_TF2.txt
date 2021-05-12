@@ -1,0 +1,136 @@
+# Hyperparameter tuning - efficientdet (tensorflow)
+
+data augmentation: 
+    random horizontal flip, random crop & pad (default) ;      
+    added vertical flip, brightness, saturation & hue ;  contrast, rotation
+    
+
+
+training: image resize (depends on efficientdet version used 0-7)
+              number of classes (eg 6)
+              batch size (higher bs requires more memory, eg 8) ;  set for both train_config (int, must be divisible by 2) & eval_config (batch_size = 1)
+              num_steps  (eg 40000)
+              learning_rate (inside this, we have total_steps which should change if num_steps changes; 
+                                    should we change learning_rate_base & warmup_learning_rate ?
+                                    also, should we change the cosine_decay_learning_rate to any other decay function - eg exponential_decay_learning_rate?)
+              use_dropout  (this is set to false by default (should we enable;   also, enable early stopping & how?)
+
+#eval_config: {
+#num_examples: 20
+#max_evals: 20
+#num_visualizations: 10
+#eval_interval_secs: 60 # may not be available in TF2; instead use eval_timeout option (default = 3600s) in the model_main_tf2.py file
+#}
+
+              eval_config (  batch_size : what should this be set to? = 1;   num_epochs = 1
+                                     max_evals & num_examples : should this be added? what should be the value?) 
+                                    # we should set up training & evaluation jobs parallelly (different terminals), otherwise eval will check on the last 
+                                    checkpoint obtained from training & wait for the next checkpoint to appear.To prevent this, set max_evals to a finite number. 
+                                     num_examples is the no. of examples to evaluate on - not sure if this needs to be specified explicitly - definitely should not exceed #images in val set 
+                                     num_visualizations: no of visualization in tensorboard
+
+any other hyperparameters?
+
+
+
+
+!python model_main_tf2.py \
+    --pipeline_config_path=models/efficientdet_d1-round4/pipeline.config \
+    --model_dir=models/efficientdet_d1-round4 \
+    --alsologtostderr \
+    --num_train_steps=14000 \
+    --sample_1_of_n_eval_examples=1 \      # Will sample one of every n eval input examples, where n is provided; default is "none"; 
+                                           # should this be a higher number or better not to set?
+    --num_eval_steps=500            #  after every 500 training steps, we want to have a look at the model performance
+
+
+
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/configuring_jobs.md   (description of config file)
+https://neptune.ai/blog/how-to-train-your-own-object-detector-using-tensorflow-object-detection-api      
+        (outlines TF installation & how to find/set optimal values of different parameters)
+https://stackoverflow.com/questions/63966974/how-to-print-accuracy-and-other-metrics-in-tensorflow-2-x      (batch_size = 1 & num_epochs = 1 in eval)
+https://stackoverflow.com/questions/58203837/tensorflow-object-detection-api-validation-loss-behaviour   (learning rate)
+https://datascience.stackexchange.com/questions/31994/map-scores-on-tensorboard-tensorflow-object-detection-api-are-all-0-even-thoug      
+https://stackoverflow.com/questions/52849514/plot-validation-loss-in-tensorflow-object-detection-api?rq=1   
+        (eval_config:  num_examples & max_evals :  are these for TF 1?
+https://github.com/tensorflow/models/issues/2225
+https://stackoverflow.com/questions/61035726/tensorflow-object-detection-api-validation-loss-starts-low-and-goes-up     
+        (eval_config:  num_examples & max_evals :  are these for TF 1?
+
+https://stackoverflow.com/questions/60526403/overfitting-in-tensorflow-object-detection-api      (dropout, etc)
+https://medium.com/coinmonks/modelling-transfer-learning-using-tensorflows-object-detection-model-on-mac-692c8609be40
+https://github.com/tensorflow/models/issues/8326  (train loss vs val loss)
+
+
+
+
+#######################################################################
+
+# training steps:
+
+1. creating folder structure
+
+2. creating train, val & test splits & copy data to appropriate folder
+
+3. creating the label map (.pbtxt file) - use regex?
+
+4. create TF records ( xml → csv → tfrecord )
+
+5. edit the pipeline.config file using regex or proto  ( in  ../models/model_name_location_folder/pipeline.config: 
+    - options to be set can be found by using parameter_name path:research/object_detection/protos   in tensorflow/models page searchbar
+
+model: {num_classes}
+
+train_config {  fine_tune_checkpoint, ie path to checkpoint of pretrained model  ,   fine_tune_checkpoint_type: detection ,
+                batch_size  ,  num_steps  ,  use_bfloat: set to False if not training on TPU  ,  
+                data_augmentation_options  ,  learning rate (total_steps)  }
+
+train_input_reader { train.tfrecord, label_map}
+
+eval_config{ batch_size = 1, max_evals}
+eval_input_reader{val.tfrecord, labelmap}     
+
+
+6. training uses a python command; 
+     specify config path, model_dir, num_train_steps, num_eval_steps, alsologtostderr, (optional : sample_1_of_n_eval_examples=1 ,  eval_timeout)
+
+
+7. monitoring training progress using tensorboard (train + eval metrics) & metrics tracked for training progress
+
+8. restarting training
+   a. does it automatically select the last checkpoint : seems to continue training seamlessly if the same command is used
+   b. how to terminate training safely? - ctrl+C works
+       https://medium.com/swlh/guide-to-tensorflow-object-detection-tensorflow-2-e55ba3cdbc03   
+       https://stackoverflow.com/questions/63313107/how-to-stop-training-in-tensorflow-2-object-detection-api-and-start-again-from-t    (stop- start training)
+       https://stackoverflow.com/questions/58356750/how-can-i-stop-a-training-job-in-tensorflow
+
+
+9. evaluation :
+    a. appears to use the last checkpoint available, & not the best 
+         - will manually need to edit the checkpoint used for evaluation by changing the no. in the "checkpoint" file     
+         https://stackoverflow.com/questions/61673705/understanding-tensorflow-object-detection-api-evaluation-metrics          
+         https://stackoverflow.com/questions/49685923/how-to-store-best-models-checkpoints-not-only-newest-5-in-tensorflow-object-de  
+    b. also, default Tensorflow implementation does not provide class-wise details (AP values, precision, recall), unlike yolo v4
+
+
+10. inferencing :
+   a. method 1 : export the trained model as a .pb file & use this (does it select the best checkpoint? also, this appears to be slower than using checkpoints)
+
+   b. method 2: using a checkpoint file (which checkpoint to use, since using diff. checkpoints give different results) -
+        i. since evaluation gives the result on last checkpoint, the best option may be to see the graphs on tensorboard & decide which is the best checkpoint
+        ii. alternately, may need to write code to save "best checkpoint" instead of the last
+
+
+References
+https://towardsdatascience.com/3-steps-to-update-parameters-of-faster-r-cnn-ssd-models-in-tensorflow-object-detection-api-7eddb11273ed  (editing config file)
+https://neptune.ai/blog/how-to-train-your-own-object-detector-using-tensorflow-object-detection-api
+https://stackoverflow.com/questions/58958905/how-to-dynamically-edit-an-external-config-file    (using proto)
+https://stackoverflow.com/questions/55323907/dynamically-editing-pipeline-config-for-tensorflow-object-detection
+https://stackoverflow.com/questions/54615940/how-to-parse-edit-and-generate-object-detection-pipeline-config-files-using-goo
+
+https://stackoverflow.com/questions/63313107/how-to-stop-training-in-tensorflow-2-object-detection-api-and-start-again-from-t    (stop- start training)
+https://stackoverflow.com/questions/58356750/how-can-i-stop-a-training-job-in-tensorflow 
+
+
+
+
