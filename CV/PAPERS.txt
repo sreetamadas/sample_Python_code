@@ -13,7 +13,10 @@ A Benchmark for Interpretability Methods in Deep Neural Networks
 
 Style Augmentation: Data Augmentation via Style Randomization
 STaDA: Style Transfer as Data Augmentation
-
+# GAN
+https://jonathan-hui.medium.com/gan-whats-generative-adversarial-networks-and-its-application-f39ed278ef09#5787
+https://arxiv.org/abs/1812.04948
+https://arxiv.org/abs/1406.2661
 
 
 Image Segmentation using K-means Clustering Algorithm and Subtractive Clustering Algorithm
