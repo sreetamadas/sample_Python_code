@@ -215,6 +215,13 @@ https://medium.com/@jonathan_hui/yolov4-c9901eaa8e61
 https://towardsdatascience.com/yolo-v4-optimal-speed-accuracy-for-object-detection-79896ed47b50  (data augmentation: photometric distortions like brightness, saturation, contrast or  geometric distortions like rotate, crop, etc.)
 
 
+For further model improvement through tuning: check if the anchor box sizes need to be tuned to dataset 
+[https://github.com/pjreddie/darknet/issues/911, 
+https://github.com/pjreddie/darknet/issues/568, 
+https://medium.com/@vivek.yadav/part-1-generating-anchor-boxes-for-yolo-like-network-for-vehicle-detection-using-kitti-dataset-b2fe033e5807}
+
+
+
 
 
 Q. How to resolve CUDA out of memory error during training?
