@@ -3,11 +3,16 @@ which numbers are too low & require treatment?
 
 
 strategies: 
-1.offline data augmentation,
+1. offline data augmentation:
+   https://twitter.com/jeremyphoward/status/1175177461920698368  oversampling is supposed to work better than class weights
+   https://medium.com/analytics-vidhya/image-data-augmentation-to-balance-dataset-in-classification-tasks-5e25bbd9a228 
+
 
 2.class-weighted loss functions : modify the loss function to have more weightage for the smaller class 
 https://forums.fast.ai/t/how-to-use-class-weights-in-loss-function-for-imbalanced-dataset/19589  
 https://www.kaggle.com/tanlikesmath/oversampling-mnist-with-fastai 
+https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html    to compute the class weights . 
+https://datascience.stackexchange.com/questions/13490/how-to-set-class-weights-for-imbalanced-classes-in-keras
 
 3. imbalanced data sampling - same as point 2
 
@@ -24,19 +29,16 @@ https://www.kaggle.com/tanlikesmath/oversampling-mnist-with-fastai
 
 9. Test Time Augmentation in Fastai
   https://towardsdatascience.com/augmentation-for-image-classification-24ffcbc38833
-
-
-https://twitter.com/jeremyphoward/status/1175177461920698368  oversampling is supposed to work better than class weights
-https://medium.com/analytics-vidhya/image-data-augmentation-to-balance-dataset-in-classification-tasks-5e25bbd9a228 
-
-
-
-https://github.com/qmaruf/fastai-1/blob/master/Multi-label%20classification%20-%20Understanding%20the%20Amazon%20from%20space.ipynb   
-link for image resizing & TTA
+  https://github.com/qmaruf/fastai-1/blob/master/Multi-label%20classification%20-%20Understanding%20the%20Amazon%20from%20space.ipynb   
+  link for image resizing & TTA
 
 
 
-###   Data augmentation for object detection needs to ensure bbox information is correctly updated when transforms (involving changes to object locations/ orientations) are applied
+
+
+
+###   Data augmentation for object detection 
+  - needs to ensure bbox information is correctly updated when transforms (involving changes to object locations/ orientations) are applied
 need to see: generalising for different bbox formats ; saving the transformed image & bbox coordinates
 
 https://github.com/albumentations-team/albumentations
@@ -44,13 +46,6 @@ https://colab.research.google.com/drive/1JuZ23u0C0gx93kV0oJ8Mq0B6CBYhPLXy#scroll
 https://blog.roboflow.com/yolov4-data-augmentation/           
 https://albumentations.ai/docs/examples/example_bboxes/ 
 https://blog.roboflow.com/why-preprocess-augment/
-
-
-
-
-
-
-
 
 
 
