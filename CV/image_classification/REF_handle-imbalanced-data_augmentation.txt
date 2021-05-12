@@ -1,4 +1,13 @@
 which numbers are too low & require treatment?
+- imbalanced data treatment will make more difference when images in a class are fewer, say <1000, than when much higher (say ~5000)
+- for such cases, the class with less images has to be augmented more
+- augmentation may be
+     standard techniques: rotation, brightness, contrast, horizontal or vertical Flip, blur, huesaturation, RGB shift,  
+     synthetic data generation using GAN
+     simpler image pre-processing techniques for rarer defect classes, but will require manual inputs
+- with fewer images (~100 ) & high class imbalance, it may be better to extract the features & build a simple model (gaussian mix model or anomaly detection) , 
+  and switch to a deeper network when more images become available
+
 
 
 
