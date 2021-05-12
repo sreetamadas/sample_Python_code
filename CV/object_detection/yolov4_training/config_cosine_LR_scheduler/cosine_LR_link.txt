@@ -1,0 +1,2 @@
+Link to implement cosine LR scheduler (sgdr) 
+https://github.com/AlexeyAB/darknet/issues/3272#issuecomment-541031314 
