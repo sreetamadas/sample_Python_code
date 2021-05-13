@@ -1,0 +1,15 @@
+homography.py : general outline of obtaining homography transform
+
+
+
+# steps to find common detections b/w multiple cam
+
+1. create videos with 'simulated overlap' by splitting frames into left & right with overlap
+    create_frame_overlapped_video.py
+    
+2. compare starting frames in the overlapped videos, to get overlapping FOV
+    match_left_right_images.py 
+
+3. For subsequent frames, use the captured detections & the FOV, to find common detections
+    compare_detections_on_LR.py 
+
