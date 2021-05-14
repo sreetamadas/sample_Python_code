@@ -2,6 +2,19 @@
 # http://pandas.pydata.org/pandas-docs/version/0.15.0/visualization.html
 # https://www.safaribooksonline.com/library/view/python-data-science/9781491912126/ch04.html
 
+## single plot with all the selected frames
+# https://stackoverflow.com/questions/15819050/pandas-dataframe-concat-vs-append
+
+# https://stackoverflow.com/questions/6063876/matplotlib-colorbar-for-scatter  
+# colorbar did not work properly, so used pandas plot option)
+
+#can we change y-axis irection, to correlate with image layout?
+# https://stackoverflow.com/questions/2051744/reverse-y-axis-in-pyplot   #matplotlib option
+# https://stackoverflow.com/questions/29908874/x-axis-inverted-unexpectedly-by-pandas-plot  (invert axis with df.plot.scatter in python)
+
+
+
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -224,11 +237,15 @@ ax.scatter(df1['t1'],df1['Y'],c=df1['col'], marker = 'o') #, cmap = cm.jet )
 #ax2.set_ylabel('temperature')
 plt.show()
 
+# or, using pandas plot
+df.plot.scatter('x', 'y', c='score', colormap='jet', alpha=0.4)
+
 
 
 ### scattermatrix (similar to pairwise plots of all pairs of colunms in a df; useful only for numeric data )###
 pd.scatter_matrix(df, c=y, figsize=[10,10], s=20, marker='o']    # df has only the input features, y is the target variable
 # c is for color, s is for marker size
+                  
                   
                   
 ## seaborn countplot - useful for categorical data
