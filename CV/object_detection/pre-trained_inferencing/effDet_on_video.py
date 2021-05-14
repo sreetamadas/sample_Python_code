@@ -245,4 +245,4 @@ results = pd.DataFrame(results, columns = ['frameNumber', 'xmin', 'ymin', 'xmax'
 out_file = out_path + "detections_eff" + str(phi) + "_conf05.csv"
 results.to_csv(out_file)
 
-
+print("code took {:.6f} seconds".format(end - start))
