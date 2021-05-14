@@ -1,5 +1,7 @@
 # takes an image & returns bird's eye view
 
+https://towardsdatascience.com/a-social-distancing-detector-using-a-tensorflow-object-detection-model-python-and-opencv-4450a431238
+https://towardsdatascience.com/monitoring-social-distancing-using-ai-c5b81da44c9f
 
 
 m = cv2.getPerspectiveTransform(src, dst)  # calculates the transform
