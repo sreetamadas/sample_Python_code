@@ -85,9 +85,71 @@ https://github.com/arvganesh/Multi-Camera-Object-Tracking  (requires camera layo
 
 
 
+## POINTS ##
+1. SIFT-based keypoint matching works where successive cameras have lateral overlap, not when the same scene is captured 
+   from orthogonal viewpoints. The camera views being compared should be having less variation, esp in overlapping region
+2. will not detect object with highly varying views across scenes
+3. the same keypoint matching logic did not work well with shots of different scenes
 
 
 
+
+## Matching detections from the camera views with overlapping FOV ##
+1. Finding the overlapping zone
+   The overlapping FOV is not being picked properly in the right-side (RHS) image (using knn-based keypoint matches with SIFT descriptors)
+   The selection of the overlapping zone is also being influenced by the choice of the initial pair of images used for the matching
+   instead, use camera parameters to find overlapping region. Search for "multi-camera calibration" or "stereo camera calibration" - these are deterministic.
+
+2. Once the FOV is obtained, the FOV boundary is simplified to consist of only 4 points
+
+3. get relevant detections
+   the detections lying in FOV are selected using some rules as follows:
+   for the left image, check if
+      ymin of detection >=  y1
+      ymax of detection <= y2
+      xmin of detection >= x1 and x2  
+   for the right image, check if
+      ymin of detection >=  y1
+      ymax of detection <= y2
+      xmax of detection <= x1 and x2 
+   Some of the detections at the boundaries of the common FOV may be missed out because of the rule-based method used.
+
+
+4. Compare the detections to identify the same person in the 2 feeds, & map their tracker IDs -
+https://stackoverflow.com/questions/11541154/how-can-i-assess-how-similar-two-images-are-with-opencv      
+# comparing histograms, template matching, feature matching
+
+method 1: SSIM on all pairs of bounding boxes in the common FOV
+images need to be converted to gray-scale
+the boxes must be of same size for SSIM to work
+results are not good with resized boxes
+
+method 2: histogram matching
+Matching performed using correlation, chi-square, intersection, Bhattacharya distance.
+The values of the comparison metrics are not always monotonic. Also, need to choose appropriate thresholds for shortlisting true matches.
+
+method 3: keypoint matching
+ORB descriptors with brute force match & knnMatch did not give any matches even for the matching IDs
+SIFT with brute force knn match gives some matches for the matching IDs (matching a → b with distance threshold 0.65, & not doing the reverse match)
+
+method 4: Template matching (TO BE DONE); try other feature extractors like Daisy feature extractor (this is a dense feature extractor/ descriptor)
+
+
+TO BE TRIED:
+1. to find overlapping FOV, use multi-camera calibration - look at literature for deterministic stereo camera calibration 
+2. for template matching, use other feature extractors like Daisy feature extractor 
+(what is the difference between keypoint matching (eg SIFT) & template matching?)
+
+
+
+ref
+https://blog.ml6.eu/ml6-internship-pedestrian-tracking-over-multiple-non-overlapping-camera-viewpoints-5b405c6df7e0
+https://medium.com/@niruhan/a-practical-guide-to-person-re-identification-using-alignedreid-7683222da644
+https://paperswithcode.com/task/person-re-identification/latest?page=3
+https://www.researchgate.net/post/Is_anyone_aware_of_any_publicly_available_deep_learning_network_for_person_re-identification
+https://github.com/opendatacam/opendatacam/issues/3
+https://nanonets.com/blog/object-tracking-deepsort/
+https://github.com/NVIDIAAICITYCHALLENGE/2020AICITY_Code_From_Top_Teams  (vehicle ReID)
 
 
 ##################################################################################
