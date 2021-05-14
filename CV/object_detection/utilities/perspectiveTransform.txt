@@ -9,8 +9,9 @@ result = cv2.perspectiveTransform(src[None, :, :], m)   # applies it on the imag
 
 # https://stackoverflow.com/questions/27585355/python-open-cv-perspectivetransform
 # https://stackoverflow.com/questions/34116357/what-is-the-difference-between-warpperspective-and-perspectivetransform
-# https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
 
+# https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
+# http://pyimg.co/guide
 
 google: cv2 perspectiveTransform vs getPerspectiveTransform vs warpPerspective
 
