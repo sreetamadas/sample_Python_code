@@ -1,0 +1,12 @@
+https://ieeexplore.ieee.org/document/8743779  
+    "Automatic Hyperparameter Optimization for Transfer Learning on Medical Image Datasets Using Bayesian Optimization"
+    
+https://towardsdatascience.com/transfer-learning-from-pre-trained-models-f2393f124751  (discusses tuning)
+https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a
+https://forums.fast.ai/t/any-tips-on-hyperparameter-tuning/73090
+https://blog.floydhub.com/guide-to-hyperparameters-search-for-deep-learning-models/
+
+
+    
+    
+    
