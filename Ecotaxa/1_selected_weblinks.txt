@@ -16,7 +16,8 @@ https://github.com/keras-team/keras/issues/9624
 google:
 phylogenetic inference from image classification
 https://openreview.net/pdf?id=r17RD2oxe
-https://www.biorxiv.org/content/biorxiv/early/2019/03/08/559054.full.pdf
+https://www.biorxiv.org/content/biorxiv/early/2019/03/08/559054.full.pdf   
+    "Accurate inference of tree topologies from multiple sequence alignments using deep learning"
 https://www.nature.com/scitable/topicpage/reading-a-phylogenetic-tree-the-meaning-of-41956/
 
 
