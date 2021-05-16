@@ -3,3 +3,9 @@ https://in.mathworks.com/videos/image-processing-made-easy-81718.html?s_tid=srch
 https://in.mathworks.com/videos/deep-dive-advanced-neural-networks--1620070946115.html?s_tid=srchtitle
 
 
+
+https://stackoverflow.com/questions/21612258/filled-circle-detection-using-cv2-in-python
+https://stackoverflow.com/questions/15878325/what-are-the-possible-fast-ways-to-detect-circle-in-an-image
+https://stackoverflow.com/questions/35519102/detect-circle-like-shapes-opencv
+https://www.pyimagesearch.com/2014/07/21/detecting-circles-images-using-opencv-hough-circles/
+
