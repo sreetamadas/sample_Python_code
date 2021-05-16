@@ -144,7 +144,7 @@ Classification is a Strong Baseline for Deep Metric Learning - Andrew Zhai , Hao
 Anomaly detection with convolutional neural networks for industrial surface inspection - Benjamin Staar, Michael Lütjen, Michael Freitag
 
 https://ff12.fastforwardlabs.com/   "Deep Learning for Anomaly Detection"
-
+https://towardsdatascience.com/a-compact-cnn-for-weakly-supervised-textured-surface-anomaly-detection-2572c3a65b80  (new cnn with modification)
 
 
 
