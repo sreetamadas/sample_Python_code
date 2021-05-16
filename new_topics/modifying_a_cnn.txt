@@ -1,0 +1,2 @@
+https://towardsdatascience.com/a-compact-cnn-for-weakly-supervised-textured-surface-anomaly-detection-2572c3a65b80
+
