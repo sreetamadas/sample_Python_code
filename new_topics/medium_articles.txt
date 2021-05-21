@@ -1,0 +1,50 @@
+the mostly complete chart of neural netwroks, explained
+The ten neural network architectures machine learning researchers need to learn
+How to choose CNN architecture MNIST Kaggle
+101 Machine Learning Algorithms for Data Science with Cheat Sheets
+DIY AI an old school matrix NN
+Introduction to 1D Convolutional Neural Networks in Keras for Time Sequences
+How to build your own Neural Network from scratch in Python
+
+How Do You Know You Have Enough Training Data?
+In Depth: Parameter tuning for Gradient Boosting
+what to do when your training and testing data come from different distributions
+Feature selection techniques for classification & python tips for their application
+assesments metrics for clustering algorithms
+Principal Component Analysis to Address Multicollinearity
+Understanding PCA (Principal Component Analysis) with Python
+A Simple Example of Pipeline in Machine Learning with Scikit-learn
+
+Suggestive Computer-Aided Design - Assisting Design Through Machine Learning
+
+
+
+
+
+https://www.nathanbenaich.com/blog/ai-first-biology 
+https://github.com/chsasank/image_features
+
+random forest vs bagging - all features are considreed for split at a node
+
+
+### ML , DL resources ####
+
+https://www.coursera.org/learn/machine-learning
+
+Some useful online resources and software tools to further your knowledge in ML for image processing, and get into deep learning:
+
+1)	Introductory demo for Neural Networks: https://playground.tensorflow.org 
+2)	Analytics Vidhya is a general website for ML-related topics that has interview questions, articles and hackathons: 
+https://www.analyticsvidhya.com/blog/2018/06/comprehensive-data-science-machine-learning-interview-guide/
+3)	Datasets for medical image problems: https://grand-challenge.org/all_challenges/ 
+4)	Deep Learning Book by experts in DL: http://www.deeplearningbook.org/ 
+Note: Chapter 2 till chapter 9 are most important for a theoretical foundation for DL. Some of the chapters have links to slides also.
+5)	Scikit toolbox in Python for Machine Learning: http://scikit-learn.org/stable/ 
+This has most of the topics in ML as functions. 
+6)	Keras, a python-based library for DL for beginners: https://machinelearningmastery.com/tutorial-first-neural-network-python-keras/
+On the right-side list in this website, it has basic codes for most topics in DL.
+7)	Tensorflow, a python-based library for advanced DL: https://www.tensorflow.org/get_started/ 
+It has many links to tutorials.
+8)	CS231n Stanford Course on CNN: http://cs231n.stanford.edu/ 
+It has the full video lectures: https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv
+Slides for all the lectures: http://cs231n.stanford.edu/syllabus.html 
