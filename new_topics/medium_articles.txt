@@ -3,7 +3,7 @@ The ten neural network architectures machine learning researchers need to learn
 How to choose CNN architecture MNIST Kaggle
 101 Machine Learning Algorithms for Data Science with Cheat Sheets
 DIY AI an old school matrix NN
-Introduction to 1D Convolutional Neural Networks in Keras for Time Sequences
+Introduction to 1D Convolutional Neural Networks in Keras for Time Sequences - https://blog.goodaudience.com/introduction-to-1d-convolutional-neural-networks-in-keras-for-time-sequences-3a7ff801a2cf
 How to build your own Neural Network from scratch in Python
 
 A gentle introduction to graph neural networks (Basics, Deepwalk and GraphSage)
@@ -16,8 +16,9 @@ How Do You Know You Have Enough Training Data?
 In Depth: Parameter tuning for Gradient Boosting
 Ensemble methods - bagging, boosting and stacking
 what to do when your training and testing data come from different distributions
-Feature selection techniques for classification & python tips for their application
-assesments metrics for clustering algorithms
+Feature selection techniques for classification & python tips for their application - https://towardsdatascience.com/feature-selection-techniques-for-classification-and-python-tips-for-their-application-10c0ddd7918b
+
+assesments metrics for clustering algorithms  - https://medium.com/@ODSC/assessment-metrics-for-clustering-algorithms-4a902e00d92d
 
 Principal Component Analysis to Address Multicollinearity
 Understanding PCA (Principal Component Analysis) with Python
