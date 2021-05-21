@@ -6,13 +6,23 @@ DIY AI an old school matrix NN
 Introduction to 1D Convolutional Neural Networks in Keras for Time Sequences
 How to build your own Neural Network from scratch in Python
 
+A gentle introduction to graph neural networks (Basics, Deepwalk and GraphSage)
+Applications of graph neural networks
+beyond graph neural networks
+Recurrent neural networks by example
+
+
 How Do You Know You Have Enough Training Data?
 In Depth: Parameter tuning for Gradient Boosting
+Ensemble methods - bagging, boosting and stacking
 what to do when your training and testing data come from different distributions
 Feature selection techniques for classification & python tips for their application
 assesments metrics for clustering algorithms
+
 Principal Component Analysis to Address Multicollinearity
 Understanding PCA (Principal Component Analysis) with Python
+visualizing high-dimensional datasets using PCA and t-SNE in python
+
 A Simple Example of Pipeline in Machine Learning with Scikit-learn
 
 Suggestive Computer-Aided Design - Assisting Design Through Machine Learning
@@ -21,10 +31,17 @@ Suggestive Computer-Aided Design - Assisting Design Through Machine Learning
 
 
 
+
 https://www.nathanbenaich.com/blog/ai-first-biology 
 https://github.com/chsasank/image_features
+https://course.spacy.io/    Advanced NLP with spaCy · A free online course
+
+https://github.com/gokceneraslan/awesome-deepbio
+
+
 
 random forest vs bagging - all features are considreed for split at a node
+
 
 
 ### ML , DL resources ####
