@@ -16,6 +16,7 @@ git config --global user.email "Sreetama.Das@xxxxcom"
 # if using git, cd to the appropriate folder & type the following:
 cd existing-project
 git clone https://sourcecode.socialcodingx.com/scm/~id/test1.git
+git clone -b branch_name https:xyz
 
 
 # if you already have code ready to be pushed to this repository 
@@ -24,6 +25,7 @@ git clone https://sourcecode.socialcodingx.com/scm/~id/test1.git
 # in git bash, do the following:
 cd existing-project
 git init
+git status
 git add --all
 git commit -m "Initial Commit"
 git remote add origin https://sourcecode.socialcodingx.com/scm/~id/test1.git
@@ -38,10 +40,12 @@ git push -u origin master
 cd localSystem/projectA_forkedBranchB
 git clone https://sourcecode.socialcodingx.com/scm/ParentProject/projectA.git  --branch branchB
 git init
+git status
 git add --all
+#git add .
 git commit -m "Initial Commit"
 git remote add projectA https://sourcecode.socialcodingx.com/scm/ParentProject/projectA.git
-git push -u projectA branchB
+git push -u origin branchB
 
 
 
