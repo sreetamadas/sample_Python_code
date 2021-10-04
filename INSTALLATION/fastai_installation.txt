@@ -45,6 +45,8 @@ https://docs.microfocus.com/OMi/10.62/Content/OMi/ExtGuide/ExtApps/URL_encoding.
 conda remove --name myenv --all
 conda info --envs
 
+# create yml file for reproducibility
+conda env export --name env_name --from-history -f env.yml
 
 #######################################################################################
 
