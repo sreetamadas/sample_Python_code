@@ -12,8 +12,9 @@ which numbers are too low & require treatment?
 
 
 strategies: 
-1. offline data augmentation:
-   https://twitter.com/jeremyphoward/status/1175177461920698368  oversampling is supposed to work better than class weights
+1. offline data augmentation (simple augmentation, GANs & neural style transfer, image interpolation techniques) :
+   https://medium.com/nanonets/how-to-use-deep-learning-when-you-have-limited-data-part-2-data-augmentation-c26971dc8ced
+   https://twitter.com/jeremyphoward/status/1175177461920698368   oversampling is supposed to work better than class weights
    https://medium.com/analytics-vidhya/image-data-augmentation-to-balance-dataset-in-classification-tasks-5e25bbd9a228 
    https://blog.roboflow.com/yolov4-data-augmentation/            https://blog.roboflow.com/why-preprocess-augment/              
    https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/       
