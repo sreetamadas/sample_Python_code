@@ -1,0 +1,12 @@
+type of NLP tasks
+
+ 
+
+
+# lib names:
+file format conversion handling, 
+data extraction tools
+OCR (Azure form recogniser vs custom tools)
+data annotation
+
+
