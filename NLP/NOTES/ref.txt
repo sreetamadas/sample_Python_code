@@ -1,0 +1,7 @@
+type of NLP tasks
+
+
+
+lib names:
+file format conversion handling, data extraction
+data annotation
