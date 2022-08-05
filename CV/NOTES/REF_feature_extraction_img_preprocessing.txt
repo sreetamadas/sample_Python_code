@@ -1,4 +1,7 @@
-also see https://github.com/sreetamadas/sample_Python_code/blob/master/CV/feat_extraction/REF_anom_detection.txt
+also see 
+https://github.com/sreetamadas/sample_Python_code/blob/master/CV/feat_extraction/REF_anom_detection.txt
+https://github.com/sreetamadas/sample_Python_code/blob/master/CV/image_process/ref.txt
+============================================================================================
 
 ## background to image pre-processing
 Basic image pre-processing
@@ -39,6 +42,7 @@ For segmentation without labelled info – region growing methods
 Image filters 
     High pass- Laplacian filter
     Low pass- mean filter, Gaussian, median
+    edge detection filters (Sobel, etc)
 
 
 
@@ -74,6 +78,20 @@ For rectangular images:
     cv2.boundingRect
     
 5. edge detection
+
+
+https://towardsdatascience.com/image-filters-in-python-26ee938e57d2
+https://core.ac.uk/download/pdf/145642257.pdf  [Image Segmentation Based on Multi-region Multi-scale Local Binary Fitting]
+https://www.analyticsvidhya.com/blog/2019/04/introduction-image-segmentation-techniques-python/
+https://www.nature.com/articles/s41598-021-92286-w  [Domain knowledge integration into deep learning for typhoon intensity classification - uses fisheye distortion preprocessing]
+https://neptune.ai/blog/image-processing-python
+https://python.plainenglish.io/image-filtering-and-editing-in-python-with-code-e878d2a4415d
+https://scikit-image.org/skimage-tutorials/lectures/1_image_filters.html
+https://towardsdatascience.com/image-processing-class-egbe443-5-edge-and-contour-d5d410f4483c
+https://towardsdatascience.com/understanding-morphological-image-processing-and-its-operations-7bcf1ed11756
+http://www.cyto.purdue.edu/cdroms/micro2/content/education/wirth07.pdf
+https://arxiv.org/ftp/arxiv/papers/2011/2011.06928.pdf  [Image Pre-processing for Faster Object Recognition]
+
 
 
 # google: hole filling using spline curve python
