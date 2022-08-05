@@ -1,3 +1,5 @@
+also see   https://github.com/sreetamadas/sample_Python_code/blob/master/CV/NOTES/REF_feature_extraction_img_preprocessing.txt
+
 
 https://in.mathworks.com/videos/image-processing-made-easy-81718.html?s_tid=srchtitle
 https://in.mathworks.com/videos/deep-dive-advanced-neural-networks--1620070946115.html?s_tid=srchtitle
