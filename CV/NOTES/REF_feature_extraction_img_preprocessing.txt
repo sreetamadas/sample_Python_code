@@ -91,6 +91,7 @@ https://towardsdatascience.com/image-processing-class-egbe443-5-edge-and-contour
 https://towardsdatascience.com/understanding-morphological-image-processing-and-its-operations-7bcf1ed11756
 http://www.cyto.purdue.edu/cdroms/micro2/content/education/wirth07.pdf
 https://arxiv.org/ftp/arxiv/papers/2011/2011.06928.pdf  [Image Pre-processing for Faster Object Recognition]
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7827319/  [Image Pre-Processing Method of Machine Learning for Edge Detection with Image Signal Processor Enhancement]
 
 
 
